@@ -13,7 +13,9 @@
     public class FirebaseAuthProvider : IDisposable
     {
         private const string GoogleIdentityUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyAssertion?key={0}";
-        private const string GoogleAnonymousUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key={0}";
+        private const string GoogleSignUpUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key={0}";
+        private const string GooglePasswordUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key={0}";
+        private const string GooglePasswordResetUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/getOobConfirmationCode?key={0}";     
 
         private readonly FirebaseConfig authConfig;
         private readonly HttpClient client;
@@ -50,7 +52,42 @@
         {
             var content = $"{{\"returnSecureToken\":true}}";
 
-            return await this.SignInWithPostContent(GoogleAnonymousUrl, content);
+            return await this.SignInWithPostContent(GoogleSignUpUrl, content);
+        }
+
+        /// <summary>
+        /// Using the provided email and passowrd, get the firebase auth with token and basic user credentials.
+        /// </summary>
+        /// <param name="email"> The email. </param>
+        /// <param name="password"> The password. </param>
+        /// <returns> The <see cref="FirebaseAuth"/>. </returns>
+        public async Task<FirebaseAuth> SignInWithEmailAndPassword(string email, string password)
+        {
+            var content = $"{{\"email\":\"{email}\",\"password\":\"{password}\",\"returnSecureToken\":true}}";
+
+            return await this.SignInWithPostContent(GooglePasswordUrl, content);
+        }
+
+        /// <summary>
+        /// Creates new user with given credentials.
+        /// </summary>
+        /// <param name="email"> The email. </param>
+        /// <param name="password"> The password. </param>
+        /// <returns> The <see cref="FirebaseAuth"/>. </returns>
+        public async Task<FirebaseAuth> CreateUserWithEmailAndPassword(string email, string password)
+        {
+            var content = $"{{\"email\":\"{email}\",\"password\":\"{password}\",\"returnSecureToken\":true}}";
+
+            return await this.SignInWithPostContent(GoogleSignUpUrl, content);
+        }
+
+        public async Task SendPasswordResetEmail(string email)
+        {
+            var content = $"{{\"requestType\":\"PASSWORD_RESET\",\"email\":\"{email}\"}}";
+
+            var response = await this.client.PostAsync(new Uri(string.Format(GooglePasswordResetUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json"));
+
+            response.EnsureSuccessStatusCode();
         }
 
         /// <summary>

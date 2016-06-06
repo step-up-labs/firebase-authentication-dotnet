@@ -18,6 +18,16 @@
         }
 
         /// <summary>
+        /// Gets or sets the refresh token of the underlying service which can be used to get a new access token. 
+        /// </summary>
+        [JsonProperty("refreshToken")]
+        public string RefreshToken
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Gets or sets the numbers of seconds until the token expires.
         /// </summary>
         [JsonProperty("expiresIn")]
