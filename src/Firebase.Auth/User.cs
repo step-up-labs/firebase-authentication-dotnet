@@ -1,6 +1,7 @@
 ﻿namespace Firebase.Auth
 {
     using Newtonsoft.Json;
+    using System.ComponentModel;
 
     /// <summary>
     /// Basic information about the logged in user.
@@ -10,7 +11,8 @@
         /// <summary>
         /// Gets or sets the local id.
         /// </summary>
-        [JsonProperty("localId")]
+        [JsonProperty("localId", DefaultValueHandling = DefaultValueHandling.Populate)]
+        [DefaultValue("")]
         public string LocalId
         {
             get;
@@ -20,7 +22,8 @@
         /// <summary>
         /// Gets or sets the federated id.
         /// </summary>
-        [JsonProperty("federatedId")]
+        [JsonProperty("federatedId", DefaultValueHandling = DefaultValueHandling.Populate)]
+        [DefaultValue("")]
         public string FederatedId
         {
             get;
@@ -30,7 +33,8 @@
         /// <summary>
         /// Gets or sets the first name.
         /// </summary>
-        [JsonProperty("firstName")]
+        [JsonProperty("firstName", DefaultValueHandling=DefaultValueHandling.Populate)]
+        [DefaultValue("")]
         public string FirstName
         {
             get;
@@ -40,7 +44,8 @@
         /// <summary>
         /// Gets or sets the last name.
         /// </summary>
-        [JsonProperty("lastName")]
+        [JsonProperty("lastName", DefaultValueHandling = DefaultValueHandling.Populate)]
+        [DefaultValue("")]
         public string LastName
         {
             get;
@@ -50,7 +55,8 @@
         /// <summary>
         /// Gets or sets the display name.
         /// </summary>
-        [JsonProperty("displayName")]
+        [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Populate)]
+        [DefaultValue("")]
         public string DisplayName
         {
             get;
@@ -60,7 +66,8 @@
         /// <summary>
         /// Gets or sets the email.
         /// </summary>
-        [JsonProperty("email")]
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Populate)]
+        [DefaultValue("")]
         public string Email
         {
             get;
@@ -70,7 +77,8 @@
         /// <summary>
         /// Gets or sets the photo url.
         /// </summary>
-        [JsonProperty("photoUrl")]
+        [JsonProperty("photoUrl", DefaultValueHandling = DefaultValueHandling.Populate)]
+        [DefaultValue("")]
         public string PhotoUrl
         {
             get;
