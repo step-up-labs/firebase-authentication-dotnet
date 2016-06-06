@@ -6,7 +6,7 @@ Firebase authentication library. It can generate Firebase auth token based on gi
 ## Installation
 ```csharp
 // Install release version
-Install-Package FirebaseAuth.net
+Install-Package FirebaseAuthentication.net
 ```
 
 ## Supported frameworks
