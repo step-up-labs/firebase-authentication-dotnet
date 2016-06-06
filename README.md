@@ -1,7 +1,7 @@
 # FirebaseAuthentication.net
 [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/rwmdgqcb7is2clqp?svg=true)](https://ci.appveyor.com/project/bezysoftware/firebase-authentication-dotnet)
 
-Firebase authentication library. It can generate Firebase auth token based on given OAuth token (issued by Google, Facebook...). This Firebase token can then be used with REST queries against Firebase Database endpoints. See [https://github.com/step-up-labs/firebase-database-dotnet](FirebaseDatabase.net) for a C# library wrapping the Firebase Database REST queries.
+Firebase authentication library. It can generate Firebase auth token based on given OAuth token (issued by Google, Facebook...). This Firebase token can then be used with REST queries against Firebase Database endpoints. See [FirebaseDatabase.net](https://github.com/step-up-labs/firebase-database-dotnet) for a C# library wrapping the Firebase Database REST queries.
 
 ## Installation
 ```csharp
