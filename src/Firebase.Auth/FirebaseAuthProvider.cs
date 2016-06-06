@@ -81,6 +81,10 @@
             return await this.SignInWithPostContent(GoogleSignUpUrl, content);
         }
 
+        /// <summary>
+        /// Sends user an email with a link to reset his password.
+        /// </summary>
+        /// <param name="email"> The email. </param>
         public async Task SendPasswordResetEmail(string email)
         {
             var content = $"{{\"requestType\":\"PASSWORD_RESET\",\"email\":\"{email}\"}}";
