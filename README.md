@@ -1,5 +1,5 @@
 # FirebaseDatabase.net
-[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/ep8xw22cexktghba?svg=true)](https://ci.appveyor.com/project/bezysoftware/firebase-auth-dotnet)
+[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/rwmdgqcb7is2clqp?svg=true)](https://ci.appveyor.com/project/bezysoftware/firebase-authentication-dotnet)
 
 DESCRIPTION
 
