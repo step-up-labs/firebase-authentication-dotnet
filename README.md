@@ -16,6 +16,13 @@ Install-Package FirebaseAuthentication.net
 * Windows Phone 8.1
 * CoreCLR
 
+## Supported scenarios
+* Login with Google / Facebook / Github / Twitter OAuth tokens
+* Anonymous login
+* Login with email + password
+* Create new user with email + password
+* Send a password reset email
+
 ## Usage
 
 ```csharp
