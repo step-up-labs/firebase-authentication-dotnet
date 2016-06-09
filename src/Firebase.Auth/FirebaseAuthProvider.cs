@@ -10,7 +10,7 @@
     /// <summary>
     /// The auth token provider.
     /// </summary>
-    public class FirebaseAuthProvider : IDisposable
+    public class FirebaseAuthProvider : IDisposable, IFirebaseAuthProvider
     {
         private const string GoogleIdentityUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyAssertion?key={0}";
         private const string GoogleSignUpUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key={0}";
@@ -29,7 +29,7 @@
             this.authConfig = authConfig;
             this.client = new HttpClient();
         }
-
+          
         /// <summary>
         /// Using the provided access token from third party auth provider (google, facebook...), get the firebase auth with token and basic user credentials.
         /// </summary>
@@ -56,7 +56,7 @@
         }
 
         /// <summary>
-        /// Using the provided email and passowrd, get the firebase auth with token and basic user credentials.
+        /// Using the provided email and password, get the firebase auth with token and basic user credentials.
         /// </summary>
         /// <param name="email"> The email. </param>
         /// <param name="password"> The password. </param>
