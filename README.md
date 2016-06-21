@@ -30,7 +30,7 @@ Install-Package FirebaseAuthentication.net
 var authProvider = new FirebaseAuthProvider(new FirebaseConfig(FirebaseApiKey));
 var facebookAccessToken = "<login with facebook and get oauth access token>";
 
-var auth = await authProvider.SignInWithOAuth(FirebaseAuthType.Facebook, facebookAccessToken);
+var auth = await authProvider.SignInWithOAuthAsync(FirebaseAuthType.Facebook, facebookAccessToken);
 
 var firebase = new FirebaseClient("https://dinosaur-facts.firebaseio.com/");
 var dinos = await firebase
