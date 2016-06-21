@@ -1,7 +1,8 @@
 ﻿namespace Firebase.Auth
 {
-    using Newtonsoft.Json;
     using System.ComponentModel;
+
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Basic information about the logged in user.
@@ -33,7 +34,7 @@
         /// <summary>
         /// Gets or sets the first name.
         /// </summary>
-        [JsonProperty("firstName", DefaultValueHandling=DefaultValueHandling.Populate)]
+        [JsonProperty("firstName", DefaultValueHandling = DefaultValueHandling.Populate)] 
         [DefaultValue("")]
         public string FirstName
         {

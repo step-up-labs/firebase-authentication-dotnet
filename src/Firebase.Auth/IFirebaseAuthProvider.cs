@@ -12,35 +12,54 @@
         /// </summary>
         /// <param name="email"> The email. </param>
         /// <param name="password"> The password. </param>
-        /// <returns> The <see cref="FirebaseAuth"/>. </returns>
-        Task<FirebaseAuth> CreateUserWithEmailAndPassword(string email, string password);
+        /// <returns> The <see cref="FirebaseAuthLink"/>. </returns>
+        Task<FirebaseAuthLink> CreateUserWithEmailAndPasswordAsync(string email, string password);
         
         /// <summary>
         /// Sends user an email with a link to reset his password.
         /// </summary>
-        /// <param name="email"> The email. </param>
-        Task SendPasswordResetEmail(string email);
+        /// <param name="email"> The email.  </param>
+        /// <returns> The <see cref="Task"/>. </returns>
+        Task SendPasswordResetEmailAsync(string email);
 
         /// <summary>
         /// Sign in user anonymously. He would still have a user id and access token generated, but name and other personal user properties will be null.
         /// </summary>
-        /// <returns> The <see cref="FirebaseAuth"/>. </returns>
-        Task<FirebaseAuth> SignInAnonymously();
+        /// <returns> The <see cref="FirebaseAuthLink"/>. </returns>
+        Task<FirebaseAuthLink> SignInAnonymouslyAsync();
 
         /// <summary>
         /// Using the provided email and password, get the firebase auth with token and basic user credentials.
         /// </summary>
         /// <param name="email"> The email. </param>
         /// <param name="password"> The password. </param>
-        /// <returns> The <see cref="FirebaseAuth"/>. </returns>
-        Task<FirebaseAuth> SignInWithEmailAndPassword(string email, string password);
+        /// <returns> The <see cref="FirebaseAuthLink"/>. </returns>
+        Task<FirebaseAuthLink> SignInWithEmailAndPasswordAsync(string email, string password);
 
         /// <summary>
         /// Using the provided access token from third party auth provider (google, facebook...), get the firebase auth with token and basic user credentials.
         /// </summary>
         /// <param name="authType"> The auth type. </param>
         /// <param name="oauthAccessToken"> The access token retrieved from login provider of your choice. </param>
-        /// <returns> The <see cref="FirebaseAuth"/>. </returns>
-        Task<FirebaseAuth> SignInWithOAuth(FirebaseAuthType authType, string oauthAccessToken);
+        /// <returns> The <see cref="FirebaseAuthLink"/>. </returns>
+        Task<FirebaseAuthLink> SignInWithOAuthAsync(FirebaseAuthType authType, string oauthAccessToken);
+
+        /// <summary>
+        /// Links the authenticated user represented by <see cref="auth"/> with an email and password. 
+        /// </summary>
+        /// <param name="auth"> The authenticated user to link with specified email and password. </param>
+        /// <param name="email"> The email. </param>
+        /// <param name="password"> The password. </param>
+        /// <returns> The <see cref="FirebaseAuthLink"/>. </returns>
+        Task<FirebaseAuthLink> LinkAccountsAsync(FirebaseAuth auth, string email, string password);
+
+        /// <summary>
+        /// Links the authenticated user represented by <see cref="auth"/> with and account from a third party provider.
+        /// </summary>
+        /// <param name="auth"> The auth. </param>
+        /// <param name="authType"> The auth type.  </param>
+        /// <param name="oauthAccessToken"> The access token retrieved from login provider of your choice. </param>
+        /// <returns> The <see cref="FirebaseAuthLink"/>.  </returns>
+        Task<FirebaseAuthLink> LinkAccountsAsync(FirebaseAuth auth, FirebaseAuthType authType, string oauthAccessToken);
     }
 }
