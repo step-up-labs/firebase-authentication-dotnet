@@ -22,6 +22,7 @@ Install-Package FirebaseAuthentication.net
 * Login with email + password
 * Create new user with email + password
 * Send a password reset email
+* Link two accounts together
 
 ## Usage
 
