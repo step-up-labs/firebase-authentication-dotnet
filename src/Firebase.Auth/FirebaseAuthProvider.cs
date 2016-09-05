@@ -104,17 +104,26 @@
 
         private async Task<FirebaseAuth> SignInWithPostContent(string googleUrl, string postContent)
         {
-            var response = await this.client.PostAsync(new Uri(string.Format(googleUrl, this.authConfig.ApiKey)), new StringContent(postContent, Encoding.UTF8, "application/json"));
+            string responseData = "N/A";
 
-            response.EnsureSuccessStatusCode();
+            try
+            {
+                var response = await this.client.PostAsync(new Uri(string.Format(googleUrl, this.authConfig.ApiKey)), new StringContent(postContent, Encoding.UTF8, "application/json"));
+                responseData = await response.Content.ReadAsStringAsync();
 
-            var responseData = await response.Content.ReadAsStringAsync();
-            var user = JsonConvert.DeserializeObject<User>(responseData);
-            var auth = JsonConvert.DeserializeObject<FirebaseAuth>(responseData);
+                response.EnsureSuccessStatusCode();
 
-            auth.User = user;
+                var user = JsonConvert.DeserializeObject<User>(responseData);
+                var auth = JsonConvert.DeserializeObject<FirebaseAuth>(responseData);
 
-            return auth;
+                auth.User = user;
+
+                return auth;
+            }
+            catch (Exception ex)
+            {
+                throw new FirebaseAuthException(googleUrl, postContent, responseData, ex);
+            }
         }
 
         private string GetProviderId(FirebaseAuthType authType)
