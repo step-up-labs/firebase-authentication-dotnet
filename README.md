@@ -16,13 +16,21 @@ Install-Package FirebaseAuthentication.net
 * Windows Phone 8.1
 * CoreCLR
 
+## Supported scenarios
+* Login with Google / Facebook / Github / Twitter OAuth tokens
+* Anonymous login
+* Login with email + password
+* Create new user with email + password
+* Send a password reset email
+* Link two accounts together
+
 ## Usage
 
 ```csharp
 var authProvider = new FirebaseAuthProvider(new FirebaseConfig(FirebaseApiKey));
 var facebookAccessToken = "<login with facebook and get oauth access token>";
 
-var auth = await authProvider.SignInWithOAuth(FirebaseAuthType.Facebook, facebookAccessToken);
+var auth = await authProvider.SignInWithOAuthAsync(FirebaseAuthType.Facebook, facebookAccessToken);
 
 var firebase = new FirebaseClient("https://dinosaur-facts.firebaseio.com/");
 var dinos = await firebase

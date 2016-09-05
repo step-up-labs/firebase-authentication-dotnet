@@ -40,11 +40,13 @@
     <None Include="Settings.StyleCop" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FirebaseAuthLink.cs" />
     <Compile Include="FirebaseAuthException.cs" />
     <Compile Include="FirebaseConfig.cs" />
     <Compile Include="FirebaseAuthType.cs" />
     <Compile Include="FirebaseAuth.cs" />
     <Compile Include="FirebaseAuthProvider.cs" />
+    <Compile Include="IFirebaseAuthProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
