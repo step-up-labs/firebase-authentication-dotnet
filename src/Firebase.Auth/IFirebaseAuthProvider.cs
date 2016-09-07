@@ -61,5 +61,12 @@
         /// <param name="oauthAccessToken"> The access token retrieved from login provider of your choice. </param>
         /// <returns> The <see cref="FirebaseAuthLink"/>.  </returns>
         Task<FirebaseAuthLink> LinkAccountsAsync(FirebaseAuth auth, FirebaseAuthType authType, string oauthAccessToken);
+
+        /// <summary>
+        /// Gets a list of accounts linked to given email.
+        /// </summary>
+        /// <param name="email"> Email address. </param>
+        /// <returns> The <see cref="ProviderQueryResult"/></returns>
+        Task<ProviderQueryResult> GetLinkedAccountsAsync(string email);
     }
 }

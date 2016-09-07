@@ -17,6 +17,7 @@
         private const string GooglePasswordUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key={0}";
         private const string GooglePasswordResetUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/getOobConfirmationCode?key={0}";
         private const string GoogleSetAccountUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/setAccountInfo?key={0}";
+        private const string GoogleCreateAuthUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/createAuthUri?key={0}";
 
         private readonly FirebaseConfig authConfig;
         private readonly HttpClient client;
@@ -42,7 +43,7 @@
             var providerId = this.GetProviderId(authType);
             var content = $"{{\"postBody\":\"access_token={oauthAccessToken}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
 
-            return await this.SignInWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+            return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -53,7 +54,7 @@
         {
             var content = $"{{\"returnSecureToken\":true}}";
 
-            return await this.SignInWithPostContentAsync(GoogleSignUpUrl, content).ConfigureAwait(false);
+            return await this.ExecuteWithPostContentAsync(GoogleSignUpUrl, content).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -66,7 +67,7 @@
         {
             var content = $"{{\"email\":\"{email}\",\"password\":\"{password}\",\"returnSecureToken\":true}}";
 
-            return await this.SignInWithPostContentAsync(GooglePasswordUrl, content).ConfigureAwait(false);
+            return await this.ExecuteWithPostContentAsync(GooglePasswordUrl, content).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -79,7 +80,7 @@
         {
             var content = $"{{\"email\":\"{email}\",\"password\":\"{password}\",\"returnSecureToken\":true}}";
 
-            return await this.SignInWithPostContentAsync(GoogleSignUpUrl, content).ConfigureAwait(false);
+            return await this.ExecuteWithPostContentAsync(GoogleSignUpUrl, content).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -106,7 +107,7 @@
         {
             var content = $"{{\"idToken\":\"{auth.FirebaseToken}\",\"email\":\"{email}\",\"password\":\"{password}\",\"returnSecureToken\":true}}";
 
-            return await this.SignInWithPostContentAsync(GoogleSetAccountUrl, content).ConfigureAwait(false);
+            return await this.ExecuteWithPostContentAsync(GoogleSetAccountUrl, content).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -121,7 +122,35 @@
             var providerId = this.GetProviderId(authType);
             var content = $"{{\"idToken\":\"{auth.FirebaseToken}\",\"postBody\":\"access_token={oauthAccessToken}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
 
-            return await this.SignInWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+            return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets a list of accounts linked to given email.
+        /// </summary>
+        /// <param name="email"> Email address. </param>
+        /// <returns> The <see cref="ProviderQueryResult"/></returns>
+        public async Task<ProviderQueryResult> GetLinkedAccountsAsync(string email)
+        {
+            string content = $"{{\"identifier\":\"{email}\", \"continueUri\": \"http://localhost\"}}";
+            string responseData = "N/A";
+
+            try
+            {
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleCreateAuthUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json"));
+                responseData = await response.Content.ReadAsStringAsync();
+
+                response.EnsureSuccessStatusCode();
+
+                var data = JsonConvert.DeserializeObject<ProviderQueryResult>(responseData);
+                data.Email = email;
+
+                return data;
+            }
+            catch (Exception ex)
+            {
+                throw new FirebaseAuthException(GoogleCreateAuthUrl, content, responseData, ex);
+            }
         }
 
         /// <summary>
@@ -132,7 +161,7 @@
             this.client.Dispose();
         }
 
-        private async Task<FirebaseAuthLink> SignInWithPostContentAsync(string googleUrl, string postContent)
+        private async Task<FirebaseAuthLink> ExecuteWithPostContentAsync(string googleUrl, string postContent)
         {
             string responseData = "N/A";
 
@@ -161,13 +190,12 @@
             switch (authType)
             {
                 case FirebaseAuthType.Facebook:
-                    return "facebook.com";
                 case FirebaseAuthType.Google:
-                    return "google.com";
                 case FirebaseAuthType.Github:
-                    return "github.com";
                 case FirebaseAuthType.Twitter:
-                    return "twitter.com";
+                    return authType.ToEnumString();
+                case FirebaseAuthType.EmailAndPassword:
+                    throw new InvalidOperationException("Email auth type cannot be used like this. Use methods specific to email & password authentication.");
                 default: throw new NotImplementedException("");
             }
         }

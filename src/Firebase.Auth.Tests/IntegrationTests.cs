@@ -5,6 +5,7 @@
     using FluentAssertions;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Linq;
 
     public class IntegrationTests
     {
@@ -89,6 +90,19 @@
             newAuth.User.LocalId.Should().Be(auth.User.LocalId);
             newAuth.User.FirstName.ShouldBeEquivalentTo(FacebookTestUserFirstName);
             newAuth.FirebaseToken.Should().NotBeNullOrWhiteSpace();
+        }
+
+        [TestMethod]
+        public void GetLinkedAccountsTest()
+        {
+            var authProvider = new FirebaseAuthProvider(new FirebaseConfig(ApiKey));
+            var email = $"abcd{new Random().Next()}@test.com";
+
+            var auth = authProvider.CreateUserWithEmailAndPasswordAsync(email, "test1234").Result;
+            var linkedAccounts = authProvider.GetLinkedAccountsAsync(email).Result;
+
+            linkedAccounts.IsRegistered.Should().BeTrue();
+            linkedAccounts.Providers.Single().ShouldBeEquivalentTo(FirebaseAuthType.EmailAndPassword);
         }
     }
 }
