@@ -4,6 +4,9 @@
     using Newtonsoft.Json.Converters;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// More info at <see cref="https://developers.google.com/identity/toolkit/web/reference/relyingparty/createAuthUri"/>.
+    /// </summary>
     public class ProviderQueryResult
     {
         internal ProviderQueryResult()
@@ -19,6 +22,28 @@
 
         [JsonProperty("registered")]
         public bool IsRegistered
+        {
+            get;
+            set;
+        }
+
+        [JsonProperty("forExistingProvider")]
+        public bool IsForExistingProvider
+        {
+            get;
+            set;
+        }
+
+        [JsonProperty("authUri")]
+        public string AuthUri
+        {
+            get;
+            set;
+        }
+
+        [JsonProperty("providerId")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public FirebaseAuthType? ProviderId
         {
             get;
             set;
