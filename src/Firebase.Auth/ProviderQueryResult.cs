@@ -8,6 +8,7 @@
     {
         internal ProviderQueryResult()
         {
+            this.Providers = new List<FirebaseAuthType>();
         }
 
         public string Email
