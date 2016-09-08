@@ -12,8 +12,9 @@
         /// </summary>
         /// <param name="email"> The email. </param>
         /// <param name="password"> The password. </param>
+        /// <param name="displayName"> Optional display name. </param>
         /// <returns> The <see cref="FirebaseAuthLink"/>. </returns>
-        Task<FirebaseAuthLink> CreateUserWithEmailAndPasswordAsync(string email, string password);
+        Task<FirebaseAuthLink> CreateUserWithEmailAndPasswordAsync(string email, string password, string displayName = "");
         
         /// <summary>
         /// Sends user an email with a link to reset his password.
@@ -61,7 +62,7 @@
         /// <param name="oauthAccessToken"> The access token retrieved from login provider of your choice. </param>
         /// <returns> The <see cref="FirebaseAuthLink"/>.  </returns>
         Task<FirebaseAuthLink> LinkAccountsAsync(FirebaseAuth auth, FirebaseAuthType authType, string oauthAccessToken);
-
+        
         /// <summary>
         /// Gets a list of accounts linked to given email.
         /// </summary>
