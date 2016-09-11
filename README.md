@@ -53,4 +53,4 @@ Under [Facebook developers page for your app](https://developers.facebook.com/) 
 
 ## Google setup
 
-In the [developer console](https://console.developers.google.com/apis/credentials) make sure you have an OAuth client (set is either as iOS or Android app, that should work).
+In the [developer console](https://console.developers.google.com/apis/credentials) make sure you have an OAuth client (set it either as iOS or Android app, that should work).
