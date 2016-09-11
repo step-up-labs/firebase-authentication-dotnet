@@ -43,3 +43,14 @@ foreach (var dino in dinos)
   Console.WriteLine($"{dino.Key} is {dino.Object.Height}m high.");
 }
 ```
+
+## Facebook setup
+
+Under [Facebook developers page for your app](https://developers.facebook.com/) make sure you have a similar setup:
+
+![Logo](/art/FacebookSetup.png)
+
+
+## Google setup
+
+In the [developer console](https://console.developers.google.com/apis/credentials) make sure you have an OAuth client (set is either as iOS or Android app, that should work).
