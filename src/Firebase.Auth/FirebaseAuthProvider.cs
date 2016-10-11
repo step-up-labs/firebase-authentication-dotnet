@@ -1,10 +1,11 @@
-﻿namespace Firebase.Auth
+﻿using System.Diagnostics;
+
+namespace Firebase.Auth
 {
     using System;
     using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
-
     using Newtonsoft.Json;
 
     /// <summary>
@@ -31,7 +32,7 @@
             this.authConfig = authConfig;
             this.client = new HttpClient();
         }
-          
+
         /// <summary>
         /// Using the provided access token from third party auth provider (google, facebook...), get the firebase auth with token and basic user credentials.
         /// </summary>
@@ -92,7 +93,7 @@
 
                 signup.User.DisplayName = displayName;
             }
-            
+
             return signup;
         }
 
@@ -169,7 +170,7 @@
         /// <summary>
         /// Disposes all allocated resources. 
         /// </summary>
-        public void Dispose() 
+        public void Dispose()
         {
             this.client.Dispose();
         }
@@ -194,9 +195,56 @@
             }
             catch (Exception ex)
             {
-                throw new FirebaseAuthException(googleUrl, postContent, responseData, ex);
+                AuthErrorReason errorReason = GetFailureReason(responseData);
+                throw new FirebaseAuthException(googleUrl, postContent, responseData, ex, errorReason);
             }
         }
+
+        /// <summary>
+        /// Resolves failure reason flags based on the returned error code.
+        /// </summary>
+        /// <remarks>Currently only provides support for failed email auth flags.</remarks>
+        private static AuthErrorReason GetFailureReason(string responseData)
+        {
+            var failureReason = AuthErrorReason.Undefined;
+            try
+            {
+                if (!string.IsNullOrEmpty(responseData) && responseData != "N/A")
+                {
+                    //create error data template and try to parse JSON
+                    var errorData = new { error = new { code = 0, message = "errorid" } };
+                    errorData = JsonConvert.DeserializeAnonymousType(responseData, errorData);
+
+                    //errorData is just null if different JSON was received
+                    switch (errorData?.error?.message)
+                    {
+                        case "INVALID_PASSWORD":
+                            failureReason = AuthErrorReason.WrongPassword;
+                            break;
+                        case "EMAIL_NOT_FOUND":
+                            failureReason = AuthErrorReason.UnknownEmailAddress;
+                            break;
+                        case "INVALID_EMAIL":
+                            failureReason = AuthErrorReason.InvalidEmailAddress;
+                            break;
+                        case "USER_DISABLED":
+                            failureReason = AuthErrorReason.UserDisabled;
+                            break;
+                    }
+                }
+            }
+            catch (JsonReaderException)
+            {
+                //the response wasn't JSON - no data to be parsed
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Unexpected error trying to parse the response: {e}");
+            }
+
+            return failureReason;
+        }
+
 
         private string GetProviderId(FirebaseAuthType authType)
         {
@@ -209,7 +257,8 @@
                     return authType.ToEnumString();
                 case FirebaseAuthType.EmailAndPassword:
                     throw new InvalidOperationException("Email auth type cannot be used like this. Use methods specific to email & password authentication.");
-                default: throw new NotImplementedException("");
+                default:
+                    throw new NotImplementedException("");
             }
         }
     }
