@@ -7,7 +7,6 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Linq;
 
-    [TestClass]
     public class IntegrationTests
     {
         private const string ApiKey = "<YOUR API KEY>";
