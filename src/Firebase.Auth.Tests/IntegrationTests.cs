@@ -54,6 +54,62 @@
         }
 
         [TestMethod]
+        public void Unknown_email_address_should_be_reflected_by_failure_reason()
+        {
+            using (var authProvider = new FirebaseAuthProvider(new FirebaseConfig(ApiKey)))
+            {
+                try
+                {
+                    authProvider.SignInWithEmailAndPasswordAsync("someinvalidaddressxxx@foo.com", FirebasePassword).Wait();
+                    Assert.Fail("Sign-in should fail with invalid email.");
+                }
+                catch (Exception e)
+                {
+                    var exception = (FirebaseAuthException) e.InnerException;
+                    exception.Reason.Should().Be(AuthErrorReason.UnknownEmailAddress);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void Invalid_email_address_format_should_be_reflected_by_failure_reason()
+        {
+            using (var authProvider = new FirebaseAuthProvider(new FirebaseConfig(ApiKey)))
+            {
+                try
+                {
+                    authProvider.SignInWithEmailAndPasswordAsync("notanemailaddress", FirebasePassword).Wait();
+                    Assert.Fail("Sign-in should fail with invalid email.");
+                }
+                catch (Exception e)
+                {
+                    var exception = (FirebaseAuthException)e.InnerException;
+                    exception.Reason.Should().Be(AuthErrorReason.InvalidEmailAddress);
+                }
+            }
+        }
+
+
+
+        [TestMethod]
+        public void Invalid_password_should_be_reflected_by_failure_reason()
+        {
+            using (var authProvider = new FirebaseAuthProvider(new FirebaseConfig(ApiKey)))
+            {
+                try
+                {
+                    authProvider.SignInWithEmailAndPasswordAsync(FirebaseEmail, "xx" + FirebasePassword).Wait();
+                    Assert.Fail("Sign-in should fail with invalid password.");
+                }
+                catch (Exception e)
+                {
+                    var exception = (FirebaseAuthException)e.InnerException;
+                    exception.Reason.Should().Be(AuthErrorReason.WrongPassword);
+                }
+            }
+        }
+
+        [TestMethod]
         public void CreateUserTest()
         {
             var authProvider = new FirebaseAuthProvider(new FirebaseConfig(ApiKey));

@@ -4,12 +4,13 @@
 
     public class FirebaseAuthException : Exception
     {
-        public FirebaseAuthException(string requestUrl, string requestData, string responseData, Exception innerException) 
-            : base(GenerateExceptionMessage(requestUrl, requestData, responseData), innerException)
+        public FirebaseAuthException(string requestUrl, string requestData, string responseData, Exception innerException, AuthErrorReason reason = AuthErrorReason.Undefined) 
+            : base(GenerateExceptionMessage(requestUrl, requestData, responseData, reason), innerException)
         {
             this.RequestUrl = requestUrl;
             this.RequestData = requestData;
             this.ResponseData = responseData;
+            this.Reason = reason;
         }
 
         /// <summary>
@@ -33,9 +34,18 @@
             get;
         }
 
-        private static string GenerateExceptionMessage(string requestUrl, string requestData, string responseData)
+        /// <summary>
+        /// indicates why a login failed. If not resolved, defaults to
+        /// <see cref="AuthErrorReason.Undefined"/>.
+        /// </summary>
+        public AuthErrorReason Reason
         {
-            return $"Exception occured while authenticating.\nUrl: {requestUrl}\nRequest Data: {requestData}\nResponse: {responseData}";
+            get;
+        }
+
+        private static string GenerateExceptionMessage(string requestUrl, string requestData, string responseData, AuthErrorReason errorReason)
+        {
+            return $"Exception occured while authenticating.\nUrl: {requestUrl}\nRequest Data: {requestData}\nResponse: {responseData}\nReason: {errorReason}";
         }
     }
 }
