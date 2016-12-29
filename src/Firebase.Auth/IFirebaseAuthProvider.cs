@@ -46,6 +46,13 @@
         Task<FirebaseAuthLink> SignInWithOAuthAsync(FirebaseAuthType authType, string oauthAccessToken);
 
         /// <summary>
+        /// Sign in with a custom token. You would usually create and sign such a token on your server to integrate with your existing authentiocation system.
+        /// </summary>
+        /// <param name="customToken"> The access token retrieved from login provider of your choice. </param>
+        /// <returns> The <see cref="FirebaseAuth"/>. </returns>
+        Task<FirebaseAuthLink> SignInWithCustomTokenAsync(string customToken);
+
+        /// <summary>
         /// Links the authenticated user represented by <see cref="auth"/> with an email and password. 
         /// </summary>
         /// <param name="auth"> The authenticated user to link with specified email and password. </param>
