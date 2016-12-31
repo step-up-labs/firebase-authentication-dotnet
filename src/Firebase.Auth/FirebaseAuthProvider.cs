@@ -244,17 +244,74 @@
                     //errorData is just null if different JSON was received
                     switch (errorData?.error?.message)
                     {
+                        //general errors
+                        case "invalid access_token, error code 43.":
+                            failureReason = AuthErrorReason.InvalidAccessToken;
+                            break;
+
+                        case "CREDENTIAL_TOO_OLD_LOGIN_AGAIN":
+                            failureReason = AuthErrorReason.LoginCredentialsTooOld;
+                            break;
+
+                        //possible errors from Third Party Authentication using GoogleIdentityUrl
+                        case "INVALID_PROVIDER_ID : Provider Id is not supported.":
+                            failureReason = AuthErrorReason.InvalidProviderID;
+                            break;
+                        case "MISSING_REQUEST_URI":
+                            failureReason = AuthErrorReason.MissingRequestURI;
+                            break;
+                        case "A system error has occurred - missing or invalid postBody":
+                            failureReason = AuthErrorReason.SystemError;
+                            break;
+
+                        //possible errors from Email/Password Account Signup (via signupNewUser or setAccountInfo) or Signin
+                        case "INVALID_EMAIL":
+                            failureReason = AuthErrorReason.InvalidEmailAddress;
+                            break;
+                        case "MISSING_PASSWORD":
+                            failureReason = AuthErrorReason.MissingPassword;
+                            break;
+
+                        //possible errors from Email/Password Account Signup (via signupNewUser or setAccountInfo)
+                        case "WEAK_PASSWORD : Password should be at least 6 characters":
+                            failureReason = AuthErrorReason.WeakPassword;
+                            break;
+                        case "EMAIL_EXISTS":
+                            failureReason = AuthErrorReason.EmailExists;
+                            break;
+
+                        //possible errors from Email/Password Signin
                         case "INVALID_PASSWORD":
                             failureReason = AuthErrorReason.WrongPassword;
                             break;
                         case "EMAIL_NOT_FOUND":
                             failureReason = AuthErrorReason.UnknownEmailAddress;
                             break;
-                        case "INVALID_EMAIL":
-                            failureReason = AuthErrorReason.InvalidEmailAddress;
-                            break;
                         case "USER_DISABLED":
                             failureReason = AuthErrorReason.UserDisabled;
+                            break;
+
+                        //possible errors from Email/Password Signin or Password Recovery or Email/Password Sign up using setAccountInfo
+                        case "MISSING_EMAIL":
+                            failureReason = AuthErrorReason.MissingEmail;
+                            break;
+
+                        //possible errors from Password Recovery
+                        case "MISSING_REQ_TYPE":
+                            failureReason = AuthErrorReason.MissingRequestType;
+                            break;
+
+                        //possible errors from Account Linking
+                        case "INVALID_ID_TOKEN":
+                            failureReason = AuthErrorReason.InvalidIDToken;
+                            break;
+
+                        //possible errors from Getting Linked Accounts
+                        case "INVALID_IDENTIFIER":
+                            failureReason = AuthErrorReason.InvalidIdentifier;
+                            break;
+                        case "MISSING_IDENTIFIER":
+                            failureReason = AuthErrorReason.MissingIdentifier;
                             break;
                     }
                 }
