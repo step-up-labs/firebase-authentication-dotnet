@@ -1,12 +1,18 @@
 ﻿namespace Firebase.Auth
 {
     using Newtonsoft.Json;
+    using System;
 
     /// <summary>
     /// The firebase auth.
     /// </summary>
     public class FirebaseAuth
     {
+        public FirebaseAuth()
+        {
+            this.Created = DateTime.Now;
+        }
+
         /// <summary>
         /// Gets or sets the firebase token which can be used for authenticated queries. 
         /// </summary>
@@ -28,10 +34,19 @@
         }
 
         /// <summary>
-        /// Gets or sets the numbers of seconds until the token expires.
+        /// Gets or sets the numbers of seconds since <see cref="Created"/> when the token expires.
         /// </summary>
         [JsonProperty("expiresIn")]
         public int ExpiresIn
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets when this token was created.
+        /// </summary>
+        public DateTime Created
         {
             get;
             set;
@@ -44,6 +59,15 @@
         {
             get;
             set;
+        }
+
+        /// <summary>
+        /// Specifies whether the token already expired. 
+        /// </summary>
+        public bool IsExpired()
+        {
+            // include a small 10s window when the token is technically valid but it's a good idea to refresh it already.
+            return DateTime.Now > this.Created.AddSeconds(this.ExpiresIn - 10); 
         }
     }
 }

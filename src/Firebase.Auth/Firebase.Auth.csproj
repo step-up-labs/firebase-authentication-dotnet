@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="EnumExtensions.cs" />
     <Compile Include="AuthErrorReason.cs" />
+    <Compile Include="FirebaseAuthEventArgs.cs" />
     <Compile Include="FirebaseAuthLink.cs" />
     <Compile Include="FirebaseAuthException.cs" />
     <Compile Include="FirebaseConfig.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="IFirebaseAuthProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProviderQueryResult.cs" />
+    <Compile Include="RefreshAuth.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
