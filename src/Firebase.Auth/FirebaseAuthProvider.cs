@@ -14,6 +14,7 @@
     /// </summary>
     public class FirebaseAuthProvider : IDisposable, IFirebaseAuthProvider
     {
+        private const string GoogleRefreshAuth = "https://securetoken.googleapis.com/v1/token?key={0}";
         private const string GoogleCustomAuthUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyCustomToken?key={0}";
         private const string GoogleGetUser = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/getAccountInfo?key={0}";
         private const string GoogleIdentityUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyAssertion?key={0}";
@@ -193,6 +194,33 @@
             }
         }
 
+        public async Task<FirebaseAuthLink> RefreshAuthAsync(FirebaseAuth auth)
+        {
+            var content = $"{{\"grant_type\":\"refresh_token\", \"refresh_token\":\"{auth.RefreshToken}\"}}";
+            var responseData = "N/A";
+
+            try
+            {
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleRefreshAuth, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json"));
+
+                responseData = await response.Content.ReadAsStringAsync();
+                var refreshAuth = JsonConvert.DeserializeObject<RefreshAuth>(responseData);
+
+                return new FirebaseAuthLink
+                {
+                    AuthProvider = this,
+                    User = auth.User,
+                    ExpiresIn = refreshAuth.ExpiresIn,
+                    RefreshToken = refreshAuth.RefreshToken,
+                    FirebaseToken = refreshAuth.AccessToken
+                };
+            }
+            catch (Exception ex)
+            {
+                throw new FirebaseAuthException(GoogleRefreshAuth, content, responseData, ex);
+            }
+        }
+
         /// <summary>
         /// Disposes all allocated resources. 
         /// </summary>
@@ -215,6 +243,7 @@
                 var user = JsonConvert.DeserializeObject<User>(responseData);
                 var auth = JsonConvert.DeserializeObject<FirebaseAuthLink>(responseData);
 
+                auth.AuthProvider = this;
                 auth.User = user;
 
                 return auth;
