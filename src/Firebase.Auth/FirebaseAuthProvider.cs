@@ -242,13 +242,6 @@
 
                 var user = JsonConvert.DeserializeObject<User>(responseData);
                 var auth = JsonConvert.DeserializeObject<FirebaseAuthLink>(responseData);
-                if (auth.needConfirmation)
-                {
-                    if (!auth.verifiedProvider.Contains(auth.providerId))
-                    {
-                        throw new FirebaseAuthException(googleUrl, postContent, responseData, null, AuthErrorReason.EmailExists);
-                    }
-                }
                 auth.AuthProvider = this;
                 auth.User = user;
 
