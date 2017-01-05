@@ -69,7 +69,7 @@
         public async Task<FirebaseAuthLink> SignInWithOAuthAsync(FirebaseAuthType authType, string oauthAccessToken)
         {
             var providerId = this.GetProviderId(authType);
-            var content = $"{{\"postBody\":\"access_token={oauthAccessToken}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
+            var content = $"{{\"postBody\":\"access_token={oauthAccessToken}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true,\"returnIdpCredential\":true}}";
 
             return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
         }
@@ -242,7 +242,13 @@
 
                 var user = JsonConvert.DeserializeObject<User>(responseData);
                 var auth = JsonConvert.DeserializeObject<FirebaseAuthLink>(responseData);
-
+                if (auth.needConfirmation)
+                {
+                    if (!auth.verifiedProvider.Contains(auth.providerId))
+                    {
+                        throw new FirebaseAuthException(googleUrl, postContent, responseData, null, AuthErrorReason.EmailExists);
+                    }
+                }
                 auth.AuthProvider = this;
                 auth.User = user;
 
