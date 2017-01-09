@@ -66,6 +66,15 @@
         }
 
         /// <summary>
+        /// Sends user an email with a link to verify his email address.
+        /// </summary>
+        /// <param name="auth"> The authenticated user to verify email address. </param>
+        public async Task<User> GetUserAsync(FirebaseAuth auth)
+        {
+            return await GetUserAsync(auth.FirebaseToken);
+        }
+
+        /// <summary>
         /// Using the provided access token from third party auth provider (google, facebook...), get the firebase auth with token and basic user credentials.
         /// </summary>
         /// <param name="authType"> The auth type. </param>
@@ -108,6 +117,18 @@
         /// </summary>
         /// <param name="email"> The email. </param>
         /// <param name="password"> The password. </param>
+        /// <param name="sendVerificationEmail"> Optional. Whether to send user a link to verfiy his email address. </param>
+        /// <returns> The <see cref="FirebaseAuth"/>. </returns>
+        public async Task<FirebaseAuthLink> CreateUserWithEmailAndPasswordAsync(string email, string password, bool sendVerificationEmail = false)
+        {
+            return await CreateUserWithEmailAndPasswordAsync(email, password, "", sendVerificationEmail);
+        }
+
+        /// <summary>
+        /// Creates new user with given credentials.
+        /// </summary>
+        /// <param name="email"> The email. </param>
+        /// <param name="password"> The password. </param>
         /// <param name="displayName"> Optional display name. </param>
         /// <param name="sendVerificationEmail"> Optional. Whether to send user a link to verfiy his email address. </param>
         /// <returns> The <see cref="FirebaseAuth"/>. </returns>
@@ -127,7 +148,7 @@
                 signup.User.DisplayName = displayName;
             }
 
-            if (sendVerificationEmail && !signup.User.IsEmailVerified)
+            if (sendVerificationEmail)
             {
                 //send verification email
                 await SendEmailVerificationAsync(signup);
@@ -174,15 +195,42 @@
         /// <summary>
         /// Links the authenticated user represented by <see cref="auth"/> with an email and password. 
         /// </summary>
+        /// <param name="firebaseToken"> The FirebaseToken (idToken) of an authenticated user. </param>
+        /// <param name="email"> The email. </param>
+        /// <param name="password"> The password. </param>
+        /// <returns> The <see cref="FirebaseAuthLink"/>. </returns>
+        public async Task<FirebaseAuthLink> LinkAccountsAsync(string firebaseToken, string email, string password)
+        {
+            var content = $"{{\"idToken\":\"{firebaseToken}\",\"email\":\"{email}\",\"password\":\"{password}\",\"returnSecureToken\":true}}";
+
+            return await this.ExecuteWithPostContentAsync(GoogleSetAccountUrl, content).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Links the authenticated user represented by <see cref="auth"/> with an email and password. 
+        /// </summary>
         /// <param name="auth"> The authenticated user to link with specified email and password. </param>
         /// <param name="email"> The email. </param>
         /// <param name="password"> The password. </param>
         /// <returns> The <see cref="FirebaseAuthLink"/>. </returns>
         public async Task<FirebaseAuthLink> LinkAccountsAsync(FirebaseAuth auth, string email, string password)
         {
-            var content = $"{{\"idToken\":\"{auth.FirebaseToken}\",\"email\":\"{email}\",\"password\":\"{password}\",\"returnSecureToken\":true}}";
+            return await LinkAccountsAsync(auth.FirebaseToken, email, password);
+        }
 
-            return await this.ExecuteWithPostContentAsync(GoogleSetAccountUrl, content).ConfigureAwait(false);
+        /// <summary>
+        /// Links the authenticated user represented by <see cref="auth"/> with and account from a third party provider.
+        /// </summary>
+        /// <param name="firebaseToken"> The FirebaseToken (idToken) of an authenticated user. </param>
+        /// <param name="authType"> The auth type.  </param>
+        /// <param name="oauthAccessToken"> The access token retrieved from login provider of your choice. </param>
+        /// <returns> The <see cref="FirebaseAuthLink"/>.  </returns>
+        public async Task<FirebaseAuthLink> LinkAccountsAsync(string firebaseToken, FirebaseAuthType authType, string oauthAccessToken)
+        {
+            var providerId = this.GetProviderId(authType);
+            var content = $"{{\"idToken\":\"{firebaseToken}\",\"postBody\":\"access_token={oauthAccessToken}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
+
+            return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -194,10 +242,7 @@
         /// <returns> The <see cref="FirebaseAuthLink"/>.  </returns>
         public async Task<FirebaseAuthLink> LinkAccountsAsync(FirebaseAuth auth, FirebaseAuthType authType, string oauthAccessToken)
         {
-            var providerId = this.GetProviderId(authType);
-            var content = $"{{\"idToken\":\"{auth.FirebaseToken}\",\"postBody\":\"access_token={oauthAccessToken}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
-
-            return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+            return await LinkAccountsAsync(auth.FirebaseToken, authType, oauthAccessToken);
         }
 
         /// <summary>
