@@ -13,8 +13,9 @@
         /// <param name="email"> The email. </param>
         /// <param name="password"> The password. </param>
         /// <param name="displayName"> Optional display name. </param>
+        /// <param name="sendVerificationEmail"> Optional. Whether to send user a link to verfiy his email address. </param>
         /// <returns> The <see cref="FirebaseAuthLink"/>. </returns>
-        Task<FirebaseAuthLink> CreateUserWithEmailAndPasswordAsync(string email, string password, string displayName = "");
+        Task<FirebaseAuthLink> CreateUserWithEmailAndPasswordAsync(string email, string password, string displayName = "", bool sendVerificationEmail = false);
         
         /// <summary>
         /// Sends user an email with a link to reset his password.
@@ -76,5 +77,24 @@
         /// <param name="email"> Email address. </param>
         /// <returns> The <see cref="ProviderQueryResult"/></returns>
         Task<ProviderQueryResult> GetLinkedAccountsAsync(string email);
+
+        /// <summary>
+        /// Using the idToken of an authenticated user, get the details of the user's account
+        /// </summary>
+        /// <param name="firebaseToken"> The FirebaseToken (idToken) of an authenticated user. </param>
+        /// <returns> The <see cref="User"/>. </returns>
+        Task<User> GetUserAsync(string firebaseToken);
+
+        /// <summary>
+        /// Sends user an email with a link to verify his email address.
+        /// </summary>
+        /// <param name="firebaseToken"> The FirebaseToken (idToken) of an authenticated user. </param>
+        Task SendEmailVerificationAsync(string firebaseToken);
+
+        /// <summary>
+        /// Sends user an email with a link to verify his email address.
+        /// </summary>
+        /// <param name="auth"> The authenticated user to verify email address. </param>
+        Task SendEmailVerificationAsync(FirebaseAuth auth);
     }
 }

@@ -20,7 +20,7 @@
         private const string GoogleIdentityUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyAssertion?key={0}";
         private const string GoogleSignUpUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key={0}";
         private const string GooglePasswordUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key={0}";
-        private const string GooglePasswordResetUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/getOobConfirmationCode?key={0}";
+        private const string GoogleGetConfirmationCodeUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/getOobConfirmationCode?key={0}";
         private const string GoogleSetAccountUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/setAccountInfo?key={0}";
         private const string GoogleCreateAuthUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/createAuthUri?key={0}";
 
@@ -49,10 +49,15 @@
             firebaseAuthLink.User = await this.GetUserAsync(firebaseAuthLink.FirebaseToken);
             return firebaseAuthLink;
         }
-
-        private async Task<User> GetUserAsync(string idToken)
+        
+        /// <summary>
+        /// Using the idToken of an authenticated user, get the details of the user's account
+        /// </summary>
+        /// <param name="firebaseToken"> The FirebaseToken (idToken) of an authenticated user. </param>
+        /// <returns> The <see cref="User"/>. </returns>
+        public async Task<User> GetUserAsync(string firebaseToken)
         {
-            var content = $"{{\"idToken\":\"{idToken}\"}}";
+            var content = $"{{\"idToken\":\"{firebaseToken}\"}}";
             var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetUser, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json"));
 
             JObject resultJson = JObject.Parse(await response.Content.ReadAsStringAsync());
@@ -104,8 +109,9 @@
         /// <param name="email"> The email. </param>
         /// <param name="password"> The password. </param>
         /// <param name="displayName"> Optional display name. </param>
+        /// <param name="sendVerificationEmail"> Optional. Whether to send user a link to verfiy his email address. </param>
         /// <returns> The <see cref="FirebaseAuth"/>. </returns>
-        public async Task<FirebaseAuthLink> CreateUserWithEmailAndPasswordAsync(string email, string password, string displayName = "")
+        public async Task<FirebaseAuthLink> CreateUserWithEmailAndPasswordAsync(string email, string password, string displayName = "", bool sendVerificationEmail = false)
         {
             var content = $"{{\"email\":\"{email}\",\"password\":\"{password}\",\"returnSecureToken\":true}}";
 
@@ -121,6 +127,12 @@
                 signup.User.DisplayName = displayName;
             }
 
+            if (sendVerificationEmail && !signup.User.IsEmailVerified)
+            {
+                //send verification email
+                await SendEmailVerificationAsync(signup);
+            }
+
             return signup;
         }
 
@@ -132,9 +144,31 @@
         {
             var content = $"{{\"requestType\":\"PASSWORD_RESET\",\"email\":\"{email}\"}}";
 
-            var response = await this.client.PostAsync(new Uri(string.Format(GooglePasswordResetUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+            var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
 
             response.EnsureSuccessStatusCode();
+        }
+
+        /// <summary>
+        /// Sends user an email with a link to verify his email address.
+        /// </summary>
+        /// <param name="firebaseToken"> The FirebaseToken (idToken) of an authenticated user. </param>
+        public async Task SendEmailVerificationAsync(string firebaseToken)
+        {
+            var content = $"{{\"requestType\":\"VERIFY_EMAIL\",\"idToken\":\"{firebaseToken}\"}}";
+
+            var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+
+            response.EnsureSuccessStatusCode();
+        }
+
+        /// <summary>
+        /// Sends user an email with a link to verify his email address.
+        /// </summary>
+        /// <param name="auth"> The authenticated user to verify email address. </param>
+        public async Task SendEmailVerificationAsync(FirebaseAuth auth)
+        {
+            await SendEmailVerificationAsync(auth.FirebaseToken);
         }
 
         /// <summary>

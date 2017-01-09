@@ -76,6 +76,17 @@
         }
 
         /// <summary>
+        /// Gets or sets the email verfication status.
+        /// </summary>
+        [JsonProperty("emailVerified", DefaultValueHandling = DefaultValueHandling.Populate)]
+        [DefaultValue(false)]
+        public bool IsEmailVerified
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Gets or sets the photo url.
         /// </summary>
         [JsonProperty("photoUrl", DefaultValueHandling = DefaultValueHandling.Populate)]
