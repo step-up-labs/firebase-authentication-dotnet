@@ -55,6 +55,14 @@
             return this;
         }
 
+        public async Task RefreshUserDetails()
+        {
+            if (this.AuthProvider != null && !string.IsNullOrEmpty(this.FirebaseToken))
+            {
+                this.User = await this.AuthProvider.GetUserAsync(this.FirebaseToken);
+            }
+        }
+
         public async Task<FirebaseAuthLink> GetFreshAuthAsync()
         {
             if (this.IsExpired())
