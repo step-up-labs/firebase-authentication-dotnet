@@ -154,7 +154,7 @@
             var authProvider = new FirebaseAuthProvider(new FirebaseConfig(ApiKey));
             var email = $"abcd{new Random().Next()}@test.com";
 
-            var auth = authProvider.CreateUserWithEmailAndPasswordAsync(email, "test1234").Result;
+            var auth = authProvider.CreateUserWithEmailAndPasswordAsync(email, "test1234", false).Result;
             var linkedAccounts = authProvider.GetLinkedAccountsAsync(email).Result;
 
             linkedAccounts.IsRegistered.Should().BeTrue();

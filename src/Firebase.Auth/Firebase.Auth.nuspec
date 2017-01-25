@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
 	<metadata>
 		<id>FirebaseAuthentication.net</id>
-		<version>2.2.0</version>
+		<version>2.3.0</version>
 		<title>FirebaseAuthentication.net</title>
 		<authors>Step Up Labs, Inc.</authors>
 		<owners>Step Up Labs, Inc.</owners>
@@ -14,7 +14,7 @@
 		<copyright>Step Up Labs, Inc. 2016</copyright>
 		<tags>Firebase Auth Authentication Google Facebook Github Twitter</tags>
     <dependencies>
-      <dependency id="Newtonsoft.Json" version="8.0.3" />
+      <dependency id="Newtonsoft.Json" version="9.0.1" />
     </dependencies>
 	</metadata>
 </package>
