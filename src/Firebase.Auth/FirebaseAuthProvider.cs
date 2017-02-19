@@ -45,18 +45,9 @@
         {
             string content = $"{{\"token\":\"{customToken}\",\"returnSecureToken\":true}}";
             FirebaseAuthLink firebaseAuthLink = await this.ExecuteWithPostContentAsync(GoogleCustomAuthUrl, content).ConfigureAwait(false);
+
             firebaseAuthLink.User = await this.GetUserAsync(firebaseAuthLink.FirebaseToken);
             return firebaseAuthLink;
-        }
-
-        private async Task<User> GetUserAsync(string idToken)
-        {
-            var content = $"{{\"idToken\":\"{idToken}\"}}";
-            var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetUser, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json"));
-
-            JObject resultJson = JObject.Parse(await response.Content.ReadAsStringAsync());
-            var user = JsonConvert.DeserializeObject<User>(resultJson["users"].First().ToString());
-            return user;
         }
 
         /// <summary>
@@ -199,6 +190,16 @@
         public void Dispose()
         {
             this.client.Dispose();
+        }
+
+        private async Task<User> GetUserAsync(string idToken)
+        {
+            var content = $"{{\"idToken\":\"{idToken}\"}}";
+            var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetUser, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json"));
+
+            JObject resultJson = JObject.Parse(await response.Content.ReadAsStringAsync());
+            var user = JsonConvert.DeserializeObject<User>(resultJson["users"].First().ToString());
+            return user;
         }
 
         private async Task<FirebaseAuthLink> ExecuteWithPostContentAsync(string googleUrl, string postContent)
