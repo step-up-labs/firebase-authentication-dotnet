@@ -160,5 +160,21 @@
             linkedAccounts.IsRegistered.Should().BeTrue();
             linkedAccounts.Providers.Single().ShouldBeEquivalentTo(FirebaseAuthType.EmailAndPassword);
         }
+
+        [TestMethod]
+        public void RefreshAccessToken()
+        {
+            var authProvider = new FirebaseAuthProvider(new FirebaseConfig(ApiKey));
+
+            var auth = authProvider.SignInWithOAuthAsync(FirebaseAuthType.Facebook, FacebookAccessToken).Result;
+            var originalToken = auth.FirebaseToken;
+            
+            // simulate the token already expired
+            auth.Created = DateTime.MinValue;
+            
+            var freshAuth = auth.GetFreshAuthAsync().Result;
+
+            freshAuth.FirebaseToken.Should().NotBe(originalToken);
+        }
     }
 }
