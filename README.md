@@ -10,11 +10,7 @@ Install-Package FirebaseAuthentication.net
 ```
 
 ## Supported frameworks
-* .NET 4.5+
-* Windows 8.x
-* UWP
-* Windows Phone 8.1
-* CoreCLR
+* .NET Standard 1.1 - see https://github.com/dotnet/standard/blob/master/docs/versions.md for compatibility matrix
 
 ## Supported scenarios
 * Login with Google / Facebook / Github / Twitter OAuth tokens
