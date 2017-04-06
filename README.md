@@ -10,7 +10,7 @@ Install-Package FirebaseAuthentication.net
 ```
 
 ## Supported frameworks
-* .NET Standard 1.1
+* .NET Standard 1.1 - see https://github.com/dotnet/standard/blob/master/docs/versions.md for compatibility matrix
 
 ## Supported scenarios
 * Login with Google / Facebook / Github / Twitter OAuth tokens
