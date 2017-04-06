@@ -117,18 +117,6 @@
         /// </summary>
         /// <param name="email"> The email. </param>
         /// <param name="password"> The password. </param>
-        /// <param name="sendVerificationEmail"> Optional. Whether to send user a link to verfiy his email address. </param>
-        /// <returns> The <see cref="FirebaseAuth"/>. </returns>
-        public async Task<FirebaseAuthLink> CreateUserWithEmailAndPasswordAsync(string email, string password, bool sendVerificationEmail = false)
-        {
-            return await CreateUserWithEmailAndPasswordAsync(email, password, "", sendVerificationEmail);
-        }
-
-        /// <summary>
-        /// Creates new user with given credentials.
-        /// </summary>
-        /// <param name="email"> The email. </param>
-        /// <param name="password"> The password. </param>
         /// <param name="displayName"> Optional display name. </param>
         /// <param name="sendVerificationEmail"> Optional. Whether to send user a link to verfiy his email address. </param>
         /// <returns> The <see cref="FirebaseAuth"/>. </returns>
