@@ -121,5 +121,12 @@
         /// </summary>
         /// <param name="auth"> The authenticated user to verify email address. </param>
         Task SendEmailVerificationAsync(FirebaseAuth auth);
+
+        /// <summary>
+        /// Refreshes given auth using its refresh token.
+        /// </summary>
+        /// <param name="auth"> The authenticated user to have its access token refreshed. </param>
+        /// <returns> The <see cref="FirebaseAuthLink"/>. </returns>
+        Task<FirebaseAuthLink> RefreshAuthAsync(FirebaseAuth auth);
     }
 }

@@ -12,14 +12,14 @@
         {
         }
 
-        public FirebaseAuthLink(FirebaseAuthProvider authProvider, FirebaseAuth auth)
+        public FirebaseAuthLink(IFirebaseAuthProvider authProvider, FirebaseAuth auth)
         {
             this.CopyPropertiesLocally(authProvider, auth);
         }
 
         public event EventHandler<FirebaseAuthEventArgs> FirebaseAuthRefreshed;
 
-        internal FirebaseAuthProvider AuthProvider 
+        internal IFirebaseAuthProvider AuthProvider 
         {
             get;
             set;
@@ -80,7 +80,7 @@
             this.FirebaseAuthRefreshed?.Invoke(this, new FirebaseAuthEventArgs(auth));
         }
 
-        private void CopyPropertiesLocally(FirebaseAuthProvider authProvider, FirebaseAuth auth)
+        private void CopyPropertiesLocally(IFirebaseAuthProvider authProvider, FirebaseAuth auth)
         {
             this.AuthProvider = authProvider;
 
