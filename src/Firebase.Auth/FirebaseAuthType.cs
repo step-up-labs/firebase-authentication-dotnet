@@ -37,7 +37,7 @@ namespace Firebase.Auth
         /// <summary>
         /// Auth using email and password.
         /// </summary>
-        [EnumMember(Value = "password")]
+        [EnumMember(Value = "email")]
         EmailAndPassword
     } 
 }
