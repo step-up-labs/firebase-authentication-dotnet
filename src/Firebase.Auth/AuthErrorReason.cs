@@ -73,7 +73,10 @@
         /// <summary>
         /// Linked Accounts: Request contains an invalid value for parameter: identifier.
         /// </summary>
-        InvalidIdentifier
-
+        InvalidIdentifier,
+        /// <summary>
+        /// Linked accounts: account to link has already been linked.
+        /// </summary>
+        AlreadyLinked
     }
 }

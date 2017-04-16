@@ -409,6 +409,9 @@
                         case "MISSING_IDENTIFIER":
                             failureReason = AuthErrorReason.MissingIdentifier;
                             break;
+                        case "FEDERATED_USER_ID_ALREADY_LINKED":
+                            failureReason = AuthErrorReason.AlreadyLinked;
+                            break;
                     }
                 }
             }
