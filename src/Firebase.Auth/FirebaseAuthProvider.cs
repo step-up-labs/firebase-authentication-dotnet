@@ -20,6 +20,7 @@
         private const string GoogleIdentityUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyAssertion?key={0}";
         private const string GoogleSignUpUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key={0}";
         private const string GooglePasswordUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key={0}";
+        private const string GoogleDeleteUserUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/deleteAccount?key={0}";
         private const string GoogleGetConfirmationCodeUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/getOobConfirmationCode?key={0}";
         private const string GoogleSetAccountUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/setAccountInfo?key={0}";
         private const string GoogleCreateAuthUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/createAuthUri?key={0}";
@@ -143,6 +144,29 @@
             }
 
             return signup;
+        }
+        
+        /// <summary>
+        /// Deletes the user with a recent Firebase Token.
+        /// </summary>
+        /// <param name="token"> Recent Firebase Token. </param>
+        public async Task DeleteUser(string firebaseToken)
+        {
+            var content = $"{{ "idToken": {firebaseToken} }}";
+            var responseData = "N/A";
+            
+            try 
+            {
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleDeleteUserUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json"));
+                responseData = await response.Content.ReadAsStringAsync();
+                
+                response.EnsureSuccessStatusCode();
+            }
+            catch(Exception ex)
+            {
+                AuthErrorReason errorReason = GetFailureReason(responseData);
+                throw new FirebaseAuthException(GoogleDeleteUserUrl, content, responseData, ex, errorReason);
+            }
         }
 
         /// <summary>
@@ -375,6 +399,10 @@
                         case "EMAIL_EXISTS":
                             failureReason = AuthErrorReason.EmailExists;
                             break;
+                            
+                        //possible errors from Account Delete
+                        case "USER_NOT_FOUND":
+                            failureReason = AuthErrorReason.UserNotFound;
 
                         //possible errors from Email/Password Signin
                         case "INVALID_PASSWORD":
