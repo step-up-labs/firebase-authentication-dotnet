@@ -28,10 +28,15 @@ var facebookAccessToken = "<login with facebook and get oauth access token>";
 
 var auth = await authProvider.SignInWithOAuthAsync(FirebaseAuthType.Facebook, facebookAccessToken);
 
-var firebase = new FirebaseClient("https://dinosaur-facts.firebaseio.com/");
+var firebase = new FirebaseClient(
+  "https://dinosaur-facts.firebaseio.com/",
+  new FirebaseOptions
+  {
+    AuthTokenAsyncFactory = () => Task.FromResult(auth.FirebaseToken) 
+  });
+
 var dinos = await firebase
   .Child("dinosaurs")
-  .WithAuth(auth.FirebaseToken)
   .OnceAsync<Dinosaur>();
   
 foreach (var dino in dinos)
