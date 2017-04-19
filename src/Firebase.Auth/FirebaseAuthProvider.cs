@@ -152,7 +152,7 @@
         /// <param name="token"> Recent Firebase Token. </param>
         public async Task DeleteUser(string firebaseToken)
         {
-            var content = $"{{ "idToken": {firebaseToken} }}";
+            var content = $"{{ \"idToken\": {firebaseToken} }}";
             var responseData = "N/A";
             
             try 
