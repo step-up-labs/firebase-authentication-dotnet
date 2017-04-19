@@ -11,6 +11,10 @@
         /// </summary>
         UserDisabled,
         /// <summary>
+        /// The user was not found
+        /// </summary>
+        UserNotFound,
+        /// <summary>
         /// Third-party Auth Providers: PostBody does not contain or contains invalid Authentication Provider string.
         /// </summary>
         InvalidProviderID,
