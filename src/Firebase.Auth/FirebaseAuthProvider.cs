@@ -403,6 +403,7 @@
                         //possible errors from Account Delete
                         case "USER_NOT_FOUND":
                             failureReason = AuthErrorReason.UserNotFound;
+                            break;
 
                         //possible errors from Email/Password Signin
                         case "INVALID_PASSWORD":
