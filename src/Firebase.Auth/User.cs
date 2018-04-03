@@ -96,5 +96,16 @@
             get;
             set;
         }
+
+        /// <summary>
+        /// Gets or sets the phone number.
+        /// </summary>
+        [JsonProperty("phoneNumber", DefaultValueHandling = DefaultValueHandling.Populate)]
+        [DefaultValue("")]
+        public string PhoneNumber
+        {
+            get;
+            set;
+        }
     }
 }
