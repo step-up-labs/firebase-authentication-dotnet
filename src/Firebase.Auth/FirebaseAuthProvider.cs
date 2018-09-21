@@ -145,12 +145,22 @@
 
             return signup;
         }
-        
+
         /// <summary>
         /// Deletes the user with a recent Firebase Token.
         /// </summary>
         /// <param name="token"> Recent Firebase Token. </param>
-        public async Task DeleteUser(string firebaseToken)
+        [Obsolete("This method will be removed in future release in favor of DeleteUserAsync")]
+        public Task DeleteUser(string firebaseToken)
+        {
+            return this.DeleteUserAsync(firebaseToken);
+        }
+
+        /// <summary>
+        /// Deletes the user with a recent Firebase Token.
+        /// </summary>
+        /// <param name="token"> Recent Firebase Token. </param>
+        public async Task DeleteUserAsync(string firebaseToken)
         {
             var content = $"{{ \"idToken\": \"{firebaseToken}\" }}";
             var responseData = "N/A";
