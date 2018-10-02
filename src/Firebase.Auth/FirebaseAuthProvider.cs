@@ -47,7 +47,7 @@
         {
             string content = $"{{\"token\":\"{customToken}\",\"returnSecureToken\":true}}";
             FirebaseAuthLink firebaseAuthLink = await this.ExecuteWithPostContentAsync(GoogleCustomAuthUrl, content).ConfigureAwait(false);
-            firebaseAuthLink.User = await this.GetUserAsync(firebaseAuthLink.FirebaseToken);
+            firebaseAuthLink.User = await this.GetUserAsync(firebaseAuthLink.FirebaseToken).ConfigureAwait(false);
             return firebaseAuthLink;
         }
         
@@ -59,9 +59,9 @@
         public async Task<User> GetUserAsync(string firebaseToken)
         {
             var content = $"{{\"idToken\":\"{firebaseToken}\"}}";
-            var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetUser, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json"));
+            var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetUser, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
 
-            JObject resultJson = JObject.Parse(await response.Content.ReadAsStringAsync());
+            JObject resultJson = JObject.Parse(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
             var user = JsonConvert.DeserializeObject<User>(resultJson["users"].First().ToString());
             return user;
         }
@@ -72,7 +72,7 @@
         /// <param name="auth"> The authenticated user to verify email address. </param>
         public async Task<User> GetUserAsync(FirebaseAuth auth)
         {
-            return await GetUserAsync(auth.FirebaseToken);
+            return await this.GetUserAsync(auth.FirebaseToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@
             if (sendVerificationEmail)
             {
                 //send verification email
-                await SendEmailVerificationAsync(signup);
+                await this.SendEmailVerificationAsync(signup).ConfigureAwait(false);
             }
 
             return signup;
@@ -167,8 +167,8 @@
             
             try 
             {
-                var response = await this.client.PostAsync(new Uri(string.Format(GoogleDeleteUserUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json"));
-                responseData = await response.Content.ReadAsStringAsync();
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleDeleteUserUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 
                 response.EnsureSuccessStatusCode();
             }
@@ -211,7 +211,7 @@
         /// <param name="auth"> The authenticated user to verify email address. </param>
         public async Task SendEmailVerificationAsync(FirebaseAuth auth)
         {
-            await SendEmailVerificationAsync(auth.FirebaseToken);
+            await this.SendEmailVerificationAsync(auth.FirebaseToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -237,7 +237,7 @@
         /// <returns> The <see cref="FirebaseAuthLink"/>. </returns>
         public async Task<FirebaseAuthLink> LinkAccountsAsync(FirebaseAuth auth, string email, string password)
         {
-            return await LinkAccountsAsync(auth.FirebaseToken, email, password);
+            return await this.LinkAccountsAsync(auth.FirebaseToken, email, password).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -264,7 +264,7 @@
         /// <returns> The <see cref="FirebaseAuthLink"/>.  </returns>
         public async Task<FirebaseAuthLink> LinkAccountsAsync(FirebaseAuth auth, FirebaseAuthType authType, string oauthAccessToken)
         {
-            return await LinkAccountsAsync(auth.FirebaseToken, authType, oauthAccessToken);
+            return await this.LinkAccountsAsync(auth.FirebaseToken, authType, oauthAccessToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -279,8 +279,8 @@
 
             try
             {
-                var response = await this.client.PostAsync(new Uri(string.Format(GoogleCreateAuthUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json"));
-                responseData = await response.Content.ReadAsStringAsync();
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleCreateAuthUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();
 
@@ -302,9 +302,9 @@
 
             try
             {
-                var response = await this.client.PostAsync(new Uri(string.Format(GoogleRefreshAuth, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json"));
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleRefreshAuth, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
 
-                responseData = await response.Content.ReadAsStringAsync();
+                responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var refreshAuth = JsonConvert.DeserializeObject<RefreshAuth>(responseData);
 
                 return new FirebaseAuthLink
@@ -336,8 +336,8 @@
 
             try
             {
-                var response = await this.client.PostAsync(new Uri(string.Format(googleUrl, this.authConfig.ApiKey)), new StringContent(postContent, Encoding.UTF8, "application/json"));
-                responseData = await response.Content.ReadAsStringAsync();
+                var response = await this.client.PostAsync(new Uri(string.Format(googleUrl, this.authConfig.ApiKey)), new StringContent(postContent, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();
 

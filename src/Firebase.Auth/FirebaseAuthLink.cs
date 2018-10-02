@@ -59,7 +59,7 @@
         {
             if (this.AuthProvider != null && !string.IsNullOrEmpty(this.FirebaseToken))
             {
-                this.User = await this.AuthProvider.GetUserAsync(this.FirebaseToken);
+                this.User = await this.AuthProvider.GetUserAsync(this.FirebaseToken).ConfigureAwait(false);
             }
         }
 
