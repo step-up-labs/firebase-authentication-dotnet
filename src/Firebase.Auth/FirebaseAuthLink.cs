@@ -41,7 +41,7 @@
         }
 
         /// <summary>
-        /// Links the this user with and account from a third party provider.
+        /// Links the user with an account from a third party provider.
         /// </summary> 
         /// <param name="authType"> The auth type.  </param>
         /// <param name="oauthAccessToken"> The access token retrieved from login provider of your choice. </param>
@@ -49,6 +49,20 @@
         public async Task<FirebaseAuthLink> LinkToAsync(FirebaseAuthType authType, string oauthAccessToken)
         {
             var auth = await this.AuthProvider.LinkAccountsAsync(this, authType, oauthAccessToken).ConfigureAwait(false);
+
+            this.CopyPropertiesLocally(auth.AuthProvider, auth);
+
+            return this;
+        }
+
+        /// <summary>
+        /// Unlinks the user from the given <see cref="authType"/> (provider).
+        /// </summary> 
+        /// <param name="authType"> The auth type.  </param>
+        /// <returns> The <see cref="FirebaseAuthLink"/>.  </returns>
+        public async Task<FirebaseAuthLink> UnlinkFromAsync(FirebaseAuthType authType)
+        {
+            var auth = await this.AuthProvider.UnlinkAccountsAsync(this, authType).ConfigureAwait(false);
 
             this.CopyPropertiesLocally(auth.AuthProvider, auth);
 
