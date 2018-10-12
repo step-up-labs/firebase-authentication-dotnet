@@ -229,7 +229,7 @@
         }
 
         /// <summary>
-        /// Links the authenticated user represented by <see cref="auth"/> with an email and password. 
+        /// Links the given <see cref="firebaseToken"/> with an email and password. 
         /// </summary>
         /// <param name="firebaseToken"> The FirebaseToken (idToken) of an authenticated user. </param>
         /// <param name="email"> The email. </param>
@@ -255,7 +255,7 @@
         }
 
         /// <summary>
-        /// Links the authenticated user represented by <see cref="auth"/> with and account from a third party provider.
+        /// Links the given <see cref="firebaseToken"/> with an account from a third party provider.
         /// </summary>
         /// <param name="firebaseToken"> The FirebaseToken (idToken) of an authenticated user. </param>
         /// <param name="authType"> The auth type.  </param>
@@ -270,7 +270,7 @@
         }
 
         /// <summary>
-        /// Links the authenticated user represented by <see cref="auth"/> with and account from a third party provider.
+        /// Links the authenticated user represented by <see cref="auth"/> with an account from a third party provider.
         /// </summary>
         /// <param name="auth"> The auth. </param>
         /// <param name="authType"> The auth type.  </param>
@@ -279,6 +279,40 @@
         public async Task<FirebaseAuthLink> LinkAccountsAsync(FirebaseAuth auth, FirebaseAuthType authType, string oauthAccessToken)
         {
             return await this.LinkAccountsAsync(auth.FirebaseToken, authType, oauthAccessToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Unlinks the given <see cref="authType"/> from the account associated with <see cref="firebaseToken"/>.
+        /// </summary>
+        /// <param name="firebaseToken"> The FirebaseToken (idToken) of an authenticated user. </param>
+        /// <param name="authType"> The auth type.  </param>
+        /// <returns> The <see cref="FirebaseAuthLink"/>.  </returns>
+        public async Task<FirebaseAuthLink> UnlinkAccountsAsync(string firebaseToken, FirebaseAuthType authType)
+        {
+            string providerId = null;
+            if (authType == FirebaseAuthType.EmailAndPassword)
+            {
+                providerId = authType.ToEnumString();
+            }
+            else
+            {
+                providerId = this.GetProviderId(authType);
+            }
+
+            var content = $"{{\"idToken\":\"{firebaseToken}\",\"deleteProvider\":[\"{providerId}\"]}}";
+
+            return await this.ExecuteWithPostContentAsync(GoogleSetAccountUrl, content).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Unlinks the given <see cref="authType"/> from the authenticated user represented by <see cref="auth"/>.
+        /// </summary>
+        /// <param name="auth"> The auth. </param>
+        /// <param name="authType"> The auth type.  </param>
+        /// <returns> The <see cref="FirebaseAuthLink"/>.  </returns>
+        public async Task<FirebaseAuthLink> UnlinkAccountsAsync(FirebaseAuth auth, FirebaseAuthType authType)
+        {
+            return await this.UnlinkAccountsAsync(auth.FirebaseToken, authType).ConfigureAwait(false);
         }
 
         /// <summary>

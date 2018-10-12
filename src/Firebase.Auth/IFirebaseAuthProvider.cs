@@ -90,6 +90,22 @@
         Task<FirebaseAuthLink> LinkAccountsAsync(string firebaseToken, FirebaseAuthType authType, string oauthAccessToken);
 
         /// <summary>
+        /// Unlinks the given <see cref="authType"/> from the account associated with <see cref="firebaseToken"/>.
+        /// </summary>
+        /// <param name="firebaseToken"> The FirebaseToken (idToken) of an authenticated user. </param>
+        /// <param name="authType"> The auth type.  </param>
+        /// <returns> The <see cref="FirebaseAuthLink"/>.  </returns>
+        Task<FirebaseAuthLink> UnlinkAccountsAsync(string firebaseToken, FirebaseAuthType authType);
+
+        /// <summary>
+        /// Unlinks the given <see cref="authType"/> from the authenticated user represented by <see cref="auth"/>.
+        /// </summary>
+        /// <param name="auth"> The auth. </param>
+        /// <param name="authType"> The auth type.  </param>
+        /// <returns> The <see cref="FirebaseAuthLink"/>.  </returns>
+        Task<FirebaseAuthLink> UnlinkAccountsAsync(FirebaseAuth auth, FirebaseAuthType authType);
+
+        /// <summary>
         /// Gets a list of accounts linked to given email.
         /// </summary>
         /// <param name="email"> Email address. </param>
