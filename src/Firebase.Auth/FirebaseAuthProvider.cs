@@ -25,6 +25,9 @@
         private const string GoogleSetAccountUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/setAccountInfo?key={0}";
         private const string GoogleCreateAuthUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/createAuthUri?key={0}";
 
+        private const string ProfileDeleteDisplayName = "DISPLAY_NAME";
+        private const string ProfileDeletePhotoUrl = "PHOTO_URL";
+
         private readonly FirebaseConfig authConfig;
         private readonly HttpClient client;
 
@@ -158,6 +161,39 @@
             }
 
             return signup;
+        }
+
+        /// <summary>
+        /// Updates profile (displayName and photoUrl) of user tied to given user token.
+        /// </summary>
+        /// <param name="displayName"> The new display name. </param>
+        /// <param name="photoUrl"> The new photo URL. </param>
+        /// <returns> The <see cref="FirebaseAuthLink"/>. </returns>
+        public async Task<FirebaseAuthLink> UpdateProfileAsync(string firebaseToken, string displayName, string photoUrl)
+        {
+            StringBuilder sb = new StringBuilder($"{{\"idToken\":\"{firebaseToken}\"");
+            if (!string.IsNullOrWhiteSpace(displayName) && !string.IsNullOrWhiteSpace(photoUrl))
+            {
+                sb.Append($",\"displayName\":\"{displayName}\",\"photoUrl\":\"{photoUrl}\"");
+            }
+            else if (!string.IsNullOrWhiteSpace(displayName))
+            {
+                sb.Append($",\"displayName\":\"{displayName}\"");
+                sb.Append($",\"deleteAttribute\":[\"{ProfileDeletePhotoUrl}\"]");
+            }
+            else if (!string.IsNullOrWhiteSpace(photoUrl))
+            {
+                sb.Append($",\"photoUrl\":\"{photoUrl}\"");
+                sb.Append($",\"deleteAttribute\":[\"{ProfileDeleteDisplayName}\"]");
+            }
+            else
+            {
+                sb.Append($",\"deleteAttribute\":[\"{ProfileDeleteDisplayName}\",\"{ProfileDeletePhotoUrl}\"]");
+            }
+
+            sb.Append($",\"returnSecureToken\":true}}");
+
+            return await this.ExecuteWithPostContentAsync(GoogleSetAccountUrl, sb.ToString()).ConfigureAwait(false);
         }
 
         /// <summary>

@@ -54,6 +54,14 @@
         Task<FirebaseAuthLink> SignInWithCustomTokenAsync(string customToken);
 
         /// <summary>
+        /// Updates profile (displayName and photoUrl) of user tied to given user token.
+        /// </summary>
+        /// <param name="displayName"> The new display name. </param>
+        /// <param name="photoUrl"> The new photo URL. </param>
+        /// <returns> The <see cref="FirebaseAuthLink"/>. </returns>
+        Task<FirebaseAuthLink> UpdateProfileAsync(string firebaseToken, string displayName, string photoUrl);
+
+        /// <summary>
         /// Links the authenticated user represented by <see cref="auth"/> with an email and password. 
         /// </summary>
         /// <param name="auth"> The authenticated user to link with specified email and password. </param>

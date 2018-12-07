@@ -89,6 +89,15 @@
             return this;
         }
 
+        public async Task<FirebaseAuthLink> UpdateProfileAsync(string displayName, string photoUrl)
+        {
+            var auth = await this.AuthProvider.UpdateProfileAsync(this.FirebaseToken, displayName, photoUrl).ConfigureAwait(false);
+
+            this.CopyPropertiesLocally(auth.AuthProvider, auth);
+
+            return this;
+        }
+
         protected void OnFirebaseAuthRefreshed(FirebaseAuth auth)
         {
             this.FirebaseAuthRefreshed?.Invoke(this, new FirebaseAuthEventArgs(auth));
