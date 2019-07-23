@@ -1,4 +1,6 @@
-﻿namespace Firebase.Auth
+﻿using System.Net;
+
+namespace Firebase.Auth
 {
     using System;
     using System.Diagnostics;
@@ -59,11 +61,22 @@
         public async Task<User> GetUserAsync(string firebaseToken)
         {
             var content = $"{{\"idToken\":\"{firebaseToken}\"}}";
-            var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetUser, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json"));
+            var responseData = "N/A";
+            try
+            { 
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetUser, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json"));
+                responseData = await response.Content.ReadAsStringAsync();
+                response.EnsureSuccessStatusCode();
 
-            JObject resultJson = JObject.Parse(await response.Content.ReadAsStringAsync());
-            var user = JsonConvert.DeserializeObject<User>(resultJson["users"].First().ToString());
-            return user;
+                JObject resultJson = JObject.Parse(responseData);
+                var user = JsonConvert.DeserializeObject<User>(resultJson["users"].First().ToString());
+                return user; 
+            }
+            catch (Exception ex)
+            {
+                AuthErrorReason errorReason = GetFailureReason(responseData);
+                throw new FirebaseAuthException(GoogleDeleteUserUrl, content, responseData, ex, errorReason);
+            }
         }
 
         /// <summary>
