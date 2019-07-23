@@ -1,6 +1,4 @@
-﻿using System.Net;
-
-namespace Firebase.Auth
+﻿namespace Firebase.Auth
 {
     using System;
     using System.Diagnostics;
