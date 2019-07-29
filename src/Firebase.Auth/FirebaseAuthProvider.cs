@@ -62,11 +62,22 @@
         public async Task<User> GetUserAsync(string firebaseToken)
         {
             var content = $"{{\"idToken\":\"{firebaseToken}\"}}";
-            var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetUser, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+            var responseData = "N/A";
+            try
+            { 
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetUser, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                response.EnsureSuccessStatusCode();
 
-            JObject resultJson = JObject.Parse(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
-            var user = JsonConvert.DeserializeObject<User>(resultJson["users"].First().ToString());
-            return user;
+                var resultJson = JObject.Parse(responseData);
+                var user = JsonConvert.DeserializeObject<User>(resultJson["users"].First().ToString());
+                return user; 
+            }
+            catch (Exception ex)
+            {
+                AuthErrorReason errorReason = GetFailureReason(responseData);
+                throw new FirebaseAuthException(GoogleDeleteUserUrl, content, responseData, ex, errorReason);
+            }
         }
 
         /// <summary>
