@@ -27,7 +27,7 @@
 
             var auth = authProvider.SignInWithOAuthAsync(FirebaseAuthType.Facebook, FacebookAccessToken).Result;
 
-            auth.User.FirstName.ShouldBeEquivalentTo(FacebookTestUserFirstName);
+            auth.User.FirstName.Should().BeEquivalentTo(FacebookTestUserFirstName);
             auth.FirebaseToken.Should().NotBeNullOrWhiteSpace();
         }
 
@@ -38,7 +38,7 @@
 
             var auth = authProvider.SignInWithOAuthAsync(FirebaseAuthType.Google, GoogleAccessToken).Result;
 
-            auth.User.FirstName.ShouldBeEquivalentTo(GoogleTestUserFirstName);
+            auth.User.FirstName.Should().BeEquivalentTo(GoogleTestUserFirstName);
             auth.FirebaseToken.Should().NotBeNullOrWhiteSpace();
         }
 
@@ -49,7 +49,7 @@
 
             var auth = authProvider.SignInWithEmailAndPasswordAsync(FirebaseEmail, FirebasePassword).Result;
 
-            auth.User.Email.ShouldBeEquivalentTo(FirebaseEmail);
+            auth.User.Email.Should().BeEquivalentTo(FirebaseEmail);
             auth.FirebaseToken.Should().NotBeNullOrWhiteSpace();
         }
 
@@ -117,7 +117,7 @@
 
             var auth = authProvider.SignInWithEmailAndPasswordAsync(email, "test1234").Result;
 
-            auth.User.Email.ShouldBeEquivalentTo(email);
+            auth.User.Email.Should().BeEquivalentTo(email);
             auth.FirebaseToken.Should().NotBeNullOrWhiteSpace();
         }
 
@@ -130,7 +130,7 @@
             var auth = authProvider.SignInAnonymouslyAsync().Result;
             var newAuth = auth.LinkToAsync(email, "test1234").Result;
 
-            newAuth.User.Email.ShouldBeEquivalentTo(email);
+            newAuth.User.Email.Should().BeEquivalentTo(email);
             newAuth.User.LocalId.Should().Be(auth.User.LocalId);
             newAuth.FirebaseToken.Should().NotBeNullOrWhiteSpace();
         }
@@ -144,7 +144,7 @@
             var newAuth = auth.LinkToAsync(FirebaseAuthType.Facebook, FacebookAccessToken).Result;
 
             newAuth.User.LocalId.Should().Be(auth.User.LocalId);
-            newAuth.User.FirstName.ShouldBeEquivalentTo(FacebookTestUserFirstName);
+            newAuth.User.FirstName.Should().BeEquivalentTo(FacebookTestUserFirstName);
             newAuth.FirebaseToken.Should().NotBeNullOrWhiteSpace();
         }
 
@@ -158,7 +158,7 @@
             var linkedAccounts = authProvider.GetLinkedAccountsAsync(email).Result;
 
             linkedAccounts.IsRegistered.Should().BeTrue();
-            linkedAccounts.Providers.Single().ShouldBeEquivalentTo(FirebaseAuthType.EmailAndPassword);
+            linkedAccounts.Providers.Single().Should().BeEquivalentTo(FirebaseAuthType.EmailAndPassword);
         }
 
         [TestMethod]

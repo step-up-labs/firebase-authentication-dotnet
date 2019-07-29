@@ -54,6 +54,14 @@
         Task<FirebaseAuthLink> SignInWithCustomTokenAsync(string customToken);
 
         /// <summary>
+        /// Updates profile (displayName and photoUrl) of user tied to given user token.
+        /// </summary>
+        /// <param name="displayName"> The new display name. </param>
+        /// <param name="photoUrl"> The new photo URL. </param>
+        /// <returns> The <see cref="FirebaseAuthLink"/>. </returns>
+        Task<FirebaseAuthLink> UpdateProfileAsync(string firebaseToken, string displayName, string photoUrl);
+
+        /// <summary>
         /// Links the authenticated user represented by <see cref="auth"/> with an email and password. 
         /// </summary>
         /// <param name="auth"> The authenticated user to link with specified email and password. </param>
@@ -88,6 +96,22 @@
         /// <param name="oauthAccessToken"> The access token retrieved from login provider of your choice. </param>
         /// <returns> The <see cref="FirebaseAuthLink"/>.  </returns>
         Task<FirebaseAuthLink> LinkAccountsAsync(string firebaseToken, FirebaseAuthType authType, string oauthAccessToken);
+
+        /// <summary>
+        /// Unlinks the given <see cref="authType"/> from the account associated with <see cref="firebaseToken"/>.
+        /// </summary>
+        /// <param name="firebaseToken"> The FirebaseToken (idToken) of an authenticated user. </param>
+        /// <param name="authType"> The auth type.  </param>
+        /// <returns> The <see cref="FirebaseAuthLink"/>.  </returns>
+        Task<FirebaseAuthLink> UnlinkAccountsAsync(string firebaseToken, FirebaseAuthType authType);
+
+        /// <summary>
+        /// Unlinks the given <see cref="authType"/> from the authenticated user represented by <see cref="auth"/>.
+        /// </summary>
+        /// <param name="auth"> The auth. </param>
+        /// <param name="authType"> The auth type.  </param>
+        /// <returns> The <see cref="FirebaseAuthLink"/>.  </returns>
+        Task<FirebaseAuthLink> UnlinkAccountsAsync(FirebaseAuth auth, FirebaseAuthType authType);
 
         /// <summary>
         /// Gets a list of accounts linked to given email.
