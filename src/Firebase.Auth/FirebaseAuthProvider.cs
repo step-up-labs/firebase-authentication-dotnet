@@ -132,13 +132,13 @@
             var content = $"{{\"postBody\":\"id_token={idToken}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
 
             return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
-        }
+        }		
 
-        /// <summary>
-        /// Sign in user anonymously. He would still have a user id and access token generated, but name and other personal user properties will be null.
-        /// </summary>
-        /// <returns> The <see cref="FirebaseAuth"/>. </returns>
-        public async Task<FirebaseAuthLink> SignInAnonymouslyAsync()
+		/// <summary>
+		/// Sign in user anonymously. He would still have a user id and access token generated, but name and other personal user properties will be null.
+		/// </summary>
+		/// <returns> The <see cref="FirebaseAuth"/>. </returns>
+		public async Task<FirebaseAuthLink> SignInAnonymouslyAsync()
         {
             var content = $"{{\"returnSecureToken\":true}}";
 
@@ -543,9 +543,6 @@
                             break;						
 
 						//possible errors from Email/Password Account Signup (via signupNewUser or setAccountInfo)
-						case "WEAK_PASSWORD : Password should be at least 6 characters":
-                            failureReason = AuthErrorReason.WeakPassword;
-                            break;
                         case "EMAIL_EXISTS":
                             failureReason = AuthErrorReason.EmailExists;
                             break;
@@ -565,9 +562,6 @@
                         case "USER_DISABLED":
                             failureReason = AuthErrorReason.UserDisabled;
                             break;
-						case "TOO_MANY_ATTEMPTS_TRY_LATER":
-							failureReason = AuthErrorReason.TooManyAttemptsTryLater;
-							break;
 
 						//possible errors from Email/Password Signin or Password Recovery or Email/Password Sign up using setAccountInfo
 						case "MISSING_EMAIL":
@@ -598,6 +592,14 @@
                             failureReason = AuthErrorReason.AlreadyLinked;
                             break;
                     }
+
+					if(failureReason == AuthErrorReason.Undefined)
+					{                            
+						//possible errors from Email/Password Account Signup (via signupNewUser or setAccountInfo)
+						if(errorData?.error?.message?.StartsWith("WEAK_PASSWORD :") ?? false) failureReason = AuthErrorReason.WeakPassword;
+						//possible errors from Email/Password Signin
+						else if (errorData?.error?.message?.StartsWith("TOO_MANY_ATTEMPTS_TRY_LATER :") ?? false) failureReason = AuthErrorReason.TooManyAttemptsTryLater;
+					}
                 }
             }
             catch (JsonReaderException)
