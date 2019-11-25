@@ -6,10 +6,14 @@
         /// Unknown error reason.
         /// </summary>
         Undefined,
-        /// <summary>
-        /// The user was disabled and is not granted access anymore.
-        /// </summary>
-        UserDisabled,
+		/// <summary>
+		/// The sign in method is not enabled.
+		/// </summary>
+		OperationNotAllowed,
+		/// <summary>
+		/// The user was disabled and is not granted access anymore.
+		/// </summary>
+		UserDisabled,
         /// <summary>
         /// The user was not found
         /// </summary>
@@ -62,14 +66,22 @@
         /// Email/Password Signin: The supplied password is not valid for the email address.
         /// </summary>
         WrongPassword,
-        /// <summary>
-        /// Password Recovery: Request does not contain a value for parameter: requestType or supplied value is invalid.
-        /// </summary>
-        MissingRequestType,
-        /// <summary>
-        /// Account Linking: Authenticated User ID Token is invalid!
-        /// </summary>
-        InvalidIDToken,
+		/// <summary>
+		/// Email/Password Signin: Too many password login have been attempted. Try again later.
+		/// </summary>
+		TooManyAttemptsTryLater,
+		/// <summary>
+		/// Password Recovery: Request does not contain a value for parameter: requestType or supplied value is invalid.
+		/// </summary>
+		MissingRequestType,
+		/// <summary>
+		/// Password Recovery: Reset password limit exceeded.
+		/// </summary>
+		ResetPasswordExceedLimit,
+		/// <summary>
+		/// Account Linking: Authenticated User ID Token is invalid!
+		/// </summary>
+		InvalidIDToken,
         /// <summary>
         /// Linked Accounts: Request does not contain a value for parameter: identifier.
         /// </summary>
@@ -82,5 +94,5 @@
         /// Linked accounts: account to link has already been linked.
         /// </summary>
         AlreadyLinked
-    }
+	}
 }

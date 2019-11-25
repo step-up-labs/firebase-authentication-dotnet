@@ -519,8 +519,12 @@
                             failureReason = AuthErrorReason.LoginCredentialsTooOld;
                             break;
 
-                        //possible errors from Third Party Authentication using GoogleIdentityUrl
-                        case "INVALID_PROVIDER_ID : Provider Id is not supported.":
+						case "OPERATION_NOT_ALLOWED":
+							failureReason = AuthErrorReason.OperationNotAllowed;
+							break;
+
+						//possible errors from Third Party Authentication using GoogleIdentityUrl
+						case "INVALID_PROVIDER_ID : Provider Id is not supported.":
                             failureReason = AuthErrorReason.InvalidProviderID;
                             break;
                         case "MISSING_REQUEST_URI":
@@ -536,10 +540,10 @@
                             break;
                         case "MISSING_PASSWORD":
                             failureReason = AuthErrorReason.MissingPassword;
-                            break;
+                            break;						
 
-                        //possible errors from Email/Password Account Signup (via signupNewUser or setAccountInfo)
-                        case "WEAK_PASSWORD : Password should be at least 6 characters":
+						//possible errors from Email/Password Account Signup (via signupNewUser or setAccountInfo)
+						case "WEAK_PASSWORD : Password should be at least 6 characters":
                             failureReason = AuthErrorReason.WeakPassword;
                             break;
                         case "EMAIL_EXISTS":
@@ -561,14 +565,20 @@
                         case "USER_DISABLED":
                             failureReason = AuthErrorReason.UserDisabled;
                             break;
+						case "TOO_MANY_ATTEMPTS_TRY_LATER":
+							failureReason = AuthErrorReason.TooManyAttemptsTryLater;
+							break;
 
-                        //possible errors from Email/Password Signin or Password Recovery or Email/Password Sign up using setAccountInfo
-                        case "MISSING_EMAIL":
+						//possible errors from Email/Password Signin or Password Recovery or Email/Password Sign up using setAccountInfo
+						case "MISSING_EMAIL":
                             failureReason = AuthErrorReason.MissingEmail;
                             break;
+						case "RESET_PASSWORD_EXCEED_LIMIT":
+							failureReason = AuthErrorReason.ResetPasswordExceedLimit;
+							break;
 
-                        //possible errors from Password Recovery
-                        case "MISSING_REQ_TYPE":
+						//possible errors from Password Recovery
+						case "MISSING_REQ_TYPE":
                             failureReason = AuthErrorReason.MissingRequestType;
                             break;
 
