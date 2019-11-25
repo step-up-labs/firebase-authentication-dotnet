@@ -105,13 +105,28 @@
             return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// Using the provided Id token from google signin, get the firebase auth with token and basic user credentials.
-        /// </summary>
-        /// <param name="authType"> The auth type. </param>
-        /// <param name="idToken"> The Id token retrieved from google signin </param>
-        /// <returns> The <see cref="FirebaseAuth"/>. </returns>
-        public async Task<FirebaseAuthLink> SignInWithGoogleIdTokenAsync(string idToken)
+		/// <summary>
+		/// Using the provided Id token from google signin, get the firebase auth with token and basic user credentials.
+		/// </summary>
+		/// <param name="authType"> The auth type. </param>
+		/// <param name="oauthAccessToken"> The access token retrieved from twitter. </param>
+		/// <param name="oauthAccessToken"> The access token secret supplied by twitter. </param>
+		/// <returns> The <see cref="FirebaseAuth"/>. </returns>
+		public async Task<FirebaseAuthLink> SignInWithOAuthTwitterTokenAsync(string oauthAccessToken, string oauthTokenSecret)
+		{
+			var providerId = this.GetProviderId(FirebaseAuthType.Twitter);
+			var content = $"{{\"postBody\":\"access_token={oauthAccessToken}&oauth_token_secret={oauthTokenSecret}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
+
+			return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+		}
+
+		/// <summary>
+		/// Using the provided Id token from google signin, get the firebase auth with token and basic user credentials.
+		/// </summary>
+		/// <param name="authType"> The auth type. </param>
+		/// <param name="idToken"> The Id token retrieved from google signin </param>
+		/// <returns> The <see cref="FirebaseAuth"/>. </returns>
+		public async Task<FirebaseAuthLink> SignInWithGoogleIdTokenAsync(string idToken)
         {
             var providerId = this.GetProviderId(FirebaseAuthType.Google);
             var content = $"{{\"postBody\":\"id_token={idToken}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
