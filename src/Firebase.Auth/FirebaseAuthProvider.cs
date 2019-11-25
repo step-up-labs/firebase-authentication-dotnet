@@ -278,11 +278,21 @@
         public async Task SendPasswordResetEmailAsync(string email)
         {
             var content = $"{{\"requestType\":\"PASSWORD_RESET\",\"email\":\"{email}\"}}";
+			var responseData = "N/A";
 
-            var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+			try
+			{
+				var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+				responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            response.EnsureSuccessStatusCode();
-        }
+				response.EnsureSuccessStatusCode();
+			}
+			catch (Exception ex)
+			{
+				AuthErrorReason errorReason = GetFailureReason(responseData);
+				throw new FirebaseAuthException(GoogleGetConfirmationCodeUrl, content, responseData, ex, errorReason);
+			}
+		}
 
         /// <summary>
         /// Sends user an email with a link to verify his email address.
