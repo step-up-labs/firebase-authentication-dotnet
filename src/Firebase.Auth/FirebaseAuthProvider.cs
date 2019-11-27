@@ -105,40 +105,40 @@
             return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
         }
 
-		/// <summary>
-		/// Using the provided Id token from google signin, get the firebase auth with token and basic user credentials.
-		/// </summary>
-		/// <param name="authType"> The auth type. </param>
-		/// <param name="oauthAccessToken"> The access token retrieved from twitter. </param>
-		/// <param name="oauthAccessToken"> The access token secret supplied by twitter. </param>
-		/// <returns> The <see cref="FirebaseAuth"/>. </returns>
-		public async Task<FirebaseAuthLink> SignInWithOAuthTwitterTokenAsync(string oauthAccessToken, string oauthTokenSecret)
-		{
-			var providerId = this.GetProviderId(FirebaseAuthType.Twitter);
-			var content = $"{{\"postBody\":\"access_token={oauthAccessToken}&oauth_token_secret={oauthTokenSecret}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
+        /// <summary>
+        /// Using the provided Id token from google signin, get the firebase auth with token and basic user credentials.
+        /// </summary>
+        /// <param name="authType"> The auth type. </param>
+        /// <param name="oauthAccessToken"> The access token retrieved from twitter. </param>
+        /// <param name="oauthAccessToken"> The access token secret supplied by twitter. </param>
+        /// <returns> The <see cref="FirebaseAuth"/>. </returns>
+        public async Task<FirebaseAuthLink> SignInWithOAuthTwitterTokenAsync(string oauthAccessToken, string oauthTokenSecret)
+        {
+            var providerId = this.GetProviderId(FirebaseAuthType.Twitter);
+            var content = $"{{\"postBody\":\"access_token={oauthAccessToken}&oauth_token_secret={oauthTokenSecret}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
+            
+            return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+        }
 
-			return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
-		}
-
-		/// <summary>
-		/// Using the provided Id token from google signin, get the firebase auth with token and basic user credentials.
-		/// </summary>
-		/// <param name="authType"> The auth type. </param>
-		/// <param name="idToken"> The Id token retrieved from google signin </param>
-		/// <returns> The <see cref="FirebaseAuth"/>. </returns>
-		public async Task<FirebaseAuthLink> SignInWithGoogleIdTokenAsync(string idToken)
+        /// <summary>
+        /// Using the provided Id token from google signin, get the firebase auth with token and basic user credentials.
+        /// </summary>
+        /// <param name="authType"> The auth type. </param>
+        /// <param name="idToken"> The Id token retrieved from google signin </param>
+        /// <returns> The <see cref="FirebaseAuth"/>. </returns>
+        public async Task<FirebaseAuthLink> SignInWithGoogleIdTokenAsync(string idToken)
         {
             var providerId = this.GetProviderId(FirebaseAuthType.Google);
             var content = $"{{\"postBody\":\"id_token={idToken}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
 
             return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
-        }		
+        }
 
-		/// <summary>
-		/// Sign in user anonymously. He would still have a user id and access token generated, but name and other personal user properties will be null.
-		/// </summary>
-		/// <returns> The <see cref="FirebaseAuth"/>. </returns>
-		public async Task<FirebaseAuthLink> SignInAnonymouslyAsync()
+        /// <summary>
+        /// Sign in user anonymously. He would still have a user id and access token generated, but name and other personal user properties will be null.
+        /// </summary>
+        /// <returns> The <see cref="FirebaseAuth"/>. </returns>
+        public async Task<FirebaseAuthLink> SignInAnonymouslyAsync()
         {
             var content = $"{{\"returnSecureToken\":true}}";
 
@@ -278,21 +278,21 @@
         public async Task SendPasswordResetEmailAsync(string email)
         {
             var content = $"{{\"requestType\":\"PASSWORD_RESET\",\"email\":\"{email}\"}}";
-			var responseData = "N/A";
-
-			try
-			{
-				var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
-				responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
-				response.EnsureSuccessStatusCode();
-			}
-			catch (Exception ex)
-			{
-				AuthErrorReason errorReason = GetFailureReason(responseData);
-				throw new FirebaseAuthException(GoogleGetConfirmationCodeUrl, content, responseData, ex, errorReason);
-			}
-		}
+            var responseData = "N/A";
+            
+            try
+            {
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                
+                response.EnsureSuccessStatusCode();
+            }
+            catch (Exception ex)
+            {
+                AuthErrorReason errorReason = GetFailureReason(responseData);
+                throw new FirebaseAuthException(GoogleGetConfirmationCodeUrl, content, responseData, ex, errorReason);
+            }
+        }
 
         /// <summary>
         /// Sends user an email with a link to verify his email address.
@@ -519,12 +519,12 @@
                             failureReason = AuthErrorReason.LoginCredentialsTooOld;
                             break;
 
-						case "OPERATION_NOT_ALLOWED":
-							failureReason = AuthErrorReason.OperationNotAllowed;
-							break;
+                        case "OPERATION_NOT_ALLOWED":
+                            failureReason = AuthErrorReason.OperationNotAllowed;
+                            break;
 
-						//possible errors from Third Party Authentication using GoogleIdentityUrl
-						case "INVALID_PROVIDER_ID : Provider Id is not supported.":
+                        //possible errors from Third Party Authentication using GoogleIdentityUrl
+                        case "INVALID_PROVIDER_ID : Provider Id is not supported.":
                             failureReason = AuthErrorReason.InvalidProviderID;
                             break;
                         case "MISSING_REQUEST_URI":
@@ -540,9 +540,9 @@
                             break;
                         case "MISSING_PASSWORD":
                             failureReason = AuthErrorReason.MissingPassword;
-                            break;						
+                            break;
 
-						//possible errors from Email/Password Account Signup (via signupNewUser or setAccountInfo)
+                        //possible errors from Email/Password Account Signup (via signupNewUser or setAccountInfo)
                         case "EMAIL_EXISTS":
                             failureReason = AuthErrorReason.EmailExists;
                             break;
@@ -563,16 +563,16 @@
                             failureReason = AuthErrorReason.UserDisabled;
                             break;
 
-						//possible errors from Email/Password Signin or Password Recovery or Email/Password Sign up using setAccountInfo
-						case "MISSING_EMAIL":
+                        //possible errors from Email/Password Signin or Password Recovery or Email/Password Sign up using setAccountInfo
+                        case "MISSING_EMAIL":
                             failureReason = AuthErrorReason.MissingEmail;
                             break;
-						case "RESET_PASSWORD_EXCEED_LIMIT":
-							failureReason = AuthErrorReason.ResetPasswordExceedLimit;
-							break;
+                        case "RESET_PASSWORD_EXCEED_LIMIT":
+                            failureReason = AuthErrorReason.ResetPasswordExceedLimit;
+                            break;
 
-						//possible errors from Password Recovery
-						case "MISSING_REQ_TYPE":
+                        //possible errors from Password Recovery
+                        case "MISSING_REQ_TYPE":
                             failureReason = AuthErrorReason.MissingRequestType;
                             break;
 
@@ -593,13 +593,13 @@
                             break;
                     }
 
-					if(failureReason == AuthErrorReason.Undefined)
-					{                            
-						//possible errors from Email/Password Account Signup (via signupNewUser or setAccountInfo)
-						if(errorData?.error?.message?.StartsWith("WEAK_PASSWORD :") ?? false) failureReason = AuthErrorReason.WeakPassword;
-						//possible errors from Email/Password Signin
-						else if (errorData?.error?.message?.StartsWith("TOO_MANY_ATTEMPTS_TRY_LATER :") ?? false) failureReason = AuthErrorReason.TooManyAttemptsTryLater;
-					}
+                    if(failureReason == AuthErrorReason.Undefined)
+                    {                            
+                        //possible errors from Email/Password Account Signup (via signupNewUser or setAccountInfo)
+                        if(errorData?.error?.message?.StartsWith("WEAK_PASSWORD :") ?? false) failureReason = AuthErrorReason.WeakPassword;
+                        //possible errors from Email/Password Signin
+                        else if (errorData?.error?.message?.StartsWith("TOO_MANY_ATTEMPTS_TRY_LATER :") ?? false) failureReason = AuthErrorReason.TooManyAttemptsTryLater;
+                    }
                 }
             }
             catch (JsonReaderException)
