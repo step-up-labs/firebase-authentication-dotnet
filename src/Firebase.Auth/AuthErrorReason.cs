@@ -7,6 +7,10 @@
         /// </summary>
         Undefined,
         /// <summary>
+        /// The sign in method is not enabled.
+        /// </summary>
+        OperationNotAllowed,
+        /// <summary>
         /// The user was disabled and is not granted access anymore.
         /// </summary>
         UserDisabled,
@@ -63,9 +67,17 @@
         /// </summary>
         WrongPassword,
         /// <summary>
+        /// Email/Password Signin: Too many password login have been attempted. Try again later.
+        /// </summary>
+        TooManyAttemptsTryLater,
+        /// <summary>
         /// Password Recovery: Request does not contain a value for parameter: requestType or supplied value is invalid.
         /// </summary>
         MissingRequestType,
+        /// <summary>
+        /// Password Recovery: Reset password limit exceeded.
+        /// </summary>
+        ResetPasswordExceedLimit,
         /// <summary>
         /// Account Linking: Authenticated User ID Token is invalid!
         /// </summary>
