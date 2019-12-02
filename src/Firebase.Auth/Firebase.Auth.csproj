@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.1</TargetFramework>
     <PackageId>FirebaseAuthentication.net</PackageId>
-    <PackageVersion>3.3.0</PackageVersion>
+    <PackageVersion>3.4.0</PackageVersion>
     <Authors>Step Up Labs, Inc.</Authors>
     <Description>Firebase authentication library. It can generate Firebase auth token based on given OAuth token (issued by Google, Facebook...). This Firebase token can then be used with REST queries against Firebase endpoints. </Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>

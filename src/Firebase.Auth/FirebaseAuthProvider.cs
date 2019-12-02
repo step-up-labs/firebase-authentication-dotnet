@@ -109,6 +109,21 @@
         /// Using the provided Id token from google signin, get the firebase auth with token and basic user credentials.
         /// </summary>
         /// <param name="authType"> The auth type. </param>
+        /// <param name="oauthAccessToken"> The access token retrieved from twitter. </param>
+        /// <param name="oauthAccessToken"> The access token secret supplied by twitter. </param>
+        /// <returns> The <see cref="FirebaseAuth"/>. </returns>
+        public async Task<FirebaseAuthLink> SignInWithOAuthTwitterTokenAsync(string oauthAccessToken, string oauthTokenSecret)
+        {
+            var providerId = this.GetProviderId(FirebaseAuthType.Twitter);
+            var content = $"{{\"postBody\":\"access_token={oauthAccessToken}&oauth_token_secret={oauthTokenSecret}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
+            
+            return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Using the provided Id token from google signin, get the firebase auth with token and basic user credentials.
+        /// </summary>
+        /// <param name="authType"> The auth type. </param>
         /// <param name="idToken"> The Id token retrieved from google signin </param>
         /// <returns> The <see cref="FirebaseAuth"/>. </returns>
         public async Task<FirebaseAuthLink> SignInWithGoogleIdTokenAsync(string idToken)
@@ -263,10 +278,20 @@
         public async Task SendPasswordResetEmailAsync(string email)
         {
             var content = $"{{\"requestType\":\"PASSWORD_RESET\",\"email\":\"{email}\"}}";
-
-            var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
-
-            response.EnsureSuccessStatusCode();
+            var responseData = "N/A";
+            
+            try
+            {
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                
+                response.EnsureSuccessStatusCode();
+            }
+            catch (Exception ex)
+            {
+                AuthErrorReason errorReason = GetFailureReason(responseData);
+                throw new FirebaseAuthException(GoogleGetConfirmationCodeUrl, content, responseData, ex, errorReason);
+            }
         }
 
         /// <summary>
@@ -494,6 +519,10 @@
                             failureReason = AuthErrorReason.LoginCredentialsTooOld;
                             break;
 
+                        case "OPERATION_NOT_ALLOWED":
+                            failureReason = AuthErrorReason.OperationNotAllowed;
+                            break;
+
                         //possible errors from Third Party Authentication using GoogleIdentityUrl
                         case "INVALID_PROVIDER_ID : Provider Id is not supported.":
                             failureReason = AuthErrorReason.InvalidProviderID;
@@ -514,9 +543,6 @@
                             break;
 
                         //possible errors from Email/Password Account Signup (via signupNewUser or setAccountInfo)
-                        case "WEAK_PASSWORD : Password should be at least 6 characters":
-                            failureReason = AuthErrorReason.WeakPassword;
-                            break;
                         case "EMAIL_EXISTS":
                             failureReason = AuthErrorReason.EmailExists;
                             break;
@@ -541,6 +567,9 @@
                         case "MISSING_EMAIL":
                             failureReason = AuthErrorReason.MissingEmail;
                             break;
+                        case "RESET_PASSWORD_EXCEED_LIMIT":
+                            failureReason = AuthErrorReason.ResetPasswordExceedLimit;
+                            break;
 
                         //possible errors from Password Recovery
                         case "MISSING_REQ_TYPE":
@@ -562,6 +591,14 @@
                         case "FEDERATED_USER_ID_ALREADY_LINKED":
                             failureReason = AuthErrorReason.AlreadyLinked;
                             break;
+                    }
+
+                    if(failureReason == AuthErrorReason.Undefined)
+                    {                            
+                        //possible errors from Email/Password Account Signup (via signupNewUser or setAccountInfo)
+                        if(errorData?.error?.message?.StartsWith("WEAK_PASSWORD :") ?? false) failureReason = AuthErrorReason.WeakPassword;
+                        //possible errors from Email/Password Signin
+                        else if (errorData?.error?.message?.StartsWith("TOO_MANY_ATTEMPTS_TRY_LATER :") ?? false) failureReason = AuthErrorReason.TooManyAttemptsTryLater;
                     }
                 }
             }
