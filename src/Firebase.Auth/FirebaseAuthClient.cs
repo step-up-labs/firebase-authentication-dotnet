@@ -10,6 +10,7 @@ namespace Firebase.Auth
     {
         private readonly FirebaseAuthConfig config;
         private readonly ProjectConfig projectConfig;
+        private readonly SignupNewUser signupNewUser;
 
         private bool domainChecked;
         
@@ -17,6 +18,7 @@ namespace Firebase.Auth
         {
             this.config = config;
             this.projectConfig = new ProjectConfig(this.config);
+            this.signupNewUser = new SignupNewUser(this.config);
 
             foreach (var provider in this.config.Providers)
             {
@@ -36,19 +38,28 @@ namespace Firebase.Auth
             var provider = (ExternalAuthProvider)this.GetAuthProvider(authType);
             var continuation = await provider.SignInAsync().ConfigureAwait(false);
             var redirectUri = await this.config.ExternalSignInDelegate(continuation.Uri).ConfigureAwait(false);
-            var (assertion, account) = await continuation.ContinueSignInAsync(redirectUri).ConfigureAwait(false);
-            var user = account.Users[0];
+            var (user, token) = await continuation.ContinueSignInAsync(redirectUri).ConfigureAwait(false);
+
+            await this.SaveTokenAsync(token).ConfigureAwait(false);
+
+            return user;
+        }
+
+        public async Task<User> SignInAnonymouslyAsync()
+        {
+            var response = await this.signupNewUser.ExecuteAsync(new SignupNewUserRequest { ReturnSecureToken = true }).ConfigureAwait(false);
+            var token = new FirebaseAuthToken
+            {
+                ExpiresIn = response.ExpiresIn,
+                IdToken = response.IdToken,
+                RefreshToken = response.RefreshToken
+            };
+
+            await this.SaveTokenAsync(token);
 
             return new User
             {
-                DisplayName = user.DisplayName,
-                FirstName = assertion.FirstName,
-                LastName = assertion.LastName,
-                Email = assertion.Email,
-                IsEmailVerified = assertion.EmailVerified,
-                FederatedId = assertion.FederatedId,
-                LocalId = assertion.LocalId,
-                PhotoUrl = assertion.PhotoUrl
+                LocalId = response.LocalId
             };
         }
 
@@ -68,6 +79,8 @@ namespace Firebase.Auth
             var provider = (EmailProvider)this.GetAuthProvider(FirebaseProviderType.EmailAndPassword);
             var (user, token) = await provider.SignInUserAsync(email, password).ConfigureAwait(false);
 
+            await this.SaveTokenAsync(token).ConfigureAwait(false);
+
             return user;
         }
         
@@ -78,13 +91,27 @@ namespace Firebase.Auth
             var provider = (EmailProvider)this.GetAuthProvider(FirebaseProviderType.EmailAndPassword);
             var (user, token) = await provider.SignUpUserAsync(email, password, displayName).ConfigureAwait(false);
 
+            await this.SaveTokenAsync(token).ConfigureAwait(false);
+
             return user;
         }
 
-        //public async Task<string> GetFreshAccessToken()
-        //{
+        public async Task<string> GetAccessTokenAsync()
+        {
+            var token = await this.config.TokenRepository.GetTokenAsync().ConfigureAwait(false);
 
-        //}
+            if (token.IsExpired())
+            {
+
+            }
+
+            return token.IdToken;
+        }
+
+        private Task SaveTokenAsync(FirebaseAuthToken token)
+        {
+            return this.config.TokenRepository.SaveTokenAsync(token);
+        }
 
         private FirebaseAuthProvider GetAuthProvider(FirebaseProviderType authType)
         {
@@ -100,6 +127,7 @@ namespace Firebase.Auth
                 case FirebaseProviderType.Google:
                 case FirebaseProviderType.Github:
                 case FirebaseProviderType.Twitter:
+                case FirebaseProviderType.Microsoft:
                     return true;
                 case FirebaseProviderType.EmailAndPassword:
                     return false;
@@ -122,6 +150,37 @@ namespace Firebase.Auth
             }
 
             this.domainChecked = true;
+        }
+    }
+
+    public interface IFirebaseTokenRepository
+    {
+        Task<FirebaseAuthToken> GetTokenAsync();
+
+        Task SaveTokenAsync(FirebaseAuthToken token);
+    }
+
+    public class InMemoryFirebaseTokenRepository : IFirebaseTokenRepository
+    {
+        private static InMemoryFirebaseTokenRepository instance;
+
+        private FirebaseAuthToken token;
+
+        private InMemoryFirebaseTokenRepository()
+        {
+        }
+
+        public static InMemoryFirebaseTokenRepository Instance => instance ?? (instance = new InMemoryFirebaseTokenRepository());
+
+        public Task SaveTokenAsync(FirebaseAuthToken token)
+        {
+            this.token = token;
+            return Task.CompletedTask;
+        }
+
+        public Task<FirebaseAuthToken> GetTokenAsync()
+        {
+            return Task.FromResult(this.token);
         }
     }
 }

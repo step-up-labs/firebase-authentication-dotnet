@@ -19,7 +19,7 @@ namespace Firebase.Auth.Providers
 
         public string Uri { get; }
 
-        public async Task<(VerifyAssertionResponse, GetAccountInfoResponse)> ContinueSignInAsync(string redirectUri)
+        public async Task<(User, FirebaseAuthToken)> ContinueSignInAsync(string redirectUri)
         {
             var assertion = await this.verifyAssertion.ExecuteAsync(new VerifyAssertionRequest
             {
@@ -34,7 +34,27 @@ namespace Firebase.Auth.Providers
                 IdToken = assertion.IdToken
             }).ConfigureAwait(false);
 
-            return (assertion, accountInfo);
+            var u = accountInfo.Users[0];
+            var user = new User
+            {
+                DisplayName = u.DisplayName,
+                FirstName = assertion.FirstName,
+                LastName = assertion.LastName,
+                Email = u.Email ?? assertion.Email,
+                IsEmailVerified = u.EmailVerified,
+                FederatedId = assertion.FederatedId,
+                LocalId = u.LocalId,
+                PhotoUrl = u.PhotoUrl
+            };
+
+            var token = new FirebaseAuthToken
+            {
+                ExpiresIn = assertion.ExpiresIn,
+                RefreshToken = assertion.RefreshToken,
+                IdToken = assertion.IdToken
+            };
+
+            return (user, token);
         }
     }
 }

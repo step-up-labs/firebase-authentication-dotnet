@@ -43,7 +43,7 @@
         
         public string RefreshToken { get; set; }
         
-        public string ExpiresIn { get; set; }
+        public int ExpiresIn { get; set; }
 
         public string OauthIdToken { get; set; }
     }

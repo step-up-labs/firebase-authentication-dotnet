@@ -19,18 +19,20 @@ namespace Firebase.Auth
         /// <param name="apiKey"> The api key of your Firebase app. </param>
         /// <param name="authDomain"> Auth domain of your firebase app, e.g. hello.firebaseapp.com. </param>
         /// <param name="externalSignInDelegate"> Delegate invoked to perform in-browser sign in. </param>
-        public FirebaseAuthConfig(string apiKey, string authDomain, ExternalSignInDelegate externalSignInDelegate, params FirebaseAuthProvider[] providers)
+        public FirebaseAuthConfig(string apiKey, string authDomain, ExternalSignInDelegate externalSignInDelegate, IFirebaseTokenRepository tokenRepository, params FirebaseAuthProvider[] providers)
             : this()
         {
             this.ApiKey = apiKey;
             this.AuthDomain = authDomain;
             this.ExternalSignInDelegate = externalSignInDelegate;
+            this.TokenRepository = tokenRepository;
             this.Providers = providers;
         }
 
         public FirebaseAuthConfig()
         {
             this.HttpClient = new HttpClient();
+            this.TokenRepository = InMemoryFirebaseTokenRepository.Instance;
             this.JsonSettings = new JsonSerializerSettings
             {
                 ContractResolver = new DefaultContractResolver
@@ -54,6 +56,15 @@ namespace Firebase.Auth
         /// Delegate invoked to perform in-browser sign in.
         /// </summary>
         public ExternalSignInDelegate ExternalSignInDelegate 
+        { 
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Repository of firebase tokens. Default is in-memory.
+        /// </summary>
+        public IFirebaseTokenRepository TokenRepository 
         { 
             get;
             set;

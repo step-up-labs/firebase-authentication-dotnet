@@ -19,7 +19,11 @@ namespace Firebase.Auth
         [EnumMember(Value = "twitter.com")]
         Twitter,
 
+        [EnumMember(Value = "microsoft.com")]
+        Microsoft,
+
         [EnumMember(Value = "password")]
-        EmailAndPassword
+        EmailAndPassword,
+        
     } 
 }

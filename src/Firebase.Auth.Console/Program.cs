@@ -30,6 +30,7 @@ namespace Firebase.Auth.Sample
                     new FacebookProvider(),
                     new TwitterProvider(),
                     new GithubProvider(),
+                    new MicrosoftProvider(),
                     new EmailProvider()
                 }
             };
@@ -37,15 +38,25 @@ namespace Firebase.Auth.Sample
             var client = new FirebaseAuthClient(config);
 
             WriteLine("How do you want to sign in?");
-            config.Providers.Select((provider, i) => (provider, i)).ToList().ForEach(p => WriteLine($"[{p.i}]: {p.provider}"));
+            config.Providers.Select((provider, i) => (provider, i)).ToList().ForEach(p => WriteLine($"[{p.i}]: {p.provider.AuthType}"));
+            WriteLine($"[{config.Providers.Count()}]: Anonymously");
 
-            var provider = config.Providers[int.Parse(ReadLine())].AuthType;
+            var i = int.Parse(ReadLine());
 
-            var user = provider == FirebaseProviderType.EmailAndPassword
-                ? await SignInWithEmail(client)
-                : await client.SignInExternallyAsync(provider);
+            if (i == config.Providers.Count())
+            {
+                var user = await client.SignInAnonymouslyAsync();
+                WriteLine($"You're anonymously signed with uid: {user.LocalId}");
+            }
+            else 
+            {
+                var provider = config.Providers[i].AuthType;
+                var user = provider == FirebaseProviderType.EmailAndPassword
+                    ? await SignInWithEmail(client)
+                    : await client.SignInExternallyAsync(provider);
 
-            WriteLine($"You're sign in as {user.DisplayName} @ {user.Email}");
+                WriteLine($"You're sign in as {user.DisplayName} | {user.Email} | {user.LocalId}");
+            }
         }
 
         private static async Task<User> SignInWithEmail(FirebaseAuthClient client)
