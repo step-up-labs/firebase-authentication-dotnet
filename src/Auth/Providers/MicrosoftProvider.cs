@@ -15,6 +15,6 @@
             this.AddScopes(DefaultScopes);
         }
 
-        public override FirebaseProviderType AuthType => FirebaseProviderType.Microsoft;
+        public override FirebaseProviderType ProviderType => FirebaseProviderType.Microsoft;
     }
 }

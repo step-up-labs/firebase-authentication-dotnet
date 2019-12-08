@@ -3,9 +3,9 @@
     /// <summary>
     /// Basic information about the signed in user.
     /// </summary>
-    public class User
+    public class UserInfo
     {
-        public string LocalId { get; set; }
+        public string Uid { get; set; }
 
         public string FederatedId { get; set; }
 
@@ -20,5 +20,7 @@
         public bool IsEmailVerified { get; set; }
 
         public string PhotoUrl { get; set; }
+
+        public bool IsAnonymous { get; set; }
     }
 }

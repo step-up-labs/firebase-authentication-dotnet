@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace Firebase.Auth.Requests
 {
+    public class IdTokenRequest
+    {
+        public string IdToken { get; set; }
+    }
+
     public abstract class FirebaseRequestBase<TRequest, TResponse>
     {
         protected readonly FirebaseAuthConfig config;

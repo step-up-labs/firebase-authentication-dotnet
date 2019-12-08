@@ -3,11 +3,6 @@ using System;
 
 namespace Firebase.Auth.Requests
 {
-    public class GetAccountInfoRequest
-    {
-        public string IdToken { get; set; }
-    }
-
     public class GetAccountInfoResponse
     {
         public UserInfo[] Users { get; set; }
@@ -54,7 +49,7 @@ namespace Firebase.Auth.Requests
         public string RawId { get; set; }
     }
 
-    public class GetAccountInfo : FirebaseRequestBase<GetAccountInfoRequest, GetAccountInfoResponse>
+    public class GetAccountInfo : FirebaseRequestBase<IdTokenRequest, GetAccountInfoResponse>
     {
         public GetAccountInfo(FirebaseAuthConfig config) : base(config)
         {

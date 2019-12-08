@@ -26,7 +26,7 @@ namespace Firebase.Auth
             }
         }
 
-        public async Task<User> SignInExternallyAsync(FirebaseProviderType authType)
+        public async Task<User> SignInExternallyAsync(FirebaseProviderType authType, ExternalSignInDelegate externalSignInDelegate)
         {
             if (!IsProviderExternal(authType))
             {
@@ -37,10 +37,10 @@ namespace Firebase.Auth
 
             var provider = (ExternalAuthProvider)this.GetAuthProvider(authType);
             var continuation = await provider.SignInAsync().ConfigureAwait(false);
-            var redirectUri = await this.config.ExternalSignInDelegate(continuation.Uri).ConfigureAwait(false);
-            var (user, token) = await continuation.ContinueSignInAsync(redirectUri).ConfigureAwait(false);
+            var redirectUri = await externalSignInDelegate(continuation.Uri).ConfigureAwait(false);
+            var user = await continuation.ContinueSignInAsync(redirectUri).ConfigureAwait(false);
 
-            await this.SaveTokenAsync(token).ConfigureAwait(false);
+            await this.SaveTokenAsync(user).ConfigureAwait(false);
 
             return user;
         }
@@ -48,19 +48,25 @@ namespace Firebase.Auth
         public async Task<User> SignInAnonymouslyAsync()
         {
             var response = await this.signupNewUser.ExecuteAsync(new SignupNewUserRequest { ReturnSecureToken = true }).ConfigureAwait(false);
-            var token = new FirebaseAuthToken
+            var credential = new FirebaseCredential
             {
                 ExpiresIn = response.ExpiresIn,
                 IdToken = response.IdToken,
-                RefreshToken = response.RefreshToken
+                RefreshToken = response.RefreshToken,
+                ProviderType = FirebaseProviderType.Anonymous
             };
 
-            await this.SaveTokenAsync(token);
-
-            return new User
+            var info = new UserInfo
             {
-                LocalId = response.LocalId
+                Uid = response.LocalId,
+                IsAnonymous = true
             };
+
+            var user = new User(this.config, info, credential);
+
+            await this.SaveTokenAsync(user);
+
+            return user;
         }
 
         public async Task<CheckUserRessult> CheckUserEmailExistsAsync(string email)
@@ -77,11 +83,11 @@ namespace Firebase.Auth
             await this.CheckAuthDomain().ConfigureAwait(false);
 
             var provider = (EmailProvider)this.GetAuthProvider(FirebaseProviderType.EmailAndPassword);
-            var (user, token) = await provider.SignInUserAsync(email, password).ConfigureAwait(false);
+            var result = await provider.SignInUserAsync(email, password).ConfigureAwait(false);
 
-            await this.SaveTokenAsync(token).ConfigureAwait(false);
+            await this.SaveTokenAsync(result).ConfigureAwait(false);
 
-            return user;
+            return result;
         }
         
         public async Task<User> CreateUserWithEmailAndPasswordAsync(string email, string password, string displayName = null)
@@ -89,33 +95,21 @@ namespace Firebase.Auth
             await this.CheckAuthDomain().ConfigureAwait(false);
 
             var provider = (EmailProvider)this.GetAuthProvider(FirebaseProviderType.EmailAndPassword);
-            var (user, token) = await provider.SignUpUserAsync(email, password, displayName).ConfigureAwait(false);
+            var result = await provider.SignUpUserAsync(email, password, displayName).ConfigureAwait(false);
 
-            await this.SaveTokenAsync(token).ConfigureAwait(false);
+            await this.SaveTokenAsync(result).ConfigureAwait(false);
 
-            return user;
+            return result;
         }
 
-        public async Task<string> GetAccessTokenAsync()
+        private Task SaveTokenAsync(User user)
         {
-            var token = await this.config.TokenRepository.GetTokenAsync().ConfigureAwait(false);
-
-            if (token.IsExpired())
-            {
-
-            }
-
-            return token.IdToken;
-        }
-
-        private Task SaveTokenAsync(FirebaseAuthToken token)
-        {
-            return this.config.TokenRepository.SaveTokenAsync(token);
+            return this.config.UserRepository.SaveTokenAsync(user);
         }
 
         private FirebaseAuthProvider GetAuthProvider(FirebaseProviderType authType)
         {
-            return this.config.Providers.FirstOrDefault(f => f.AuthType == authType) 
+            return this.config.Providers.FirstOrDefault(f => f.ProviderType == authType) 
                 ?? throw new InvalidOperationException($"Provider {authType} is not configured, you need to add it to your FirebaseAuthConfig");
         }
 
@@ -130,6 +124,7 @@ namespace Firebase.Auth
                 case FirebaseProviderType.Microsoft:
                     return true;
                 case FirebaseProviderType.EmailAndPassword:
+                case FirebaseProviderType.Anonymous:
                     return false;
                 default:
                     throw new ArgumentException("Unknown provider");
@@ -155,16 +150,16 @@ namespace Firebase.Auth
 
     public interface IFirebaseTokenRepository
     {
-        Task<FirebaseAuthToken> GetTokenAsync();
+        Task<User> GetUserAsync();
 
-        Task SaveTokenAsync(FirebaseAuthToken token);
+        Task SaveTokenAsync(User credential);
     }
 
     public class InMemoryFirebaseTokenRepository : IFirebaseTokenRepository
     {
         private static InMemoryFirebaseTokenRepository instance;
 
-        private FirebaseAuthToken token;
+        private User user;
 
         private InMemoryFirebaseTokenRepository()
         {
@@ -172,15 +167,15 @@ namespace Firebase.Auth
 
         public static InMemoryFirebaseTokenRepository Instance => instance ?? (instance = new InMemoryFirebaseTokenRepository());
 
-        public Task SaveTokenAsync(FirebaseAuthToken token)
+        public Task SaveTokenAsync(User user)
         {
-            this.token = token;
+            this.user = user;
             return Task.CompletedTask;
         }
 
-        public Task<FirebaseAuthToken> GetTokenAsync()
+        public Task<User> GetUserAsync()
         {
-            return Task.FromResult(this.token);
+            return Task.FromResult(this.user);
         }
     }
 }

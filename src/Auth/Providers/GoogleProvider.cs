@@ -9,6 +9,6 @@
             this.AddScopes(DefaultProfileScope);
         }
 
-        public override FirebaseProviderType AuthType => FirebaseProviderType.Google;
+        public override FirebaseProviderType ProviderType => FirebaseProviderType.Google;
     }
 }

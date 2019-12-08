@@ -23,18 +23,12 @@ namespace Firebase.Auth.Providers
             return this;
         }
 
-        internal override void Initialize(FirebaseAuthConfig config)
-        {
-            base.Initialize(config);
-            this.verifyAssertion = new VerifyAssertion(config);
-        }
-
         internal virtual async Task<ExternalAuthContinuation> SignInAsync()
         {
             var request = new CreateAuthUriRequest
             {
                 ContinueUri = this.GetContinueUri(),
-                ProviderId = this.AuthType,
+                ProviderId = this.ProviderType,
                 CustomParameters = new Dictionary<string, string>
                 {
                     ["hl"] = CultureInfo.CurrentCulture.TwoLetterISOLanguageName
@@ -44,7 +38,7 @@ namespace Firebase.Auth.Providers
 
             var response = await this.createAuthUri.ExecuteAsync(request).ConfigureAwait(false);
 
-            return new ExternalAuthContinuation(this.verifyAssertion, this.accountInfo, response.AuthUri, response.SessionId);
+            return new ExternalAuthContinuation(this.config, response.AuthUri, response.SessionId, this.ProviderType);
         }
 
         protected string GetParsedOauthScopes()
@@ -54,7 +48,7 @@ namespace Firebase.Auth.Providers
                 return null;
             }
 
-            return $"{{ \"{this.AuthType.ToEnumString()}\": \"{string.Join(",", this.scopes)}\" }}";
+            return $"{{ \"{this.ProviderType.ToEnumString()}\": \"{string.Join(",", this.scopes)}\" }}";
         }
     }
 }

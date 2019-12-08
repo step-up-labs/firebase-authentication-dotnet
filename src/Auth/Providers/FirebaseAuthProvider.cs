@@ -1,5 +1,4 @@
 ﻿using Firebase.Auth.Requests;
-using System.Linq;
 
 namespace Firebase.Auth.Providers
 {
@@ -10,15 +9,13 @@ namespace Firebase.Auth.Providers
     {
         protected FirebaseAuthConfig config;
         protected CreateAuthUri createAuthUri;
-        protected GetAccountInfo accountInfo;
 
-        public abstract FirebaseProviderType AuthType { get; }
+        public abstract FirebaseProviderType ProviderType { get; }
 
         internal virtual void Initialize(FirebaseAuthConfig config)
         {
             this.config = config;
             this.createAuthUri = new CreateAuthUri(config);
-            this.accountInfo = new GetAccountInfo(config);
         }
 
         protected string GetContinueUri()

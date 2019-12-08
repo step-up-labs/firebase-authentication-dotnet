@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Firebase.Auth\Firebase.Auth.csproj" />
+    <ProjectReference Include="..\..\src\Auth\Auth.csproj" />
   </ItemGroup>
 
 </Project>

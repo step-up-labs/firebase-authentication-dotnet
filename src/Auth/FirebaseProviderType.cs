@@ -24,6 +24,7 @@ namespace Firebase.Auth
 
         [EnumMember(Value = "password")]
         EmailAndPassword,
-        
+
+        Anonymous
     } 
 }

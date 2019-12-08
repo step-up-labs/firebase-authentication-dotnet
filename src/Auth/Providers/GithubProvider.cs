@@ -2,6 +2,6 @@
 {
     public class GithubProvider : ExternalAuthProvider
     {
-        public override FirebaseProviderType AuthType => FirebaseProviderType.Github;
+        public override FirebaseProviderType ProviderType => FirebaseProviderType.Github;
     }
 }

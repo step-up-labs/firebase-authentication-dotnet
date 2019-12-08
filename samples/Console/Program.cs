@@ -19,11 +19,6 @@ namespace Firebase.Auth.Sample
             {
                 ApiKey = "AIzaSyDFi3vESrBJ12BJovdEtj8jq0OmyktugaQ",
                 AuthDomain = "torrid-inferno-3642.firebaseapp.com",
-                ExternalSignInDelegate = uri =>
-                {
-                    WriteLine($"Go to \n{uri}\n and paste here the redirect uri after you finish signing in");
-                    return Task.FromResult(ReadLine());
-                },
                 Providers = new FirebaseAuthProvider[]
                 {
                     new GoogleProvider(),
@@ -38,25 +33,36 @@ namespace Firebase.Auth.Sample
             var client = new FirebaseAuthClient(config);
 
             WriteLine("How do you want to sign in?");
-            config.Providers.Select((provider, i) => (provider, i)).ToList().ForEach(p => WriteLine($"[{p.i}]: {p.provider.AuthType}"));
+            config.Providers.Select((provider, i) => (provider, i)).ToList().ForEach(p => WriteLine($"[{p.i}]: {p.provider.ProviderType}"));
             WriteLine($"[{config.Providers.Count()}]: Anonymously");
 
             var i = int.Parse(ReadLine());
+            User user;
 
             if (i == config.Providers.Count())
             {
-                var user = await client.SignInAnonymouslyAsync();
-                WriteLine($"You're anonymously signed with uid: {user.LocalId}");
+                user = await client.SignInAnonymouslyAsync();
+                WriteLine($"You're anonymously signed with uid: {user.Info.Uid}");
             }
             else 
             {
-                var provider = config.Providers[i].AuthType;
-                var user = provider == FirebaseProviderType.EmailAndPassword
+                var provider = config.Providers[i].ProviderType;
+                user = provider == FirebaseProviderType.EmailAndPassword
                     ? await SignInWithEmail(client)
-                    : await client.SignInExternallyAsync(provider);
+                    : await client.SignInExternallyAsync(provider, uri =>
+                    {
+                        WriteLine($"Go to \n{uri}\n and paste here the redirect uri after you finish signing in");
+                        return Task.FromResult(ReadLine());
+                    });
 
-                WriteLine($"You're sign in as {user.DisplayName} | {user.Email} | {user.LocalId}");
+                WriteLine($"You're signed in as {user.Info.Uid} | {user.Info.DisplayName} | {user.Info.Email}");
             }
+
+            WriteLine("Delete this account? [y/n]");
+            if (ReadLine().ToLower() == "y")
+            {
+                await user.DeleteAsync();
+            }            
         }
 
         private static async Task<User> SignInWithEmail(FirebaseAuthClient client)

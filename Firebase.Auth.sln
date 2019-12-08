@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Firebase.Auth", "Firebase.Auth\Firebase.Auth.csproj", "{70A39FCE-33FB-43BF-B16C-4268354D315D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth", "src\Auth\Auth.csproj", "{70A39FCE-33FB-43BF-B16C-4268354D315D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Firebase.Auth.Tests", "Firebase.Auth.Tests\Firebase.Auth.Tests.csproj", "{655E7C1A-A2F2-4505-A92F-58088BB01001}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Tests", "tests\Auth.Tests\Auth.Tests.csproj", "{655E7C1A-A2F2-4505-A92F-58088BB01001}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Firebase.Auth.Sample", "Firebase.Auth.Console\Firebase.Auth.Sample.csproj", "{29EB197E-9AB0-4667-8AA7-9BF1D2FDC591}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Console.Sample", "samples\Console\Auth.Console.Sample.csproj", "{29EB197E-9AB0-4667-8AA7-9BF1D2FDC591}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{E7929450-C7E2-433F-9AB9-7AFC6C418054}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{45BB6042-CCBC-49F0-822C-16A434856952}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +34,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{655E7C1A-A2F2-4505-A92F-58088BB01001} = {45BB6042-CCBC-49F0-822C-16A434856952}
+		{29EB197E-9AB0-4667-8AA7-9BF1D2FDC591} = {E7929450-C7E2-433F-9AB9-7AFC6C418054}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EBE8EC40-A988-4401-8C7E-61E1165C7D46}

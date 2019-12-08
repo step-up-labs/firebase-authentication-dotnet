@@ -12,7 +12,7 @@ namespace Firebase.Auth.Providers
         private GetAccountInfo getAccountInfo;
         private VerifyPassword verifyPassword;
 
-        public override FirebaseProviderType AuthType => FirebaseProviderType.EmailAndPassword;
+        public override FirebaseProviderType ProviderType => FirebaseProviderType.EmailAndPassword;
 
         internal override void Initialize(FirebaseAuthConfig config)
         {
@@ -37,7 +37,7 @@ namespace Firebase.Auth.Providers
             return new CheckUserRessult(response.Registered, response.SigninMethods);
         }
 
-        public async Task<(User, FirebaseAuthToken)> SignInUserAsync(string email, string password)
+        public async Task<User> SignInUserAsync(string email, string password)
         {
             var response = await this.verifyPassword.ExecuteAsync(new VerifyPasswordRequest
             {
@@ -47,17 +47,18 @@ namespace Firebase.Auth.Providers
             }).ConfigureAwait(false);
 
             var user = await this.GetUserInfoAsync(response.IdToken).ConfigureAwait(false);
-            var token = new FirebaseAuthToken
+            var credential = new FirebaseCredential
             {
                 ExpiresIn = response.ExpiresIn,
                 IdToken = response.IdToken,
-                RefreshToken = response.RefreshToken
+                RefreshToken = response.RefreshToken,
+                ProviderType = FirebaseProviderType.EmailAndPassword
             };
 
-            return (user, token);
+            return new User(this.config, user, credential);
         }
 
-        public async Task<(User, FirebaseAuthToken)> SignUpUserAsync(string email, string password, string displayName)
+        public async Task<User> SignUpUserAsync(string email, string password, string displayName)
         {
             var signupResponse = await this.signupNewUser.ExecuteAsync(new SignupNewUserRequest
             {
@@ -66,11 +67,12 @@ namespace Firebase.Auth.Providers
                 ReturnSecureToken = true
             }).ConfigureAwait(false);
 
-            var token = new FirebaseAuthToken
+            var credential = new FirebaseCredential
             {
                 ExpiresIn = signupResponse.ExpiresIn,
                 IdToken = signupResponse.IdToken,
-                RefreshToken = signupResponse.RefreshToken
+                RefreshToken = signupResponse.RefreshToken,
+                ProviderType = FirebaseProviderType.EmailAndPassword
             };
 
             // set display name if available
@@ -83,34 +85,36 @@ namespace Firebase.Auth.Providers
                     ReturnSecureToken = true
                 }).ConfigureAwait(false);
 
-                var setUser = new User
+                var setUser = new UserInfo
                 {
                     DisplayName = setResponse.DisplayName,
                     Email = setResponse.Email,
                     IsEmailVerified = setResponse.EmailVerified,
-                    LocalId = setResponse.LocalId
+                    Uid = setResponse.LocalId,
+                    IsAnonymous = false
                 };
 
-                return (setUser, token);
+                return new User(this.config, setUser, credential);
             }
 
             var getUser = await this.GetUserInfoAsync(signupResponse.IdToken).ConfigureAwait(false);
 
-            return (getUser, token);
+            return new User(this.config, getUser, credential);
         }
 
-        private async Task<User> GetUserInfoAsync(string idToken)
+        private async Task<UserInfo> GetUserInfoAsync(string idToken)
         {
-            var getResponse = await this.getAccountInfo.ExecuteAsync(new GetAccountInfoRequest { IdToken = idToken }).ConfigureAwait(false);
+            var getResponse = await this.getAccountInfo.ExecuteAsync(new IdTokenRequest { IdToken = idToken }).ConfigureAwait(false);
             var user = getResponse.Users[0];
 
-            return new User
+            return new UserInfo
             {
                 DisplayName = user.DisplayName,
                 Email = user.Email,
                 IsEmailVerified = user.EmailVerified,
-                LocalId = user.LocalId,
-                PhotoUrl = user.PhotoUrl
+                Uid = user.LocalId,
+                PhotoUrl = user.PhotoUrl,
+                IsAnonymous = false
             };
         }
     }

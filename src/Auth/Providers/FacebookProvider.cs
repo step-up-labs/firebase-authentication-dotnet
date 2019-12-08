@@ -9,6 +9,6 @@
             this.AddScopes(DefaultEmailScope);
         }
 
-        public override FirebaseProviderType AuthType => FirebaseProviderType.Facebook;
+        public override FirebaseProviderType ProviderType => FirebaseProviderType.Facebook;
     }
 }

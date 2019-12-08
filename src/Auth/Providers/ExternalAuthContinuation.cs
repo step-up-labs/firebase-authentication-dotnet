@@ -5,21 +5,25 @@ namespace Firebase.Auth.Providers
 {
     public class ExternalAuthContinuation
     {
+        private readonly FirebaseAuthConfig config;
         private readonly VerifyAssertion verifyAssertion;
         private readonly GetAccountInfo accountInfo;
         private readonly string sessionId;
+        private readonly FirebaseProviderType providerType;
 
-        internal ExternalAuthContinuation(VerifyAssertion verifyAssertion, GetAccountInfo accountInfo, string uri, string sessionId)
+        internal ExternalAuthContinuation(FirebaseAuthConfig config, string uri, string sessionId, FirebaseProviderType providerType)
         {
-            this.verifyAssertion = verifyAssertion;
+            this.config = config;
+            this.verifyAssertion = new VerifyAssertion(config);
+            this.accountInfo = new GetAccountInfo(config);
             this.Uri = uri;
             this.sessionId = sessionId;
-            this.accountInfo = accountInfo;
+            this.providerType = providerType;
         }
 
         public string Uri { get; }
 
-        public async Task<(User, FirebaseAuthToken)> ContinueSignInAsync(string redirectUri)
+        public async Task<User> ContinueSignInAsync(string redirectUri)
         {
             var assertion = await this.verifyAssertion.ExecuteAsync(new VerifyAssertionRequest
             {
@@ -29,13 +33,13 @@ namespace Firebase.Auth.Providers
                 ReturnSecureToken = true
             }).ConfigureAwait(false);
 
-            var accountInfo = await this.accountInfo.ExecuteAsync(new GetAccountInfoRequest
+            var accountInfo = await this.accountInfo.ExecuteAsync(new IdTokenRequest
             {
                 IdToken = assertion.IdToken
             }).ConfigureAwait(false);
 
             var u = accountInfo.Users[0];
-            var user = new User
+            var userInfo = new UserInfo
             {
                 DisplayName = u.DisplayName,
                 FirstName = assertion.FirstName,
@@ -43,18 +47,20 @@ namespace Firebase.Auth.Providers
                 Email = u.Email ?? assertion.Email,
                 IsEmailVerified = u.EmailVerified,
                 FederatedId = assertion.FederatedId,
-                LocalId = u.LocalId,
-                PhotoUrl = u.PhotoUrl
+                Uid = u.LocalId,
+                PhotoUrl = u.PhotoUrl,
+                IsAnonymous = false
             };
 
-            var token = new FirebaseAuthToken
+            var token = new FirebaseCredential
             {
                 ExpiresIn = assertion.ExpiresIn,
                 RefreshToken = assertion.RefreshToken,
-                IdToken = assertion.IdToken
+                IdToken = assertion.IdToken,
+                ProviderType = this.providerType
             };
 
-            return (user, token);
+            return new User(this.config, userInfo, token);
         }
     }
 }

@@ -2,9 +2,9 @@
 
 namespace Firebase.Auth
 {
-    public class FirebaseAuthToken
+    public class FirebaseCredential
     {
-        public FirebaseAuthToken()
+        public FirebaseCredential()
         {
             this.Created = DateTime.Now;
         }
@@ -19,6 +19,8 @@ namespace Firebase.Auth
         /// Specifies in how many second the token expires in from the moment it was created.
         /// </summary>
         public int ExpiresIn { get; set; }
+
+        public FirebaseProviderType ProviderType { get; set; }
 
         /// <summary>
         /// Specifies whether the token already expired. 

@@ -2,6 +2,6 @@
 {
     public class TwitterProvider : ExternalAuthProvider
     {
-        public override FirebaseProviderType AuthType => FirebaseProviderType.Twitter;
+        public override FirebaseProviderType ProviderType => FirebaseProviderType.Twitter;
     }
 }
