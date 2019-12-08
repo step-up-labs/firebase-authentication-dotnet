@@ -26,6 +26,9 @@
         public int ExpiresIn { get; set; }
     }
 
+    /// <summary>
+    /// Verifies specified password matches the user's actual password.
+    /// </summary>
     public class VerifyPassword : FirebaseRequestBase<VerifyPasswordRequest, VerifyPasswordResponse>
     {
         public VerifyPassword(FirebaseAuthConfig config) : base(config)

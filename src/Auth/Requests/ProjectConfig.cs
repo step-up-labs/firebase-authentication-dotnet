@@ -2,14 +2,17 @@
 
 namespace Firebase.Auth.Requests
 {
-    internal class ProjectConfigResponse
+    public class ProjectConfigResponse
     {
         public string ProjectId { get; set; }
 
         public string[] AuthorizedDomains { get; set; }
     }
 
-    internal class ProjectConfig : FirebaseRequestBase<object, ProjectConfigResponse>
+    /// <summary>
+    /// Get basic config info about the firebase project.
+    /// </summary>
+    public class ProjectConfig : FirebaseRequestBase<object, ProjectConfigResponse>
     {
         public ProjectConfig(FirebaseAuthConfig config) : base(config)
         {

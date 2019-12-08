@@ -32,6 +32,9 @@ namespace Firebase.Auth.Requests
         public string Identifier { get; set; }
     }
 
+    /// <summary>
+    /// Creates oauth authentication uri that user needs to navigate to in order to authenticate.
+    /// </summary>
     public class CreateAuthUri : FirebaseRequestBase<CreateAuthUriRequest, CreateAuthUriResponse>
     {
         public CreateAuthUri(FirebaseAuthConfig config) : base(config)

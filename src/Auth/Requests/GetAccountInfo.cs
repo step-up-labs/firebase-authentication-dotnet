@@ -49,6 +49,9 @@ namespace Firebase.Auth.Requests
         public string RawId { get; set; }
     }
 
+    /// <summary>
+    /// Gets basic info about a user and his/her account.
+    /// </summary>
     public class GetAccountInfo : FirebaseRequestBase<IdTokenRequest, GetAccountInfoResponse>
     {
         public GetAccountInfo(FirebaseAuthConfig config) : base(config)

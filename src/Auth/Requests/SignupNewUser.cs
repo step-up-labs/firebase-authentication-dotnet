@@ -22,7 +22,9 @@
         public string LocalId { get; set; }
     }
 
-
+    /// <summary>
+    /// Creates a new user account.
+    /// </summary>
     public class SignupNewUser : FirebaseRequestBase<SignupNewUserRequest, SignupNewUserResponse>
     {
         public SignupNewUser(FirebaseAuthConfig config) : base(config)

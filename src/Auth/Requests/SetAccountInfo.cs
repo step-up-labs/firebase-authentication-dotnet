@@ -24,6 +24,9 @@
         public bool EmailVerified { get; set; }
     }
 
+    /// <summary>
+    /// Updates specified fields for the user's account.
+    /// </summary>
     public class SetAccountInfo : FirebaseRequestBase<SetAccountInfoRequest, SetAccountInfoResponse>
     {
         public SetAccountInfo(FirebaseAuthConfig config) : base(config)

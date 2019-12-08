@@ -21,6 +21,9 @@ namespace Firebase.Auth.Requests
         public string UserId { get; set; }
     }
 
+    /// <summary>
+    /// Refreshes IdToken using a refresh token.
+    /// </summary>
     public class RefreshToken : FirebaseRequestBase<RefreshTokenRequest, RefreshTokenResponse>
     {
         public RefreshToken(FirebaseAuthConfig config) : base(config)

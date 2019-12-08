@@ -12,6 +12,11 @@ namespace Firebase.Auth.Requests
         public string IdToken { get; set; }
     }
 
+    /// <summary>
+    /// Base class for issuing http requests against google <see cref="Endpoints"/>.
+    /// </summary>
+    /// <typeparam name="TRequest"> Specifies the type of request payload. </typeparam>
+    /// <typeparam name="TResponse"> Specifies the type of response payload. </typeparam>
     public abstract class FirebaseRequestBase<TRequest, TResponse>
     {
         protected readonly FirebaseAuthConfig config;

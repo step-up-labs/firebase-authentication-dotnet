@@ -48,6 +48,9 @@
         public string OauthIdToken { get; set; }
     }
 
+    /// <summary>
+    /// Finishes oauth authentication processing using the redirect_uri user is sent to in a browser.
+    /// </summary>
     public class VerifyAssertion : FirebaseRequestBase<VerifyAssertionRequest, VerifyAssertionResponse>
     {
         public VerifyAssertion(FirebaseAuthConfig config) : base(config)
