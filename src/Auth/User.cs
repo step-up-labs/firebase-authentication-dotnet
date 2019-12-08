@@ -5,7 +5,10 @@ namespace Firebase.Auth
 {
     public class User
     {
+        private const string TokenGrantType = "refresh_token";
+
         private readonly DeleteAccount deleteAccount;
+        private readonly RefreshToken token;
         private readonly FirebaseAuthConfig config;
 
         internal User(FirebaseAuthConfig config, UserInfo userInfo, FirebaseCredential credential)
@@ -14,17 +17,32 @@ namespace Firebase.Auth
             this.Info = userInfo;
             this.Credential = credential;
             this.deleteAccount = new DeleteAccount(config);
+            this.token = new RefreshToken(config);
         }
 
-        public UserInfo Info { get; }
+        public string Uid => this.Info.Uid;
 
-        public FirebaseCredential Credential { get; }
+        public UserInfo Info { get; private set; }
+
+        public FirebaseCredential Credential { get; private set; }
 
         public async Task<string> GetIdTokenAsync(bool forceRefresh = false)
         {
             if (forceRefresh || this.Credential.IsExpired())
             {
-                // refresh, set
+                var refresh = await this.token.ExecuteAsync(new RefreshTokenRequest
+                {
+                    GrantType = TokenGrantType,
+                    RefreshToken = this.Credential.RefreshToken
+                });
+
+                this.Credential = new FirebaseCredential
+                {
+                    ExpiresIn = refresh.ExpiresIn,
+                    IdToken = refresh.IdToken,
+                    ProviderType = this.Credential.ProviderType,
+                    RefreshToken = refresh.RefreshToken
+                };
             }
 
             return this.Credential.IdToken;

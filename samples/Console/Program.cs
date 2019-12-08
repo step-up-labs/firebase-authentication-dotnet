@@ -42,7 +42,7 @@ namespace Firebase.Auth.Sample
             if (i == config.Providers.Count())
             {
                 user = await client.SignInAnonymouslyAsync();
-                WriteLine($"You're anonymously signed with uid: {user.Info.Uid}");
+                WriteLine($"You're anonymously signed with uid: {user.Uid}");
             }
             else 
             {
@@ -55,8 +55,12 @@ namespace Firebase.Auth.Sample
                         return Task.FromResult(ReadLine());
                     });
 
-                WriteLine($"You're signed in as {user.Info.Uid} | {user.Info.DisplayName} | {user.Info.Email}");
+                WriteLine($"You're signed in as {user.Uid} | {user.Info.DisplayName} | {user.Info.Email}");
             }
+
+            WriteLine($"Trying to force refresh the idToken {user.Credential.IdToken}");
+            var token = await user.GetIdTokenAsync(true);
+            WriteLine($"Success, new token: {token}");
 
             WriteLine("Delete this account? [y/n]");
             if (ReadLine().ToLower() == "y")
