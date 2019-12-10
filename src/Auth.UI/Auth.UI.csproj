@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <Authors>Step Up Labs, Inc.</Authors>
+    <Description>TODO</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageIconUrl>https://github.com/step-up-labs/firebase-authentication-dotnet/raw/master/art/FirebaseLogo.128x128.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/step-up-labs/firebase-authentication-dotnet</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/step-up-labs/firebase-authentication-dotnet/blob/master/LICENSE</PackageLicenseUrl>
+    <IncludeSource>True</IncludeSource>
+    <IncludeSymbols>True</IncludeSymbols>
+    <Copyright>Step Up Labs, Inc. 2019</Copyright>
+    <PackageTags>Firebase Auth FirebaseUI Authentication Google Facebook Github Twitter Apple Email </PackageTags>
+    <LangVersion>8.0</LangVersion>
+    <AssemblyName>Firebase.Auth.UI</AssemblyName>
+    <RootNamespace>Firebase.Auth.UI</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Auth\Auth.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\anonymous.png" />
+    <Resource Include="Assets\facebook.png" />
+    <Resource Include="Assets\github.png" />
+    <Resource Include="Assets\google.png" />
+    <Resource Include="Assets\mail.png" />
+    <Resource Include="Assets\twitter.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Localizations\" />
+  </ItemGroup>
+
+</Project>

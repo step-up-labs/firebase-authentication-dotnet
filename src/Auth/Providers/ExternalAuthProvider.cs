@@ -10,10 +10,12 @@ namespace Firebase.Auth.Providers
     {
         protected VerifyAssertion verifyAssertion;
         protected readonly List<string> scopes;
+        protected readonly Dictionary<string, string> parameters;
 
         public ExternalAuthProvider()
         {
             this.scopes = new List<string>();
+            this.parameters = new Dictionary<string, string>();
         }
 
         public virtual FirebaseAuthProvider AddScopes(params string[] scopes)
@@ -23,16 +25,25 @@ namespace Firebase.Auth.Providers
             return this;
         }
 
+        public virtual FirebaseAuthProvider AddCustomParameters(params KeyValuePair<string, string>[] parameters)
+        {
+            parameters.ToList().ForEach(p => this.parameters.Add(p.Key, p.Value));
+
+            return this;
+        }
+
         internal virtual async Task<ExternalAuthContinuation> SignInAsync()
         {
+            if (!this.parameters.ContainsKey("hl"))
+            {
+                this.parameters["hl"] = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+            }
+
             var request = new CreateAuthUriRequest
             {
                 ContinueUri = this.GetContinueUri(),
                 ProviderId = this.ProviderType,
-                CustomParameters = new Dictionary<string, string>
-                {
-                    ["hl"] = CultureInfo.CurrentCulture.TwoLetterISOLanguageName
-                },
+                CustomParameters = this.parameters,
                 OauthScope = this.GetParsedOauthScopes(),
             };
 

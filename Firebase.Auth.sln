@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{E792
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{45BB6042-CCBC-49F0-822C-16A434856952}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.UI", "src\Auth.UI\Auth.UI.csproj", "{B0EE13F0-FEC4-4ACA-8EA5-E1369012C568}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{29EB197E-9AB0-4667-8AA7-9BF1D2FDC591}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29EB197E-9AB0-4667-8AA7-9BF1D2FDC591}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29EB197E-9AB0-4667-8AA7-9BF1D2FDC591}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0EE13F0-FEC4-4ACA-8EA5-E1369012C568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0EE13F0-FEC4-4ACA-8EA5-E1369012C568}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0EE13F0-FEC4-4ACA-8EA5-E1369012C568}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0EE13F0-FEC4-4ACA-8EA5-E1369012C568}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
