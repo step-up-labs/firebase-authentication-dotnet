@@ -1,83 +1,72 @@
-﻿function Convert-Everything([string] $rootDir, [string[]]$languages)
-{
-    $neutralStrings = "$rootDir/en.xml"
+﻿function Convert-Everything([string] $rootDir, [string[]]$languages) {
+  $neutralStrings = "$rootDir/en.xml"
 
-    Write-DesignerFile $neutralStrings | Out-File -FilePath '../src/Auth.UI/Localizations/AppResources.Designer.cs'
-    Convert-StringsToResX $neutralStrings | Out-File -FilePath 'AppResources.resx' -encoding utf8
+  Write-DesignerFile $neutralStrings | Out-File -FilePath '../src/Auth.UI/Localizations/AppResources.Designer.cs'
+  Convert-StringsToResX $neutralStrings | Out-File -FilePath '../src/Auth.UI/Localizations/AppResources.resx' -encoding utf8
     
-    $languages | ForEach-Object { 
-                    $lng = $_
-                    Convert-StringsToResX "$rootDir/$lng.xml" | Out-File -FilePath "../src/Auth.UI/Localizations/Resources.$lng.resx" -encoding utf8
-                }
+  $languages | ForEach-Object { 
+    $lng = $_
+    Convert-StringsToResX "$rootDir/$lng.xml" | Out-File -FilePath "../src/Auth.UI/Localizations/AppResources.$lng.resx" -encoding utf8
+  }
 }
 
-function Convert-StringsToResX([string] $strings)
-{
-    Write-ResXHeader
+function Convert-StringsToResX([string] $strings) {
+  Write-ResXHeader
 
-	# android strings
-    [string]$xmlString = Get-Content -Path $strings -Encoding UTF8
-    [xml]$xml = $xmlString.Replace('&lt;! [CDATA [', '<![CDATA[').Replace('&lt;![CDATA [', '<![CDATA[')
-    $nodes = $xml.SelectNodes("/resources/string")
-    foreach ($node in $nodes) 
-    {
-        #Write-Output $("{0,-50} : $($node.InnerText)" -f $node.name)
-		$value = $node.InnerXml
+  # android strings
+  [string]$xmlString = Get-Content -Path $strings -Encoding UTF8
+  [xml]$xml = $xmlString.Replace('&lt;! [CDATA [', '<![CDATA[').Replace('&lt;![CDATA [', '<![CDATA[')
+  $nodes = $xml.SelectNodes("/resources/string")
+  foreach ($node in $nodes) {
+    #Write-Output $("{0,-50} : $($node.InnerText)" -f $node.name)
+    $value = $node.InnerText
 
-		if ($useMap)
-        {
-			if ($map.Keys -contains $node.name)
-			{
-				$value = $value.Replace('%s', '').Replace('%1$s', '').Replace('%2$s', '').Replace('%3$s', '').Replace('%4$s', '').Replace(':', '').Replace('<b>', '').Replace('</b>', '').Replace('<![CDATA[', '').Replace(']]>', '')
-				$value = $value.Trim()
-				$value = $value.Substring(0, 1).ToUpper() + $value.Substring(1, $value.Length - 1)
-				Write-ResXItem $map[$node.name] $value
-			}
-		}
-		else 
-		{
-			Write-ResXItem $node.name $value
-		}
+    if ($useMap) {
+      if ($map.Keys -contains $node.name) {
+        $value = $value.Replace('%s', '').Replace('%1$s', '').Replace('%2$s', '').Replace('%3$s', '').Replace('%4$s', '').Replace(':', '').Replace('<b>', '').Replace('</b>', '').Replace('<![CDATA[', '').Replace(']]>', '')
+        $value = $value.Trim()
+        $value = $value.Substring(0, 1).ToUpper() + $value.Substring(1, $value.Length - 1)
+        Write-ResXItem $map[$node.name] $value
+      }
     }
-
-	# android strings plurals
-	$nodes = $xml.SelectNodes("/resources/plurals")
-    foreach ($node in $nodes) 
-    {
-        #Write-Output $("{0,-50} : $($node.InnerText)" -f $node.name)
-		foreach ($item in $node.SelectNodes("item")) 
-		{ 
-			$value = $item.InnerXml
-
-			if (-Not($useMap))
-			{
-				Write-ResXItem "$($node.name)_$($item.quantity)" $value
-			}
-		}
+    else {
+      Write-ResXItem $node.name $value
     }
+  }
 
-    Write-ResXFooter
+  # android strings plurals
+  $nodes = $xml.SelectNodes("/resources/plurals")
+  foreach ($node in $nodes) {
+    #Write-Output $("{0,-50} : $($node.InnerText)" -f $node.name)
+    foreach ($item in $node.SelectNodes("item")) { 
+      $value = $item.InnerText
+
+      if (-Not($useMap)) {
+        Write-ResXItem "$($node.name)_$($item.quantity)" $value
+      }
+    }
+  }
+
+  Write-ResXFooter
 }
 
-function Write-ResXItem([string] $name, [string] $value) 
-{
-	$text = $value -replace "â€¦", "…" -replace "&amp;","&" -replace "\\'", "'" -replace "%%", "%" -replace 'â€™', "'" -replace 'â€“', '-' -replace '%s', '{0}' -replace '%d', '{0}' -replace '%1\$s', '{0}' -replace '%2\$s', '{1}' -replace '%3\$s','{2}' -replace '%4\$s','{3}' -replace '%1\$d', '{0}' -replace '%2\$d', '{1}' -replace '\\n',"`n"
-	$text = $text -replace "Google Play", 'Microsoft Store' -replace "v Obchodu Play", 'v Microsoft Store'
+function Write-ResXItem([string] $name, [string] $value) {
+  $text = $value -replace "â€¦", "…" -replace "&amp;", "&" -replace "\\'", "'" -replace "%%", "%" -replace 'â€™', "'" -replace 'â€“', '-' -replace '%s', '{0}' -replace '%d', '{0}' -replace '%1\$s', '{0}' -replace '%2\$s', '{1}' -replace '%3\$s', '{2}' -replace '%4\$s', '{3}' -replace '%1\$d', '{0}' -replace '%2\$d', '{1}' -replace '\\n', "`n"
+  $text = $text -replace "Google Play", 'Microsoft Store' -replace "v Obchodu Play", 'v Microsoft Store'
 	
-	$startData = ''
-	$endData = ''
-	if (-Not($text.StartsWith('<![CDATA['))) {
-		$startData = '<![CDATA['
-		$endData = ']]>'
-	}
-    Write-Output "  <data name=`"$name`" xml:space=`"preserve`">
+  $startData = ''
+  $endData = ''
+  if (-Not($text.StartsWith('<![CDATA['))) {
+    $startData = '<![CDATA['
+    $endData = ']]>'
+  }
+  Write-Output "  <data name=`"$name`" xml:space=`"preserve`">
     <value>$startData$text$endData</value>
   </data>"
 }
 
-function Write-ResXHeader 
-{
-    Write-Output '<?xml version="1.0" encoding="utf-8"?>
+function Write-ResXHeader {
+  Write-Output '<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -140,44 +129,38 @@ function Write-ResXHeader
 '
 }
 
-function Write-ResXFooter 
-{
-    Write-Output '
+function Write-ResXFooter {
+  Write-Output '
 </root>'
 } 
 
-function Write-DesignerFile([string] $neutralResource)
-{
-    Write-DesignerHeader
+function Write-DesignerFile([string] $neutralResource) {
+  Write-DesignerHeader
 
-    # strings
-    [xml]$neutralXml = Get-Content -Path $neutralResource
-    $nodes = $neutralXml.SelectNodes("/resources/string")
-    foreach ($node in $nodes) 
-    {
-        Write-DesignerProperty $node.name $node.InnerText
+  # strings
+  [xml]$neutralXml = Get-Content -Path $neutralResource
+  $nodes = $neutralXml.SelectNodes("/resources/string")
+  foreach ($node in $nodes) {
+    Write-DesignerProperty $node.name $node.InnerText
+  }
+
+  # plurals
+  $nodes = $neutralXml.SelectNodes("/resources/plurals")
+  foreach ($node in $nodes) {
+    foreach ($item in $node.SelectNodes("item")) { 
+      Write-DesignerProperty "$($node.name)_$($item.quantity)" $item.InnerText
     }
 
-    # plurals
-	$nodes = $neutralXml.SelectNodes("/resources/plurals")
-    foreach ($node in $nodes) 
-    {
-		foreach ($item in $node.SelectNodes("item")) 
-		{ 
-			Write-DesignerProperty "$($node.name)_$($item.quantity)" $item.InnerXml
-		}
+    Write-PluralMethod $node.name
+  }
 
-		Write-PluralMethod $node.name
-    }
-
-    Write-DesignerFooter
+  Write-DesignerFooter
 
 }
 
-function Write-PluralMethod([string] $name) 
-{
-    $camel = ($name -csplit '_' | foreach { (Get-Culture).TextInfo.ToTitleCase($_) }) -join ''
-	Write-Output "        public string $($camel)WithCount(int count) {
+function Write-PluralMethod([string] $name) {
+  $camel = ($name -csplit '_' | foreach { (Get-Culture).TextInfo.ToTitleCase($_) }) -join ''
+  Write-Output "        public string $($camel)WithCount(int count) {
             var key = `"`";
 			switch (count)
             {
@@ -197,11 +180,10 @@ function Write-PluralMethod([string] $name)
 "
 }
 
-function Write-DesignerProperty([string] $name, [string] $value) 
-{
-    $camel = ($name -csplit '_' | foreach { (Get-Culture).TextInfo.ToTitleCase($_) }) -join ''
-	$val = $value -replace '\\"', '""' -replace "`n"," " -replace "`r"," "
-    Write-Output "        /// <summary>
+function Write-DesignerProperty([string] $name, [string] $value) {
+  $camel = ($name -csplit '_' | foreach { (Get-Culture).TextInfo.ToTitleCase($_) }) -join ''
+  $val = $value -replace '\\"', '""' -replace "`n", " " -replace "`r", " "
+  Write-Output "        /// <summary>
         /// $val
         /// </summary>
 		public string $camel {
@@ -213,9 +195,8 @@ function Write-DesignerProperty([string] $name, [string] $value)
 "
 }
 
-function Write-DesignerHeader 
-{
-    Write-Output '//------------------------------------------------------------------------------
+function Write-DesignerHeader {
+  Write-Output '//------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was generated by a tool.
 //     Runtime Version:4.0.30319.42000
@@ -225,7 +206,7 @@ function Write-DesignerHeader
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SettleUp.Localization.Resources 
+namespace Firebase.Auth.UI.Resources 
 {
     using System;
 	
@@ -258,7 +239,7 @@ namespace SettleUp.Localization.Resources
         public global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SettleUp.Localization.Resources.AppResources", typeof(AppResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Firebase.Auth.UI.Resources.AppResources", typeof(AppResources).Assembly);
                     this.resourceMan = temp;
                 }
                 return resourceMan;
@@ -287,39 +268,34 @@ namespace SettleUp.Localization.Resources
 '
 }
 
-function Write-DesignerFooter 
-{
-    Write-Output '    }
+function Write-DesignerFooter {
+  Write-Output '    }
 }'
 }
 
-function Download-Localizations([string] $folder, [string[]]$languages)
-{
-    if (-not(Test-Path $folder)) 
-    {
-        mkdir $folder
-    }
+function Download-Localizations([string] $folder, [string[]]$languages) {
+  if (-not(Test-Path $folder)) {
+    mkdir $folder
+  }
 
-    Write-Output "Starting"
+  Write-Output "Starting"
 
-    # English
-    Invoke-WebRequest -uri "https://raw.githubusercontent.com/firebase/FirebaseUI-Android/master/auth/src/main/res/values/strings.xml" -OutFile "$folder/en.xml"
+  # English
+  Invoke-WebRequest -uri "https://raw.githubusercontent.com/firebase/FirebaseUI-Android/master/auth/src/main/res/values/strings.xml" -OutFile "$folder/en.xml"
 
-    $languages | foreach {
+  $languages | foreach {
 
-        $lng = $_
-        try 
-        {
-            Write-Output "Downloading $lng"
+    $lng = $_
+    try {
+      Write-Output "Downloading $lng"
              
-            # Firebase Auth
-            Invoke-WebRequest -uri "https://raw.githubusercontent.com/firebase/FirebaseUI-Android/master/auth/src/main/res/values-$lng/strings.xml" -OutFile "$folder/$lng.xml"
-        }
-        catch 
-        {
-            Write-Error "Couldn't fetch language file '$lng'"
-        }
+      # Firebase Auth
+      Invoke-WebRequest -uri "https://raw.githubusercontent.com/firebase/FirebaseUI-Android/master/auth/src/main/res/values-$lng/strings.xml" -OutFile "$folder/$lng.xml"
     }
+    catch {
+      Write-Error "Couldn't fetch language file '$lng'"
+    }
+  }
 }
 
 [string[]]$languages = 
