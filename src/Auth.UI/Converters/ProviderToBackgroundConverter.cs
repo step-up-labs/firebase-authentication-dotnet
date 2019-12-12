@@ -2,7 +2,7 @@
 {
     public class ProviderToBackgroundConverter
     {
-        public string Convert(FirebaseProviderType provider)
+        public static string Convert(FirebaseProviderType provider)
         {
             switch (provider)
             {
@@ -14,7 +14,7 @@
                 case FirebaseProviderType.EmailAndPassword: return "#db4437";
                 case FirebaseProviderType.Anonymous: return "#f4b400";
                 default:
-                    return string.Empty;
+                    return "#000000";
             }
         }
     }

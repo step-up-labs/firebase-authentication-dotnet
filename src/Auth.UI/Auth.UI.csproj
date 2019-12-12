@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Localizations\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>

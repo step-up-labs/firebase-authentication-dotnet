@@ -1,8 +1,8 @@
 ﻿namespace Firebase.Auth.UI.Converters
 {
-    public class ProviderToForeground
+    public class ProviderToForegroundConverter
     {
-        public string Convert(FirebaseProviderType provider)
+        public static string Convert(FirebaseProviderType provider)
         {
             switch (provider)
             {
