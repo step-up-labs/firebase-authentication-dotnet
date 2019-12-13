@@ -13,7 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{E792
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{45BB6042-CCBC-49F0-822C-16A434856952}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.UI", "src\Auth.UI\Auth.UI.csproj", "{B0EE13F0-FEC4-4ACA-8EA5-E1369012C568}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.UI", "src\Auth.UI\Auth.UI.csproj", "{B0EE13F0-FEC4-4ACA-8EA5-E1369012C568}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.UI.WPF", "src\Auth.UI.WPF\Auth.UI.WPF.csproj", "{CC36F2B5-39F0-4C1A-A2C3-7D5592B1376A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{B0EE13F0-FEC4-4ACA-8EA5-E1369012C568}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0EE13F0-FEC4-4ACA-8EA5-E1369012C568}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0EE13F0-FEC4-4ACA-8EA5-E1369012C568}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC36F2B5-39F0-4C1A-A2C3-7D5592B1376A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC36F2B5-39F0-4C1A-A2C3-7D5592B1376A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC36F2B5-39F0-4C1A-A2C3-7D5592B1376A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC36F2B5-39F0-4C1A-A2C3-7D5592B1376A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +50,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{655E7C1A-A2F2-4505-A92F-58088BB01001} = {45BB6042-CCBC-49F0-822C-16A434856952}
 		{29EB197E-9AB0-4667-8AA7-9BF1D2FDC591} = {E7929450-C7E2-433F-9AB9-7AFC6C418054}
+		{9C0B8B45-EDB0-40EF-A76E-F5E1401364B5} = {E7929450-C7E2-433F-9AB9-7AFC6C418054}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EBE8EC40-A988-4401-8C7E-61E1165C7D46}

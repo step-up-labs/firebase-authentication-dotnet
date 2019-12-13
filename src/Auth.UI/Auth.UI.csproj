@@ -22,17 +22,4 @@
     <ProjectReference Include="..\Auth\Auth.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="Assets\anonymous.png" />
-    <Resource Include="Assets\facebook.png" />
-    <Resource Include="Assets\github.png" />
-    <Resource Include="Assets\google.png" />
-    <Resource Include="Assets\mail.png" />
-    <Resource Include="Assets\twitter.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
-
 </Project>

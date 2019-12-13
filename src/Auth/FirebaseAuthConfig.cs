@@ -95,5 +95,10 @@ namespace Firebase.Auth
             get;
             set;
         }
+
+        /// <summary>
+        /// Specifies the uri that external auth provider will navigate to ti finish auth.
+        /// </summary>
+        public string RedirectUri => $"https://{this.AuthDomain}/__/auth/handler";
     }
 }
