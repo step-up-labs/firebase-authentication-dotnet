@@ -33,7 +33,7 @@ namespace Firebase.Auth.Providers
 
             var response = await this.createAuthUri.ExecuteAsync(request).ConfigureAwait(false);
 
-            return new CheckUserRessult(response.Registered, response.SigninMethods);
+            return new CheckUserRessult(email, response.Registered, response.SigninMethods);
         }
 
         public async Task<User> SignInUserAsync(string email, string password)
@@ -120,12 +120,14 @@ namespace Firebase.Auth.Providers
 
     public class CheckUserRessult
     {
-        public CheckUserRessult(bool exists, IReadOnlyCollection<FirebaseProviderType> signinProviders)
+        public CheckUserRessult(string email, bool exists, IReadOnlyCollection<FirebaseProviderType> signinProviders)
         {
+            this.Email = email;
             this.UserExists = exists;
             this.SigninProviders = signinProviders;
         }
 
+        public string Email { get; }
         public bool UserExists { get; }
 
         public IReadOnlyCollection<FirebaseProviderType> SigninProviders { get; }

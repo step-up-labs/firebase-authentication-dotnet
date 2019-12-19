@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <Resource Include="..\Auth.UI\Assets\anonymous.png" Link="Assets\anonymous.png" />
+    <Resource Include="..\Auth.UI\Assets\apple.png" Link="Assets\apple.png" />
     <Resource Include="..\Auth.UI\Assets\facebook.png" Link="Assets\facebook.png" />
     <Resource Include="..\Auth.UI\Assets\github.png" Link="Assets\github.png" />
     <Resource Include="..\Auth.UI\Assets\google.png" Link="Assets\google.png" />

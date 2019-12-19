@@ -3,23 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:ui="clr-namespace:Firebase.Auth.UI"
              mc:Ignorable="d" 
              Background="White"
              d:DesignHeight="750" 
              d:DesignWidth="450">
-    <Grid VerticalAlignment="Center">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
 
-        <ContentPresenter 
-            Content="{Binding Header}"
-            />
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
 
-        <ui:FirebaseUILogin
-            Grid.Row="1"
+    <Grid 
+        x:Name="LoginControl" 
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
+
+        <Frame 
+            x:Name="Frame"
+            MaxWidth="400"
+            NavigationUIVisibility="Hidden"
+            IsTabStop="False"
+            Focusable="False"
             />
     </Grid>
 </UserControl>

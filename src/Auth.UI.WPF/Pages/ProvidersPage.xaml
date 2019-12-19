@@ -1,32 +1,36 @@
-﻿<UserControl x:Class="Firebase.Auth.UI.FirebaseUILogin"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:converters="clr-namespace:Firebase.Auth.UI.Converters"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" 
-             d:DesignWidth="400">
-    <Grid
-        x:Name="FirebaseAuthControl"
-        MaxWidth="300"
-        VerticalAlignment="Center">
+﻿<Page x:Class="Firebase.Auth.UI.Pages.ProvidersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="600" 
+      d:DesignWidth="400">
 
-        <Grid.Resources>
-            <converters:BackgroundConverter x:Key="BackgroundConverter" />
-            <converters:ForegroundConverter x:Key="ForegroundConverter" />
-            <converters:TitleConverter x:Key="TitleConverter" />
-            <converters:AssetConverter x:Key="AssetConverter" />
-        </Grid.Resources>
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    
+    <Grid x:Name="FirebaseAuthControl">
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ScrollViewer
+        <ContentPresenter 
+            Content="{Binding Header}"
+            />
+
+        <ScrollViewer 
+            Grid.Row="1"
             VerticalScrollBarVisibility="Hidden">
-            <ItemsControl ItemsSource="{Binding Providers}">
+            <ItemsControl HorizontalAlignment="Center" ItemsSource="{Binding Providers}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel />
@@ -55,6 +59,7 @@
                                     <Setter Property="FontSize" Value="14" />
                                     <Setter Property="FontWeight" Value="Medium" />
                                     <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="Margin" Value="0 0 12 0" />
                                 </Style>
 
                                 <Style TargetType="Image">
@@ -95,12 +100,8 @@
 
         <TextBlock 
             x:Name="FooterTextBlock"
-            Grid.Row="1" 
-            TextWrapping="Wrap"
-            TextAlignment="Center"
-            Margin="12" 
+            Grid.Row="2"
+            Style="{StaticResource FuiTextBlockFooterStyle}"
             />
-
-
     </Grid>
-</UserControl>
+</Page>
