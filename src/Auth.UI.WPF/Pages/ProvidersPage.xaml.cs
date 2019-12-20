@@ -70,12 +70,7 @@ namespace Firebase.Auth.UI.Pages
             var button = sender as Button;
             var provider = (FirebaseProviderType)button.DataContext;
 
-            var user = await FirebaseUI.Instance.SignInAsync(this.Flow, provider);
-
-            if (user != null)
-            {
-                MessageBox.Show($"{user.Info.DisplayName} | {user.Uid}");
-            }
+            await FirebaseUI.Instance.SignInAsync(this.Flow, provider);
         }
     }
 }

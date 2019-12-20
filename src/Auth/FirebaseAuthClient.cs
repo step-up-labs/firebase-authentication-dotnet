@@ -13,6 +13,7 @@ namespace Firebase.Auth
         private readonly SignupNewUser signupNewUser;
 
         private bool domainChecked;
+        private event EventHandler<UserEventArgs> authStateChanged;
         
         public FirebaseAuthClient(FirebaseAuthConfig config)
         {
@@ -23,6 +24,30 @@ namespace Firebase.Auth
             foreach (var provider in this.config.Providers)
             {
                 provider.Initialize(this.config);
+            }
+
+            this.config.UserRepository.UserChanged += (s, e) => this.TriggerAuthStateChanged(this.authStateChanged, e.User);
+        }
+
+        public User User
+        {
+            get;
+            private set;
+        }
+
+        public event EventHandler<UserEventArgs> AuthStateChanged
+        {
+            add
+            {
+                this.authStateChanged += value;
+                if (this.User == null)
+                {
+                    this.config.UserRepository.GetUserAsync().ContinueWith(t => this.TriggerAuthStateChanged(value, t.Result));
+                }
+            }
+            remove
+            {
+                this.authStateChanged -= value;
             }
         }
 
@@ -102,9 +127,22 @@ namespace Firebase.Auth
             return result;
         }
 
-        private Task SaveTokenAsync(User user)
+        public async Task SignOutAsync()
         {
-            return this.config.UserRepository.SaveTokenAsync(user);
+            await this.config.UserRepository.SaveUserAsync(null);
+            this.User = null;
+            this.authStateChanged?.Invoke(this, new UserEventArgs(null));
+        }
+
+        private void TriggerAuthStateChanged(EventHandler<UserEventArgs> value, User user)
+        {
+            this.User = user;
+            value?.Invoke(this, new UserEventArgs(user));
+        }
+
+        private async Task SaveTokenAsync(User user)
+        {
+            await this.config.UserRepository.SaveUserAsync(user);
         }
 
         private FirebaseAuthProvider GetAuthProvider(FirebaseProviderType authType)
@@ -152,7 +190,9 @@ namespace Firebase.Auth
     {
         Task<User> GetUserAsync();
 
-        Task SaveTokenAsync(User credential);
+        Task SaveUserAsync(User user);
+
+        event EventHandler<UserEventArgs> UserChanged;
     }
 
     public class InMemoryFirebaseTokenRepository : IFirebaseTokenRepository
@@ -161,15 +201,18 @@ namespace Firebase.Auth
 
         private User user;
 
+        public event EventHandler<UserEventArgs> UserChanged;
+
         private InMemoryFirebaseTokenRepository()
         {
         }
 
         public static InMemoryFirebaseTokenRepository Instance => instance ?? (instance = new InMemoryFirebaseTokenRepository());
 
-        public Task SaveTokenAsync(User user)
+        public Task SaveUserAsync(User user)
         {
             this.user = user;
+            this.UserChanged?.Invoke(this, new UserEventArgs(user));
             return Task.CompletedTask;
         }
 

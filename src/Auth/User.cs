@@ -43,6 +43,8 @@ namespace Firebase.Auth
                     ProviderType = this.Credential.ProviderType,
                     RefreshToken = refresh.RefreshToken
                 };
+
+                await this.config.UserRepository.SaveUserAsync(this);
             }
 
             return this.Credential.IdToken;

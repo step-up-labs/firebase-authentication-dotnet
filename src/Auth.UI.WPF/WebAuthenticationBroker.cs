@@ -1,11 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using Firebase.Auth.UI.Converters;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Firebase.Auth.UI
 {
     public static class WebAuthenticationBroker
     {
-        public static Task<string> AuthenticateAsync(Window owner, string uri, string redirectUri)
+        public static Task<string> AuthenticateAsync(Window owner, FirebaseProviderType provider, string uri, string redirectUri)
         {
             var tcs = new TaskCompletionSource<string>();
 
@@ -20,6 +21,7 @@ namespace Firebase.Auth.UI
                         window.Close();
                     }
                 };
+                window.Title = ProviderToTitleConverter.Convert(provider);
                 window.WebView.Loaded += (s, e) => window.WebView.Navigate(uri);
                 window.Owner = owner;
                 window.ShowDialog();

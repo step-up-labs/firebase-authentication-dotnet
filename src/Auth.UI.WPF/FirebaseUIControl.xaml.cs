@@ -25,6 +25,14 @@ namespace Firebase.Auth.UI
             this.signUpPage = new SignUpPage();
             this.providersPage = new ProvidersPage(this);
             this.Frame.Navigate(providersPage);
+            this.Loaded += this.ControlLoaded;
+        }
+
+        public event EventHandler<UserEventArgs> AuthStateChanged;
+
+        private void ControlLoaded(object sender, RoutedEventArgs e)
+        {
+            FirebaseUI.Instance.Client.AuthStateChanged += (s, e) => this.AuthStateChanged?.Invoke(s, e);
         }
 
         public object Header
@@ -47,7 +55,7 @@ namespace Firebase.Auth.UI
             var redirectUri = FirebaseUI.Instance.Config.RedirectUri;
             var window = Window.GetWindow(this);
 
-            return FirebaseUI.Instance.Client.SignInExternallyAsync(provider, uri => WebAuthenticationBroker.AuthenticateAsync(window, uri, redirectUri));
+            return FirebaseUI.Instance.Client.SignInExternallyAsync(provider, uri => WebAuthenticationBroker.AuthenticateAsync(window, provider, uri, redirectUri));
         }
 
         Task<string> IFirebaseUIFlow.PromptForEmailAsync(string error)

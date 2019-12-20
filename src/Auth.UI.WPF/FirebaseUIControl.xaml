@@ -25,6 +25,7 @@
             x:Name="Frame"
             MaxWidth="400"
             NavigationUIVisibility="Hidden"
+            JournalOwnership="OwnsJournal"
             IsTabStop="False"
             Focusable="False"
             />
