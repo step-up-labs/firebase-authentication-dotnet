@@ -26,6 +26,7 @@
             MaxWidth="400"
             NavigationUIVisibility="Hidden"
             JournalOwnership="OwnsJournal"
+            Navigating="FrameNavigating"
             IsTabStop="False"
             Focusable="False"
             />

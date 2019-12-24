@@ -24,7 +24,7 @@
                         Margin="12"
                         TextWrapping="Wrap"
                         TextAlignment="Center"
-                        Text="Don't forget to add your API Key & Domain in App.xaml.cs"
+                        Text="Don't forget to add your API Key &amp; Domain in App.xaml.cs"
                         />
                 </StackPanel>
             </UI:FirebaseUIControl.Header>

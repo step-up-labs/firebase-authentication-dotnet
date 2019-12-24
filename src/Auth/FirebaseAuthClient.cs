@@ -42,7 +42,17 @@ namespace Firebase.Auth
                 this.authStateChanged += value;
                 if (this.User == null)
                 {
-                    this.config.UserRepository.GetUserAsync().ContinueWith(t => this.TriggerAuthStateChanged(value, t.Result));
+                    this.config.UserRepository.GetUserAsync().ContinueWith(t =>
+                    {
+                        if (t.Result.Item1 == null)
+                        {
+                            this.TriggerAuthStateChanged(value, null);
+                        }
+                        else
+                        {
+                            this.TriggerAuthStateChanged(value, new User(this.config, t.Result.info, t.Result.credential));
+                        }
+                    });
                 }
             }
             remove
@@ -183,42 +193,6 @@ namespace Firebase.Auth
             }
 
             this.domainChecked = true;
-        }
-    }
-
-    public interface IFirebaseTokenRepository
-    {
-        Task<User> GetUserAsync();
-
-        Task SaveUserAsync(User user);
-
-        event EventHandler<UserEventArgs> UserChanged;
-    }
-
-    public class InMemoryFirebaseTokenRepository : IFirebaseTokenRepository
-    {
-        private static InMemoryFirebaseTokenRepository instance;
-
-        private User user;
-
-        public event EventHandler<UserEventArgs> UserChanged;
-
-        private InMemoryFirebaseTokenRepository()
-        {
-        }
-
-        public static InMemoryFirebaseTokenRepository Instance => instance ?? (instance = new InMemoryFirebaseTokenRepository());
-
-        public Task SaveUserAsync(User user)
-        {
-            this.user = user;
-            this.UserChanged?.Invoke(this, new UserEventArgs(user));
-            return Task.CompletedTask;
-        }
-
-        public Task<User> GetUserAsync()
-        {
-            return Task.FromResult(this.user);
         }
     }
 }

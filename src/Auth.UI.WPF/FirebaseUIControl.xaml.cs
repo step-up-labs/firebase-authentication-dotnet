@@ -86,5 +86,13 @@ namespace Firebase.Auth.UI
                 this.Frame.GoBack();
             }
         }
+
+        private void FrameNavigating(object sender, System.Windows.Navigation.NavigatingCancelEventArgs e)
+        {
+            if (e.Uri?.ToString().StartsWith("http") ?? false)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

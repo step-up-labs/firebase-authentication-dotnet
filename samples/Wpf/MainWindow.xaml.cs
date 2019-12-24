@@ -20,7 +20,7 @@ namespace Firebase.Auth.Wpf.Sample
                 {
                     this.Frame.Navigate(new LoginPage());
                 }
-                else if (this.Frame.Content.GetType() != typeof(MainPage))
+                else if (this.Frame.Content == null || this.Frame.Content.GetType() != typeof(MainPage))
                 {
                     this.Frame.Navigate(new MainPage());
                 }
