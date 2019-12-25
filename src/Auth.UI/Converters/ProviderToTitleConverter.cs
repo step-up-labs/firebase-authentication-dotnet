@@ -18,6 +18,8 @@ namespace Firebase.Auth.UI.Converters
                     return AppResources.Instance.FuiSignInWithTwitter;
                 case FirebaseProviderType.Microsoft:
                     return AppResources.Instance.FuiSignInWithMicrosoft;
+                case FirebaseProviderType.Apple:
+                    return AppResources.Instance.FuiSignInWithApple;
                 case FirebaseProviderType.EmailAndPassword:
                     return AppResources.Instance.FuiSignInWithEmail;
                 case FirebaseProviderType.Anonymous:

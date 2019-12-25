@@ -6,17 +6,10 @@
         {
             switch (provider)
             {
-                case FirebaseProviderType.Facebook:
-                case FirebaseProviderType.Google:
-                case FirebaseProviderType.Github:
-                case FirebaseProviderType.Twitter:
-                case FirebaseProviderType.Microsoft:
-                case FirebaseProviderType.Anonymous:
-                    return $"/Assets/{provider.ToString().ToLower()}.png";
                 case FirebaseProviderType.EmailAndPassword:
                     return "/Assets/mail.png";
                 default:
-                    return string.Empty;
+                    return $"/Assets/{provider.ToString().ToLower()}.png";
             }
         }
     }

@@ -22,6 +22,9 @@ namespace Firebase.Auth
         [EnumMember(Value = "microsoft.com")]
         Microsoft,
 
+        [EnumMember(Value = "apple.com")]
+        Apple,
+
         [EnumMember(Value = "password")]
         EmailAndPassword,
 

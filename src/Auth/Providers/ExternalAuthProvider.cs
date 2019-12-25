@@ -34,9 +34,9 @@ namespace Firebase.Auth.Providers
 
         internal virtual async Task<ExternalAuthContinuation> SignInAsync()
         {
-            if (!this.parameters.ContainsKey("hl"))
+            if (this.LocaleParameterName != null && !this.parameters.ContainsKey(this.LocaleParameterName))
             {
-                this.parameters["hl"] = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+                this.parameters[this.LocaleParameterName] = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
             }
 
             var request = new CreateAuthUriRequest
@@ -51,6 +51,8 @@ namespace Firebase.Auth.Providers
 
             return new ExternalAuthContinuation(this.config, response.AuthUri, response.SessionId, this.ProviderType);
         }
+
+        protected virtual string LocaleParameterName => null;
 
         protected string GetParsedOauthScopes()
         {

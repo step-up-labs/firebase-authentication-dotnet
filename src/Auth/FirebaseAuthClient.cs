@@ -63,15 +63,16 @@ namespace Firebase.Auth
 
         public async Task<User> SignInExternallyAsync(FirebaseProviderType authType, ExternalSignInDelegate externalSignInDelegate)
         {
-            if (!IsProviderExternal(authType))
+            var provider = this.GetAuthProvider(authType);
+
+            if (!(provider is ExternalAuthProvider externalProvider))
             {
                 throw new InvalidOperationException("You cannot sign in with this provider using this method.");
             }
 
             await this.CheckAuthDomain().ConfigureAwait(false);
 
-            var provider = (ExternalAuthProvider)this.GetAuthProvider(authType);
-            var continuation = await provider.SignInAsync().ConfigureAwait(false);
+            var continuation = await externalProvider.SignInAsync().ConfigureAwait(false);
             var redirectUri = await externalSignInDelegate(continuation.Uri).ConfigureAwait(false);
             var user = await continuation.ContinueSignInAsync(redirectUri).ConfigureAwait(false);
 
@@ -159,24 +160,6 @@ namespace Firebase.Auth
         {
             return this.config.Providers.FirstOrDefault(f => f.ProviderType == authType) 
                 ?? throw new InvalidOperationException($"Provider {authType} is not configured, you need to add it to your FirebaseAuthConfig");
-        }
-
-        private bool IsProviderExternal(FirebaseProviderType authType)
-        {
-            switch (authType)
-            {
-                case FirebaseProviderType.Facebook:
-                case FirebaseProviderType.Google:
-                case FirebaseProviderType.Github:
-                case FirebaseProviderType.Twitter:
-                case FirebaseProviderType.Microsoft:
-                    return true;
-                case FirebaseProviderType.EmailAndPassword:
-                case FirebaseProviderType.Anonymous:
-                    return false;
-                default:
-                    throw new ArgumentException("Unknown provider");
-            }
         }
 
         private async Task CheckAuthDomain()

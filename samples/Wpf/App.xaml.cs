@@ -22,6 +22,7 @@ namespace Firebase.Auth.Wpf.Sample
                 {
                     new GoogleProvider(),
                     new FacebookProvider(),
+                    new AppleProvider(),
                     new TwitterProvider(),
                     new GithubProvider(),
                     new MicrosoftProvider(),

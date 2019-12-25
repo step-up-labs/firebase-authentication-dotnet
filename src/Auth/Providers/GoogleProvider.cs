@@ -10,5 +10,7 @@
         }
 
         public override FirebaseProviderType ProviderType => FirebaseProviderType.Google;
+
+        protected override string LocaleParameterName => "hl";
     }
 }

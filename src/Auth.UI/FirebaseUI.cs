@@ -55,18 +55,12 @@ namespace Firebase.Auth.UI
         {
             switch (provider)
             {
-                case FirebaseProviderType.Facebook:
-                case FirebaseProviderType.Google:
-                case FirebaseProviderType.Github:
-                case FirebaseProviderType.Twitter:
-                case FirebaseProviderType.Microsoft:
-                    return flow.SignInExternallyAsync(provider);
                 case FirebaseProviderType.EmailAndPassword:
                     return this.SignInWithEmailAsync(flow);
                 case FirebaseProviderType.Anonymous:
                     return this.Client.SignInAnonymouslyAsync();
                 default:
-                    throw new InvalidOperationException($"Unknown provider {provider}");
+                    return flow.SignInExternallyAsync(provider);
             }
         }
 
