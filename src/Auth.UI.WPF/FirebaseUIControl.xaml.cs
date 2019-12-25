@@ -92,6 +92,10 @@ namespace Firebase.Auth.UI
             if (e.Uri?.ToString().StartsWith("http") ?? false)
             {
                 e.Cancel = true;
+                if (this.Frame.CanGoBack)
+                {
+                    Launcher.LaunchUri(e.Uri);
+                }
             }
         }
     }
