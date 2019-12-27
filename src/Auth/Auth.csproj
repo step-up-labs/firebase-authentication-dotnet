@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>FirebaseAuthentication.net</PackageId>
+    <Authors>Step Up Labs, Inc.</Authors>
+    <Description>Firebase authentication library. It can generate Firebase auth token based on given OAuth token (issued by Google, Facebook...). This Firebase token can then be used with REST queries against Firebase endpoints. </Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageIcon>firebase.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/step-up-labs/firebase-authentication-dotnet</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <IncludeSource>True</IncludeSource>
+    <IncludeSymbols>True</IncludeSymbols>
+    <Copyright>Step Up Labs, Inc. 2019</Copyright>
+    <PackageTags>Firebase Auth Authentication Google Facebook Github Twitter</PackageTags>
+    <LangVersion>8.0</LangVersion>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>Firebase.Auth</AssemblyName>
+    <RootNamespace>Firebase.Auth</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Assets\firebase.png" Pack="true" PackagePath="" />
+    <None Include="..\..\LICENSE" Link="Assets\LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+</Project>
