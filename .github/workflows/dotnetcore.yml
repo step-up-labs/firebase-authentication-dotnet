@@ -5,17 +5,38 @@ on:
     branches: 
     - feature/v4
     - feature/github
+    tags: '**'
+  pull_request:
 
 jobs:
   build:
-
     runs-on: windows-latest
-
     steps:
     - uses: actions/checkout@v1
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.100
-    - name: Build with dotnet
+    - name: Build
       run: dotnet build --configuration Release
+    - name: Test
+      run: dotnet test --no-build --configuration Release
+  pack:
+    runs-on: windows-latest
+    needs: build
+    if: github.event_name == 'push'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.100
+      - name: Determine version
+        run: echo "::set-env name=VERSION::$(git describe --tags --dirty)"
+      - name: Pack
+        run: dotnet pack --output ./artifacts --configuration Release -p:Version=$VERSION
+      - uses: actions/upload-artifact@v1
+        with: 
+          name: artifact
+          path: ./artifacts
