@@ -26,12 +26,14 @@ namespace Firebase.Auth.UI
         /// Get user's details. Used to create a new user via email.
         /// </summary>
         /// <param name="email"> Email the user entered in previous step. </param>
+        /// <param name="error"> Error encountered in previous attempt. </param>
         Task<EmailUser> PromptForEmailPasswordNameAsync(string email, string error = "");
 
         /// <summary>
         /// Get user's password. Used to sign in an existing user via email.
         /// </summary>
         /// <param name="email"> Email the user entered in the previous step. </param>
+        /// <param name="error"> Error encountered in previous attempt. </param>
         Task<string> PromptForPasswordAsync(string email, string error = "");
     }
 }

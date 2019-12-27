@@ -14,6 +14,7 @@
     <Copyright>Step Up Labs, Inc. 2019</Copyright>
     <PackageTags>Firebase Auth FirebaseUI Authentication Google Facebook Github Twitter Apple Email </PackageTags>
     <LangVersion>8.0</LangVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>Firebase.Auth.UI</AssemblyName>
     <RootNamespace>Firebase.Auth.UI</RootNamespace>
   </PropertyGroup>

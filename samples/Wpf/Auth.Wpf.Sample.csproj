@@ -7,6 +7,7 @@
     <AssemblyName>Firebase.Auth.Wpf.Sample</AssemblyName>
     <RootNamespace>Firebase.Auth.Wpf.Sample</RootNamespace>
     <ApplicationIcon>Assets\firebase.ico</ApplicationIcon>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

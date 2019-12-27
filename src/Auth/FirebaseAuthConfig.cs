@@ -2,8 +2,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
-using System;
-using System.Collections.Generic;
 using System.Net.Http;
 
 namespace Firebase.Auth
@@ -18,7 +16,8 @@ namespace Firebase.Auth
         /// </summary>
         /// <param name="apiKey"> The api key of your Firebase app. </param>
         /// <param name="authDomain"> Auth domain of your firebase app, e.g. hello.firebaseapp.com. </param>
-        /// <param name="externalSignInDelegate"> Delegate invoked to perform in-browser sign in. </param>
+        /// <param name="tokenRepository"> Repository which persists token and user data. </param>
+        /// <param name="providers"> Collection of providers that can be used to sign in. </param>
         public FirebaseAuthConfig(string apiKey, string authDomain, IFirebaseTokenRepository tokenRepository, params FirebaseAuthProvider[] providers)
             : this()
         {

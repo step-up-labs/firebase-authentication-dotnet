@@ -2,22 +2,37 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <PackageId>FirebaseAuthentication.net WPF</PackageId>
+    <PackageId>FirebaseAuthentication.WPF</PackageId>
     <Authors>Step Up Labs, Inc.</Authors>
     <Description>FirebaseUI for WPF</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageIconUrl>https://github.com/step-up-labs/firebase-authentication-dotnet/raw/master/art/FirebaseLogo.128x128.png</PackageIconUrl>
+    <PackageIcon>firebase.png</PackageIcon>
     <PackageProjectUrl>https://github.com/step-up-labs/firebase-authentication-dotnet</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/step-up-labs/firebase-authentication-dotnet/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <IncludeSource>True</IncludeSource>
     <IncludeSymbols>True</IncludeSymbols>
     <Copyright>Step Up Labs, Inc. 2019</Copyright>
     <PackageTags>Firebase FirebaseUI Auth Authentication Google Facebook Github Twitter</PackageTags>
     <LangVersion>8.0</LangVersion>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>Firebase.Auth.UI.WPF</AssemblyName>
     <RootNamespace>Firebase.Auth.UI</RootNamespace>
     <UseWPF>true</UseWPF>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
   </PropertyGroup>
+
+  <!--<Target Name="CopyProjectReferencesToPackage" DependsOnTargets="BuildOnlySettings;ResolveReferences">
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')->WithMetadataValue('PrivateAssets', 'All'))" />
+    </ItemGroup>
+  </Target>-->
+
+  <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')->WithMetadataValue('PrivateAssets', 'All'))" />
+    </ItemGroup>
+  </Target>
 
   <ItemGroup>
     <Resource Include="..\Auth.UI\Assets\anonymous.png" Link="Assets\anonymous.png" />
@@ -28,10 +43,13 @@
     <Resource Include="..\Auth.UI\Assets\mail.png" Link="Assets\mail.png" />
     <Resource Include="..\Auth.UI\Assets\microsoft.png" Link="Assets\microsoft.png" />
     <Resource Include="..\Auth.UI\Assets\twitter.png" Link="Assets\twitter.png" />
+    <None Include="..\Auth.UI\Assets\firebase.png" Link="Assets\firebase.png" Pack="true" PackagePath=""/>
+    <None Include="..\..\LICENSE" Link="Assets\LICENSE" Pack="true" PackagePath=""/>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Auth.UI\Auth.UI.csproj" />
+    <ProjectReference Include="..\Auth.UI\Auth.UI.csproj" PrivateAssets="All" />
+    <ProjectReference Include="..\Auth\Auth.csproj" />
   </ItemGroup>
 
   <ItemGroup>
