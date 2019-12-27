@@ -1,12 +1,12 @@
 ﻿function Convert-Everything([string] $rootDir, [string[]]$languages) {
   $neutralStrings = "$rootDir/en.xml"
 
-  Write-DesignerFile $neutralStrings | Out-File -FilePath '../src/Auth.UI/Localizations/AppResources.Designer.cs'
-  Convert-StringsToResX $neutralStrings | Out-File -FilePath '../src/Auth.UI/Localizations/AppResources.resx' -encoding utf8
+  Write-DesignerFile $neutralStrings | Out-File -FilePath '../src/Auth.UI/Resources/AppResources.Designer.cs'
+  Convert-StringsToResX $neutralStrings | Out-File -FilePath '../src/Auth.UI/Resources/AppResources.resx' -encoding utf8
     
   $languages | ForEach-Object { 
     $lng = $_
-    Convert-StringsToResX "$rootDir/$lng.xml" | Out-File -FilePath "../src/Auth.UI/Localizations/AppResources.$lng.resx" -encoding utf8
+    Convert-StringsToResX "$rootDir/$lng.xml" | Out-File -FilePath "../src/Auth.UI/Resources/AppResources.$lng.resx" -encoding utf8
   }
 }
 
@@ -183,8 +183,9 @@ function Write-PluralMethod([string] $name) {
 function Write-DesignerProperty([string] $name, [string] $value) {
   $camel = ($name -csplit '_' | foreach { (Get-Culture).TextInfo.ToTitleCase($_) }) -join ''
   $val = $value -replace '\\"', '""' -replace "`n", " " -replace "`r", " "
+  $comment = $val -replace '&', '&amp;' 
   Write-Output "        /// <summary>
-        /// $val
+        /// $comment
         /// </summary>
 		public string $camel {
             get {
