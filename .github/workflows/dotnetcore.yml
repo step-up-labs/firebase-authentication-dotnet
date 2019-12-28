@@ -57,4 +57,4 @@ jobs:
         name: artifacts
         path: ./artifacts
     - name: Publish packages
-      run: dotnet nuget push ./artifacts/**nupkg --source https://f.feedz.io/step-up-labs/firebase/nuget/index.json --api-key ${{secrets.FEEDZ_TOKEN}}
+      run: dotnet nuget push ./artifacts/**/*.nupkg --source https://f.feedz.io/step-up-labs/firebase/nuget/index.json --api-key ${{secrets.FEEDZ_TOKEN}}
