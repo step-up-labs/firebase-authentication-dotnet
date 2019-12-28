@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Auth.UI.WPF\Auth.UI.WPF.csproj" />
+    <ProjectReference Include="..\..\src\Auth.UI\Auth.UI.csproj" />
     <ProjectReference Include="..\..\src\Auth\Auth.csproj" />
   </ItemGroup>
 

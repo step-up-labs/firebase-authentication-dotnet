@@ -1,0 +1,59 @@
+name: .NET Core
+
+on:
+  push:
+    branches: 
+    - feature/v4
+    tags: '**'
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.100
+    - name: Build
+      run: dotnet build --configuration Release
+    - name: Test
+      run: dotnet test --no-build --configuration Release
+  pack:
+    runs-on: windows-latest
+    needs: build
+    if: github.event_name == 'push'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.100
+      - name: Determine version
+        shell: bash
+        run: echo "::set-env name=VERSION::$(git describe --tags --dirty | cut -c2-)"
+      - name: Echo version
+        run: echo $ENV:VERSION
+      - name: Pack
+        run: dotnet pack --output ./artifacts --configuration Release -p:Version=$ENV:VERSION
+      - uses: actions/upload-artifact@v1
+        with: 
+          name: artifacts
+          path: ./artifacts
+  publish-preview:
+    runs-on: ubuntu-latest
+    needs: pack
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/') && contains(github.ref, 'preview')
+    steps:
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.100
+    - uses: actions/download-artifact@v1
+      with:
+        name: artifacts
+        path: ./artifacts
+    - name: Publish packages
+      run: dotnet nuget push ./artifacts/**/*.nupkg --source https://f.feedz.io/step-up-labs/firebase/nuget/index.json --api-key ${{secrets.FEEDZ_TOKEN}}
