@@ -36,9 +36,9 @@ jobs:
         shell: bash
         run: echo "::set-env name=VERSION::$(git describe --tags --dirty)"
       - name: Echo version
-        run: echo $VERSION
+        run: echo ${VERSION}
       - name: Pack
-        run: dotnet pack --output ./artifacts --configuration Release -p:Version=$VERSION
+        run: dotnet pack --output ./artifacts --configuration Release -p:Version=${VERSION}
       - uses: actions/upload-artifact@v1
         with: 
           name: artifact
