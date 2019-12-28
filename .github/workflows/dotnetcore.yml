@@ -25,8 +25,6 @@ jobs:
     runs-on: windows-latest
     needs: build
     if: github.event_name == 'push'
-    env:
-      VERSION2: 4.0.0-preview001-abcd
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -37,13 +35,10 @@ jobs:
       - name: Determine version
         shell: bash
         run: echo "::set-env name=VERSION::$(git describe --tags --dirty)"
-      - name: Echo version2
-        run: echo $VERSION2
       - name: Echo version
-        shell: bash
-        run: echo $VERSION
+        run: echo $ENV:VERSION
       - name: Pack
-        run: dotnet pack --output ./artifacts --configuration Release -p:Version=$VERSION2
+        run: dotnet pack --output ./artifacts --configuration Release -p:Version=$ENV:VERSION
       - uses: actions/upload-artifact@v1
         with: 
           name: artifact
