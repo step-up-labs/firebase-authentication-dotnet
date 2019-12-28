@@ -34,7 +34,7 @@ jobs:
           dotnet-version: 3.1.100
       - name: Determine version
         shell: bash
-        run: echo "::set-env name=VERSION::$(git describe --tags --dirty)"
+        run: echo "::set-env name=VERSION::$(git describe --tags --dirty | cut -c2-)"
       - name: Echo version
         run: echo $ENV:VERSION
       - name: Pack
