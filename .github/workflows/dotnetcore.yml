@@ -33,7 +33,10 @@ jobs:
         with:
           dotnet-version: 3.1.100
       - name: Determine version
+        shell: bash
         run: echo "::set-env name=VERSION::$(git describe --tags --dirty)"
+      - name: Echo version
+        run: echo $VERSION
       - name: Pack
         run: dotnet pack --output ./artifacts --configuration Release -p:Version=$VERSION
       - uses: actions/upload-artifact@v1
