@@ -34,6 +34,19 @@ namespace Firebase.Auth.UI
         /// </summary>
         /// <param name="email"> Email the user entered in the previous step. </param>
         /// <param name="error"> Error encountered in previous attempt. </param>
-        Task<string> PromptForPasswordAsync(string email, string error = "");
+        Task<EmailPasswordResult> PromptForPasswordAsync(string email, string error = "");
+
+        /// <summary>
+        /// Ask user to confirm email password reset.
+        /// </summary>
+        /// <param name="email"> Email the user entered in the previous step. </param>
+        /// <param name="error"> Error encountered in previous attempt. </param>
+        Task<object> PromptForPasswordResetAsync(string email, string error = "");
+
+        /// <summary>
+        /// Show user a message that password reset email has been sent.
+        /// </summary>
+        /// <param name="email"> Email where the reset message has been sent to. </param>
+        Task ShowPasswordResetConfirmationAsync(string email);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Firebase.Auth.UI.Pages;
+using Firebase.Auth.UI.Resources;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,6 +15,7 @@ namespace Firebase.Auth.UI
         private readonly ProvidersPage providersPage;
         private readonly SignInPage signInPage;
         private readonly SignUpPage signUpPage;
+        private readonly RecoverPasswordPage recoverPasswordPage;
 
         public FirebaseUIControl()
         {
@@ -23,6 +25,7 @@ namespace Firebase.Auth.UI
             this.emailPage = new EmailPage();
             this.signInPage = new SignInPage();
             this.signUpPage = new SignUpPage();
+            this.recoverPasswordPage = new RecoverPasswordPage();
             this.providersPage = new ProvidersPage(this);
             this.Frame.Navigate(providersPage);
             this.Loaded += this.ControlLoaded;
@@ -72,11 +75,24 @@ namespace Firebase.Auth.UI
             return tcs.Task;
         }
 
-        Task<string> IFirebaseUIFlow.PromptForPasswordAsync(string email, string error)
+        Task<EmailPasswordResult> IFirebaseUIFlow.PromptForPasswordAsync(string email, string error)
         {
-            var tcs = new TaskCompletionSource<string>();
+            var tcs = new TaskCompletionSource<EmailPasswordResult>();
             this.Frame.Navigate(this.signInPage.Initialize(tcs, email, error));
             return tcs.Task;
+        }
+
+        Task<object> IFirebaseUIFlow.PromptForPasswordResetAsync(string email, string error)
+        {
+            var tcs = new TaskCompletionSource<object>();
+            this.Frame.Navigate(this.recoverPasswordPage.Initialize(tcs, email, error));
+            return tcs.Task;
+        }
+
+        Task IFirebaseUIFlow.ShowPasswordResetConfirmationAsync(string email)
+        {
+            MessageBox.Show(string.Format(AppResources.Instance.FuiConfirmRecoveryBody, email), AppResources.Instance.FuiTitleConfirmRecoverPassword, MessageBoxButton.OK, MessageBoxImage.Information);
+            return Task.CompletedTask;
         }
 
         void IFirebaseUIFlow.Reset()

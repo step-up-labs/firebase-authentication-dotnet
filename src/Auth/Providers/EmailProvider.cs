@@ -10,6 +10,7 @@ namespace Firebase.Auth.Providers
         private SetAccountInfo setAccountInfo;
         private GetAccountInfo getAccountInfo;
         private VerifyPassword verifyPassword;
+        private ResetPassword resetPassword;
 
         public override FirebaseProviderType ProviderType => FirebaseProviderType.EmailAndPassword;
 
@@ -21,6 +22,7 @@ namespace Firebase.Auth.Providers
             this.setAccountInfo = new SetAccountInfo(this.config);
             this.getAccountInfo = new GetAccountInfo(this.config);
             this.verifyPassword = new VerifyPassword(this.config);
+            this.resetPassword = new ResetPassword(this.config);
         }
 
         public async Task<CheckUserRessult> CheckUserExistsAsync(string email)
@@ -34,6 +36,16 @@ namespace Firebase.Auth.Providers
             var response = await this.createAuthUri.ExecuteAsync(request).ConfigureAwait(false);
 
             return new CheckUserRessult(email, response.Registered, response.SigninMethods);
+        }
+
+        public Task ResetEmailPasswordAsync(string email)
+        {
+            var request = new ResetPasswordRequest
+            {
+                Email = email
+            };
+
+            return this.resetPassword.ExecuteAsync(request);
         }
 
         public async Task<User> SignInUserAsync(string email, string password)

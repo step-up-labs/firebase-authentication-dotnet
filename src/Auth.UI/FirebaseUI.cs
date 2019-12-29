@@ -114,9 +114,36 @@ namespace Firebase.Auth.UI
 
                 if (exists.UserExists)
                 {
-                    return await this.RetryAction(
-                        e => flow.PromptForPasswordAsync(email, e),
-                        password => this.Client.SignInWithEmailAndPasswordAsync(email, password));
+                    Func<Task<User>> signInUserFunc = null;
+                    
+                    // This func can recursively call itself in case user asks to recover email password
+                    // - it shows reset page
+                    // - after reset can try to enter password again
+                    signInUserFunc = () =>
+                    {
+                        return this.RetryAction(
+                            e => flow.PromptForPasswordAsync(email, e),
+                            async result =>
+                            {
+                                if (result.ResetPassword)
+                                {
+                                    await this.RetryAction(
+                                        e => flow.PromptForPasswordResetAsync(email, e),
+                                        async res => 
+                                        {
+                                            await this.Client.ResetEmailPasswordAsync(email);
+                                            await flow.ShowPasswordResetConfirmationAsync(email);
+                                            return true;
+                                        });
+
+                                    return await signInUserFunc();
+                                }
+
+                                return await this.Client.SignInWithEmailAndPasswordAsync(email, result.Password);
+                            });
+                    };
+
+                    return await signInUserFunc();
                 }
 
                 return await this.RetryAction(

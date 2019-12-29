@@ -149,6 +149,14 @@ namespace Firebase.Auth
             return result;
         }
 
+        public async Task ResetEmailPasswordAsync(string email)
+        {
+            await this.CheckAuthDomain().ConfigureAwait(false);
+
+            var provider = (EmailProvider)this.GetAuthProvider(FirebaseProviderType.EmailAndPassword);
+            await provider.ResetEmailPasswordAsync(email).ConfigureAwait(false);
+        }
+
         public async Task SignOutAsync()
         {
             await this.config.UserRepository.SaveUserAsync(null);

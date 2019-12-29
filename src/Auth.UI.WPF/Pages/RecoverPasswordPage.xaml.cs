@@ -5,23 +5,23 @@ using System.Windows.Controls;
 
 namespace Firebase.Auth.UI.Pages
 {
-    public partial class SignInPage : Page
+    public partial class RecoverPasswordPage : Page
     {
-        private TaskCompletionSource<EmailPasswordResult> tcs;
+        private TaskCompletionSource<object> tcs;
 
-        public SignInPage()
+        public RecoverPasswordPage()
         {
             InitializeComponent();
         }
 
-        public SignInPage Initialize(TaskCompletionSource<EmailPasswordResult> tcs, string email, string error = "")
+        public RecoverPasswordPage Initialize(TaskCompletionSource<object> tcs, string email, string error = "")
         {
             this.tcs = tcs;
-            this.WelcomeSubtitleTextBlock.Text = string.Format(AppResources.Instance.FuiWelcomeBackPasswordPromptBody, email);
             this.Progressbar.Visibility = Visibility.Hidden;
+            this.EmailTextBox.Text = email;
             this.ButtonsPanel.IsEnabled = true;
-            this.PasswordBox.IsEnabled = true;
-            this.PasswordBox.Focus();
+            this.EmailTextBox.IsEnabled = true;
+            this.EmailTextBox.Focus();
 
             if (error == "")
             {
@@ -36,17 +36,18 @@ namespace Firebase.Auth.UI.Pages
             return this;
         }
 
-        private void SignInClick(object sender, RoutedEventArgs e)
+        private void SendInClick(object sender, RoutedEventArgs e)
         {
-            this.SignIn();
+            this.SendRecoverEmail();
         }
 
-        private void SignIn()
+        private void SendRecoverEmail()
         {
-            this.PasswordBox.IsEnabled = false;
+            this.ErrorTextBlock.Visibility = Visibility.Hidden;
+            this.EmailTextBox.IsEnabled = false;
             this.Progressbar.Visibility = Visibility.Visible;
             this.ButtonsPanel.IsEnabled = false;
-            this.tcs.SetResult(EmailPasswordResult.WithPassword(this.PasswordBox.Password));
+            this.tcs.SetResult(this);
         }
 
         private void CancelClick(object sender, RoutedEventArgs e)
@@ -54,19 +55,12 @@ namespace Firebase.Auth.UI.Pages
             this.tcs.SetResult(null);
         }
 
-        private void PasswordBoxKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void EmailTextBoxKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter)
             {
-                this.SignIn();
+                this.SendRecoverEmail();
             }
-
-            this.ErrorTextBlock.Visibility = Visibility.Hidden;
-        }
-
-        private void RecoverPasswordClick(object sender, RoutedEventArgs e)
-        {
-            this.tcs.SetResult(EmailPasswordResult.Reset());
         }
     }
 }

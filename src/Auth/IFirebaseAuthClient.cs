@@ -45,7 +45,12 @@ namespace Firebase.Auth
         /// Signs in with email and password. If the email &amp; password combination is incorrect, <see cref="FirebaseAuthException"/> is thrown.
         /// </summary>
         Task<User> SignInWithEmailAndPasswordAsync(string email, string password);
-        
+
+        /// <summary>
+        /// Sends a password reset email to given address.
+        /// </summary>
+        Task ResetEmailPasswordAsync(string email);
+
         /// <summary>
         /// Signs user out.
         /// </summary>

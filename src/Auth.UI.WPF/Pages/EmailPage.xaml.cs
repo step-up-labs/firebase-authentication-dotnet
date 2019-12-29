@@ -25,6 +25,7 @@ namespace Firebase.Auth.UI.Pages
 
             if (error == "")
             {
+                this.EmailTextBox.Text = string.Empty;
                 this.ErrorTextBlock.Visibility = Visibility.Hidden;
             } 
             else
