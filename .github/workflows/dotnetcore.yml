@@ -39,7 +39,7 @@ jobs:
         run: echo "::set-env name=TAG_VERSION::$(git describe --tags --abbrev=0 | cut -c2-)"
       - name: Pack from tag
         if: startsWith(github.ref, 'refs/tags/')
-        run: dotnet pack --output ./artifacts --configuration Release -p:version $ENV:TAG_VERSION
+        run: dotnet pack --output ./artifacts --configuration Release -p:version=$ENV:TAG_VERSION
       - uses: actions/upload-artifact@v1
         with: 
           name: artifacts
