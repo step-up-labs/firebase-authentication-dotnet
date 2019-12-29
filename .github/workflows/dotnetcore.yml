@@ -31,7 +31,7 @@ jobs:
         with:
           dotnet-version: 3.1.100
       - name: Pack preview
-        if: !startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/') == false
         run: dotnet pack --output ./artifacts --configuration Release --version-suffix "-preview"
       - name: Determine tag version
         shell: bash
@@ -58,5 +58,5 @@ jobs:
         name: artifacts
         path: ./artifacts
     - name: Publish preview packages
-      if: !startsWith(github.ref, 'refs/tags/')
+      if: startsWith(github.ref, 'refs/tags/') == false
       run: dotnet nuget push ./artifacts/**/*.nupkg --source https://f.feedz.io/step-up-labs/firebase/nuget/index.json --api-key ${{secrets.FEEDZ_TOKEN}}
