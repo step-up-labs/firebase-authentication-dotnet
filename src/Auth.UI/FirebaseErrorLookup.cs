@@ -31,8 +31,10 @@ namespace Firebase.Auth.UI
                     return AppResources.Instance.FuiErrorInvalidPassword;
                 case AuthErrorReason.Undefined:
                     return AppResources.Instance.FuiNoInternet;
-                default:
+                case AuthErrorReason.Unknown:
                     return AppResources.Instance.FuiErrorUnknown;
+                default:
+                    return $"{AppResources.Instance.FuiErrorUnknown} {reason}";
             }
         }
     }

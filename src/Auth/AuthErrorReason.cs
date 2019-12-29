@@ -3,9 +3,13 @@
     public enum AuthErrorReason
     {
         /// <summary>
-        /// Unknown error reason.
+        /// Request didn't even complete, possibly due to network issue.
         /// </summary>
         Undefined,
+        /// <summary>
+        /// Unknown error reason.
+        /// </summary>
+        Unknown,
         /// <summary>
         /// The sign in method is not enabled.
         /// </summary>
@@ -93,6 +97,10 @@
         /// <summary>
         /// Linked accounts: account to link has already been linked.
         /// </summary>
-        AlreadyLinked
+        AlreadyLinked,
+        /// <summary>
+        /// Specified API key is not valid.
+        /// </summary>
+        InvalidApiKey
     }
 }

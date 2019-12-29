@@ -67,6 +67,9 @@ namespace Firebase.Auth.UI.Pages
 
         private async void ProviderSignInClick(object sender, RoutedEventArgs e)
         {
+            this.ProgressBar.Visibility = Visibility.Visible;
+            this.ScrollViewer.IsEnabled = false;
+
             var button = sender as Button;
             var provider = (FirebaseProviderType)button.DataContext;
 
@@ -76,8 +79,11 @@ namespace Firebase.Auth.UI.Pages
             }
             catch (FirebaseAuthException ex)
             {
-                MessageBox.Show(FirebaseErrorLookup.LookupError(ex));
+                MessageBox.Show(FirebaseErrorLookup.LookupError(ex), string.Empty, MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
+
+            this.ProgressBar.Visibility = Visibility.Hidden;
+            this.ScrollViewer.IsEnabled = true;
         }
     }
 }

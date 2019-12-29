@@ -21,13 +21,15 @@
             <RowDefinition Height="Auto" />
             <RowDefinition />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <ContentPresenter 
             Content="{Binding Header}"
             />
 
-        <ScrollViewer 
+        <ScrollViewer
+            x:Name="ScrollViewer"
             Grid.Row="1"
             VerticalScrollBarVisibility="Hidden">
             <ItemsControl HorizontalAlignment="Center" ItemsSource="{Binding Providers}">
@@ -98,9 +100,18 @@
             </ItemsControl>
         </ScrollViewer>
 
+        <ProgressBar
+            x:Name="ProgressBar"
+            Grid.Row="2"
+            IsIndeterminate="True"
+            Height="1"
+            Visibility="Hidden"
+            Margin="0 6"
+            />
+
         <TextBlock 
             x:Name="FooterTextBlock"
-            Grid.Row="2"
+            Grid.Row="3"
             Style="{StaticResource FuiTextBlockFooterStyle}"
             />
     </Grid>
