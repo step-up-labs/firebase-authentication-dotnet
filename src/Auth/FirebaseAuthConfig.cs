@@ -11,26 +11,10 @@ namespace Firebase.Auth
     /// </summary>
     public class FirebaseAuthConfig
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FirebaseAuthConfig"/> class with your API key.
-        /// </summary>
-        /// <param name="apiKey"> The api key of your Firebase app. </param>
-        /// <param name="authDomain"> Auth domain of your firebase app, e.g. hello.firebaseapp.com. </param>
-        /// <param name="tokenRepository"> Repository which persists token and user data. </param>
-        /// <param name="providers"> Collection of providers that can be used to sign in. </param>
-        public FirebaseAuthConfig(string apiKey, string authDomain, IFirebaseTokenRepository tokenRepository, params FirebaseAuthProvider[] providers)
-            : this()
-        {
-            this.ApiKey = apiKey;
-            this.AuthDomain = authDomain;
-            this.UserRepository = tokenRepository;
-            this.Providers = providers;
-        }
-
         public FirebaseAuthConfig()
         {
             this.HttpClient = new HttpClient();
-            this.UserRepository = InMemoryFirebaseTokenRepository.Instance;
+            this.UserRepository = InMemoryUserRepository.Instance;
             this.JsonSettings = new JsonSerializerSettings
             {
                 ContractResolver = new DefaultContractResolver
@@ -53,7 +37,7 @@ namespace Firebase.Auth
         /// <summary>
         /// Repository of firebase tokens. Default is in-memory.
         /// </summary>
-        public IFirebaseTokenRepository UserRepository 
+        public IUserRepository UserRepository 
         { 
             get;
             set;
@@ -96,7 +80,7 @@ namespace Firebase.Auth
         }
 
         /// <summary>
-        /// Specifies the uri that external auth provider will navigate to ti finish auth.
+        /// Specifies the uri that external auth provider will navigate to to finish auth.
         /// </summary>
         public string RedirectUri => $"https://{this.AuthDomain}/__/auth/handler";
     }

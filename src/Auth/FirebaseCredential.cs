@@ -9,10 +9,19 @@ namespace Firebase.Auth
             this.Created = DateTime.Now;
         }
 
+        /// <summary>
+        /// Value of the token to be used with Firebase requests.
+        /// </summary>
         public string IdToken { get; set; }
 
+        /// <summary>
+        /// Value of the refresh token which can be used to refresh the <see cref="IdToken"/>.
+        /// </summary>
         public string RefreshToken { get; set; }
 
+        /// <summary>
+        /// Specifies when the token was created.
+        /// </summary>
         public DateTime Created { get; set; }
 
         /// <summary>
@@ -20,6 +29,9 @@ namespace Firebase.Auth
         /// </summary>
         public int ExpiresIn { get; set; }
 
+        /// <summary>
+        /// Type of the firebase auth provider.
+        /// </summary>
         public FirebaseProviderType ProviderType { get; set; }
 
         /// <summary>

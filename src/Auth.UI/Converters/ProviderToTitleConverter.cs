@@ -2,6 +2,9 @@
 
 namespace Firebase.Auth.UI.Converters
 {
+    /// <summary>
+    /// Convertor of <see cref="FirebaseProviderType"/> to localized title for the sign in button.
+    /// </summary>
     public class ProviderToTitleConverter
     {
         public static string Convert(FirebaseProviderType provider)

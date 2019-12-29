@@ -2,7 +2,7 @@
 
 namespace Firebase.Auth.UI
 {
-    public partial class WebAuthenticationBrokerWindow : Window
+    internal partial class WebAuthenticationBrokerWindow : Window
     {
         public WebAuthenticationBrokerWindow()
         {

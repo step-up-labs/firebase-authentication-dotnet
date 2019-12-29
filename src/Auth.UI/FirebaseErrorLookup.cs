@@ -29,6 +29,8 @@ namespace Firebase.Auth.UI
                     return AppResources.Instance.FuiInvalidEmailAddress;
                 case AuthErrorReason.WrongPassword:
                     return AppResources.Instance.FuiErrorInvalidPassword;
+                case AuthErrorReason.Undefined:
+                    return AppResources.Instance.FuiNoInternet;
                 default:
                     return AppResources.Instance.FuiErrorUnknown;
             }

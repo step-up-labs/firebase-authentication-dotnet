@@ -2,20 +2,11 @@
 
 namespace Firebase.Auth.UI
 {
+    /// <summary>
+    /// Configuration options for FirebaseUI. Extends <see cref="FirebaseAuthConfig"/>.
+    /// </summary>
     public class FirebaseUIConfig : FirebaseAuthConfig
     {
-        public FirebaseUIConfig()
-        {
-        }
-
-        public FirebaseUIConfig(string apiKey, string authDomain, IFirebaseTokenRepository tokenRepository, FirebaseAuthProvider[] providers, string termsOfServiceUrl, string privacyPolicyUrl, bool allowAnonymous = false) 
-            : base(apiKey, authDomain, tokenRepository, providers)
-        {
-            this.TermsOfServiceUrl = termsOfServiceUrl;
-            this.PrivacyPolicyUrl = privacyPolicyUrl;
-            this.IsAnonymousAllowed = allowAnonymous;
-        }
-
         /// <summary>
         /// Url pointing to your ToS.
         /// </summary>

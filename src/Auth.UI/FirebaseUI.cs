@@ -6,17 +6,31 @@ using System.Threading.Tasks;
 
 namespace Firebase.Auth.UI
 {
+    /// <summary>
+    /// Singleton entrypoint to all things related to Firebase UI. Call <see cref="Initialize(FirebaseUIConfig)"/> 
+    /// during application startup to initialize FirebaseUI. It will also initialize <see cref="Client"/> you can use 
+    /// to call other Firebase methods and subscribe to <see cref="FirebaseAuthClient.AuthStateChanged"/> event to be
+    /// notified about auth changes.
+    /// </summary>
     public class FirebaseUI
     {
         private static FirebaseUI firebaseUI;
         
         private FirebaseUI(FirebaseUIConfig config)
         {
+            if (string.IsNullOrWhiteSpace(config.PrivacyPolicyUrl) || string.IsNullOrWhiteSpace(config.TermsOfServiceUrl))
+            {
+                throw new ArgumentException($"Both {nameof(config.PrivacyPolicyUrl)} and {nameof(config.TermsOfServiceUrl)} must be set.");
+            }
+
             this.Client = new FirebaseAuthClient(config);
             this.Providers = config.Providers.Select(p => p.ProviderType).ToArray();
             this.Config = config;
         }
 
+        /// <summary>
+        /// Initializes a singleton instance of <see cref="FirebaseUI"/>. Call this method only once during application startup.
+        /// </summary>
         public static FirebaseUI Initialize(FirebaseUIConfig config)
         {
             if (firebaseUI != null)
@@ -27,6 +41,9 @@ namespace Firebase.Auth.UI
             return firebaseUI = new FirebaseUI(config);
         }
 
+        /// <summary>
+        /// Do not call this method in your code directly. Initializes an empty, dummy instance of FirebaseUI.
+        /// </summary>
         public static FirebaseUI InitializeEmpty()
         {
             return firebaseUI ?? (firebaseUI = new FirebaseUI(new FirebaseUIConfig
@@ -43,14 +60,32 @@ namespace Firebase.Auth.UI
             }));
         }
 
+        /// <summary>
+        /// Firebase client which can interact which remote firebase servers.
+        /// </summary>
         public FirebaseAuthClient Client { get; }
 
+        /// <summary>
+        /// Singleton instance of <see cref="FirebaseUI"/>. Available only after <see cref="Initialize(FirebaseUIConfig)"/> has been called;
+        /// </summary>
         public static FirebaseUI Instance => firebaseUI ?? throw new InvalidOperationException("FirebaseUI hasn't been initialized yet.");
 
+        /// <summary>
+        /// Callection of registered auth providers.
+        /// </summary>
         public IReadOnlyCollection<FirebaseProviderType> Providers { get; }
 
+        /// <summary>
+        /// Config supplied via <see cref="Initialize(FirebaseUIConfig)"/>.
+        /// </summary>
         public FirebaseUIConfig Config { get; }
 
+        /// <summary>
+        /// Do not call this method in your code directly, it is called automatically from a UI Control after user clicks a button to sign in.
+        /// Performs sign in using given flow and provider.
+        /// </summary>
+        /// <param name="flow"> Sign in flow which contains platform specific UI actions. </param>
+        /// <param name="provider"> Provider to use for sign in. </param>
         public virtual Task<User> SignInAsync(IFirebaseUIFlow flow, FirebaseProviderType provider)
         {
             switch (provider)
@@ -68,7 +103,7 @@ namespace Firebase.Auth.UI
         {
             try
             {
-                var exists = await this.RetryAction(flow, e => flow.PromptForEmailAsync(e), email => this.Client.CheckUserEmailExistsAsync(email));
+                var exists = await this.RetryAction(e => flow.PromptForEmailAsync(e), email => this.Client.CheckUserEmailExistsAsync(email));
 
                 if (exists == null)
                 {
@@ -79,12 +114,12 @@ namespace Firebase.Auth.UI
 
                 if (exists.UserExists)
                 {
-                    return await this.RetryAction(flow,
+                    return await this.RetryAction(
                         e => flow.PromptForPasswordAsync(email, e),
                         password => this.Client.SignInWithEmailAndPasswordAsync(email, password));
                 }
 
-                return await this.RetryAction(flow,
+                return await this.RetryAction(
                     e => flow.PromptForEmailPasswordNameAsync(email, e),
                     user => this.Client.CreateUserWithEmailAndPasswordAsync(user.Email, user.Password, user.DisplayName));
             }
@@ -94,7 +129,7 @@ namespace Firebase.Auth.UI
             }
         }
 
-        private async Task<TOut> RetryAction<TIn, TOut>(IFirebaseUIFlow flow, Func<string, Task<TIn>> func, Func<TIn, Task<TOut>> func2)
+        private async Task<TOut> RetryAction<TIn, TOut>(Func<string, Task<TIn>> func, Func<TIn, Task<TOut>> func2)
         {
             var error = "";
 

@@ -1,23 +1,33 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 
 namespace Firebase.Auth.UI
 {
-    public class FileTokenRepository : IFirebaseTokenRepository
+    /// <summary>
+    /// <see cref="IUserRepository"/> implementation which saves user related data to a json file in ApplicationData folder.
+    /// </summary>
+    public class FileUserRepository : IUserRepository
     {
+        public const string UserFileName = "firebase.json";
+
         private readonly string filename;
         private readonly JsonSerializerSettings options;
 
+        private (UserInfo info, FirebaseCredential credential)? cache;
+
         public event EventHandler<UserEventArgs> UserChanged;
 
-        public FileTokenRepository(string foldername)
+        /// <summary>
+        /// Creates a new instance of <see cref="FileUserRepository"/>.
+        /// </summary>
+        /// <param name="foldername"> Name of subfolder to be created under ApplicationData folder. </param>
+        public FileUserRepository(string foldername)
         {
             var appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            this.filename = Path.Combine(appdata, foldername, "firebase.json");
+            this.filename = Path.Combine(appdata, foldername, UserFileName);
             this.options = new JsonSerializerSettings();
             this.options.Converters.Add(new StringEnumConverter());
 
@@ -26,20 +36,27 @@ namespace Firebase.Auth.UI
 
         public Task<(UserInfo info, FirebaseCredential credential)> GetUserAsync()
         {
-            if (!File.Exists(this.filename))
+            if (!this.cache.HasValue)
             {
-                return Task.FromResult<(UserInfo, FirebaseCredential)>((null, null));
+                if (!File.Exists(this.filename))
+                {
+                    this.cache = (null, null);
+                    return Task.FromResult<(UserInfo, FirebaseCredential)>(this.cache.Value);
+                }
+
+                var content = File.ReadAllText(this.filename);
+                var obj = JsonConvert.DeserializeObject<UserDal>(content, this.options);
+
+                this.cache = (obj.UserInfo, obj.Credential);
             }
 
-            var content = File.ReadAllText(this.filename);
-
-            var obj = JsonConvert.DeserializeObject<UserDal>(content, this.options);
-
-            return Task.FromResult((obj.UserInfo, obj.Credential));
+            return Task.FromResult(this.cache.Value);
         }
 
         public Task SaveUserAsync(User user)
         {
+            this.cache = (user?.Info, user?.Credential);
+
             if (user == null)
             {
                 File.Delete(this.filename);

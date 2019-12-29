@@ -1,5 +1,8 @@
 ﻿namespace Firebase.Auth.UI.Converters
 {
+    /// <summary>
+    /// Convertor of <see cref="FirebaseProviderType"/> to hexa color of button background.
+    /// </summary>
     public class ProviderToBackgroundConverter
     {
         public static string Convert(FirebaseProviderType provider)

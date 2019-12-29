@@ -3,19 +3,20 @@ using System.Threading.Tasks;
 
 namespace Firebase.Auth
 {
-    public class InMemoryFirebaseTokenRepository : IFirebaseTokenRepository
+    /// <inherit />
+    public class InMemoryUserRepository : IUserRepository
     {
-        private static InMemoryFirebaseTokenRepository instance;
+        private static InMemoryUserRepository instance;
 
         private User user;
 
         public event EventHandler<UserEventArgs> UserChanged;
 
-        private InMemoryFirebaseTokenRepository()
+        private InMemoryUserRepository()
         {
         }
 
-        public static InMemoryFirebaseTokenRepository Instance => instance ?? (instance = new InMemoryFirebaseTokenRepository());
+        public static InMemoryUserRepository Instance => instance ?? (instance = new InMemoryUserRepository());
 
         public Task SaveUserAsync(User user)
         {

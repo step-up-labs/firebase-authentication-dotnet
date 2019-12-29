@@ -1,5 +1,8 @@
 ﻿namespace Firebase.Auth.UI.Converters
 {
+    /// <summary>
+    /// Convertor of <see cref="FirebaseProviderType"/> to PNG file asset path.
+    /// </summary>
     public class ProviderToAssetConverter
     {
         public static string Convert(FirebaseProviderType provider)

@@ -7,6 +7,9 @@
 
     public static class EnumExtensions
     {
+        /// <summary>
+        /// Finds the <see cref="EnumMemberAttribute"/> on given enum and returns its value.
+        /// </summary>
         public static string ToEnumString<T>(this T type)
         {
             var enumType = typeof(T);

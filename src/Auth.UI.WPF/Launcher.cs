@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace Firebase.Auth.UI
 {
-    public static class Launcher
+    internal static class Launcher
     {
         public static void LaunchUri(Uri uri)
         {

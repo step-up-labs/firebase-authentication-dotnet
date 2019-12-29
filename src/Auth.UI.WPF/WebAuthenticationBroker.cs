@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace Firebase.Auth.UI
 {
-    public static class WebAuthenticationBroker
+    internal static class WebAuthenticationBroker
     {
         public static Task<string> AuthenticateAsync(Window owner, FirebaseProviderType provider, string uri, string redirectUri)
         {

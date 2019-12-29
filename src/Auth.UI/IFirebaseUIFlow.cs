@@ -3,7 +3,7 @@
 namespace Firebase.Auth.UI
 {
     /// <summary>
-    /// Represents a UI flow for Firebase authentication. 
+    /// Represents a platform specific UI flow for Firebase authentication. 
     /// </summary>
     public interface IFirebaseUIFlow
     {

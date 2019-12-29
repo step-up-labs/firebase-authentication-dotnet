@@ -70,7 +70,14 @@ namespace Firebase.Auth.UI.Pages
             var button = sender as Button;
             var provider = (FirebaseProviderType)button.DataContext;
 
-            await FirebaseUI.Instance.SignInAsync(this.Flow, provider);
+            try
+            {
+                await FirebaseUI.Instance.SignInAsync(this.Flow, provider);
+            }
+            catch (FirebaseAuthException ex)
+            {
+                MessageBox.Show(FirebaseErrorLookup.LookupError(ex));
+            }
         }
     }
 }

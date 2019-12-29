@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Firebase.Auth
 {
-    public class FirebaseAuthClient
+    /// <inherit />
+    public class FirebaseAuthClient : IFirebaseAuthClient
     {
         private readonly FirebaseAuthConfig config;
         private readonly ProjectConfig projectConfig;
@@ -14,9 +15,19 @@ namespace Firebase.Auth
 
         private bool domainChecked;
         private event EventHandler<UserEventArgs> authStateChanged;
-        
+
         public FirebaseAuthClient(FirebaseAuthConfig config)
         {
+            if (string.IsNullOrWhiteSpace(config?.ApiKey))
+            {
+                throw new ArgumentException($"API Key must be set.");
+            }
+
+            if (string.IsNullOrWhiteSpace(config?.AuthDomain))
+            {
+                throw new ArgumentException($"Auth domain must be set.");
+            }
+
             this.config = config;
             this.projectConfig = new ProjectConfig(this.config);
             this.signupNewUser = new SignupNewUser(this.config);
@@ -125,7 +136,7 @@ namespace Firebase.Auth
 
             return result;
         }
-        
+
         public async Task<User> CreateUserWithEmailAndPasswordAsync(string email, string password, string displayName = null)
         {
             await this.CheckAuthDomain().ConfigureAwait(false);
@@ -158,7 +169,7 @@ namespace Firebase.Auth
 
         private FirebaseAuthProvider GetAuthProvider(FirebaseProviderType authType)
         {
-            return this.config.Providers.FirstOrDefault(f => f.ProviderType == authType) 
+            return this.config.Providers.FirstOrDefault(f => f.ProviderType == authType)
                 ?? throw new InvalidOperationException($"Provider {authType} is not configured, you need to add it to your FirebaseAuthConfig");
         }
 
