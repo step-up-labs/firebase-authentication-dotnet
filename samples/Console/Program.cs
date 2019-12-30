@@ -58,6 +58,14 @@ namespace Firebase.Auth.Sample
                 WriteLine($"You're signed in as {user.Uid} | {user.Info.DisplayName} | {user.Info.Email}");
             }
 
+            WriteLine($"New password (empty to skip):");
+            var pwd = ReadPassword();
+
+            if (!string.IsNullOrWhiteSpace(pwd))
+            {
+                await user.ChangePasswordAsync(pwd);
+            }
+
             WriteLine($"Trying to force refresh the idToken {user.Credential.IdToken}");
             var token = await user.GetIdTokenAsync(true);
             WriteLine($"Success, new token: {token}");

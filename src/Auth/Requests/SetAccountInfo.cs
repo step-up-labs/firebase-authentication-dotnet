@@ -1,9 +1,7 @@
 ﻿namespace Firebase.Auth.Requests
 {
-    public class SetAccountInfoRequest
+    public class SetAccountInfoRequest : IdTokenRequest
     {
-        public string IdToken { get; set; }
-
         public string DisplayName { get; set; }
 
         public bool ReturnSecureToken { get; set; }
