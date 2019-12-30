@@ -17,6 +17,7 @@ namespace Firebase.Auth.Wpf.Sample
             this.UidTextBlock.Text = user.Uid;
             this.NameTextBlock.Text = user.Info.DisplayName;
             this.EmailTextBlock.Text = user.Info.Email;
+            this.ProviderTextBlock.Text = user.Credential.ProviderType.ToString();
 
             if (!string.IsNullOrWhiteSpace(user.Info.PhotoUrl))
             {
