@@ -20,7 +20,8 @@ namespace Firebase.Auth
                 ContractResolver = new DefaultContractResolver
                 {
                     NamingStrategy = new CamelCaseNamingStrategy()
-                }
+                },
+                DefaultValueHandling = DefaultValueHandling.Ignore
             };
             this.JsonSettings.Converters.Add(new StringEnumConverter { CamelCaseText = true });
         }

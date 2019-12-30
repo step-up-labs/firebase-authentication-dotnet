@@ -48,7 +48,7 @@ namespace Firebase.Auth.Providers
                 IsEmailVerified = u.EmailVerified,
                 FederatedId = assertion.FederatedId,
                 Uid = u.LocalId,
-                PhotoUrl = u.PhotoUrl,
+                PhotoUrl = assertion.PhotoUrl,
                 IsAnonymous = false
             };
 

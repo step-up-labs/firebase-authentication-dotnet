@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace Firebase.Auth.UI.Pages
 {
@@ -17,11 +18,16 @@ namespace Firebase.Auth.UI.Pages
         public SignInPage Initialize(TaskCompletionSource<EmailPasswordResult> tcs, string email, string error = "")
         {
             this.tcs = tcs;
-            this.WelcomeSubtitleTextBlock.Text = string.Format(AppResources.Instance.FuiWelcomeBackPasswordPromptBody, email);
             this.Progressbar.Visibility = Visibility.Hidden;
             this.ButtonsPanel.IsEnabled = true;
             this.PasswordBox.IsEnabled = true;
             this.PasswordBox.Focus();
+
+            var message = string.Format(AppResources.Instance.FuiWelcomeBackPasswordPromptBody, email).Split(email);
+            this.WelcomeSubtitleTextBlock.Inlines.Clear();
+            this.WelcomeSubtitleTextBlock.Inlines.Add(message[0]);
+            this.WelcomeSubtitleTextBlock.Inlines.Add(new Bold(new Run(email)));
+            this.WelcomeSubtitleTextBlock.Inlines.Add(message[1]);
 
             if (error == "")
             {

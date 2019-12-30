@@ -127,7 +127,7 @@ namespace Firebase.Auth.UI
                             {
                                 if (result.ResetPassword)
                                 {
-                                    await this.RetryAction(
+                                    var reset = await this.RetryAction(
                                         e => flow.PromptForPasswordResetAsync(email, e),
                                         async res => 
                                         {
@@ -135,6 +135,11 @@ namespace Firebase.Auth.UI
                                             await flow.ShowPasswordResetConfirmationAsync(email);
                                             return true;
                                         });
+
+                                    if (!reset)
+                                    {
+                                        return null;
+                                    }
 
                                     return await signInUserFunc();
                                 }
