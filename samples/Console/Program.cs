@@ -42,7 +42,17 @@ namespace Firebase.Auth.Sample
             if (i == config.Providers.Count())
             {
                 user = await client.SignInAnonymouslyAsync();
-                WriteLine($"You're anonymously signed with uid: {user.Uid}");
+                WriteLine($"You're anonymously signed with uid: {user.Uid}. Link with email? [y/n]");
+                if (ReadLine().ToLower() == "y")
+                {
+                    Write("Enter email: ");
+                    var email = ReadLine();
+                    Write("Enter password: ");
+                    var password = ReadPassword();
+
+                    var credential = EmailProvider.GetCredential(email, password);
+                    user = await user.LinkWithCredentialAsync(credential);
+                }
             }
             else 
             {

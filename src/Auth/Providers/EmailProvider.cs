@@ -25,6 +25,19 @@ namespace Firebase.Auth.Providers
             this.resetPassword = new ResetPassword(this.config);
         }
 
+        public static AuthCredential GetCredential(string email, string password)
+        {
+            return new AuthCredential
+            {
+                ProviderType = FirebaseProviderType.EmailAndPassword,
+                Object = new
+                {
+                    Email = email,
+                    Password = password
+                }
+            };
+        }
+
         public async Task<CheckUserRessult> CheckUserExistsAsync(string email)
         {
             var request = new CreateAuthUriRequest
@@ -89,7 +102,7 @@ namespace Firebase.Auth.Providers
             // set display name if available
             if (!string.IsNullOrWhiteSpace(displayName))
             {
-                var setResponse = await this.setAccountInfo.ExecuteAsync(new SetAccountInfoRequest
+                var setResponse = await this.setAccountInfo.ExecuteAsync(new SetAccountDisplayName
                 {
                     DisplayName = displayName,
                     IdToken = signupResponse.IdToken,
@@ -140,6 +153,7 @@ namespace Firebase.Auth.Providers
         }
 
         public string Email { get; }
+
         public bool UserExists { get; }
 
         public IReadOnlyCollection<FirebaseProviderType> SigninProviders { get; }

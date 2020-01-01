@@ -1,4 +1,6 @@
 ﻿using Firebase.Auth.Requests;
+using Newtonsoft.Json.Linq;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Firebase.Auth
@@ -10,6 +12,8 @@ namespace Firebase.Auth
         private readonly DeleteAccount deleteAccount;
         private readonly RefreshToken token;
         private readonly UpdateAccount updateAccount;
+        private readonly SetAccountLink linkAccount;
+        private readonly GetAccountInfo getAccount;
         private readonly FirebaseAuthConfig config;
 
         internal User(FirebaseAuthConfig config, UserInfo userInfo, FirebaseCredential credential)
@@ -20,6 +24,8 @@ namespace Firebase.Auth
             this.deleteAccount = new DeleteAccount(config);
             this.token = new RefreshToken(config);
             this.updateAccount = new UpdateAccount(config);
+            this.linkAccount = new SetAccountLink(config);
+            this.getAccount = new GetAccountInfo(config);
         }
 
         public string Uid => this.Info.Uid;
@@ -91,6 +97,39 @@ namespace Firebase.Auth
             };
 
             await this.config.UserRepository.SaveUserAsync(this).ConfigureAwait(false);
+        }
+
+        public async Task<User> LinkWithCredentialAsync(AuthCredential credential)
+        {
+            var token = await this.GetIdTokenAsync().ConfigureAwait(false);
+            var request = credential.CopyToSetAccountRequest(new SetAccountLinkRequest(token));
+
+            var link = await this.linkAccount.ExecuteAsync(request).ConfigureAwait(false);
+            var getResult = await this.getAccount.ExecuteAsync(new IdTokenRequest { IdToken = link.IdToken }).ConfigureAwait(false);
+
+            var u = getResult.Users[0];
+            this.Info = new UserInfo
+            {
+                DisplayName = u.DisplayName,
+                Email = u.Email,
+                IsEmailVerified = u.EmailVerified,
+                FederatedId = u.ProviderUserInfo?.FirstOrDefault(info => info.FederatedId != null)?.FederatedId,
+                Uid = u.LocalId,
+                PhotoUrl = u.PhotoUrl,
+                IsAnonymous = false
+            };
+
+            this.Credential = new FirebaseCredential
+            {
+                ExpiresIn = link.ExpiresIn,
+                IdToken = link.IdToken,
+                ProviderType = credential.ProviderType,
+                RefreshToken = link.RefreshToken
+            };
+
+            await this.config.UserRepository.SaveUserAsync(this).ConfigureAwait(false);
+
+            return this;
         }
     }
 }
