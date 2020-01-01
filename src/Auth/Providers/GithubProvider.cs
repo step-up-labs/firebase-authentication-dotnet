@@ -1,6 +1,6 @@
 ﻿namespace Firebase.Auth.Providers
 {
-    public class GithubProvider : ExternalAuthProvider
+    public class GithubProvider : OAuthProvider
     {
         public override FirebaseProviderType ProviderType => FirebaseProviderType.Github;
     }

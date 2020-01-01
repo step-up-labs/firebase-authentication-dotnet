@@ -1,6 +1,6 @@
 ﻿namespace Firebase.Auth.Providers
 {
-    public class TwitterProvider : ExternalAuthProvider
+    public class TwitterProvider : OAuthProvider
     {
         public override FirebaseProviderType ProviderType => FirebaseProviderType.Twitter;
 

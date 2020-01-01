@@ -13,9 +13,9 @@ namespace Firebase.Auth.UI
         void Reset();
 
         /// <summary>
-        /// Do an external sign in in webview / browser. 
+        /// Do an oauth redirect sign in in webview / browser. 
         /// </summary>
-        Task<User> SignInExternallyAsync(FirebaseProviderType providerType);
+        Task<User> SignInWithRedirectAsync(FirebaseProviderType providerType);
 
         /// <summary>
         /// Get user's email. Used to determine if the user exists or not.

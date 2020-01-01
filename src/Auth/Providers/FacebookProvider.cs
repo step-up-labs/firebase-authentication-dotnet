@@ -1,6 +1,6 @@
 ﻿namespace Firebase.Auth.Providers
 {
-    public class FacebookProvider : ExternalAuthProvider
+    public class FacebookProvider : OAuthProvider
     {
         public const string DefaultEmailScope = "email";
 

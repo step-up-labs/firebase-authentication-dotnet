@@ -1,6 +1,6 @@
 ﻿namespace Firebase.Auth.Providers
 {
-    public class AppleProvider : ExternalAuthProvider
+    public class AppleProvider : OAuthProvider
     {
         public const string DefaultEmailScope = "email";
 

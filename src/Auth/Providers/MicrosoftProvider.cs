@@ -1,6 +1,6 @@
 ﻿namespace Firebase.Auth.Providers
 {
-    public class MicrosoftProvider : ExternalAuthProvider
+    public class MicrosoftProvider : OAuthProvider
     {
         public static string[] DefaultScopes = new[] 
         {

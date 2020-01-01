@@ -37,9 +37,9 @@ namespace Firebase.Auth
         /// <summary>
         /// Signs in via third party OAuth providers - e.g. Google, Facebook etc.
         /// </summary>
-        /// <param name="authType"> Type of the provider, must be an external one. </param>
-        /// <param name="externalSignInDelegate"> Delegate which should invoke the passed uri for external authentication and return the final redirect uri. </param>
-        Task<User> SignInExternallyAsync(FirebaseProviderType authType, ExternalSignInDelegate externalSignInDelegate);
+        /// <param name="authType"> Type of the provider, must be an oauth one. </param>
+        /// <param name="redirectDelegate"> Delegate which should invoke the passed uri for oauth authentication and return the final redirect uri. </param>
+        Task<User> SignInWithRedirectAsync(FirebaseProviderType authType, SignInRedirectDelegate redirectDelegate);
         
         /// <summary>
         /// Signs in with email and password. If the email &amp; password combination is incorrect, <see cref="FirebaseAuthException"/> is thrown.

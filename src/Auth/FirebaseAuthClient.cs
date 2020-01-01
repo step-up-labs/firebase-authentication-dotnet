@@ -72,19 +72,19 @@ namespace Firebase.Auth
             }
         }
 
-        public async Task<User> SignInExternallyAsync(FirebaseProviderType authType, ExternalSignInDelegate externalSignInDelegate)
+        public async Task<User> SignInWithRedirectAsync(FirebaseProviderType authType, SignInRedirectDelegate redirectDelegate)
         {
             var provider = this.GetAuthProvider(authType);
 
-            if (!(provider is ExternalAuthProvider externalProvider))
+            if (!(provider is OAuthProvider oauthProvider))
             {
                 throw new InvalidOperationException("You cannot sign in with this provider using this method.");
             }
 
             await this.CheckAuthDomain().ConfigureAwait(false);
 
-            var continuation = await externalProvider.SignInAsync().ConfigureAwait(false);
-            var redirectUri = await externalSignInDelegate(continuation.Uri).ConfigureAwait(false);
+            var continuation = await oauthProvider.SignInAsync().ConfigureAwait(false);
+            var redirectUri = await redirectDelegate(continuation.Uri).ConfigureAwait(false);
             var user = await continuation.ContinueSignInAsync(redirectUri).ConfigureAwait(false);
 
             await this.SaveTokenAsync(user).ConfigureAwait(false);

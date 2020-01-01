@@ -95,7 +95,7 @@ namespace Firebase.Auth.UI
                 case FirebaseProviderType.Anonymous:
                     return this.Client.SignInAnonymouslyAsync();
                 default:
-                    return flow.SignInExternallyAsync(provider);
+                    return flow.SignInWithRedirectAsync(provider);
             }
         }
 

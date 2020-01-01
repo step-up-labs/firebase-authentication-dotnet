@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Firebase.Auth.Providers
 {
-    public class ExternalAuthContinuation
+    public class OAuthContinuation
     {
         private readonly FirebaseAuthConfig config;
         private readonly VerifyAssertion verifyAssertion;
@@ -11,7 +11,7 @@ namespace Firebase.Auth.Providers
         private readonly string sessionId;
         private readonly FirebaseProviderType providerType;
 
-        internal ExternalAuthContinuation(FirebaseAuthConfig config, string uri, string sessionId, FirebaseProviderType providerType)
+        internal OAuthContinuation(FirebaseAuthConfig config, string uri, string sessionId, FirebaseProviderType providerType)
         {
             this.config = config;
             this.verifyAssertion = new VerifyAssertion(config);

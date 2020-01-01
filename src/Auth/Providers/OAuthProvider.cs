@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Firebase.Auth.Providers
 {
-    public abstract class ExternalAuthProvider : FirebaseAuthProvider
+    public abstract class OAuthProvider : FirebaseAuthProvider
     {
         protected VerifyAssertion verifyAssertion;
         protected readonly List<string> scopes;
         protected readonly Dictionary<string, string> parameters;
 
-        public ExternalAuthProvider()
+        public OAuthProvider()
         {
             this.scopes = new List<string>();
             this.parameters = new Dictionary<string, string>();
@@ -32,7 +32,7 @@ namespace Firebase.Auth.Providers
             return this;
         }
 
-        internal virtual async Task<ExternalAuthContinuation> SignInAsync()
+        internal virtual async Task<OAuthContinuation> SignInAsync()
         {
             if (this.LocaleParameterName != null && !this.parameters.ContainsKey(this.LocaleParameterName))
             {
@@ -49,7 +49,7 @@ namespace Firebase.Auth.Providers
 
             var response = await this.createAuthUri.ExecuteAsync(request).ConfigureAwait(false);
 
-            return new ExternalAuthContinuation(this.config, response.AuthUri, response.SessionId, this.ProviderType);
+            return new OAuthContinuation(this.config, response.AuthUri, response.SessionId, this.ProviderType);
         }
 
         protected virtual string LocaleParameterName => null;

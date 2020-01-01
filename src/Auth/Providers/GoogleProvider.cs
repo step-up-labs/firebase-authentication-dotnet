@@ -1,6 +1,6 @@
 ﻿namespace Firebase.Auth.Providers
 {
-    public class GoogleProvider : ExternalAuthProvider
+    public class GoogleProvider : OAuthProvider
     {
         public const string DefaultProfileScope = "profile";
         public const string DefaultEmailScope = "email";

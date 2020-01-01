@@ -59,7 +59,7 @@ namespace Firebase.Auth.Sample
                 var provider = config.Providers[i].ProviderType;
                 user = provider == FirebaseProviderType.EmailAndPassword
                     ? await SignInWithEmail(client)
-                    : await client.SignInExternallyAsync(provider, uri =>
+                    : await client.SignInWithRedirectAsync(provider, uri =>
                     {
                         WriteLine($"Go to \n{uri}\n and paste here the redirect uri after you finish signing in");
                         return Task.FromResult(ReadLine());
