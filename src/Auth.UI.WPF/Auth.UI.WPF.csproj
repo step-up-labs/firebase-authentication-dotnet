@@ -46,6 +46,7 @@
     <Resource Include="..\Auth.UI\Assets\twitter.png" Link="Assets\twitter.png" />
     <None Include="..\Auth.UI\Assets\firebase.png" Link="Assets\firebase.png" Pack="true" PackagePath=""/>
     <None Include="..\..\LICENSE.txt" Link="Assets\LICENSE.txt" Pack="true" PackagePath=""/>
+    <None Include="tools\VisualStudioToolsManifest.xml" Pack="true" PackagePath="tools" />
   </ItemGroup>
 
   <ItemGroup>
