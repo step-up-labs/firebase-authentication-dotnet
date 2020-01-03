@@ -50,6 +50,7 @@ namespace Firebase.Auth.UI
             {
                 PrivacyPolicyUrl = "https://github.com/step-up-labs/firebase-authentication-dotnet/",
                 TermsOfServiceUrl = "https://github.com/step-up-labs/firebase-authentication-dotnet/",
+                ApiKey = "Empty",
                 AuthDomain = "test",
                 Providers = new FirebaseAuthProvider[]
                     {
