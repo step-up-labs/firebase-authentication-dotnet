@@ -9,6 +9,8 @@
             this.AddScopes(DefaultEmailScope);
         }
 
+        public static AuthCredential GetCredential(string accessToken) => GetCredential(FirebaseProviderType.Apple, accessToken);
+
         public override FirebaseProviderType ProviderType => FirebaseProviderType.Apple;
 
         protected override string LocaleParameterName => "locale";

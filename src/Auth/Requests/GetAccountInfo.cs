@@ -5,10 +5,10 @@ namespace Firebase.Auth.Requests
 {
     public class GetAccountInfoResponse
     {
-        public UserInfo[] Users { get; set; }
+        public GetAccountInfoResponseUserInfo[] Users { get; set; }
     }
 
-    public class UserInfo
+    public class GetAccountInfoResponseUserInfo
     {
         public string LocalId { get; set; }
         

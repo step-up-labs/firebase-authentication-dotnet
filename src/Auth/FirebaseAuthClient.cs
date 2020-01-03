@@ -92,6 +92,15 @@ namespace Firebase.Auth
             return user;
         }
 
+        public async Task<User> SignInWithCredentialAsync(AuthCredential credential)
+        {
+            await this.CheckAuthDomain().ConfigureAwait(false);
+            
+            return await this
+                .GetAuthProvider(credential.ProviderType)
+                .SignInWithCredentialAsync(credential);
+        }
+
         public async Task<User> SignInAnonymouslyAsync()
         {
             var response = await this.signupNewUser.ExecuteAsync(new SignupNewUserRequest { ReturnSecureToken = true }).ConfigureAwait(false);

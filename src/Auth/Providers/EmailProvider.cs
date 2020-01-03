@@ -11,6 +11,7 @@ namespace Firebase.Auth.Providers
         private GetAccountInfo getAccountInfo;
         private VerifyPassword verifyPassword;
         private ResetPassword resetPassword;
+        private VerifyAssertion verifyAssertion;
 
         public override FirebaseProviderType ProviderType => FirebaseProviderType.EmailAndPassword;
 
@@ -23,6 +24,7 @@ namespace Firebase.Auth.Providers
             this.getAccountInfo = new GetAccountInfo(this.config);
             this.verifyPassword = new VerifyPassword(this.config);
             this.resetPassword = new ResetPassword(this.config);
+            this.verifyAssertion = new VerifyAssertion(this.config);
         }
 
         public static AuthCredential GetCredential(string email, string password)
@@ -30,7 +32,7 @@ namespace Firebase.Auth.Providers
             return new AuthCredential
             {
                 ProviderType = FirebaseProviderType.EmailAndPassword,
-                Object = new
+                Object = new EmailCredential
                 {
                     Email = email,
                     Password = password
@@ -126,6 +128,13 @@ namespace Firebase.Auth.Providers
             return new User(this.config, getUser, credential);
         }
 
+        protected internal override Task<User> SignInWithCredentialAsync(AuthCredential credential)
+        {
+            var ep = (EmailCredential)credential.Object;
+
+            return this.SignInUserAsync(ep.Email, ep.Password);
+        }
+
         private async Task<UserInfo> GetUserInfoAsync(string idToken)
         {
             var getResponse = await this.getAccountInfo.ExecuteAsync(new IdTokenRequest { IdToken = idToken }).ConfigureAwait(false);
@@ -140,6 +149,13 @@ namespace Firebase.Auth.Providers
                 PhotoUrl = user.PhotoUrl,
                 IsAnonymous = false
             };
+        }
+
+        internal class EmailCredential
+        {
+            public string Email { get; set; }
+
+            public string Password { get; set; }
         }
     }
 

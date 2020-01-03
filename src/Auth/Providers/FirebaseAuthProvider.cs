@@ -1,4 +1,5 @@
 ﻿using Firebase.Auth.Requests;
+using System.Threading.Tasks;
 
 namespace Firebase.Auth.Providers
 {
@@ -17,6 +18,8 @@ namespace Firebase.Auth.Providers
             this.config = config;
             this.createAuthUri = new CreateAuthUri(config);
         }
+
+        protected internal abstract Task<User> SignInWithCredentialAsync(AuthCredential credential);
 
         protected string GetContinueUri()
         {

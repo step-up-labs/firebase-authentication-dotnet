@@ -15,6 +15,8 @@
             this.AddScopes(DefaultScopes);
         }
 
+        public static AuthCredential GetCredential(string accessToken) => GetCredential(FirebaseProviderType.Microsoft, accessToken);
+
         public override FirebaseProviderType ProviderType => FirebaseProviderType.Microsoft;
     }
 }

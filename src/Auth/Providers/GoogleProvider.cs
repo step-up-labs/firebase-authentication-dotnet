@@ -10,6 +10,8 @@
             this.AddScopes(DefaultProfileScope, DefaultEmailScope);
         }
 
+        public static AuthCredential GetCredential(string accessToken) => GetCredential(FirebaseProviderType.Google, accessToken);
+
         public override FirebaseProviderType ProviderType => FirebaseProviderType.Google;
 
         protected override string LocaleParameterName => "hl";
