@@ -1,57 +1,32 @@
 # FirebaseAuthentication.net
-[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/rwmdgqcb7is2clqp?svg=true)](https://ci.appveyor.com/project/bezysoftware/firebase-authentication-dotnet)
+![](https://github.com/step-up-labs/firebase-authentication-dotnet/workflows/build/badge.svg)
+[![latest version](https://img.shields.io/nuget/v/FirebaseAuthentication.net)](https://www.nuget.org/packages/FirebaseAuthentication.net)
+[![feedz.io](https://img.shields.io/badge/endpoint.svg?url=https%3A%2F%2Ff.feedz.io%2Fstep-up-labs%2Ffirebase%2Fshield%2FFirebaseAuthentication.net%2Flatest)](https://f.feedz.io/step-up-labs/firebase/packages/FirebaseAuthentication.net/latest/download)
 
-Firebase authentication library. It can generate Firebase auth token based on given OAuth token (issued by Google, Facebook...). This Firebase token can then be used with REST queries against Firebase Database endpoints. See [FirebaseDatabase.net](https://github.com/step-up-labs/firebase-database-dotnet) for a C# library wrapping the Firebase Database REST queries.
+FirebaseAuthentication.net is an unofficial C# implementation of [Firebase Authentication](https://firebase.google.com/docs/auth)
+and [FirebaseUI](https://firebase.google.com/docs/auth). 
+
+The solutions consists of 4 libraries, a base one and 3 platform specific ones:
+* FirebaseAuthentication**.net** targets .NET Standard 2.0
+* FirebaseAuthentication**.WPF** targets WPF on .NET Core 3.1
+* FirebaseAuthentication**.UWP** targets UWP
+* FirebaseAuthentication**.Xamarin** targets Xamarin.Forms
 
 ## Installation
-```csharp
-// Install release version
-Install-Package FirebaseAuthentication.net
+```powershell
+# base package
+dotnet add package FirebaseAuthentication.net
+
+# Platform specific FirebaseUI 
+dotnet add package FirebaseAuthentication.WPF
+dotnet add package FirebaseAuthentication.UWP
+dotnet add package FirebaseAuthentication.Xamarin
 ```
 
-## Supported frameworks
-* .NET Standard 1.1 - see https://github.com/dotnet/standard/blob/master/docs/versions.md for compatibility matrix
+Daily builds are also available on [feedz.io](https://feedz.io). Just add the following Package Source to your Visual Studio:
 
-## Supported scenarios
-* Login with Google / Facebook / Github / Twitter OAuth tokens
-* Anonymous login
-* Login with email + password
-* Create new user with email + password
-* Send a password reset email
-* Link two accounts together
-
-## Usage
-
-```csharp
-var authProvider = new FirebaseAuthProvider(new FirebaseConfig(FirebaseApiKey));
-var facebookAccessToken = "<login with facebook and get oauth access token>";
-
-var auth = await authProvider.SignInWithOAuthAsync(FirebaseAuthType.Facebook, facebookAccessToken);
-
-var firebase = new FirebaseClient(
-  "https://dinosaur-facts.firebaseio.com/",
-  new FirebaseOptions
-  {
-    AuthTokenAsyncFactory = () => Task.FromResult(auth.FirebaseToken) 
-  });
-
-var dinos = await firebase
-  .Child("dinosaurs")
-  .OnceAsync<Dinosaur>();
-  
-foreach (var dino in dinos)
-{
-  Console.WriteLine($"{dino.Key} is {dino.Object.Height}m high.");
-}
+```
+https://f.feedz.io/step-up-labs/firebase/nuget/index.json
 ```
 
-## Facebook setup
-
-Under [Facebook developers page for your app](https://developers.facebook.com/) make sure you have a similar setup:
-
-![Logo](/art/FacebookSetup.png)
-
-
-## Google setup
-
-In the [developer console](https://console.developers.google.com/apis/credentials) make sure you have an OAuth client (set it either as iOS or Android app, that should work).
+TODO
