@@ -47,6 +47,14 @@ namespace Firebase.Auth
         Task<User> SignInWithEmailAndPasswordAsync(string email, string password);
 
         /// <summary>
+        /// Sign in with platform specific credential. For example:
+        /// <code>
+        /// var credential = GoogleProvider.GetCredential("token");
+        /// </code>
+        /// </summary>
+        Task<User> SignInWithCredentialAsync(AuthCredential credential);
+
+        /// <summary>
         /// Sends a password reset email to given address.
         /// </summary>
         Task ResetEmailPasswordAsync(string email);

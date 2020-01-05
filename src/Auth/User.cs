@@ -119,7 +119,7 @@ namespace Firebase.Auth
 
             await this.config.UserRepository.SaveUserAsync(this).ConfigureAwait(false);
 
-            return user;
+            return this;
         }
     }
 }

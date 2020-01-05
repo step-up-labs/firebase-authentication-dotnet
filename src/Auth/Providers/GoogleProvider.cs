@@ -12,7 +12,7 @@ namespace Firebase.Auth.Providers
             this.AddScopes(DefaultProfileScope, DefaultEmailScope);
         }
 
-        public static AuthCredential GetCredential(string token, OAuthCredentialTokenType tokenType)
+        public static AuthCredential GetCredential(string token, OAuthCredentialTokenType tokenType = OAuthCredentialTokenType.AccessToken)
         {
             return new OAuthCredential
             {

@@ -53,7 +53,7 @@ namespace Firebase.Auth.Requests
     }
 
     /// <summary>
-    /// Finishes oauth authentication processing using the redirect_uri user is sent to in a browser.
+    /// Finishes oauth authentication processing.
     /// </summary>
     public class VerifyAssertion : FirebaseRequestBase<VerifyAssertionRequest, VerifyAssertionResponse>
     {

@@ -1,16 +1,19 @@
 # FirebaseAuthentication.net
 ![](https://github.com/step-up-labs/firebase-authentication-dotnet/workflows/build/badge.svg)
 [![latest version](https://img.shields.io/nuget/v/FirebaseAuthentication.net)](https://www.nuget.org/packages/FirebaseAuthentication.net)
-[![feedz.io](https://img.shields.io/badge/endpoint.svg?url=https%3A%2F%2Ff.feedz.io%2Fstep-up-labs%2Ffirebase%2Fshield%2FFirebaseAuthentication.net%2Flatest)](https://f.feedz.io/step-up-labs/firebase/packages/FirebaseAuthentication.net/latest/download)
+[![feedz.io](https://img.shields.io/badge/endpoint.svg?label=FirebaseAuthentication.net&url=https%3A%2F%2Ff.feedz.io%2Fstep-up-labs%2Ffirebase%2Fshield%2FFirebaseAuthentication.net%2Flatest)](https://f.feedz.io/step-up-labs/firebase/packages/FirebaseAuthentication.net/latest/download)
+[![feedz.io](https://img.shields.io/badge/endpoint.svg?label=FirebaseAuthentication.WPF&url=https%3A%2F%2Ff.feedz.io%2Fstep-up-labs%2Ffirebase%2Fshield%2FFirebaseAuthentication.WPF%2Flatest)](https://f.feedz.io/step-up-labs/firebase/packages/FirebaseAuthentication.WPF/latest/download)
 
 FirebaseAuthentication.net is an unofficial C# implementation of [Firebase Authentication](https://firebase.google.com/docs/auth)
 and [FirebaseUI](https://firebase.google.com/docs/auth). 
 
+The libraries provide a drop-in auth solution that handles the UI flows for signing in users with email addresses and passwords, Identity Provider Sign In including Google, Facebook, GitHub, Twitter, Apple, Microsoft, Yahoo and anonymous sign-in.
+
 The solutions consists of 4 libraries, a base one and 3 platform specific ones:
-* FirebaseAuthentication**.net** targets .NET Standard 2.0
-* FirebaseAuthentication**.WPF** targets WPF on .NET Core 3.1
-* FirebaseAuthentication**.UWP** targets UWP
-* FirebaseAuthentication**.Xamarin** targets Xamarin.Forms
+* FirebaseAuthentication<strong>.net</strong> targets [.NET Standard 2.0](https://github.com/dotnet/standard/blob/master/docs/versions.md)
+* FirebaseAuthentication<strong>.WPF</strong> targets [WPF on .NET Core 3.1](https://github.com/dotnet/wpf)
+* FirebaseAuthentication<strong>.UWP</strong> targets UWP (*TODO*)
+* FirebaseAuthentication<strong>.Xamarin</strong> targets Xamarin.Forms (*TODO*)
 
 ## Installation
 ```powershell
@@ -28,5 +31,120 @@ Daily builds are also available on [feedz.io](https://feedz.io). Just add the fo
 ```
 https://f.feedz.io/step-up-labs/firebase/nuget/index.json
 ```
+
+## Usage
+
+In general the terminology and API naming conventions try to follow the official JavaScript implementation, adjusting it to fit the .NET conventions. 
+E.g. `SignInWithCredential` is called `SignInWithCredentialAsync` because it is meant to be `await`ed, but otherwise the terminology should be mostly the same.
+
+
+### Samples
+There are currently 2 sample projects in the [samples folder](/samples/):
+
+* .NET Core Console application (uses only the base library, no UI)
+* WPF sample with UI
+
+Feel free to clone the repo and check them out, just don't forget to add your custom API keys and other setup (typically in `Program.cs` or `App.xaml.cs`).
+
+![](art/SampleWPF.png)
+
+### Setup
+
+For general Firebase setup, refer to the [official documentation](https://firebase.google.com/docs/auth) which discusses the general concepts and individual providers in detail. 
+You might also want to check out the first two steps in this [web documentation](https://firebase.google.com/docs/web/setup). 
+Notice that Firebase doesn't officially support Windows as a platform so you will have to register you application as a web app in [Firebase Console](https://console.firebase.google.com/).
+
+### FirebaseAuthentication.net
+
+The base library gives you the same features as *Firebase SDK Authentication*, that is without any UI. Your entrypoint is the `FirebaseAuthClient`.
+
+```csharp
+// Configure...
+var config = new FirebaseAuthConfig
+{
+    ApiKey = "<API KEY>",
+    AuthDomain = "<DOMAIN>.firebaseapp.com",
+    Providers = new FirebaseAuthProvider[]
+    {
+        // Add and configure individual providers
+        new GoogleProvider().AddScopes("email"),
+        new EmailProvider()
+        // ...
+    },
+    UserRepository = new FileUserRepository("FirebaseSample")
+};
+
+// ...and manually create your FirebaseAuthClient
+var client = new FirebaseAuthClient(config);
+```
+
+Notice the `UserRepository`. This tells `FirebaseAuthClient` where to store the user's credentials. 
+By default the libraries use in-memory repository; to preserve user's credentials between application runs, use `FileUserRepository` (or your custom implementation of `IUserRepository`).
+
+After you have your `client`, you can sign-in or sign-up the user with any of the configured providers.
+
+```csharp
+// anonymous sign in
+var user = await client.SignInAnonymouslyAsync();
+
+// sign up or sign in with email and password
+var user = await client.CreateUserWithEmailAndPasswordAsync("email", "pwd", "Display Name");
+var user = await client.SignInWithEmailAndPasswordAsync("email", "pwd");
+
+// sign in via provider specific AuthCredential
+var credential = TwitterProvider.GetCredential("access_token", "oauth_token_secret");
+var user = await client.SignInWithCredentialAsync(credential);
+
+// sign in via web browser redirect - navigate to given uri, monitor a redirect to 
+// your authdomain.firebaseapp.com/__/auth/handler
+// and return the whole redirect uri back to the client;
+// this method is actually used by FirebaseUI
+await client.SignInWithRedirectAsync(provider, async uri =>
+{    
+    return await OpenBrowserAndWaitForRedirectToAuthDomain(uri);
+});
+```
+
+As you can see the sign-in methods give you a `User` object, which contains information about a user as well as some useful method, e.g. `GetIdTokenAsync()` to get a valid *IdToken* you can use as an access token to other Firebase API (e.g. Realtime Database).
+
+```csharp
+// user and auth properties
+var uid = user.Uid;
+var name = user.Info.DisplayName;
+var refreshToken = user.Credential.RefreshToken;
+
+// user methods
+var token = await user.GetIdTokenAsync();
+await user.DeleteAsync();
+await user.ChangePasswordAsync("new_password");
+await user.LinkWithCredentialAsync(authCredential)
+```
+
+### FirebaseUI
+
+The platform specific UI libraries use the `FirebaseAuthClient` under the hood, but are initilized via the static `Initialize` method of `FirebaseUI`:
+
+```csharp
+// Initialize FirebaseUI during your application startup (e.g. App.xaml.cs)
+FirebaseUI.Initialize(new FirebaseUIConfig
+{
+    ApiKey = "<API KEY>",
+    AuthDomain = "<DOMAIN>.firebaseapp.com",
+    Providers = new FirebaseAuthProvider[]
+    {
+        new GoogleProvider().AddScopes("email"),
+        new EmailProvider()
+        // and others
+    },
+    PrivacyPolicyUrl = "<PP URL>",
+    TermsOfServiceUrl = "<TOS URL>",
+    IsAnonymousAllowed = true,
+    UserRepository = new FileUserRepository("FirebaseSample")
+});
+```
+
+Notice the `UserRepository`. This tells FirebaseUI where to store the user's credentials. 
+By default the libraries use in-memory repository; to preserve user's credentials between application runs, use `FileUserRepository` (or your custom implementation of `IUserRepository`).
+
 
 TODO
