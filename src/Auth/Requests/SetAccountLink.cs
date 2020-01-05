@@ -1,18 +1,10 @@
-﻿using System.Collections.Generic;
-
-namespace Firebase.Auth.Requests
+﻿namespace Firebase.Auth.Requests
 {
-    public class SetAccountLinkRequest : Dictionary<string, object>
+    public class SetAccountLinkRequest : SetAccountInfoRequest
     {
-        public SetAccountLinkRequest()
-        {
-        }
+        public string Email { get; set; }
 
-        public SetAccountLinkRequest(string idToken, bool returnSecureToken = true)
-        {
-            this[nameof(idToken)] = idToken;
-            this[nameof(returnSecureToken)] = returnSecureToken;
-        }
+        public string Password { get; set; }
     }
 
     public class SetAccountLinkResponse : SetAccountInfoResponse

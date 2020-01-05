@@ -1,4 +1,6 @@
-﻿namespace Firebase.Auth.Providers
+﻿using System.Threading.Tasks;
+
+namespace Firebase.Auth.Providers
 {
     public class GoogleProvider : OAuthProvider
     {
@@ -10,7 +12,15 @@
             this.AddScopes(DefaultProfileScope, DefaultEmailScope);
         }
 
-        public static AuthCredential GetCredential(string accessToken) => GetCredential(FirebaseProviderType.Google, accessToken);
+        public static AuthCredential GetCredential(string token, OAuthCredentialTokenType tokenType)
+        {
+            return new OAuthCredential
+            {
+                ProviderType = FirebaseProviderType.Google,
+                Token = token,
+                TokenType = tokenType
+            };
+        }
 
         public override FirebaseProviderType ProviderType => FirebaseProviderType.Google;
 

@@ -21,6 +21,8 @@ namespace Firebase.Auth.Providers
 
         protected internal abstract Task<User> SignInWithCredentialAsync(AuthCredential credential);
 
+        protected internal abstract Task<User> LinkWithCredentialAsync(string idToken, AuthCredential credential);
+
         protected string GetContinueUri()
         {
             return $"https://{this.config.AuthDomain}/__/auth/handler";

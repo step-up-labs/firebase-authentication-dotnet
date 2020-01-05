@@ -1,5 +1,6 @@
 ﻿using Firebase.Auth.Requests;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Firebase.Auth.Providers
@@ -12,6 +13,7 @@ namespace Firebase.Auth.Providers
         private VerifyPassword verifyPassword;
         private ResetPassword resetPassword;
         private VerifyAssertion verifyAssertion;
+        private SetAccountLink linkAccount;
 
         public override FirebaseProviderType ProviderType => FirebaseProviderType.EmailAndPassword;
 
@@ -25,18 +27,16 @@ namespace Firebase.Auth.Providers
             this.verifyPassword = new VerifyPassword(this.config);
             this.resetPassword = new ResetPassword(this.config);
             this.verifyAssertion = new VerifyAssertion(this.config);
+            this.linkAccount = new SetAccountLink(config);
         }
 
         public static AuthCredential GetCredential(string email, string password)
         {
-            return new AuthCredential
+            return new EmailCredential
             {
                 ProviderType = FirebaseProviderType.EmailAndPassword,
-                Object = new EmailCredential
-                {
-                    Email = email,
-                    Password = password
-                }
+                Email = email,
+                Password = password
             };
         }
 
@@ -130,9 +130,46 @@ namespace Firebase.Auth.Providers
 
         protected internal override Task<User> SignInWithCredentialAsync(AuthCredential credential)
         {
-            var ep = (EmailCredential)credential.Object;
+            var ep = (EmailCredential)credential;
 
             return this.SignInUserAsync(ep.Email, ep.Password);
+        }
+
+        protected internal override async Task<User> LinkWithCredentialAsync(string token, AuthCredential credential)
+        {
+            var c = (EmailCredential)credential;
+            var request = new SetAccountLinkRequest
+            {
+                IdToken = token,
+                Email = c.Email,
+                Password = c.Password,
+                ReturnSecureToken = true
+            };
+
+            var link = await this.linkAccount.ExecuteAsync(request).ConfigureAwait(false);
+            var getResult = await this.getAccountInfo.ExecuteAsync(new IdTokenRequest { IdToken = link.IdToken }).ConfigureAwait(false);
+
+            var u = getResult.Users[0];
+            var info = new UserInfo
+            {
+                DisplayName = u.DisplayName,
+                Email = u.Email,
+                IsEmailVerified = u.EmailVerified,
+                FederatedId = u.ProviderUserInfo?.FirstOrDefault(info => info.FederatedId != null)?.FederatedId,
+                Uid = u.LocalId,
+                PhotoUrl = u.PhotoUrl,
+                IsAnonymous = false
+            };
+
+            var fc = new FirebaseCredential
+            {
+                ExpiresIn = link.ExpiresIn,
+                IdToken = link.IdToken,
+                ProviderType = credential.ProviderType,
+                RefreshToken = link.RefreshToken
+            };
+
+            return new User(this.config, info, fc);
         }
 
         private async Task<UserInfo> GetUserInfoAsync(string idToken)
@@ -151,7 +188,7 @@ namespace Firebase.Auth.Providers
             };
         }
 
-        internal class EmailCredential
+        internal class EmailCredential : AuthCredential
         {
             public string Email { get; set; }
 

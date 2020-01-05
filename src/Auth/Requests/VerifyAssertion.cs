@@ -2,7 +2,7 @@
 
 namespace Firebase.Auth.Requests
 {
-    public class VerifyAssertionRequest
+    public class VerifyAssertionRequest : IdTokenRequest
     {
         public string RequestUri { get; set; }
         

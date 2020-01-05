@@ -18,15 +18,14 @@ namespace Firebase.Auth.Providers
             this.parameters = new Dictionary<string, string>();
         }
 
+        protected virtual string LocaleParameterName => null;
+
         protected static AuthCredential GetCredential(FirebaseProviderType providerType, string accessToken)
         {
-            return new AuthCredential
+            return new OAuthCredential
             {
                 ProviderType = providerType,
-                Object = new OAuthCredential
-                {
-                    Token = accessToken
-                }
+                Token = accessToken
             };
         }
 
@@ -72,17 +71,29 @@ namespace Firebase.Auth.Providers
 
         protected internal override Task<User> SignInWithCredentialAsync(AuthCredential credential)
         {
-            var c = (OAuthCredential)credential.Object;
+            var c = (OAuthCredential)credential;
+
             return this.verifyAssertion.ExecuteWithUserAsync(credential.ProviderType, new VerifyAssertionRequest
             {
                 RequestUri = $"https://{this.config.AuthDomain}",
-                PostBody = $"access_token={c.Token}&providerId={credential.ProviderType.ToEnumString()}",
+                PostBody = c.GetPostBodyValue(credential.ProviderType),
                 ReturnIdpCredential = true,
                 ReturnSecureToken = true
             });
         }
 
-        protected virtual string LocaleParameterName => null;
+        protected internal override Task<User> LinkWithCredentialAsync(string idToken, AuthCredential credential)
+        {
+            var c = (OAuthCredential)credential;
+            return this.verifyAssertion.ExecuteWithUserAsync(credential.ProviderType, new VerifyAssertionRequest
+            {
+                IdToken = idToken,
+                RequestUri = $"https://{this.config.AuthDomain}",
+                PostBody = c.GetPostBodyValue(c.ProviderType),
+                ReturnIdpCredential = true,
+                ReturnSecureToken = true
+            });
+        }
 
         protected string GetParsedOauthScopes()
         {
@@ -94,9 +105,28 @@ namespace Firebase.Auth.Providers
             return $"{{ \"{this.ProviderType.ToEnumString()}\": \"{string.Join(",", this.scopes)}\" }}";
         }
 
-        internal class OAuthCredential
+        internal class OAuthCredential : AuthCredential
         {
             public string Token { get; set; }
+
+            public OAuthCredentialTokenType TokenType { get; set; }
+
+            internal virtual string GetPostBodyValue(FirebaseProviderType ProviderType)
+            {
+                var tokenType = this.TokenType switch
+                {
+                    OAuthCredentialTokenType.IdToken => "id_token",
+                    _ => "access_token"
+                };
+
+                return $"{tokenType}={this.Token}&providerId={ProviderType.ToEnumString()}";
+            }
         }
+    }
+
+    public enum OAuthCredentialTokenType
+    {
+        AccessToken = 0,
+        IdToken
     }
 }
