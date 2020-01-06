@@ -1,8 +1,7 @@
 # FirebaseAuthentication.net
 ![](https://github.com/step-up-labs/firebase-authentication-dotnet/workflows/build/badge.svg)
 [![latest version](https://img.shields.io/nuget/v/FirebaseAuthentication.net)](https://www.nuget.org/packages/FirebaseAuthentication.net)
-[![feedz.io](https://img.shields.io/badge/endpoint.svg?label=FirebaseAuthentication.net&url=https%3A%2F%2Ff.feedz.io%2Fstep-up-labs%2Ffirebase%2Fshield%2FFirebaseAuthentication.net%2Flatest)](https://f.feedz.io/step-up-labs/firebase/packages/FirebaseAuthentication.net/latest/download)
-[![feedz.io](https://img.shields.io/badge/endpoint.svg?label=FirebaseUI%20WPF&url=https%3A%2F%2Ff.feedz.io%2Fstep-up-labs%2Ffirebase%2Fshield%2FFirebaseAuthentication.WPF%2Flatest)](https://f.feedz.io/step-up-labs/firebase/packages/FirebaseAuthentication.WPF/latest/download)
+[![feedz.io](https://img.shields.io/badge/endpoint.svg?url=https%3A%2F%2Ff.feedz.io%2Fstep-up-labs%2Ffirebase%2Fshield%2FFirebaseAuthentication.net%2Flatest)](https://f.feedz.io/step-up-labs/firebase/packages/FirebaseAuthentication.net/latest/download)
 
 FirebaseAuthentication.net is an unofficial C# implementation of [Firebase Authentication](https://firebase.google.com/docs/auth)
 and [FirebaseUI](https://firebase.google.com/docs/auth). 
