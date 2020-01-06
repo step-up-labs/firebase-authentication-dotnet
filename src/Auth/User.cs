@@ -1,13 +1,15 @@
 ﻿using Firebase.Auth.Requests;
-using Newtonsoft.Json.Linq;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using static Firebase.Auth.Providers.EmailProvider;
-using static Firebase.Auth.Providers.OAuthProvider;
 
 namespace Firebase.Auth
 {
+    /// <summary>
+    /// Represents a signed-in Firebase user. 
+    /// </summary>
+    [DebuggerDisplay("{Uid} | {Info.Email} | {Info.DisplayName}")]
     public class User
     {
         private const string TokenGrantType = "refresh_token";
@@ -15,8 +17,6 @@ namespace Firebase.Auth
         private readonly DeleteAccount deleteAccount;
         private readonly RefreshToken token;
         private readonly UpdateAccount updateAccount;
-        private readonly VerifyAssertion verifyAssertion;
-        private readonly GetAccountInfo getAccount;
         private readonly FirebaseAuthConfig config;
 
         internal User(FirebaseAuthConfig config, UserInfo userInfo, FirebaseCredential credential)
@@ -27,12 +27,16 @@ namespace Firebase.Auth
             this.deleteAccount = new DeleteAccount(config);
             this.token = new RefreshToken(config);
             this.updateAccount = new UpdateAccount(config);
-            this.getAccount = new GetAccountInfo(config);
-            this.verifyAssertion = new VerifyAssertion(config);
         }
 
+        /// <summary>
+        /// Firebase user ID.
+        /// </summary>
         public string Uid => this.Info.Uid;
 
+        /// <summary>
+        /// More information about current user.
+        /// </summary>
         public UserInfo Info { get; private set; }
 
         public FirebaseCredential Credential { get; private set; }
@@ -102,6 +106,10 @@ namespace Firebase.Auth
             await this.config.UserRepository.SaveUserAsync(this).ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Link this user with another credential. The user represented by the <paramref name="credential"/> object must not already exist in Firebase.
+        /// </summary>
+        /// <param name="credential"> Platform-specifc credentials. </param>
         public async Task<User> LinkWithCredentialAsync(AuthCredential credential)
         {
             var provider = this.config.Providers.FirstOrDefault(p => p.ProviderType == credential.ProviderType);

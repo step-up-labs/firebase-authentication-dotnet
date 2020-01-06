@@ -2,6 +2,9 @@
 
 namespace Firebase.Auth
 {
+    /// <summary>
+    /// Firebase credentials used to make Firebase requests.
+    /// </summary>
     public class FirebaseCredential
     {
         public FirebaseCredential()

@@ -60,7 +60,7 @@ namespace Firebase.Auth
         Task ResetEmailPasswordAsync(string email);
 
         /// <summary>
-        /// Signs user out.
+        /// Signs current user out.
         /// </summary>
         Task SignOutAsync();
     }

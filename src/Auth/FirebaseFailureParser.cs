@@ -4,6 +4,9 @@ using System.Diagnostics;
 
 namespace Firebase.Auth
 {
+    /// <summary>
+    /// Parser of HTTP response errors into <see cref="AuthErrorReason"/> enum.
+    /// </summary>
     internal static class FirebaseFailureParser
     {
         /// <summary>

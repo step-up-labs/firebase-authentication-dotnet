@@ -4,7 +4,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Firebase.Auth.UI
+namespace Firebase.Auth
 {
     /// <summary>
     /// <see cref="IUserRepository"/> implementation which saves user related data to a json file in ApplicationData folder.
