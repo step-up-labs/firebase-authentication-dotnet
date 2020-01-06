@@ -12,6 +12,7 @@ namespace Firebase.Auth
         private readonly FirebaseAuthConfig config;
         private readonly ProjectConfig projectConfig;
         private readonly SignupNewUser signupNewUser;
+        private readonly CreateAuthUri createAuthUri;
 
         private bool domainChecked;
         private event EventHandler<UserEventArgs> authStateChanged;
@@ -31,6 +32,7 @@ namespace Firebase.Auth
             this.config = config;
             this.projectConfig = new ProjectConfig(this.config);
             this.signupNewUser = new SignupNewUser(this.config);
+            this.createAuthUri = new CreateAuthUri(this.config);
 
             foreach (var provider in this.config.Providers)
             {
@@ -125,13 +127,19 @@ namespace Firebase.Auth
             return user;
         }
 
-        public async Task<CheckUserRessult> CheckUserEmailExistsAsync(string email)
+        public async Task<FetchUserProvidersResult> FetchSignInMethodsForEmailAsync(string email)
         {
             await this.CheckAuthDomain().ConfigureAwait(false);
 
-            var provider = (EmailProvider)this.GetAuthProvider(FirebaseProviderType.EmailAndPassword);
+            var request = new CreateAuthUriRequest
+            {
+                ContinueUri = this.config.RedirectUri,
+                Identifier = email
+            };
 
-            return await provider.CheckUserExistsAsync(email).ConfigureAwait(false);
+            var response = await this.createAuthUri.ExecuteAsync(request).ConfigureAwait(false);
+
+            return new FetchUserProvidersResult(email, response.Registered, response.SigninMethods, response.AllProviders);
         }
 
         public async Task<User> SignInWithEmailAndPasswordAsync(string email, string password)

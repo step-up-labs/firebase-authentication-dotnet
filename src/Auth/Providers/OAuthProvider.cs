@@ -58,7 +58,7 @@ namespace Firebase.Auth.Providers
 
             var request = new CreateAuthUriRequest
             {
-                ContinueUri = this.GetContinueUri(),
+                ContinueUri = this.config.RedirectUri,
                 ProviderId = this.ProviderType,
                 CustomParameters = this.parameters,
                 OauthScope = this.GetParsedOauthScopes(),

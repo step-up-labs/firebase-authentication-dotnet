@@ -20,9 +20,9 @@ namespace Firebase.Auth
         event EventHandler<UserEventArgs> AuthStateChanged;
 
         /// <summary>
-        /// Checks whether a user with given email exists.
+        /// Gets a list of sign-in methods for given email. If there are no methods, it means the user with given email doesn't exist.
         /// </summary>
-        Task<CheckUserRessult> CheckUserEmailExistsAsync(string email);
+        Task<FetchUserProvidersResult> FetchSignInMethodsForEmailAsync(string email);
         
         /// <summary>
         /// Creates a new user with given email, password and display name (optional) and signs this user in.

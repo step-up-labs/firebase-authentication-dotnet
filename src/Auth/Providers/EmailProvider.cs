@@ -1,5 +1,4 @@
 ﻿using Firebase.Auth.Requests;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,7 +11,6 @@ namespace Firebase.Auth.Providers
         private GetAccountInfo getAccountInfo;
         private VerifyPassword verifyPassword;
         private ResetPassword resetPassword;
-        private VerifyAssertion verifyAssertion;
         private SetAccountLink linkAccount;
 
         public override FirebaseProviderType ProviderType => FirebaseProviderType.EmailAndPassword;
@@ -26,7 +24,6 @@ namespace Firebase.Auth.Providers
             this.getAccountInfo = new GetAccountInfo(this.config);
             this.verifyPassword = new VerifyPassword(this.config);
             this.resetPassword = new ResetPassword(this.config);
-            this.verifyAssertion = new VerifyAssertion(this.config);
             this.linkAccount = new SetAccountLink(config);
         }
 
@@ -38,19 +35,6 @@ namespace Firebase.Auth.Providers
                 Email = email,
                 Password = password
             };
-        }
-
-        public async Task<CheckUserRessult> CheckUserExistsAsync(string email)
-        {
-            var request = new CreateAuthUriRequest
-            {
-                ContinueUri = this.GetContinueUri(),
-                Identifier = email
-            };
-
-            var response = await this.createAuthUri.ExecuteAsync(request).ConfigureAwait(false);
-
-            return new CheckUserRessult(email, response.Registered, response.SigninMethods);
         }
 
         public Task ResetEmailPasswordAsync(string email)
@@ -194,21 +178,5 @@ namespace Firebase.Auth.Providers
 
             public string Password { get; set; }
         }
-    }
-
-    public class CheckUserRessult
-    {
-        public CheckUserRessult(string email, bool exists, IReadOnlyCollection<FirebaseProviderType> signinProviders)
-        {
-            this.Email = email;
-            this.UserExists = exists;
-            this.SigninProviders = signinProviders;
-        }
-
-        public string Email { get; }
-
-        public bool UserExists { get; }
-
-        public IReadOnlyCollection<FirebaseProviderType> SigninProviders { get; }
     }
 }

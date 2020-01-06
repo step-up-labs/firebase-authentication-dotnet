@@ -94,9 +94,9 @@ namespace Firebase.Auth.Sample
 
             try
             {
-                var result = await client.CheckUserEmailExistsAsync(email);
+                var result = await client.FetchSignInMethodsForEmailAsync(email);
 
-                if (result.UserExists)
+                if (result.UserExists && result.AllProviders.Contains(FirebaseProviderType.EmailAndPassword))
                 {
                     Write("User exists, enter password: ");
                     var password = ReadPassword();

@@ -104,7 +104,7 @@ namespace Firebase.Auth.UI
         {
             try
             {
-                var exists = await this.RetryAction(e => flow.PromptForEmailAsync(e), email => this.Client.CheckUserEmailExistsAsync(email));
+                var exists = await this.RetryAction(e => flow.PromptForEmailAsync(e), email => this.Client.FetchSignInMethodsForEmailAsync(email));
 
                 if (exists == null)
                 {

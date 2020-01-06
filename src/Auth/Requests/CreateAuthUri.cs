@@ -16,6 +16,8 @@ namespace Firebase.Auth.Requests
         public bool Registered { get; set; }
 
         public List<FirebaseProviderType> SigninMethods { get; set; }
+        
+        public List<FirebaseProviderType> AllProviders { get; set; }
     }
 
     public class CreateAuthUriRequest
