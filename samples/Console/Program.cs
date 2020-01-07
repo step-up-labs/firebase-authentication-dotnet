@@ -17,8 +17,8 @@ namespace Firebase.Auth.Sample
         {
             var config = new FirebaseAuthConfig
             {
-                ApiKey = "AIzaSyDFi3vESrBJ12BJovdEtj8jq0OmyktugaQ",
-                AuthDomain = "torrid-inferno-3642.firebaseapp.com",
+                ApiKey = "<YOUR API KEY>",
+                AuthDomain = "<YOUR PROJECT DOMAIN>.firebaseapp.com",
                 Providers = new FirebaseAuthProvider[]
                 {
                     new GoogleProvider(),
@@ -29,6 +29,12 @@ namespace Firebase.Auth.Sample
                     new EmailProvider()
                 }
             };
+
+            if (config.ApiKey == "<YOUR API KEY>" || config.AuthDomain == "<YOUR PROJECT DOMAIN>.firebaseapp.com")
+            {
+                Console.WriteLine("You need to setup your API key and auth domain first in Program.cs");
+                return;
+            }
 
             var client = new FirebaseAuthClient(config);
 
