@@ -111,7 +111,7 @@ namespace Firebase.Auth.UI
             }
         }
 
-        private async Task<User> SignInWithEmailAsync(IFirebaseUIFlow flow)
+        protected virtual async Task<User> SignInWithEmailAsync(IFirebaseUIFlow flow)
         {
             var fetchResult = await this.RetryAction(e => flow.PromptForEmailAsync(e), email => this.Client.FetchSignInMethodsForEmailAsync(email));
 
@@ -171,7 +171,7 @@ namespace Firebase.Auth.UI
                 user => this.Client.CreateUserWithEmailAndPasswordAsync(user.Email, user.Password, user.DisplayName));
         }
 
-        private async Task<User> HandleConflictAsync(IFirebaseUIFlow flow, FirebaseAuthLinkConflictException exception)
+        protected virtual async Task<User> HandleConflictAsync(IFirebaseUIFlow flow, FirebaseAuthLinkConflictException exception)
         {
             var provider = exception.Providers.First();
             if (!await flow.ShowEmailProviderConflictAsync(exception.Email, provider))
@@ -182,7 +182,7 @@ namespace Firebase.Auth.UI
             return await this.SignInAsync(flow, provider);
         }
 
-        private async Task<TOut> RetryAction<TIn, TOut>(Func<string, Task<TIn>> func, Func<TIn, Task<TOut>> func2)
+        protected async Task<TOut> RetryAction<TIn, TOut>(Func<string, Task<TIn>> func, Func<TIn, Task<TOut>> func2)
         {
             var error = "";
 
