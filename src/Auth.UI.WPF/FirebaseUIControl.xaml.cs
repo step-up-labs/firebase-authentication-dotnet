@@ -95,6 +95,13 @@ namespace Firebase.Auth.UI
             return Task.CompletedTask;
         }
 
+        Task<bool> IFirebaseUIFlow.ShowEmailProviderConflictAsync(string email, FirebaseProviderType providerType)
+        {
+            var result = MessageBox.Show(string.Format(AppResources.Instance.FuiWelcomeBackIdpPrompt, email, providerType), AppResources.Instance.FuiWelcomeBackIdpHeader, MessageBoxButton.OKCancel, MessageBoxImage.Information);
+
+            return Task.FromResult(result == MessageBoxResult.OK);
+        }
+
         void IFirebaseUIFlow.Reset()
         {
             while (this.Frame.CanGoBack)

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Firebase.Auth.Requests
 {
@@ -50,6 +51,11 @@ namespace Firebase.Auth.Requests
         public int ExpiresIn { get; set; }
 
         public string OauthIdToken { get; set; }
+
+        public bool NeedConfirmation { get; set; }
+
+        [JsonProperty("verifiedProvider")]
+        public FirebaseProviderType[] VerifiedProviders { get; set; }
     }
 
     /// <summary>
@@ -62,6 +68,20 @@ namespace Firebase.Auth.Requests
         public VerifyAssertion(FirebaseAuthConfig config) : base(config)
         {
             this.accountInfo = new GetAccountInfo(config);
+        }
+
+        public override async Task<VerifyAssertionResponse> ExecuteAsync(VerifyAssertionRequest request)
+        {
+            var result = await base.ExecuteAsync(request).ConfigureAwait(false);
+
+            if (result.NeedConfirmation)
+            {
+                throw new FirebaseAuthLinkConflictException(
+                    result.Email,
+                    result.VerifiedProviders);
+            }
+
+            return result;
         }
 
         public async Task<User> ExecuteWithUserAsync(FirebaseProviderType providerType, VerifyAssertionRequest request)

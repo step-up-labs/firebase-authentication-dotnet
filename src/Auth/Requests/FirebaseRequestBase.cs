@@ -57,7 +57,7 @@ namespace Firebase.Auth.Requests
             catch (Exception ex)
             {
                 var errorReason = FirebaseFailureParser.GetFailureReason(responseData);
-                throw new FirebaseAuthException(url, requestData, responseData, ex, errorReason);
+                throw new FirebaseAuthHttpException(ex, url, requestData, responseData, errorReason);
             }
         }
 

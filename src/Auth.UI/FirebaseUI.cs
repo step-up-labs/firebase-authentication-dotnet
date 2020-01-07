@@ -87,79 +87,99 @@ namespace Firebase.Auth.UI
         /// </summary>
         /// <param name="flow"> Sign in flow which contains platform specific UI actions. </param>
         /// <param name="provider"> Provider to use for sign in. </param>
-        public virtual Task<User> SignInAsync(IFirebaseUIFlow flow, FirebaseProviderType provider)
-        {
-            switch (provider)
-            {
-                case FirebaseProviderType.EmailAndPassword:
-                    return this.SignInWithEmailAsync(flow);
-                case FirebaseProviderType.Anonymous:
-                    return this.Client.SignInAnonymouslyAsync();
-                default:
-                    return flow.SignInWithRedirectAsync(provider);
-            }
-        }
-
-        private async Task<User> SignInWithEmailAsync(IFirebaseUIFlow flow)
+        public virtual async Task<User> SignInAsync(IFirebaseUIFlow flow, FirebaseProviderType provider)
         {
             try
             {
-                var exists = await this.RetryAction(e => flow.PromptForEmailAsync(e), email => this.Client.FetchSignInMethodsForEmailAsync(email));
-
-                if (exists == null)
+                switch (provider)
                 {
-                    return null;
+                    case FirebaseProviderType.EmailAndPassword:
+                        return await this.SignInWithEmailAsync(flow);
+                    case FirebaseProviderType.Anonymous:
+                        return await this.Client.SignInAnonymouslyAsync();
+                    default:
+                        return await flow.SignInWithRedirectAsync(provider);
                 }
-
-                var email = exists.Email;
-
-                if (exists.UserExists)
-                {
-                    Func<Task<User>> signInUserFunc = null;
-                    
-                    // This func can recursively call itself in case user asks to recover email password
-                    // - it shows reset page
-                    // - after reset can try to enter password again
-                    signInUserFunc = () =>
-                    {
-                        return this.RetryAction(
-                            e => flow.PromptForPasswordAsync(email, e),
-                            async result =>
-                            {
-                                if (result.ResetPassword)
-                                {
-                                    var reset = await this.RetryAction(
-                                        e => flow.PromptForPasswordResetAsync(email, e),
-                                        async res => 
-                                        {
-                                            await this.Client.ResetEmailPasswordAsync(email);
-                                            await flow.ShowPasswordResetConfirmationAsync(email);
-                                            return true;
-                                        });
-
-                                    if (!reset)
-                                    {
-                                        return null;
-                                    }
-
-                                    return await signInUserFunc();
-                                }
-
-                                return await this.Client.SignInWithEmailAndPasswordAsync(email, result.Password);
-                            });
-                    };
-
-                    return await signInUserFunc();
-                }
-
-                return await this.RetryAction(
-                    e => flow.PromptForEmailPasswordNameAsync(email, e),
-                    user => this.Client.CreateUserWithEmailAndPasswordAsync(user.Email, user.Password, user.DisplayName));
+            }
+            catch (FirebaseAuthLinkConflictException ex)
+            {
+                return await this.HandleConflictAsync(flow, ex);
             }
             finally
             {
                 flow.Reset();
             }
+        }
+
+        private async Task<User> SignInWithEmailAsync(IFirebaseUIFlow flow)
+        {
+            var fetchResult = await this.RetryAction(e => flow.PromptForEmailAsync(e), email => this.Client.FetchSignInMethodsForEmailAsync(email));
+
+            if (fetchResult == null)
+            {
+                return null;
+            }
+
+            if (fetchResult.SignInProviders.Any() && !fetchResult.SignInProviders.Contains(FirebaseProviderType.EmailAndPassword))
+            {
+                throw new FirebaseAuthLinkConflictException(fetchResult.Email, fetchResult.SignInProviders);
+            }
+
+            var email = fetchResult.Email;
+
+            if (fetchResult.UserExists)
+            {
+                Func<Task<User>> signInUserFunc = null;
+                    
+                // This func can recursively call itself in case user asks to recover email password
+                // - it shows reset page
+                // - after reset can try to enter password again
+                signInUserFunc = () =>
+                {
+                    return this.RetryAction(
+                        e => flow.PromptForPasswordAsync(email, e),
+                        async result =>
+                        {
+                            if (result.ResetPassword)
+                            {
+                                var reset = await this.RetryAction(
+                                    e => flow.PromptForPasswordResetAsync(email, e),
+                                    async res => 
+                                    {
+                                        await this.Client.ResetEmailPasswordAsync(email);
+                                        await flow.ShowPasswordResetConfirmationAsync(email);
+                                        return true;
+                                    });
+
+                                if (!reset)
+                                {
+                                    return null;
+                                }
+
+                                return await signInUserFunc();
+                            }
+
+                            return await this.Client.SignInWithEmailAndPasswordAsync(email, result.Password);
+                        });
+                };
+
+                return await signInUserFunc();
+            }
+
+            return await this.RetryAction(
+                e => flow.PromptForEmailPasswordNameAsync(email, e),
+                user => this.Client.CreateUserWithEmailAndPasswordAsync(user.Email, user.Password, user.DisplayName));
+        }
+
+        private async Task<User> HandleConflictAsync(IFirebaseUIFlow flow, FirebaseAuthLinkConflictException exception)
+        {
+            var provider = exception.Providers.First();
+            if (!await flow.ShowEmailProviderConflictAsync(exception.Email, provider))
+            {
+                return null;
+            }
+
+            return await this.SignInAsync(flow, provider);
         }
 
         private async Task<TOut> RetryAction<TIn, TOut>(Func<string, Task<TIn>> func, Func<TIn, Task<TOut>> func2)

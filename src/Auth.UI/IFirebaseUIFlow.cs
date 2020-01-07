@@ -48,5 +48,13 @@ namespace Firebase.Auth.UI
         /// </summary>
         /// <param name="email"> Email where the reset message has been sent to. </param>
         Task ShowPasswordResetConfirmationAsync(string email);
+
+        /// <summary>
+        /// Show user a message that given email was already used to sign in with a different provider.
+        /// </summary>
+        /// <param name="email"> Email used to sign in. </param>
+        /// <param name="providerType"> Provider previously used to sign in. </param>
+        /// <returns> True whether user wants to continue to sign in, or false to cancel flow. </returns>
+        Task<bool> ShowEmailProviderConflictAsync(string email, FirebaseProviderType providerType);
     }
 }

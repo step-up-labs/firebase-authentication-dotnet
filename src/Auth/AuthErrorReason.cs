@@ -101,6 +101,10 @@
         /// <summary>
         /// Specified API key is not valid.
         /// </summary>
-        InvalidApiKey
+        InvalidApiKey,
+        /// <summary>
+        /// The email user tried to sign in with is already registered under a different provider.
+        /// </summary>
+        AccountExistsWithDifferentCredential
     }
 }
