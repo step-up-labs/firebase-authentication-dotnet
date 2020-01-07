@@ -17,8 +17,13 @@ jobs:
         dotnet-version: 3.1.100
     - name: Build
       run: dotnet build --configuration Release
-    - name: Test
-      run: dotnet test --no-build --configuration Release
+    - name: Run Unit Tests
+      run: dotnet test --no-build --configuration Release --filter Category!=Integration
+    - name: Run Integration Tests
+      env:
+        FIREBASE_AUTH_TEST_API_KEY: ${{ secrets.FIREBASE_AUTH_TEST_API_KEY }}
+        FIREBASE_AUTH_TEST_DOMAIN: ${{ secrets.FIREBASE_AUTH_TEST_DOMAIN }}
+      run: dotnet test --no-build --configuration Release --filter Category=Integration
   pack:
     runs-on: windows-latest
     needs: build
