@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Firebase.Auth.UI.Pages"
       xmlns:res="clr-namespace:Firebase.Auth.UI.Resources;assembly=Firebase.Auth.UI"
       mc:Ignorable="d"
+      MinWidth="300"
       d:DesignHeight="450" 
       d:DesignWidth="400">
    

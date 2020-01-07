@@ -7,6 +7,7 @@
       xmlns:res="clr-namespace:Firebase.Auth.UI.Resources;assembly=Firebase.Auth.UI"
       mc:Ignorable="d"
       FocusManager.FocusedElement="{Binding ElementName=NameTextBox}"
+      MinWidth="300"
       d:DesignHeight="450" 
       d:DesignWidth="300">
 
