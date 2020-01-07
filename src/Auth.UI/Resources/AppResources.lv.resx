@@ -183,8 +183,7 @@
     <value><![CDATA[Laipni lūdzam atpakaļ!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Jums jau ir konts
-]]></value>
+    <value><![CDATA[Jums jau ir konts]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[Esat jau izmantojis e-pasta adresi {0}. Pierakstieties pakalpojumā {1}, lai turpinātu.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[Esat jau izmantojis e-pasta adresi {0}, lai pierakstītos. Ievadiet šī konta paroli.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[Esat jau izmantojis e-pasta adresi {0}. Varat saistīt savu {1} kontu ar e-pasta adresi {0}, pierakstoties ar tālāk norādīto e-pasta saiti.
-
-Lai šī plūsma varētu sekmīgi saistīt jūsu {1} kontu ar šo e-pasta adresi, jums ir jāatver saite tajā pašā ierīcē vai pārlūkprogrammā.]]></value>
+    <value><![CDATA[Esat jau izmantojis e-pasta adresi {0}. Varat saistīt savu {1} kontu ar e-pasta adresi {0}, pierakstoties ar tālāk norādīto e-pasta saiti. Lai šī plūsma varētu sekmīgi saistīt jūsu {1} kontu ar šo e-pasta adresi, jums ir jāatver saite tajā pašā ierīcē vai pārlūkprogrammā.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Notiek pierakstīšanās…]]></value>
@@ -234,8 +231,7 @@ Lai šī plūsma varētu sekmīgi saistīt jūsu {1} kontu ar šo e-pasta adresi
     <value><![CDATA[Lietotnes logotips]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[Pierakstīšanās e-pasta ziņojums ir nosūtīts
-]]></value>
+    <value><![CDATA[Pierakstīšanās e-pasta ziņojums ir nosūtīts]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[Pierakstīšanās e-pasta ziņojums ar papildu norādījumiem tika nosūtīts uz e-pasta adresi {0}. Pārbaudiet savu e-pastu, lai pabeigtu pierakstīšanos.]]></value>
@@ -244,12 +240,7 @@ Lai šī plūsma varētu sekmīgi saistīt jūsu {1} kontu ar šo e-pasta adresi
     <value><![CDATA[Vai jums ir problēmas ar e-pasta ziņojuma saņemšanu?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Izmēģiniet tālāk norādītās tipiskās problēmu novēršanas iespējas.
-\u2022 Pārbaudiet, vai e-pasta ziņojums nav atzīmēts kā mēstule vai nav filtrēts.
-\u2022 Pārbaudiet interneta savienojumu.
-\u2022 Pārbaudiet, vai e-pasta adrese ir pareizi uzrakstīta.
-\u2022 Pārbaudiet, vai jūsu iesūtnes krātuve nav beigusies vai nav citu ar iesūtnes iestatījumiem saistītu problēmu.
-]]></value>
+    <value><![CDATA[Izmēģiniet tālāk norādītās tipiskās problēmu novēršanas iespējas. \u2022 Pārbaudiet, vai e-pasta ziņojums nav atzīmēts kā mēstule vai nav filtrēts. \u2022 Pārbaudiet interneta savienojumu. \u2022 Pārbaudiet, vai e-pasta adrese ir pareizi uzrakstīta. \u2022 Pārbaudiet, vai jūsu iesūtnes krātuve nav beigusies vai nav citu ar iesūtnes iestatījumiem saistītu problēmu.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Ja iepriekš minētās darbības nepalīdzēja, varat atkārtoti nosūtīt e-pasta ziņojumu. Ņemiet vērā: tiks deaktivizēta saite no iepriekšējā e-pasta ziņojuma.]]></value>
@@ -285,9 +276,7 @@ Lai šī plūsma varētu sekmīgi saistīt jūsu {1} kontu ar šo e-pasta adresi
     <value><![CDATA[Nerādīt]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Sākotnēji vēlējāties saistīt {0} ar savu e-pasta kontu, tomēr saiti atvērāt citā ierīcē, kurā neesat pierakstījies.
-
-Ja joprojām vēlaties saistīt savu {0} kontu, atveriet saiti tajā pašā ierīcē, kurā sākāt pierakstīšanos. Pretējā gadījumā pieskarieties vienumam Turpināt, lai pierakstītos šajā ierīcē.]]></value>
+    <value><![CDATA[Sākotnēji vēlējāties saistīt {0} ar savu e-pasta kontu, tomēr saiti atvērāt citā ierīcē, kurā neesat pierakstījies. Ja joprojām vēlaties saistīt savu {0} kontu, atveriet saiti tajā pašā ierīcē, kurā sākāt pierakstīšanos. Pretējā gadījumā pieskarieties vienumam Turpināt, lai pierakstītos šajā ierīcē.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Pierakstieties ar {0}]]></value>
@@ -299,7 +288,7 @@ Ja joprojām vēlaties saistīt savu {0} kontu, atveriet saiti tajā pašā ier�
     <value><![CDATA[Ievadiet derīgu tālruņa numuru]]></value>
   </data>
   <data name="fui_enter_confirmation_code" xml:space="preserve">
-    <value><![CDATA[Ievadiet 6 ciparu kodu, ko nosūtījām]]></value>
+    <value><![CDATA[Ievadiet 6 ciparu kodu, ko nosūtījām]]></value>
   </data>
   <data name="fui_resend_code_in" xml:space="preserve">
     <value><![CDATA[Vēlreiz nosūtīt kodu pēc 0:%02d]]></value>
@@ -341,13 +330,13 @@ Ja joprojām vēlaties saistīt savu {0} kontu, atveriet saiti tajā pašā ier�
     <value><![CDATA[Pieskaroties pogai “{0}”, jūs norādāt, ka piekrītat šādiem dokumentiem: {1} un {2}. Var tikt nosūtīta īsziņa. Var tikt piemērota maksa par ziņojumiem un datu pārsūtīšanu.]]></value>
   </data>
   <data name="fui_error_weak_password_zero" xml:space="preserve">
-    <value><![CDATA[Parole nav pietiekami droša. Izmantojiet vismaz {0} rakstzīmes un burtu un ciparu kombināciju]]></value>
+    <value><![CDATA[Parole nav pietiekami droša. Izmantojiet vismaz {0} rakstzīmes un burtu un ciparu kombināciju]]></value>
   </data>
   <data name="fui_error_weak_password_one" xml:space="preserve">
-    <value><![CDATA[Parole nav pietiekami droša. Izmantojiet vismaz {0} rakstzīmi un burtu un ciparu kombināciju]]></value>
+    <value><![CDATA[Parole nav pietiekami droša. Izmantojiet vismaz {0} rakstzīmi un burtu un ciparu kombināciju]]></value>
   </data>
   <data name="fui_error_weak_password_other" xml:space="preserve">
-    <value><![CDATA[Parole nav pietiekami droša. Izmantojiet vismaz {0} rakstzīmes un burtu un ciparu kombināciju]]></value>
+    <value><![CDATA[Parole nav pietiekami droša. Izmantojiet vismaz {0} rakstzīmes un burtu un ciparu kombināciju]]></value>
   </data>
 
 </root>

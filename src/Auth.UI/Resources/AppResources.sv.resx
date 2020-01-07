@@ -183,8 +183,7 @@
     <value><![CDATA[Välkommen tillbaka!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Du har redan ett konto
-]]></value>
+    <value><![CDATA[Du har redan ett konto]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[Du har redan använt {0}. Logga in med {1} om du vill fortsätta.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[Du har redan loggat in med {0}. Ange lösenordet för det kontot.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[Du har redan använt {0}. Du kan ansluta {1}-kontot med {0} genom att logga in via länken nedan.
-
-Du måste öppna länken på samma enhet eller i samma webbläsare för att {1}-kontot ska anslutas med den här e-postadressen.]]></value>
+    <value><![CDATA[Du har redan använt {0}. Du kan ansluta {1}-kontot med {0} genom att logga in via länken nedan. Du måste öppna länken på samma enhet eller i samma webbläsare för att {1}-kontot ska anslutas med den här e-postadressen.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Loggar in…]]></value>
@@ -234,8 +231,7 @@ Du måste öppna länken på samma enhet eller i samma webbläsare för att {1}-
     <value><![CDATA[Appens logotyp]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[Inloggningsmeddelande skickat
-]]></value>
+    <value><![CDATA[Inloggningsmeddelande skickat]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[Ett inloggningsmeddelande med instruktioner skickades till {0}. Kontrollera din e-post för att slutföra inloggningen.]]></value>
@@ -244,12 +240,7 @@ Du måste öppna länken på samma enhet eller i samma webbläsare för att {1}-
     <value><![CDATA[Fick du inget e-postmeddelande?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Prova dessa vanliga lösningar:
-\u2022 Kontrollera om meddelandet hamnade bland skräpposten eller filtrerades.
-\u2022 Kontrollera internetanslutningen.
-\u2022 Kontrollera att du inte stavade e-postadressen fel.
-\u2022 Kontrollera att du inte har ont om utrymme i inkorgen samt andra inkorgsrelaterade problem.
-]]></value>
+    <value><![CDATA[Prova dessa vanliga lösningar: \u2022 Kontrollera om meddelandet hamnade bland skräpposten eller filtrerades. \u2022 Kontrollera internetanslutningen. \u2022 Kontrollera att du inte stavade e-postadressen fel. \u2022 Kontrollera att du inte har ont om utrymme i inkorgen samt andra inkorgsrelaterade problem.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Om ovanstående lösningar inte fungerar kan du testa att skicka meddelandet igen. Länken i det gamla meddelandet inaktiveras.]]></value>
@@ -285,9 +276,7 @@ Du måste öppna länken på samma enhet eller i samma webbläsare för att {1}-
     <value><![CDATA[Stäng]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Du skulle ansluta {0} till ditt e-postkonto men har öppnat länken på en annan enhet där du inte är inloggad.
-
-Om du fortfarande vill ansluta ditt {0}-konto ska du öppna länken på den enhet där du påbörjade inloggningen. Annars kan du klicka på Fortsätt för att logga in på den här enheten.]]></value>
+    <value><![CDATA[Du skulle ansluta {0} till ditt e-postkonto men har öppnat länken på en annan enhet där du inte är inloggad. Om du fortfarande vill ansluta ditt {0}-konto ska du öppna länken på den enhet där du påbörjade inloggningen. Annars kan du klicka på Fortsätt för att logga in på den här enheten.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Logga in med {0}]]></value>
@@ -308,7 +297,7 @@ Om du fortfarande vill ansluta ditt {0}-konto ska du öppna länken på den enhe
     <value><![CDATA[Verifiera ditt telefonnummer]]></value>
   </data>
   <data name="fui_verifying" xml:space="preserve">
-    <value><![CDATA[Verifierar …]]></value>
+    <value><![CDATA[Verifierar …]]></value>
   </data>
   <data name="fui_incorrect_code_dialog_body" xml:space="preserve">
     <value><![CDATA[Fel kod. Försök igen.]]></value>

@@ -183,8 +183,7 @@
     <value><![CDATA[Tervetuloa takaisin!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Sinulla on jo tili
-]]></value>
+    <value><![CDATA[Sinulla on jo tili]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[Olet jo käyttänyt osoitetta {0}. Jatka kirjautumalla palvelun {1} kautta.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[Olet jo käyttänyt osoitetta {0} kirjautumiseen. Anna kyseisen tilin salasana.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[{0} on jo käytössä. Voit yhdistää {1} ‑tilin sähköpostiosoitteeseen {0} kirjautumalla sisään alla olevasta sähköpostilinkistä.
-
-Jotta palvelun {1} tilisi voidaan yhdistää tähän sähköpostiosoitteeseen tällä prosessilla, sinun on avattava linkki samalla laitteella tai selaimella.]]></value>
+    <value><![CDATA[{0} on jo käytössä. Voit yhdistää {1} ‑tilin sähköpostiosoitteeseen {0} kirjautumalla sisään alla olevasta sähköpostilinkistä. Jotta palvelun {1} tilisi voidaan yhdistää tähän sähköpostiosoitteeseen tällä prosessilla, sinun on avattava linkki samalla laitteella tai selaimella.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Kirjaudutaan sisään…]]></value>
@@ -234,8 +231,7 @@ Jotta palvelun {1} tilisi voidaan yhdistää tähän sähköpostiosoitteeseen t�
     <value><![CDATA[Sovelluksen logo]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[Kirjautumisviesti lähetetty
-]]></value>
+    <value><![CDATA[Kirjautumisviesti lähetetty]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[Lisäohjeita sisältävä kirjautumisviesti lähetettiin osoitteeseen {0}. Tarkista sähköpostisi kirjautumisen suorittamiseksi loppuun.]]></value>
@@ -244,12 +240,7 @@ Jotta palvelun {1} tilisi voidaan yhdistää tähän sähköpostiosoitteeseen t�
     <value><![CDATA[Ongelmia sähköpostiviestin saamisessa?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Kokeile näitä yleisiä ratkaisuja:
-\u2022 Tarkista merkittiinkö viesti roskapostiksi tai suodatettiinko se.
-\u2022 Tarkista internetyhteytesi.
-\u2022 Tarkista että kirjoitit sähköpostiosoitteesi oikein.
-\u2022 Tarkista ettei postilaatikkosi tila ole loppumassa tai ettei postilaatikon asetuksissa ole muita ongelmia.
-]]></value>
+    <value><![CDATA[Kokeile näitä yleisiä ratkaisuja: \u2022 Tarkista merkittiinkö viesti roskapostiksi tai suodatettiinko se. \u2022 Tarkista internetyhteytesi. \u2022 Tarkista että kirjoitit sähköpostiosoitteesi oikein. \u2022 Tarkista ettei postilaatikkosi tila ole loppumassa tai ettei postilaatikon asetuksissa ole muita ongelmia.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Jos edellä olevista ratkaisuista ei ollut apua, voit lähettää viestin uudelleen. Huomaa että tällöin aiemmassa viestissä oleva linkki poistetaan käytöstä.]]></value>
@@ -285,8 +276,7 @@ Jotta palvelun {1} tilisi voidaan yhdistää tähän sähköpostiosoitteeseen t�
     <value><![CDATA[Hylkää]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Tarkoituksesi oli yhdistää palvelu {0} sähköpostiosoitteeseesi, mutta avasit linkin eri laitteella, johon et ollut kirjautunut.
-\Jos haluat edelleen yhdistää palvelun {0} tilisi, avaa linkki samalla laitteella, jolla aloitit kirjautumisen. Jos haluat jatkaa kirjautumista tällä laitteella, napauta Jatka.]]></value>
+    <value><![CDATA[Tarkoituksesi oli yhdistää palvelu {0} sähköpostiosoitteeseesi, mutta avasit linkin eri laitteella, johon et ollut kirjautunut. \Jos haluat edelleen yhdistää palvelun {0} tilisi, avaa linkki samalla laitteella, jolla aloitit kirjautumisen. Jos haluat jatkaa kirjautumista tällä laitteella, napauta Jatka.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Kirjaudu palvelun {0} kautta]]></value>

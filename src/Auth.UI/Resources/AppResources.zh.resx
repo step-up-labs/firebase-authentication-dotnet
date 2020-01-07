@@ -183,8 +183,7 @@
     <value><![CDATA[欢迎回来！]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[您已经有帐号了
-]]></value>
+    <value><![CDATA[您已经有帐号了]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[您已经使用了 {0}。请使用 {1} 帐号登录以继续操作。]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[您已经使用 {0} 登录了，请输入该帐号的密码。]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[您已经使用了 {0}。您可以先使用下方电子邮件链接登录，然后将{1}帐号与 {0} 关联起来。
-
-为了完成此流程，顺利将您的{1}帐号与此电子邮件地址关联起来，您必须使用相同的设备或浏览器打开链接。]]></value>
+    <value><![CDATA[您已经使用了 {0}。您可以先使用下方电子邮件链接登录，然后将{1}帐号与 {0} 关联起来。 为了完成此流程，顺利将您的{1}帐号与此电子邮件地址关联起来，您必须使用相同的设备或浏览器打开链接。]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[正在登录…]]></value>
@@ -234,8 +231,7 @@
     <value><![CDATA[应用徽标]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[已发送登录电子邮件
-]]></value>
+    <value><![CDATA[已发送登录电子邮件]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[系统已将含附加说明的登录电子邮件发送至 {0}。请查收电子邮件以完成登录。]]></value>
@@ -244,12 +240,7 @@
     <value><![CDATA[无法收到电子邮件？]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[尝试以下常见解决方法：
-\u2022 检查电子邮件是否被标记为垃圾邮件或被过滤。
-\u2022 检查您的互联网连接。
-\u2022 确保没有写错电子邮件地址。
-\u2022 确保收件箱空间充足，且不存在其他与收件箱设置有关的问题。
-]]></value>
+    <value><![CDATA[尝试以下常见解决方法： \u2022 检查电子邮件是否被标记为垃圾邮件或被过滤。 \u2022 检查您的互联网连接。 \u2022 确保没有写错电子邮件地址。 \u2022 确保收件箱空间充足，且不存在其他与收件箱设置有关的问题。]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[如果上述步骤未能帮助您解决问题，您可以重新发送电子邮件。请注意，重新发送后上一封电子邮件中的链接将失效。]]></value>
@@ -285,9 +276,7 @@
     <value><![CDATA[关闭]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[您最初是想将{0}与您的电子邮件帐号关联起来，但是您换用其他未登录的设备打开了此链接。
-
-如果您仍希望关联您的{0}帐号，请在您最初开始登录时所用的设备上打开此链接。否则，请点按“继续”以在当前设备上登录。]]></value>
+    <value><![CDATA[您最初是想将{0}与您的电子邮件帐号关联起来，但是您换用其他未登录的设备打开了此链接。 如果您仍希望关联您的{0}帐号，请在您最初开始登录时所用的设备上打开此链接。否则，请点按“继续”以在当前设备上登录。]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[使用{0}登录]]></value>

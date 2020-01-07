@@ -183,8 +183,7 @@
     <value><![CDATA[Bentornato.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Hai già un account
-]]></value>
+    <value><![CDATA[Hai già un account]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[Hai già utilizzato {0}. Accedi con {1} per continuare.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[Hai già utilizzato {0} per accedere. Inserisci la password di questo account.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[Hai già utilizzato l'indirizzo {0}. Puoi collegare l'account {1} all'indirizzo {0} effettuando l'accesso con il link di seguito.
-
-Per collegare correttamente l'account {1} a questo indirizzo email, devi aprire il link sullo stesso dispositivo o browser.]]></value>
+    <value><![CDATA[Hai già utilizzato l'indirizzo {0}. Puoi collegare l'account {1} all'indirizzo {0} effettuando l'accesso con il link di seguito. Per collegare correttamente l'account {1} a questo indirizzo email, devi aprire il link sullo stesso dispositivo o browser.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Accesso in corso…]]></value>
@@ -234,8 +231,7 @@ Per collegare correttamente l'account {1} a questo indirizzo email, devi aprire 
     <value><![CDATA[Logo dell'applicazione]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[Email di accesso inviata
-]]></value>
+    <value><![CDATA[Email di accesso inviata]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[Un'email di accesso con ulteriori istruzioni è stata inviata all'indirizzo {0}. Controlla la tua casella di posta per completare l'accesso.]]></value>
@@ -244,12 +240,7 @@ Per collegare correttamente l'account {1} a questo indirizzo email, devi aprire 
     <value><![CDATA[Non hai ricevuto l'email?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Prova le seguenti soluzioni comuni:
-\u2022 Verifica se l'email è stata contrassegnata come spam o filtrata.
-\u2022 Verifica la connessione a Internet.
-\u2022 Verifica di aver digitato correttamente l'indirizzo email.
-\u2022 Verifica di avere spazio sufficiente nella casella di posta in arrivo o che non vi siano altri problemi relativi alle impostazioni della casella di posta in arrivo.
-]]></value>
+    <value><![CDATA[Prova le seguenti soluzioni comuni: \u2022 Verifica se l'email è stata contrassegnata come spam o filtrata. \u2022 Verifica la connessione a Internet. \u2022 Verifica di aver digitato correttamente l'indirizzo email. \u2022 Verifica di avere spazio sufficiente nella casella di posta in arrivo o che non vi siano altri problemi relativi alle impostazioni della casella di posta in arrivo.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Se le procedure descritte sopra non hanno risolto il problema, puoi inviare nuovamente l'email. Tieni presente che questo disattiverà il link contenuto nell'email precedente.]]></value>
@@ -285,9 +276,7 @@ Per collegare correttamente l'account {1} a questo indirizzo email, devi aprire 
     <value><![CDATA[Ignora]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Inizialmente intendevi collegare {0} al tuo account email, ma hai aperto il link su un altro dispositivo, sul quale non hai eseguito l'accesso.
-
-Se vuoi continuare a collegare l'account su {0}, apri il link sullo stesso dispositivo su cui hai iniziato la procedura di accesso. Altrimenti, tocca Continua per accedere su questo dispositivo.]]></value>
+    <value><![CDATA[Inizialmente intendevi collegare {0} al tuo account email, ma hai aperto il link su un altro dispositivo, sul quale non hai eseguito l'accesso. Se vuoi continuare a collegare l'account su {0}, apri il link sullo stesso dispositivo su cui hai iniziato la procedura di accesso. Altrimenti, tocca Continua per accedere su questo dispositivo.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Accedi con {0}]]></value>

@@ -183,8 +183,7 @@
     <value><![CDATA[Velkommen tilbake!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Du har allerede en konto
-]]></value>
+    <value><![CDATA[Du har allerede en konto]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[Du har allerede brukt {0}. Logg på med {1} for å fortsette.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[Du har allerede brukt {0} for å logge på. Angi passordet ditt for denne kontoen.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[Du har allerede brukt {0}. Du kan koble {1}-kontoen din til {0} ved å logge på med e-postlinken nedenfor.
-
-Du må åpne linken med den samme enheten eller nettleseren for at {1}-kontoen din skal bli koblet til denne e-postadressen.]]></value>
+    <value><![CDATA[Du har allerede brukt {0}. Du kan koble {1}-kontoen din til {0} ved å logge på med e-postlinken nedenfor. Du må åpne linken med den samme enheten eller nettleseren for at {1}-kontoen din skal bli koblet til denne e-postadressen.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Logger på…]]></value>
@@ -234,8 +231,7 @@ Du må åpne linken med den samme enheten eller nettleseren for at {1}-kontoen d
     <value><![CDATA[App-logo]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[Påloggings-e-post er sendt
-]]></value>
+    <value><![CDATA[Påloggings-e-post er sendt]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[En påloggings-e-post med ytterligere veiledning er sendt til {0}. Sjekk e-posten din for å fullføre påloggingen.]]></value>
@@ -244,12 +240,7 @@ Du må åpne linken med den samme enheten eller nettleseren for at {1}-kontoen d
     <value><![CDATA[Problemer med å motta e-posten?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Prøv disse vanlige løsningene:
-\u2022 Sjekk om e-posten ble merket som søppelpost eller filtrert bort.
-\u2022 Sjekk internettilkoblingen din.
-\u2022 Sjekk at du ikke har skrevet e-postadressen din feil.
-\u2022 Sjekk at innboksen din ikke er full, og se etter andre problemer knyttet til innboksinnstillingene.
-]]></value>
+    <value><![CDATA[Prøv disse vanlige løsningene: \u2022 Sjekk om e-posten ble merket som søppelpost eller filtrert bort. \u2022 Sjekk internettilkoblingen din. \u2022 Sjekk at du ikke har skrevet e-postadressen din feil. \u2022 Sjekk at innboksen din ikke er full, og se etter andre problemer knyttet til innboksinnstillingene.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Hvis trinnene ovenfor ikke bidro til å løse problemet, kan du sende e-posten på nytt. Merk at denne handlingen deaktiverer linken i den forrige e-posten.]]></value>
@@ -285,9 +276,7 @@ Du må åpne linken med den samme enheten eller nettleseren for at {1}-kontoen d
     <value><![CDATA[Lukk]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Du forsøkte opprinnelig å koble {0} til e-postkontoen din, men du åpnet linken på en annen enhet enn den du er pålogget med.
-
-Hvis du fortsatt ønsker å koble til {0}-kontoen din, åpner du linken på enheten du er pålogget med. Hvis ikke trykker du på Fortsett for å logge på med denne enheten.]]></value>
+    <value><![CDATA[Du forsøkte opprinnelig å koble {0} til e-postkontoen din, men du åpnet linken på en annen enhet enn den du er pålogget med. Hvis du fortsatt ønsker å koble til {0}-kontoen din, åpner du linken på enheten du er pålogget med. Hvis ikke trykker du på Fortsett for å logge på med denne enheten.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Logg på med {0}]]></value>

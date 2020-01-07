@@ -183,8 +183,7 @@
     <value><![CDATA[Sveiki sugrįžę!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Jau turite paskyrą
-]]></value>
+    <value><![CDATA[Jau turite paskyrą]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[Jau panaudojote {0}.Jei norite tęsti, prisijunkite per „{1}“.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[Jūs jau prisijungėte naudodami {0}. Įveskite tos paskyros slaptažodį.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[Jau esate naudoję {0}. Galite susieti „{1}“ paskyrą su {0}: prisijunkite naudodami el. laiško nuorodą toliau.
-
-Jei norite vykdydami šį procesą sėkmingai susieti „{1}“ paskyrą naudodami šį el. laišką, turite atidaryti nuorodą tame pačiame įrenginyje ar naršyklėje.]]></value>
+    <value><![CDATA[Jau esate naudoję {0}. Galite susieti „{1}“ paskyrą su {0}: prisijunkite naudodami el. laiško nuorodą toliau. Jei norite vykdydami šį procesą sėkmingai susieti „{1}“ paskyrą naudodami šį el. laišką, turite atidaryti nuorodą tame pačiame įrenginyje ar naršyklėje.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Prisijungiama…]]></value>
@@ -234,8 +231,7 @@ Jei norite vykdydami šį procesą sėkmingai susieti „{1}“ paskyrą naudoda
     <value><![CDATA[Programos logotipas]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[Prisijungimo el. laiškas išsiųstas
-]]></value>
+    <value><![CDATA[Prisijungimo el. laiškas išsiųstas]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[Prisijungimo el. laiškas su papildomomis instrukcijomis išsiųstas adresu {0}. Patikrinkite el. paštą, kad užbaigtumėte prisijungimą.]]></value>
@@ -244,12 +240,7 @@ Jei norite vykdydami šį procesą sėkmingai susieti „{1}“ paskyrą naudoda
     <value><![CDATA[Negaunate el. laiško?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Išbandykite šiuos dažnai kylančių problemų sprendimo būdus:
-\u2022 patikrinkite, ar el. laiškas nebuvo pažymėtas kaip šlamštas arba filtruotas;
-\u2022 patikrinkite interneto ryšį;
-\u2022 patikrinkite, ar nurodėte tikslų el. pašto adresą;
-\u2022 patikrinkite, ar nepasibaigė gautiesiems skirta saugyklos vieta arba kitas su gautųjų nustatymais susijusias problemas.
-]]></value>
+    <value><![CDATA[Išbandykite šiuos dažnai kylančių problemų sprendimo būdus: \u2022 patikrinkite, ar el. laiškas nebuvo pažymėtas kaip šlamštas arba filtruotas; \u2022 patikrinkite interneto ryšį; \u2022 patikrinkite, ar nurodėte tikslų el. pašto adresą; \u2022 patikrinkite, ar nepasibaigė gautiesiems skirta saugyklos vieta arba kitas su gautųjų nustatymais susijusias problemas.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Jei ankstesni veiksmai nebuvo naudingi, galite iš naujo išsiųsti el. laišką. Atkreipkite dėmesį, kad šiuo veiksmu bus išaktyvinta ankstesniame el. laiške pateikta nuoroda.]]></value>
@@ -285,9 +276,7 @@ Jei norite vykdydami šį procesą sėkmingai susieti „{1}“ paskyrą naudoda
     <value><![CDATA[Atsisakyti]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Iš pradžių ketinote susieti {0} ir el. pašto paskyras, bet atidarėte nuorodą kitame įrenginyje, kuriame nesate prisijungę.
-
-Jei vis tiek norite susieti {0} paskyrą, atidarykite nuorodą tame pačiame įrenginyje, kuriame pradėjote prisijungimo procesą. Jei nenorite, palieskite „Tęsti“ ir prisijunkite šiame įrenginyje.]]></value>
+    <value><![CDATA[Iš pradžių ketinote susieti {0} ir el. pašto paskyras, bet atidarėte nuorodą kitame įrenginyje, kuriame nesate prisijungę. Jei vis tiek norite susieti {0} paskyrą, atidarykite nuorodą tame pačiame įrenginyje, kuriame pradėjote prisijungimo procesą. Jei nenorite, palieskite „Tęsti“ ir prisijunkite šiame įrenginyje.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Prisijungti per „{0}“]]></value>

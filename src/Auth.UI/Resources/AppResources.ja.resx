@@ -183,8 +183,7 @@
     <value><![CDATA[こんにちは]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[すでにアカウントをお持ちです
-]]></value>
+    <value><![CDATA[すでにアカウントをお持ちです]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[{0} をすでに使用しています。{1} でログインして続行してください。]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[すでに {0} を使用してログインしています。このアカウントのパスワードを入力してください。]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[すでに {0} をお使いです。以下のメールリンクを使用してログインすると、{1} アカウントを {0} に接続できます。
-
-このフローで {1} アカウントをこのメールアドレスに正常に接続するには、同じデバイスまたはブラウザでリンクを開く必要があります。]]></value>
+    <value><![CDATA[すでに {0} をお使いです。以下のメールリンクを使用してログインすると、{1} アカウントを {0} に接続できます。 このフローで {1} アカウントをこのメールアドレスに正常に接続するには、同じデバイスまたはブラウザでリンクを開く必要があります。]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[ログインしています…]]></value>
@@ -234,8 +231,7 @@
     <value><![CDATA[アプリのロゴ]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[ログインメールを送信しました
-]]></value>
+    <value><![CDATA[ログインメールを送信しました]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[詳細な説明を記載したログインメールを {0} に送信しました。メールを確認してログインを完了してください。]]></value>
@@ -244,12 +240,7 @@
     <value><![CDATA[メールが受信できない場合]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[以下の一般的な解決方法をお試しください。
-\u2022 メールがスパムに分類されたりフィルタされたりしていないか確認する。
-\u2022 インターネットの接続を確認する。
-\u2022 メールアドレスのスペルに誤りがないか確認する。
-\u2022 受信トレイの容量不足や、設定関連のその他の問題がないか確認する。
-]]></value>
+    <value><![CDATA[以下の一般的な解決方法をお試しください。 \u2022 メールがスパムに分類されたりフィルタされたりしていないか確認する。 \u2022 インターネットの接続を確認する。 \u2022 メールアドレスのスペルに誤りがないか確認する。 \u2022 受信トレイの容量不足や、設定関連のその他の問題がないか確認する。]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[上記の手順で解決しなかった場合はメールを再送信できます。メールを再送信すると、前回のメールに記載されたリンクは無効になります。]]></value>

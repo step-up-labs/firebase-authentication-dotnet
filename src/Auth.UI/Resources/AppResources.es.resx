@@ -75,7 +75,7 @@
     <value><![CDATA[Si continúas, confirmas que aceptas nuestras {0} y nuestra {1}.]]></value>
   </data>
   <data name="fui_tos_and_pp_footer" xml:space="preserve">
-    <value><![CDATA[{0}     {1}]]></value>
+    <value><![CDATA[{0} {1}]]></value>
   </data>
   <data name="fui_no_internet" xml:space="preserve">
     <value><![CDATA[Se ha producido un error de red. Comprueba la conexión a Internet.]]></value>
@@ -183,8 +183,7 @@
     <value><![CDATA[¡Hola de nuevo!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Ya tienes una cuenta
-]]></value>
+    <value><![CDATA[Ya tienes una cuenta]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[Ya has usado {0}. Para continuar, inicia sesión con {1}.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[Ya has usado {0} para iniciar sesión. Introduce la contraseña de esa cuenta.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[Ya has usado la dirección {0}. Para conectar tu cuenta de {1} con {0}, inicia sesión a través del enlace de correo electrónico que aparece más adelante.
-
-Para que este flujo conecte correctamente tu cuenta de {1} con este correo electrónico, debes abrir el enlace en el mismo dispositivo o navegador.]]></value>
+    <value><![CDATA[Ya has usado la dirección {0}. Para conectar tu cuenta de {1} con {0}, inicia sesión a través del enlace de correo electrónico que aparece más adelante. Para que este flujo conecte correctamente tu cuenta de {1} con este correo electrónico, debes abrir el enlace en el mismo dispositivo o navegador.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Iniciando sesión…]]></value>
@@ -234,8 +231,7 @@ Para que este flujo conecte correctamente tu cuenta de {1} con este correo elect
     <value><![CDATA[Logotipo de la aplicación]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[Correo electrónico de inicio de sesión enviado
-]]></value>
+    <value><![CDATA[Correo electrónico de inicio de sesión enviado]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[Se ha enviado un correo electrónico de inicio de sesión con más instrucciones a {0}. Consulta tu bandeja de entrada para completar el inicio de sesión.]]></value>
@@ -244,12 +240,7 @@ Para que este flujo conecte correctamente tu cuenta de {1} con este correo elect
     <value><![CDATA[¿No puedes recibir el correo?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Prueba las soluciones más habituales:
-\u2022 Comprueba si el mensaje de correo electrónico se ha filtrado o marcado como spam.
-\u2022 Verifica que tienes conexión a Internet.
-\u2022 Asegúrate de haber escrito correctamente tu dirección de correo electrónico.
-\u2022 Comprueba que no te estás quedando sin espacio en la bandeja de entrada y que no hay ningún problema con su configuración.
-]]></value>
+    <value><![CDATA[Prueba las soluciones más habituales: \u2022 Comprueba si el mensaje de correo electrónico se ha filtrado o marcado como spam. \u2022 Verifica que tienes conexión a Internet. \u2022 Asegúrate de haber escrito correctamente tu dirección de correo electrónico. \u2022 Comprueba que no te estás quedando sin espacio en la bandeja de entrada y que no hay ningún problema con su configuración.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Si no se ha resuelto el problema con los pasos mencionados, puedes volver a enviar el correo electrónico (se desactivará el enlace del correo electrónico anterior).]]></value>
@@ -285,9 +276,7 @@ Para que este flujo conecte correctamente tu cuenta de {1} con este correo elect
     <value><![CDATA[Cerrar]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[En un principio intentaste conectar {0} a tu cuenta de correo electrónico, pero has abierto el enlace en un dispositivo diferente en el que no has iniciado sesión.
-
-Si sigues queriendo vincular tu cuenta de {0}, abre el enlace en el mismo dispositivo en el que empezaste el inicio de sesión. De lo contrario, toca Continuar para iniciar sesión en este dispositivo.]]></value>
+    <value><![CDATA[En un principio intentaste conectar {0} a tu cuenta de correo electrónico, pero has abierto el enlace en un dispositivo diferente en el que no has iniciado sesión. Si sigues queriendo vincular tu cuenta de {0}, abre el enlace en el mismo dispositivo en el que empezaste el inicio de sesión. De lo contrario, toca Continuar para iniciar sesión en este dispositivo.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Iniciar sesión con {0}]]></value>

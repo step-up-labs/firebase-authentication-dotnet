@@ -183,8 +183,7 @@
     <value><![CDATA[Willkommen zurück!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Sie haben schon ein Konto
-]]></value>
+    <value><![CDATA[Sie haben schon ein Konto]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[Sie haben {0} bereits verwendet. Melden Sie sich mit {1} an, um fortzufahren.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[Sie haben {0} bereits zur Anmeldung verwendet. Gib das Passwort für dieses Konto ein.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[Sie haben {0} schon benutzt. Sie können Ihr {1}-Konto mit {0} verbinden, indem Sie sich über den folgenden E-Mail-Link anmelden.
-
-Öffnen Sie den Link mit demselben Gerät oder Browser, um Ihr {1}-Konto mit dieser E-Mail-Adresse zu verbinden.]]></value>
+    <value><![CDATA[Sie haben {0} schon benutzt. Sie können Ihr {1}-Konto mit {0} verbinden, indem Sie sich über den folgenden E-Mail-Link anmelden. Öffnen Sie den Link mit demselben Gerät oder Browser, um Ihr {1}-Konto mit dieser E-Mail-Adresse zu verbinden.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Anmeldung wird durchgeführt…]]></value>
@@ -234,8 +231,7 @@
     <value><![CDATA[App-Logo]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[Anmelde-E-Mail gesendet
-]]></value>
+    <value><![CDATA[Anmelde-E-Mail gesendet]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[Wir haben eine Anmelde-E-Mail mit zusätzlichen Informationen an {0} gesendet. Bitte öffnen Sie die E-Mail, um die Anmeldung abzuschließen.]]></value>
@@ -244,12 +240,7 @@
     <value><![CDATA[Probleme beim Empfangen von E-Mails?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Versuchen Sie es mit diesen gängigen Korrekturen:
-\u2022 Prüfen Sie, ob die E-Mail als Spam markiert oder gefiltert wurde.
-\u2022 Prüfen Sie Ihre Internetverbindung.
-\u2022 Prüfen Sie, ob Sie die E-Mail-Adresse korrekt geschrieben haben.
-\u2022 Prüfen Sie, ob Ihr Posteingang über genügend Speicherplatz verfügt oder ob es Probleme mit den Einstellungen gibt.
-]]></value>
+    <value><![CDATA[Versuchen Sie es mit diesen gängigen Korrekturen: \u2022 Prüfen Sie, ob die E-Mail als Spam markiert oder gefiltert wurde. \u2022 Prüfen Sie Ihre Internetverbindung. \u2022 Prüfen Sie, ob Sie die E-Mail-Adresse korrekt geschrieben haben. \u2022 Prüfen Sie, ob Ihr Posteingang über genügend Speicherplatz verfügt oder ob es Probleme mit den Einstellungen gibt.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Sollte das Problem auch nach Ausführung der obigen Schritte weiterhin bestehen, können Sie sich die Anmelde-E-Mail noch einmal zusenden lassen. Hinweis: Der Link in der vorhergehenden E-Mail ist dann nicht mehr gültig.]]></value>
@@ -285,9 +276,7 @@
     <value><![CDATA[Ablehnen]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Sie haben versucht, {0} auf einem Gerät, auf dem Sie nicht angemeldet sind, mit Ihrem E-Mail-Konto zu verbinden.
-
-Wenn Sie Ihr {0}-Konto weiterhin verbinden möchten, öffnen Sie den Link bitte auf dem Gerät, auf dem Sie den Anmeldevorgang gestartet haben. Andernfalls tippen Sie auf \"Weiter\", um sich auf diesem Gerät anzumelden.]]></value>
+    <value><![CDATA[Sie haben versucht, {0} auf einem Gerät, auf dem Sie nicht angemeldet sind, mit Ihrem E-Mail-Konto zu verbinden. Wenn Sie Ihr {0}-Konto weiterhin verbinden möchten, öffnen Sie den Link bitte auf dem Gerät, auf dem Sie den Anmeldevorgang gestartet haben. Andernfalls tippen Sie auf \"Weiter\", um sich auf diesem Gerät anzumelden.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Mit {0} anmelden]]></value>
@@ -341,10 +330,10 @@ Wenn Sie Ihr {0}-Konto weiterhin verbinden möchten, öffnen Sie den Link bitte 
     <value><![CDATA[Indem Sie auf “{0}” tippen, stimmen Sie unseren {1} und unserer {2} zu. Sie erhalten möglicherweise eine SMS und es können Gebühren für die Nachricht und die Datenübertragung anfallen.]]></value>
   </data>
   <data name="fui_error_weak_password_one" xml:space="preserve">
-    <value><![CDATA[Das Passwort ist zu schwach. Verwenden Sie mindestens {0} Zeichen und eine Mischung aus Buchstaben und Ziffern.]]></value>
+    <value><![CDATA[Das Passwort ist zu schwach. Verwenden Sie mindestens {0} Zeichen und eine Mischung aus Buchstaben und Ziffern.]]></value>
   </data>
   <data name="fui_error_weak_password_other" xml:space="preserve">
-    <value><![CDATA[Das Passwort ist zu schwach. Verwenden Sie mindestens {0} Zeichen und eine Mischung aus Buchstaben und Ziffern.]]></value>
+    <value><![CDATA[Das Passwort ist zu schwach. Verwenden Sie mindestens {0} Zeichen und eine Mischung aus Buchstaben und Ziffern.]]></value>
   </data>
 
 </root>

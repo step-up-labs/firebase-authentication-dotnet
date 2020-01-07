@@ -75,10 +75,10 @@
     <value><![CDATA[En continuant, vous acceptez les {0} et les {1}.]]></value>
   </data>
   <data name="fui_tos_and_pp_footer" xml:space="preserve">
-    <value><![CDATA[{0}   {1}]]></value>
+    <value><![CDATA[{0} {1}]]></value>
   </data>
   <data name="fui_no_internet" xml:space="preserve">
-    <value><![CDATA[Erreur de réseau, vérifiez votre connexion Internet.]]></value>
+    <value><![CDATA[Erreur de réseau, vérifiez votre connexion Internet.]]></value>
   </data>
   <data name="fui_idp_name_google" xml:space="preserve">
     <value><![CDATA[Google]]></value>
@@ -180,11 +180,10 @@
     <value><![CDATA[Vous avez déjà un compte]]></value>
   </data>
   <data name="fui_welcome_back_email_header" xml:space="preserve">
-    <value><![CDATA[Bienvenue !]]></value>
+    <value><![CDATA[Bienvenue !]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Vous avez déjà un compte
-]]></value>
+    <value><![CDATA[Vous avez déjà un compte]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[Vous avez déjà utilisé l'adresse e-mail {0}. Connectez-vous avec {1} pour continuer.]]></value>
@@ -193,15 +192,13 @@
     <value><![CDATA[Vous avez déjà utilisé l'adresse e-mail {0} pour vous connecter. Saisissez le mot de passe du compte.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[Vous avez déjà utilisé l'adresse {0}. Vous pouvez associer votre compte {1} à l'adresse {0} en vous connectant via le lien envoyé par e-mail ci-dessous.
-
-Pour associer votre compte {1} à cette adresse e-mail, vous devez ouvrir le lien sur le même appareil ou dans le même navigateur.]]></value>
+    <value><![CDATA[Vous avez déjà utilisé l'adresse {0}. Vous pouvez associer votre compte {1} à l'adresse {0} en vous connectant via le lien envoyé par e-mail ci-dessous. Pour associer votre compte {1} à cette adresse e-mail, vous devez ouvrir le lien sur le même appareil ou dans le même navigateur.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Connexion…]]></value>
   </data>
   <data name="fui_trouble_signing_in" xml:space="preserve">
-    <value><![CDATA[Vous ne parvenez pas à vous connecter ?]]></value>
+    <value><![CDATA[Vous ne parvenez pas à vous connecter ?]]></value>
   </data>
   <data name="fui_title_recover_password_activity" xml:space="preserve">
     <value><![CDATA[Récupérer votre mot de passe]]></value>
@@ -234,22 +231,16 @@ Pour associer votre compte {1} à cette adresse e-mail, vous devez ouvrir le lie
     <value><![CDATA[Logo de l'application]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[E-mail de connexion envoyé
-]]></value>
+    <value><![CDATA[E-mail de connexion envoyé]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[Un e-mail de connexion avec des instructions supplémentaires a été envoyé à {0}. Consultez cet e-mail pour vous connecter.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_header" xml:space="preserve">
-    <value><![CDATA[Vous n'avez pas reçu l'e-mail ?]]></value>
+    <value><![CDATA[Vous n'avez pas reçu l'e-mail ?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Essayez les solutions courantes suivantes :
-\u2022 Vérifiez que l'e-mail n'a ni été marqué comme spam ni été filtré.
-\u2022 Vérifiez votre connexion Internet.
-\u2022 Vérifiez que votre adresse e-mail est correcte.
-\u2022 Vérifiez que votre boîte de réception n'est pas pleine et que les paramètres sont correctement définis.
-]]></value>
+    <value><![CDATA[Essayez les solutions courantes suivantes : \u2022 Vérifiez que l'e-mail n'a ni été marqué comme spam ni été filtré. \u2022 Vérifiez votre connexion Internet. \u2022 Vérifiez que votre adresse e-mail est correcte. \u2022 Vérifiez que votre boîte de réception n'est pas pleine et que les paramètres sont correctement définis.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Si les étapes décrites plus haut n'ont pas résolu le problème, vous pouvez renvoyer l'e-mail. Sachez que le lien du premier e-mail sera alors désactivé.]]></value>
@@ -285,9 +276,7 @@ Pour associer votre compte {1} à cette adresse e-mail, vous devez ouvrir le lie
     <value><![CDATA[Ignorer]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Vous aviez décidé d'associer votre compte {0} à votre adresse e-mail, mais vous avez ouvert le lien sur un appareil différent de celui avec lequel vous vous êtes connecté.
-
-Si vous souhaitez toujours associer votre compte {0}, ouvrez le lien sur l'appareil avec lequel vous avez commencé à vous connecter. Sinon, appuyez sur \"Continuer\" pour vous connecter depuis un autre appareil.]]></value>
+    <value><![CDATA[Vous aviez décidé d'associer votre compte {0} à votre adresse e-mail, mais vous avez ouvert le lien sur un appareil différent de celui avec lequel vous vous êtes connecté. Si vous souhaitez toujours associer votre compte {0}, ouvrez le lien sur l'appareil avec lequel vous avez commencé à vous connecter. Sinon, appuyez sur \"Continuer\" pour vous connecter depuis un autre appareil.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Se connecter avec {0}]]></value>
@@ -299,7 +288,7 @@ Si vous souhaitez toujours associer votre compte {0}, ouvrez le lien sur l'appar
     <value><![CDATA[Saisissez un numéro de téléphone valide]]></value>
   </data>
   <data name="fui_enter_confirmation_code" xml:space="preserve">
-    <value><![CDATA[Saisissez le code à six chiffres envoyé au]]></value>
+    <value><![CDATA[Saisissez le code à six chiffres envoyé au]]></value>
   </data>
   <data name="fui_resend_code_in" xml:space="preserve">
     <value><![CDATA[Renvoyer le code dans 0:%02d]]></value>
@@ -341,10 +330,10 @@ Si vous souhaitez toujours associer votre compte {0}, ouvrez le lien sur l'appar
     <value><![CDATA[En appuyant sur “{0}”, vous acceptez les {1} et les {2}. Vous déclencherez peut-être l'envoi d'un SMS. Des frais de messages et de données peuvent être facturés.]]></value>
   </data>
   <data name="fui_error_weak_password_one" xml:space="preserve">
-    <value><![CDATA[Le mot de passe n'est pas assez sécurisé. Utilisez au moins {0} caractère et une combinaison de chiffres et de lettres.]]></value>
+    <value><![CDATA[Le mot de passe n'est pas assez sécurisé. Utilisez au moins {0} caractère et une combinaison de chiffres et de lettres.]]></value>
   </data>
   <data name="fui_error_weak_password_other" xml:space="preserve">
-    <value><![CDATA[Le mot de passe n'est pas assez sécurisé. Utilisez au moins {0} caractères et une combinaison de chiffres et de lettres.]]></value>
+    <value><![CDATA[Le mot de passe n'est pas assez sécurisé. Utilisez au moins {0} caractères et une combinaison de chiffres et de lettres.]]></value>
   </data>
 
 </root>

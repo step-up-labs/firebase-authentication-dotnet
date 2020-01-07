@@ -183,8 +183,7 @@
     <value><![CDATA[Welkom terug.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[U heeft al een account
-]]></value>
+    <value><![CDATA[U heeft al een account]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[U heeft {0} al gebruikt. Log in met {1} om verder te gaan.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[U heeft al ingelogd met {0}. Voer uw wachtwoord in voor dit account.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[U heeft {0} al gebruikt. U kunt uw {1}-account aan {0} koppelen door in te loggen via de e-mail link hieronder.
-
-Als u uw {1}-account aan dit e-mailadres wilt koppelen, moet u de link openen op hetzelfde apparaat of in dezelfde browser.]]></value>
+    <value><![CDATA[U heeft {0} al gebruikt. U kunt uw {1}-account aan {0} koppelen door in te loggen via de e-mail link hieronder. Als u uw {1}-account aan dit e-mailadres wilt koppelen, moet u de link openen op hetzelfde apparaat of in dezelfde browser.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Inloggen…]]></value>
@@ -234,8 +231,7 @@ Als u uw {1}-account aan dit e-mailadres wilt koppelen, moet u de link openen op
     <value><![CDATA[App-logo]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[Inlogmail verzonden
-]]></value>
+    <value><![CDATA[Inlogmail verzonden]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[Er is een inlogmail met aanvullende instructies verzonden naar {0}. Controleer uw inbox om het inlogproces te voltooien.]]></value>
@@ -244,12 +240,7 @@ Als u uw {1}-account aan dit e-mailadres wilt koppelen, moet u de link openen op
     <value><![CDATA[E-mail niet ontvangen?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Probeer deze algemene oplossingen:
-\u2022 Controleer of de e-mail als spam is gemarkeerd of is weggefilterd.
-\u2022 Controleer uw internetverbinding.
-\u2022 Controleer of u uw e-mailadres juist heeft gespeld.
-\u2022 Controleer of er voldoende ruimte in uw inbox is en of er geen andere problemen met inboxinstellingen zijn.
-]]></value>
+    <value><![CDATA[Probeer deze algemene oplossingen: \u2022 Controleer of de e-mail als spam is gemarkeerd of is weggefilterd. \u2022 Controleer uw internetverbinding. \u2022 Controleer of u uw e-mailadres juist heeft gespeld. \u2022 Controleer of er voldoende ruimte in uw inbox is en of er geen andere problemen met inboxinstellingen zijn.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Als de bovenstaande stappen geen uitkomst bieden, kunt u de e-mail opnieuw verzenden. Hiermee wordt de link in de eerdere e-mail gedeactiveerd.]]></value>
@@ -285,9 +276,7 @@ Als u uw {1}-account aan dit e-mailadres wilt koppelen, moet u de link openen op
     <value><![CDATA[Afwijzen]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[U wilde aanvankelijk {0} aan uw e-mailaccount koppelen, maar u heeft de link geopend op een andere apparaat, waarop u niet ingelogd bent.
-
-Als u nog steeds verbinding wilt maken met uw {0}-account, opent u de link op het apparaat waarop u het inlogproces bent gestart. Tik anders op Doorgaan om in te loggen op dit apparaat.]]></value>
+    <value><![CDATA[U wilde aanvankelijk {0} aan uw e-mailaccount koppelen, maar u heeft de link geopend op een andere apparaat, waarop u niet ingelogd bent. Als u nog steeds verbinding wilt maken met uw {0}-account, opent u de link op het apparaat waarop u het inlogproces bent gestart. Tik anders op Doorgaan om in te loggen op dit apparaat.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Inloggen met {0}]]></value>

@@ -183,8 +183,7 @@
     <value><![CDATA[Chào mừng bạn quay trở lại!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Bạn đã có tài khoản
-]]></value>
+    <value><![CDATA[Bạn đã có tài khoản]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[Bạn đã sử dụng {0}. Đăng nhập bằng {1} để tiếp tục.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[Bạn đã sử dụng {0} để đăng nhập. Hãy nhập mật khẩu của bạn cho tài khoản đó.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[Bạn đã sử dụng {0}. Bạn có thể kết nối tài khoản {1} của mình với {0} bằng cách đăng nhập vào liên kết email bên dưới.
-
-Để quy trình kết nối tài khoản {1} của bạn với email này diễn ra thành công, bạn phải mở liên kết trên cùng một thiết bị hoặc trình duyệt.]]></value>
+    <value><![CDATA[Bạn đã sử dụng {0}. Bạn có thể kết nối tài khoản {1} của mình với {0} bằng cách đăng nhập vào liên kết email bên dưới. Để quy trình kết nối tài khoản {1} của bạn với email này diễn ra thành công, bạn phải mở liên kết trên cùng một thiết bị hoặc trình duyệt.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Đang đăng nhập…]]></value>
@@ -234,8 +231,7 @@
     <value><![CDATA[Biểu trưng ứng dụng]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[Đã gửi email đăng nhập
-]]></value>
+    <value><![CDATA[Đã gửi email đăng nhập]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[Email đăng nhập có hướng dẫn bổ sung đã được gửi tới {0}. Hãy tìm email này trong hộp thư của bạn để hoàn tất đăng nhập.]]></value>
@@ -244,12 +240,7 @@
     <value><![CDATA[Bạn gặp vấn đề khi nhận email?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Hãy thử các biện pháp khắc phục phổ biến sau:
-\u2022 Kiểm tra xem email có bị đánh dấu là spam hay đã được lọc.
-\u2022 Kiểm tra kết nối Internet của bạn.
-\u2022 Kiểm tra để đảm bảo bạn không viết sai chính tả tên email.
-\u2022 Kiểm tra để đảm bảo hộp thư đến của bạn chưa hết dung lượng và không có vấn đề về cài đặt hộp thư đến.
-]]></value>
+    <value><![CDATA[Hãy thử các biện pháp khắc phục phổ biến sau: \u2022 Kiểm tra xem email có bị đánh dấu là spam hay đã được lọc. \u2022 Kiểm tra kết nối Internet của bạn. \u2022 Kiểm tra để đảm bảo bạn không viết sai chính tả tên email. \u2022 Kiểm tra để đảm bảo hộp thư đến của bạn chưa hết dung lượng và không có vấn đề về cài đặt hộp thư đến.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Nếu các bước trên không hiệu quả, bạn có thể gửi lại email. Vui lòng lưu ý rằng thao tác này sẽ hủy kích hoạt đường dẫn liên kết trong email cũ.]]></value>
@@ -285,9 +276,7 @@
     <value><![CDATA[Bỏ qua]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Ban đầu, bạn có ý định kết nối {0} với tài khoản email của bạn nhưng đã mở liên kết trên một thiết bị khác mà bạn chưa đăng nhập.
-
-Nếu bạn vẫn muốn kết nối với tài khoản {0} của mình, hãy mở liên kết này trên cùng một thiết bị mà bạn đã đăng nhập từ đầu. Nếu không, hãy nhấn Tiếp tục để đăng nhập trên thiết bị này.]]></value>
+    <value><![CDATA[Ban đầu, bạn có ý định kết nối {0} với tài khoản email của bạn nhưng đã mở liên kết trên một thiết bị khác mà bạn chưa đăng nhập. Nếu bạn vẫn muốn kết nối với tài khoản {0} của mình, hãy mở liên kết này trên cùng một thiết bị mà bạn đã đăng nhập từ đầu. Nếu không, hãy nhấn Tiếp tục để đăng nhập trên thiết bị này.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Đăng nhập bằng {0}]]></value>

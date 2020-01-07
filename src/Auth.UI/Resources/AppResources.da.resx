@@ -183,8 +183,7 @@
     <value><![CDATA[Velkommen tilbage!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Du har allerede en konto
-]]></value>
+    <value><![CDATA[Du har allerede en konto]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[Du har allerede brugt {0}. Log ind med {1} for at fortsætte.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[Du har allerede brugt {0} til at logge ind. Angiv din adgangskode for den pågældende konto.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[Du har allerede brugt {0}. Du kan knytte din {1}-konto til {0} ved at logge ind med dette maillink.
-
-Hvis det skal lykkes at knytte din {1}-konto til mailadressen på denne måde, skal du åbne linket med den samme enhed eller i samme browser.]]></value>
+    <value><![CDATA[Du har allerede brugt {0}. Du kan knytte din {1}-konto til {0} ved at logge ind med dette maillink. Hvis det skal lykkes at knytte din {1}-konto til mailadressen på denne måde, skal du åbne linket med den samme enhed eller i samme browser.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Logger ind…]]></value>
@@ -234,8 +231,7 @@ Hvis det skal lykkes at knytte din {1}-konto til mailadressen på denne måde, s
     <value><![CDATA[App-logo]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[Loginmail sendt
-]]></value>
+    <value><![CDATA[Loginmail sendt]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[En loginmail med yderligere vejledning er sendt til {0}. Tjek din mail for at fuldføre loginprocessen.]]></value>
@@ -244,12 +240,7 @@ Hvis det skal lykkes at knytte din {1}-konto til mailadressen på denne måde, s
     <value><![CDATA[Har du problemer med at modtage mailen?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Prøv disse almindelige løsninger:
-\u2022 Tjek, om mailen er blevet markeret som spam eller filtreret fra.
-\u2022 Tjek din internetforbindelse.
-\u2022 Tjek, at du ikke har stavet din mailadresse forkert.
-\u2022 Tjek, at din indbakke ikke er løbet tør for plads, og at du ikke har andre problemer med indbakken.
-]]></value>
+    <value><![CDATA[Prøv disse almindelige løsninger: \u2022 Tjek, om mailen er blevet markeret som spam eller filtreret fra. \u2022 Tjek din internetforbindelse. \u2022 Tjek, at du ikke har stavet din mailadresse forkert. \u2022 Tjek, at din indbakke ikke er løbet tør for plads, og at du ikke har andre problemer med indbakken.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Hvis ovenstående trin ikke løste problemet, kan du prøve at sende mailen igen. Bemærk, at dette vil deaktivere linket i den gamle mail.]]></value>
@@ -285,9 +276,7 @@ Hvis det skal lykkes at knytte din {1}-konto til mailadressen på denne måde, s
     <value><![CDATA[Afvis]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Du ville egentlig knytte {0} til din mailkonto, men du har åbnet linket på en anden enhed, som du ikke er logget ind på.
-
-Hvis du stadig vil tilknytte din {0}-konto, skal du åbne linket på den enhed, hvor du startede loginprocessen. Ellers kan du klikke på Fortsæt for at fortsætte med at logge ind på denne enhed.]]></value>
+    <value><![CDATA[Du ville egentlig knytte {0} til din mailkonto, men du har åbnet linket på en anden enhed, som du ikke er logget ind på. Hvis du stadig vil tilknytte din {0}-konto, skal du åbne linket på den enhed, hvor du startede loginprocessen. Ellers kan du klikke på Fortsæt for at fortsætte med at logge ind på denne enhed.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Log ind med {0}]]></value>

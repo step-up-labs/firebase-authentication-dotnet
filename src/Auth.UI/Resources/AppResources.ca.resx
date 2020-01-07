@@ -183,8 +183,7 @@
     <value><![CDATA[Benvingut de nou!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Ja tens un compte
-]]></value>
+    <value><![CDATA[Ja tens un compte]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[Ja has utilitzat l'adreça electrònica {0}. Inicia la sessió amb {1} per continuar.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[Ja has utilitzat l'adreça electrònica {0} per iniciar la sessió. Introdueix la contrasenya d'aquest compte.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[Ja has utilitzat l'adreça electrònica {0}. Pots connectar el compte que tens a {1} amb {0} iniciant la sessió amb l'enllaç de correu electrònic que figura a continuació.
-
-Perquè el compte que tens a {1} es connecti amb aquesta adreça electrònica, has d'obrir l'enllaç al mateix dispositiu o navegador.]]></value>
+    <value><![CDATA[Ja has utilitzat l'adreça electrònica {0}. Pots connectar el compte que tens a {1} amb {0} iniciant la sessió amb l'enllaç de correu electrònic que figura a continuació. Perquè el compte que tens a {1} es connecti amb aquesta adreça electrònica, has d'obrir l'enllaç al mateix dispositiu o navegador.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[S'està iniciant la sessió…]]></value>
@@ -234,8 +231,7 @@ Perquè el compte que tens a {1} es connecti amb aquesta adreça electrònica, h
     <value><![CDATA[Logotip de l'aplicació]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[S'ha enviat el correu electrònic d'inici de sessió
-]]></value>
+    <value><![CDATA[S'ha enviat el correu electrònic d'inici de sessió]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[S'ha enviat un correu electrònic d'inici de sessió amb més instruccions a {0}. Comprova si l'has rebut per completar l'inici de sessió.]]></value>
@@ -244,12 +240,7 @@ Perquè el compte que tens a {1} es connecti amb aquesta adreça electrònica, h
     <value><![CDATA[Tens problemes per rebre el correu electrònic?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Prova aquestes solucions habituals:
-\u2022 Comprova que el correu electrònic no s'hagi marcat com a correu brossa ni s'hagi filtrat.
-\u2022 Comprova la connexió a Internet.
-\u2022 Comprova que hagis escrit correctament la teva adreça electrònica.
-\u2022 Comprova que tinguis espai a la safata d'entrada o qualsevol altre problema relacionat amb la configuració de la safata d'entrada.
-]]></value>
+    <value><![CDATA[Prova aquestes solucions habituals: \u2022 Comprova que el correu electrònic no s'hagi marcat com a correu brossa ni s'hagi filtrat. \u2022 Comprova la connexió a Internet. \u2022 Comprova que hagis escrit correctament la teva adreça electrònica. \u2022 Comprova que tinguis espai a la safata d'entrada o qualsevol altre problema relacionat amb la configuració de la safata d'entrada.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Si els passos anteriors no t'han servit d'ajuda, pots tornar a enviar el correu electrònic. Tingues en compte que l'enllaç del correu anterior es desactivarà.]]></value>
@@ -285,9 +276,7 @@ Perquè el compte que tens a {1} es connecti amb aquesta adreça electrònica, h
     <value><![CDATA[Ignora]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Inicialment has intentat connectar {0} amb el teu compte de correu electrònic, però has obert l'enllaç amb un dispositiu diferent en què no has iniciat la sessió.
-
-Si encara vols connectar el compte que tens a {0}, obre l'enllaç al mateix dispositiu en què has començat a iniciar la sessió. Si no, toca Continua per iniciar la sessió en aquest dispositiu.]]></value>
+    <value><![CDATA[Inicialment has intentat connectar {0} amb el teu compte de correu electrònic, però has obert l'enllaç amb un dispositiu diferent en què no has iniciat la sessió. Si encara vols connectar el compte que tens a {0}, obre l'enllaç al mateix dispositiu en què has començat a iniciar la sessió. Si no, toca Continua per iniciar la sessió en aquest dispositiu.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Inicia la sessió amb {0}]]></value>

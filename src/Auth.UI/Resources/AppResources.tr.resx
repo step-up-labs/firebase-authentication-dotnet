@@ -183,8 +183,7 @@
     <value><![CDATA[Tekrar hoş geldiniz!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Zaten bir hesabınız var
-]]></value>
+    <value><![CDATA[Zaten bir hesabınız var]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[{0} adresini zaten kullandınız. Devam etmek için {1} ile oturum açın.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[{0} adresini oturum açmak için zaten kullandınız. Bu hesap için şifrenizi girin.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[{0} adresini zaten kullandınız. Aşağıdaki e-posta bağlantısıyla oturum açarak {1} hesabınızı {0} adresine bağlayabilirsiniz.
-
-Akışın {1} hesabınızı bu e-posta adresine sorunsuz şekilde bağlayabilmesi için bağlantıyı aynı cihazda veya tarayıcıda açmanız gerekir.]]></value>
+    <value><![CDATA[{0} adresini zaten kullandınız. Aşağıdaki e-posta bağlantısıyla oturum açarak {1} hesabınızı {0} adresine bağlayabilirsiniz. Akışın {1} hesabınızı bu e-posta adresine sorunsuz şekilde bağlayabilmesi için bağlantıyı aynı cihazda veya tarayıcıda açmanız gerekir.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Oturum açılıyor…]]></value>
@@ -234,8 +231,7 @@ Akışın {1} hesabınızı bu e-posta adresine sorunsuz şekilde bağlayabilmes
     <value><![CDATA[Uygulama logosu]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[Oturum açma e-postası gönderildi
-]]></value>
+    <value><![CDATA[Oturum açma e-postası gönderildi]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[Ek talimatlar içeren bir oturum açma e-postası {0} adresine gönderildi. Oturum açma işlemini tamamlamak için e-postanızı kontrol edin.]]></value>
@@ -244,12 +240,7 @@ Akışın {1} hesabınızı bu e-posta adresine sorunsuz şekilde bağlayabilmes
     <value><![CDATA[E-posta almayla ilgili sorun mu yaşıyorsunuz?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Şu sık başvurulan düzeltme yöntemlerini deneyin:
-\u2022 E-postanın spam olarak işaretlenme veya filtrelenme durumunu kontrol edin.
-\u2022 İnternet bağlantınızı kontrol edin.
-\u2022 E-postanızda yazım hatası bulunmadığından emin olun.
-\u2022 Gelen kutunuzdaki boş alanın azalıp azalmadığını ve gelen kutusu ayarlarıyla ilgili başka bir sorun olup olmadığını kontrol edin.
-]]></value>
+    <value><![CDATA[Şu sık başvurulan düzeltme yöntemlerini deneyin: \u2022 E-postanın spam olarak işaretlenme veya filtrelenme durumunu kontrol edin. \u2022 İnternet bağlantınızı kontrol edin. \u2022 E-postanızda yazım hatası bulunmadığından emin olun. \u2022 Gelen kutunuzdaki boş alanın azalıp azalmadığını ve gelen kutusu ayarlarıyla ilgili başka bir sorun olup olmadığını kontrol edin.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Yukarıdaki adımların işe yaramadığı durumlarda e-postayı yeniden gönderebilirsiniz. Bu işlemin eski e-postadaki bağlantıyı devre dışı bırakacağını unutmayın.]]></value>
@@ -285,9 +276,7 @@ Akışın {1} hesabınızı bu e-posta adresine sorunsuz şekilde bağlayabilmes
     <value><![CDATA[Kapat]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Aslında {0} adlı sağlayıcıyı e-posta hesabınıza bağlamak istediniz ancak bağlantıyı, oturum açmadığınız farklı bir cihazda açtınız.
-
-Hâlâ {0} hesabınızı bağlamak istiyorsanız bağlantıyı oturum açma işlemini başlattığınız cihazda açın. Aksi takdirde bu cihazda oturum açmak için Devam'a dokunun.]]></value>
+    <value><![CDATA[Aslında {0} adlı sağlayıcıyı e-posta hesabınıza bağlamak istediniz ancak bağlantıyı, oturum açmadığınız farklı bir cihazda açtınız. Hâlâ {0} hesabınızı bağlamak istiyorsanız bağlantıyı oturum açma işlemini başlattığınız cihazda açın. Aksi takdirde bu cihazda oturum açmak için Devam'a dokunun.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[{0} ile oturum aç]]></value>

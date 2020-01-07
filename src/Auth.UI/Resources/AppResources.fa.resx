@@ -111,7 +111,7 @@
     <value><![CDATA[ورود به سیستم با GitHub]]></value>
   </data>
   <data name="fui_sign_in_with_email" xml:space="preserve">
-    <value><![CDATA[ورود به سیستم با ایمیل ]]></value>
+    <value><![CDATA[ورود به سیستم با ایمیل]]></value>
   </data>
   <data name="fui_sign_in_with_phone" xml:space="preserve">
     <value><![CDATA[ورود به سیستم با تلفن]]></value>
@@ -132,7 +132,7 @@
     <value><![CDATA[بعدی]]></value>
   </data>
   <data name="fui_email_hint" xml:space="preserve">
-    <value><![CDATA[ایمیل ]]></value>
+    <value><![CDATA[ایمیل]]></value>
   </data>
   <data name="fui_phone_hint" xml:space="preserve">
     <value><![CDATA[شماره تلفن]]></value>
@@ -183,8 +183,7 @@
     <value><![CDATA[باز هم خوش آمدید!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[از قبل حسابی دارید
-]]></value>
+    <value><![CDATA[از قبل حسابی دارید]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[قبلاً از {0} استفاده کرده‌اید. برای ادامه، با {1} وارد سیستم شوید.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[قبلاً از {0} برای ورود به سیستم استفاده کرده‌اید. گذرواژه این حساب را وارد کنید.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[قبلاً از {0} استفاده کرده‌اید. می‌توانید با ورود به سیستم ازطریق پیوند ایمیل زیر، حساب {1} را به {0} وصل کنید.
-
-برای اینکه این فرایند بتواند با موفقیت حساب {1} شما را به این ایمیل متصل کند، باید پیوند را در همان دستگاه یا مرورگر باز کنید.]]></value>
+    <value><![CDATA[قبلاً از {0} استفاده کرده‌اید. می‌توانید با ورود به سیستم ازطریق پیوند ایمیل زیر، حساب {1} را به {0} وصل کنید. برای اینکه این فرایند بتواند با موفقیت حساب {1} شما را به این ایمیل متصل کند، باید پیوند را در همان دستگاه یا مرورگر باز کنید.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[درحال ورود به سیستم…]]></value>
@@ -234,8 +231,7 @@
     <value><![CDATA[نشان‌واره برنامه]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[ایمیل ورود به سیستم ارسال شد
-]]></value>
+    <value><![CDATA[ایمیل ورود به سیستم ارسال شد]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[ایمیل ورود به سیستم، حاوی دستورالعمل‌های بیشتر، به {0} ارسال شد. برای تکمیل ورود به سیستم، ایمیلتان را بررسی کنید.]]></value>
@@ -244,12 +240,7 @@
     <value><![CDATA[در دریافت ایمیل مشکل دارید؟]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[این رفع اشکال‌های معمول را امتحان کنید:
-\u2022 ببینید ایمیل به‌عنوان هرزنامه یا فیلترشده مشخص نشده باشد.
-\u2022 اتصال اینترنتتان را بررسی کنید.
-\u2022 مطمئن شوید املای ایمیلتان را درست وارد کرده باشید.
-\u2022 مطمئن شوید فضای صندوق ورودی‌تان روبه‌اتمام نباشد یا مشکل دیگری در تنظیمات صندوق ورودی وجود نداشته باشد.
-]]></value>
+    <value><![CDATA[این رفع اشکال‌های معمول را امتحان کنید: \u2022 ببینید ایمیل به‌عنوان هرزنامه یا فیلترشده مشخص نشده باشد. \u2022 اتصال اینترنتتان را بررسی کنید. \u2022 مطمئن شوید املای ایمیلتان را درست وارد کرده باشید. \u2022 مطمئن شوید فضای صندوق ورودی‌تان روبه‌اتمام نباشد یا مشکل دیگری در تنظیمات صندوق ورودی وجود نداشته باشد.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[اگر اقدامات بالا به رفع مشکل کمک نکرد، می‌توانید ایمیل را مجدداً ارسال کنید. توجه کنید که با این کار، پیوند موجود در ایمیل قبلی غیرفعال می‌شود.]]></value>
@@ -285,9 +276,7 @@
     <value><![CDATA[نپذیرفتن]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[ابتدا قصد داشتید {0} را به حساب ایمیلتان متصل کنید، اما پیوند را در دستگاه دیگری باز کردید که در آن وارد سیستم نشده‌اید.
-
-اگر همچنان می‌خواهید حساب {0} را متصل کنید، پیوند را در همان دستگاهی باز کنید که ورود به سیستم را با آن شروع کرده‌اید. درغیراین‌صورت، برای ورود به سیستم با این دستگاه، روی «ادامه» ضربه بزنید.]]></value>
+    <value><![CDATA[ابتدا قصد داشتید {0} را به حساب ایمیلتان متصل کنید، اما پیوند را در دستگاه دیگری باز کردید که در آن وارد سیستم نشده‌اید. اگر همچنان می‌خواهید حساب {0} را متصل کنید، پیوند را در همان دستگاهی باز کنید که ورود به سیستم را با آن شروع کرده‌اید. درغیراین‌صورت، برای ورود به سیستم با این دستگاه، روی «ادامه» ضربه بزنید.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[ورود به سیستم با {0}]]></value>

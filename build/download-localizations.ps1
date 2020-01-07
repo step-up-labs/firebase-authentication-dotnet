@@ -20,18 +20,7 @@ function Convert-StringsToResX([string] $strings) {
   foreach ($node in $nodes) {
     #Write-Output $("{0,-50} : $($node.InnerText)" -f $node.name)
     $value = $node.InnerText
-
-    if ($useMap) {
-      if ($map.Keys -contains $node.name) {
-        $value = $value.Replace('%s', '').Replace('%1$s', '').Replace('%2$s', '').Replace('%3$s', '').Replace('%4$s', '').Replace(':', '').Replace('<b>', '').Replace('</b>', '').Replace('<![CDATA[', '').Replace(']]>', '')
-        $value = $value.Trim()
-        $value = $value.Substring(0, 1).ToUpper() + $value.Substring(1, $value.Length - 1)
-        Write-ResXItem $map[$node.name] $value
-      }
-    }
-    else {
-      Write-ResXItem $node.name $value
-    }
+    Write-ResXItem $node.name $value
   }
 
   # android strings plurals
@@ -51,9 +40,9 @@ function Convert-StringsToResX([string] $strings) {
 }
 
 function Write-ResXItem([string] $name, [string] $value) {
-  $text = $value -replace "â€¦", "…" -replace "&amp;", "&" -replace "\\'", "'" -replace "%%", "%" -replace 'â€™', "'" -replace 'â€“', '-' -replace '%s', '{0}' -replace '%d', '{0}' -replace '%1\$s', '{0}' -replace '%2\$s', '{1}' -replace '%3\$s', '{2}' -replace '%4\$s', '{3}' -replace '%1\$d', '{0}' -replace '%2\$d', '{1}' -replace '\\n', "`n"
-  $text = $text -replace "Google Play", 'Microsoft Store' -replace "v Obchodu Play", 'v Microsoft Store'
-	
+  $text = $value -replace "â€¦", "…" -replace "&amp;", "&" -replace "\\'", "'" -replace "%%", "%" -replace 'â€™', "'" -replace 'â€“', '-' -replace '%s', '{0}' -replace '%d', '{0}' -replace '%1\$s', '{0}' -replace '%2\$s', '{1}' -replace '%3\$s', '{2}' -replace '%4\$s', '{3}' -replace '%1\$d', '{0}' -replace '%2\$d', '{1}' -replace '\\n', "`n"  -replace '\s+', ' '
+  $text = $text.Trim()
+  
   $startData = ''
   $endData = ''
   if (-Not($text.StartsWith('<![CDATA['))) {

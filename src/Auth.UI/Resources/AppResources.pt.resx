@@ -183,8 +183,7 @@
     <value><![CDATA[É bom ver você novamente!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Você já tem uma conta
-]]></value>
+    <value><![CDATA[Você já tem uma conta]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[Você já usou o e-mail {0}. Faça login com o {1} para continuar.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[Você já usou o e-mail {0} para fazer login. Insira a senha dessa conta.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[Você já usou {0}. Você pode conectar sua conta do {1} com {0} ao fazer login usando o link de e-mail abaixo.
-
-Para conectar sua conta do {1} com este e-mail, é necessário abrir o link no mesmo dispositivo ou navegador.]]></value>
+    <value><![CDATA[Você já usou {0}. Você pode conectar sua conta do {1} com {0} ao fazer login usando o link de e-mail abaixo. Para conectar sua conta do {1} com este e-mail, é necessário abrir o link no mesmo dispositivo ou navegador.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Fazendo login…]]></value>
@@ -234,8 +231,7 @@ Para conectar sua conta do {1} com este e-mail, é necessário abrir o link no m
     <value><![CDATA[Logotipo do app]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[E-mail de login enviado
-]]></value>
+    <value><![CDATA[E-mail de login enviado]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[Um e-mail de login com mais instruções foi enviado para {0}. Verifique sua caixa de entrada para concluir o login.]]></value>
@@ -244,12 +240,7 @@ Para conectar sua conta do {1} com este e-mail, é necessário abrir o link no m
     <value><![CDATA[Problemas para receber e-mails?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Utilize estas soluções comuns:
-\u2022 Verifique se o e-mail foi filtrado ou marcado como spam
-\u2022 Verifique sua conexão com a Internet.
-\u2022 Verifique se você digitou seu e-mail corretamente.
-\u2022 Verifique se a sua caixa de entrada está cheia ou se ela está com outro tipo de problema.
-]]></value>
+    <value><![CDATA[Utilize estas soluções comuns: \u2022 Verifique se o e-mail foi filtrado ou marcado como spam \u2022 Verifique sua conexão com a Internet. \u2022 Verifique se você digitou seu e-mail corretamente. \u2022 Verifique se a sua caixa de entrada está cheia ou se ela está com outro tipo de problema.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Se as etapas acima não funcionarem, envie o e-mail novamente. Observação: isso desativará o link do e-mail anterior.]]></value>
@@ -285,9 +276,7 @@ Para conectar sua conta do {1} com este e-mail, é necessário abrir o link no m
     <value><![CDATA[Dispensar]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Inicialmente, você quis conectar {0} à sua conta de e-mail, mas abriu o link em outro dispositivo no qual você não está conectado.
-
-Se você ainda quiser conectar sua conta de {0}, abra o link no mesmo dispositivo em que fez login. Se preferir, toque em \"Continuar\" para fazer login neste dispositivo.]]></value>
+    <value><![CDATA[Inicialmente, você quis conectar {0} à sua conta de e-mail, mas abriu o link em outro dispositivo no qual você não está conectado. Se você ainda quiser conectar sua conta de {0}, abra o link no mesmo dispositivo em que fez login. Se preferir, toque em \"Continuar\" para fazer login neste dispositivo.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Fazer login com {0}]]></value>

@@ -183,8 +183,7 @@
     <value><![CDATA[Dobrodošli nazaj!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Račun že imate
-]]></value>
+    <value><![CDATA[Račun že imate]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[E-poštni naslov {0} ste že uporabili. Če želite nadaljevati, se prijavite z računom za {1}.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[E-poštni naslov {0} ste že uporabili za prijavo. Vnesite geslo za ta račun.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[{0} ste že uporabili. Račun za {1} lahko povežete z e-poštnim naslovom {0} tako, da se prijavite na spodnji povezavi.
-
-Če želite račun za {1} uspešno povezati s tem e-poštnim naslovom, morate povezavi odpreti v isti napravi ali brskalniku.]]></value>
+    <value><![CDATA[{0} ste že uporabili. Račun za {1} lahko povežete z e-poštnim naslovom {0} tako, da se prijavite na spodnji povezavi. Če želite račun za {1} uspešno povezati s tem e-poštnim naslovom, morate povezavi odpreti v isti napravi ali brskalniku.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Prijavljanje…]]></value>
@@ -234,8 +231,7 @@
     <value><![CDATA[Logotip aplikacije]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[E-poštno sporočilo za prijavo je bilo poslano
-]]></value>
+    <value><![CDATA[E-poštno sporočilo za prijavo je bilo poslano]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[E-poštno sporočilo za prijavo z dodatnimi navodili je bilo poslano na {0}. Preverite e-pošto in dokončajte prijavo.]]></value>
@@ -244,12 +240,7 @@
     <value><![CDATA[Niste prejeli e-poštnega sporočila?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Poskusite te splošne rešitve:
-\u2022 Preverite, ali je bilo e-poštno sporočilo označeno kot vsiljena pošta ali filtrirano.
-\u2022 Preverite internetno povezavo.
-\u2022 Preverite, ali je e-poštni naslov pravilno zapisan.
-\u2022 Zagotovite, da imate v mapi »Prejeto« dovolj prostora oziroma da ni prišlo do drugih težav, povezanih z nastavitvami mape »Prejeto«.
-]]></value>
+    <value><![CDATA[Poskusite te splošne rešitve: \u2022 Preverite, ali je bilo e-poštno sporočilo označeno kot vsiljena pošta ali filtrirano. \u2022 Preverite internetno povezavo. \u2022 Preverite, ali je e-poštni naslov pravilno zapisan. \u2022 Zagotovite, da imate v mapi »Prejeto« dovolj prostora oziroma da ni prišlo do drugih težav, povezanih z nastavitvami mape »Prejeto«.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Če z zgornjimi koraki ne odpravite težave, lahko znova pošljete e-poštno sporočilo. Upoštevajte, da boste s tem onemogočili povezavo v prejšnjem e-poštnem sporočilu.]]></value>
@@ -285,9 +276,7 @@
     <value><![CDATA[Opusti]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Najprej ste želeli račun {0} povezati z e-poštnim računom, vendar ste povezavo odprli v drugi napravi, kjer niste prijavljeni.
-
-Če želite še vedno povezati račun {0}, odprite povezavo v napravi, v kateri ste začeli s prijavo. V nasprotnem primeru se dotaknite možnosti »Nadaljuj«, da se prijavite v tej napravi.]]></value>
+    <value><![CDATA[Najprej ste želeli račun {0} povezati z e-poštnim računom, vendar ste povezavo odprli v drugi napravi, kjer niste prijavljeni. Če želite še vedno povezati račun {0}, odprite povezavo v napravi, v kateri ste začeli s prijavo. V nasprotnem primeru se dotaknite možnosti »Nadaljuj«, da se prijavite v tej napravi.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Prijava z računom {0}]]></value>

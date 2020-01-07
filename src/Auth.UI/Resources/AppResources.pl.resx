@@ -75,7 +75,7 @@
     <value><![CDATA[Kontynuując, potwierdzasz, że akceptujesz te dokumenty: {0} i {1}.]]></value>
   </data>
   <data name="fui_tos_and_pp_footer" xml:space="preserve">
-    <value><![CDATA[{0}     {1}]]></value>
+    <value><![CDATA[{0} {1}]]></value>
   </data>
   <data name="fui_no_internet" xml:space="preserve">
     <value><![CDATA[Błąd sieci. Sprawdź połączenie z internetem.]]></value>
@@ -159,7 +159,7 @@
     <value><![CDATA[Rejestracja]]></value>
   </data>
   <data name="fui_name_hint" xml:space="preserve">
-    <value><![CDATA[Imię i nazwisko]]></value>
+    <value><![CDATA[Imię i nazwisko]]></value>
   </data>
   <data name="fui_button_text_save" xml:space="preserve">
     <value><![CDATA[Zapisz]]></value>
@@ -171,7 +171,7 @@
     <value><![CDATA[Rejestracja konta e-mail nie powiodła się]]></value>
   </data>
   <data name="fui_terms_of_service" xml:space="preserve">
-    <value><![CDATA[Warunki korzystania z usługi]]></value>
+    <value><![CDATA[Warunki korzystania z usługi]]></value>
   </data>
   <data name="fui_privacy_policy" xml:space="preserve">
     <value><![CDATA[Polityka prywatności]]></value>
@@ -183,8 +183,7 @@
     <value><![CDATA[Witamy z powrotem]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Masz już konto
-]]></value>
+    <value><![CDATA[Masz już konto]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[Adres {0} został już przez Ciebie użyty. Aby kontynuować, zaloguj się przez: {1}.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[Adres {0} został już przez Ciebie użyty do logowania. Wpisz hasło tego konta.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[Adres {0} został już użyty. Możesz połączyć swoje konto w serwisie {1} z adresem {0}, logując się poniżej za pomocą e-maila z linkiem.
-
-Aby procedura łączenia konta w serwisie {1} z tym adresem powiodła się, link musisz otworzyć na tym samym urządzeniu i w tej samej przeglądarce.]]></value>
+    <value><![CDATA[Adres {0} został już użyty. Możesz połączyć swoje konto w serwisie {1} z adresem {0}, logując się poniżej za pomocą e-maila z linkiem. Aby procedura łączenia konta w serwisie {1} z tym adresem powiodła się, link musisz otworzyć na tym samym urządzeniu i w tej samej przeglądarce.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Loguję…]]></value>
@@ -234,8 +231,7 @@ Aby procedura łączenia konta w serwisie {1} z tym adresem powiodła się, link
     <value><![CDATA[Logo aplikacji]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[E-mail umożliwiający zalogowanie się został wysłany
-]]></value>
+    <value><![CDATA[E-mail umożliwiający zalogowanie się został wysłany]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[Na adres {0} wysłaliśmy wiadomość umożliwiającą zalogowanie się i dodatkowe instrukcje. Sprawdź pocztę, by się zalogować.]]></value>
@@ -244,12 +240,7 @@ Aby procedura łączenia konta w serwisie {1} z tym adresem powiodła się, link
     <value><![CDATA[E-mail nie dotarł?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Typowe rozwiązania tego problemu:
-\u2022 Sprawdź, czy e-mail nie został oznaczony jako spam lub objęty którymś z filtrów.
-\u2022 Sprawdź połączenie z internetem.
-\u2022 Sprawdź, czy został wpisany poprawny adres e-mail.
-\u2022 Sprawdź, czy nie kończy się miejsce w skrzynce odbiorczej oraz czy nie ma innych problemów z jej ustawieniami.
-]]></value>
+    <value><![CDATA[Typowe rozwiązania tego problemu: \u2022 Sprawdź, czy e-mail nie został oznaczony jako spam lub objęty którymś z filtrów. \u2022 Sprawdź połączenie z internetem. \u2022 Sprawdź, czy został wpisany poprawny adres e-mail. \u2022 Sprawdź, czy nie kończy się miejsce w skrzynce odbiorczej oraz czy nie ma innych problemów z jej ustawieniami.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Jeżeli wykonanie powyższych czynności nie dało żadnych rezultatów, możesz wysłać e-mail jeszcze raz. Link wysłany w poprzedniej wiadomości przestanie być aktywny.]]></value>
@@ -285,9 +276,7 @@ Aby procedura łączenia konta w serwisie {1} z tym adresem powiodła się, link
     <value><![CDATA[Odrzuć]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Podjęto próbę połączenia konta {0} z kontem, na którym używasz podanego adresu e-mail, ale link został otwarty na innym urządzeniu, na którym użytkownik nie był zalogowany.
-
-Jeśli nadal chcesz połączyć konto w serwisie {0}, otwórz link na urządzeniu, na którym rozpoczęto logowanie. W przeciwnym razie wybierz Dalej, by zalogować się na tym urządzeniu.]]></value>
+    <value><![CDATA[Podjęto próbę połączenia konta {0} z kontem, na którym używasz podanego adresu e-mail, ale link został otwarty na innym urządzeniu, na którym użytkownik nie był zalogowany. Jeśli nadal chcesz połączyć konto w serwisie {0}, otwórz link na urządzeniu, na którym rozpoczęto logowanie. W przeciwnym razie wybierz Dalej, by zalogować się na tym urządzeniu.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Zaloguj się przez: {0}]]></value>
@@ -341,16 +330,16 @@ Jeśli nadal chcesz połączyć konto w serwisie {0}, otwórz link na urządzeni
     <value><![CDATA[Klikając „{0}”, potwierdzasz, że akceptujesz te dokumenty: {1} i {2}. Może zostać wysłany SMS. Może to skutkować pobraniem opłat za przesłanie wiadomości i danych.]]></value>
   </data>
   <data name="fui_error_weak_password_one" xml:space="preserve">
-    <value><![CDATA[Hasło jest za słabe. Powinno mieć przynajmniej {0} znak i być kombinacją liter i cyfr.]]></value>
+    <value><![CDATA[Hasło jest za słabe. Powinno mieć przynajmniej {0} znak i być kombinacją liter i cyfr.]]></value>
   </data>
   <data name="fui_error_weak_password_few" xml:space="preserve">
-    <value><![CDATA[Hasło jest za słabe. Powinno mieć przynajmniej {0} znaki i być kombinacją liter i cyfr.]]></value>
+    <value><![CDATA[Hasło jest za słabe. Powinno mieć przynajmniej {0} znaki i być kombinacją liter i cyfr.]]></value>
   </data>
   <data name="fui_error_weak_password_many" xml:space="preserve">
-    <value><![CDATA[Hasło jest za słabe. Powinno mieć przynajmniej {0} znaków i być kombinacją liter i cyfr.]]></value>
+    <value><![CDATA[Hasło jest za słabe. Powinno mieć przynajmniej {0} znaków i być kombinacją liter i cyfr.]]></value>
   </data>
   <data name="fui_error_weak_password_other" xml:space="preserve">
-    <value><![CDATA[Hasło jest za słabe. Powinno mieć przynajmniej {0} znaku i być kombinacją liter i cyfr]]></value>
+    <value><![CDATA[Hasło jest za słabe. Powinno mieć przynajmniej {0} znaku i być kombinacją liter i cyfr]]></value>
   </data>
 
 </root>

@@ -183,8 +183,7 @@
     <value><![CDATA[Dobro došli natrag!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Već imate račun
-]]></value>
+    <value><![CDATA[Već imate račun]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[Već ste upotrijebili e-adresu {0}. Za nastavak se prijavite putem usluge {1}.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[Za prijavu ste već upotrijebili e-adresu {0}. Unesite zaporku za taj račun.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[Već ste upotrebljavali adresu {0}. Svoj {1} račun možete povezati s adresom {0} tako da se prijavite putem ispod navedene veze u e-poruci.
-
-Da biste ovim postupkom povezali svoj {1} račun s tom e-adresom, trebate otvoriti vezu na istom uređaju ili pregledniku.]]></value>
+    <value><![CDATA[Već ste upotrebljavali adresu {0}. Svoj {1} račun možete povezati s adresom {0} tako da se prijavite putem ispod navedene veze u e-poruci. Da biste ovim postupkom povezali svoj {1} račun s tom e-adresom, trebate otvoriti vezu na istom uređaju ili pregledniku.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Prijava…]]></value>
@@ -234,8 +231,7 @@ Da biste ovim postupkom povezali svoj {1} račun s tom e-adresom, trebate otvori
     <value><![CDATA[Logotip aplikacije]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[E-poruka za prijavu poslana
-]]></value>
+    <value><![CDATA[E-poruka za prijavu poslana]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[E-poruka za prijavu s dodatnim uputama poslana je na adresu {0}. Provjerite e-poštu da biste dovršili prijavu.]]></value>
@@ -244,12 +240,7 @@ Da biste ovim postupkom povezali svoj {1} račun s tom e-adresom, trebate otvori
     <value><![CDATA[Imate poteškoće s primanjem e-poruke?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Isprobajte ova uobičajena rješenja:
-\u2022 Provjerite je li e-poruka filtrirana ili označena kao neželjena pošta.
-\u2022 Provjerite internetsku vezu.
-\u2022 Provjerite jeste li točno napisali e-adresu.
-\u2022 Provjerite ima li dovoljno prostora u vašem pretincu pristigle pošte ili je došlo do drugih problema povezanih s postavkama pretinca pristigle pošte.
-]]></value>
+    <value><![CDATA[Isprobajte ova uobičajena rješenja: \u2022 Provjerite je li e-poruka filtrirana ili označena kao neželjena pošta. \u2022 Provjerite internetsku vezu. \u2022 Provjerite jeste li točno napisali e-adresu. \u2022 Provjerite ima li dovoljno prostora u vašem pretincu pristigle pošte ili je došlo do drugih problema povezanih s postavkama pretinca pristigle pošte.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Ako se problem ne riješi pomoću koraka iznad, možete ponovo poslati e-poruku. Time će se deaktivirati veza u ranijoj e-poruci.]]></value>
@@ -285,9 +276,7 @@ Da biste ovim postupkom povezali svoj {1} račun s tom e-adresom, trebate otvori
     <value><![CDATA[Odbaci]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Izvorno ste namjeravali povezati {0} račun sa svojim računom e-pošte, no otvorili ste vezu na drugom uređaju na kojem niste prijavljeni.
-
-Ako i dalje želite povezati svoj {0} račun, otvorite vezu na uređaju na kojem ste pokrenuli postupak prijave. U suprotnom dodirnite Nastavi da biste se prijavili na ovom uređaju.]]></value>
+    <value><![CDATA[Izvorno ste namjeravali povezati {0} račun sa svojim računom e-pošte, no otvorili ste vezu na drugom uređaju na kojem niste prijavljeni. Ako i dalje želite povezati svoj {0} račun, otvorite vezu na uređaju na kojem ste pokrenuli postupak prijave. U suprotnom dodirnite Nastavi da biste se prijavili na ovom uređaju.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Prijava putem adrese {0}]]></value>

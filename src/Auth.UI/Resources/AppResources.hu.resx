@@ -183,8 +183,7 @@
     <value><![CDATA[Örülünk, hogy visszatért!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Már rendelkezik fiókkal
-]]></value>
+    <value><![CDATA[Már rendelkezik fiókkal]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[Már használta a következő e-mail-címet: {0}. A folytatáshoz jelentkezzen be {1}-fiókjával.]]></value>
@@ -193,8 +192,7 @@
     <value><![CDATA[Ezt az e-mail-fiókot ({0}) már használta bejelentkezésre. Adja meg a fiókhoz tartozó jelszót.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[Már használta a következő e-mail-címet: {0}. Most már összekapcsolhatja {1}-fiókját a(z) {0} e-mail-címmel, ha az alábbi e-mail-linkkel jelentkezik be.
- {1}-fiókjának és az e-mail-címnek az összekapcsolásához a linket ugyanazon az eszközön vagy ugyanabban a böngészőben kell megnyitni.]]></value>
+    <value><![CDATA[Már használta a következő e-mail-címet: {0}. Most már összekapcsolhatja {1}-fiókját a(z) {0} e-mail-címmel, ha az alábbi e-mail-linkkel jelentkezik be. {1}-fiókjának és az e-mail-címnek az összekapcsolásához a linket ugyanazon az eszközön vagy ugyanabban a böngészőben kell megnyitni.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Bejelentkezés…]]></value>
@@ -233,8 +231,7 @@
     <value><![CDATA[Alkalmazás emblémája]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[Bejelentkezési e-mail elküldve
-]]></value>
+    <value><![CDATA[Bejelentkezési e-mail elküldve]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[A további utasításokat tartalmazó bejelentkezési e-mailt elküldtük ide: {0}. A bejelentkezés befejezéséhez keresse meg az e-mailjei között.]]></value>
@@ -243,12 +240,7 @@
     <value><![CDATA[Az e-mail-fogadással kapcsolatos problémát észlel?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Próbálja ki ezeket az általános problémamegoldó lépéseket:
-\u2022 Ellenőrizze, hogy az e-mail nem lett-e spamként megjelölve, vagy kiszűrve.
-\u2022 Ellenőrizze az internetkapcsolatát.
-\u2022 Ellenőrizze, hogy nem tévesen írta-e le az e-mail-címét.
-\u2022 Ellenőrizze, hogy a beérkező levelek számára van-e tárhely, illetve nincs-e gond a beérkező levelek beállításaival.
-]]></value>
+    <value><![CDATA[Próbálja ki ezeket az általános problémamegoldó lépéseket: \u2022 Ellenőrizze, hogy az e-mail nem lett-e spamként megjelölve, vagy kiszűrve. \u2022 Ellenőrizze az internetkapcsolatát. \u2022 Ellenőrizze, hogy nem tévesen írta-e le az e-mail-címét. \u2022 Ellenőrizze, hogy a beérkező levelek számára van-e tárhely, illetve nincs-e gond a beérkező levelek beállításaival.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Ha a fenti lépések végrehajtása nem járt eredménnyel, küldje el újra az e-mailt. Ne feledje, hogy ezzel deaktiválja az előző e-mailben szereplő linket.]]></value>
@@ -284,9 +276,7 @@
     <value><![CDATA[Elvetés]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Eredetileg össze szerette volna kapcsolni {0}-fiókját az e-mail-fiókjával, a linket azonban olyan eszközön nyitotta meg, amelyen nem jelentkezett be.
-
-Ha továbbra is össze kívánja kapcsolni {0}-fiókját, akkor azon az eszközön nyissa meg a linket, amelyen megkezdte a bejelentkezést. Ha ezen az eszközön kíván bejelentkezni, akkor koppintson a Tovább gombra.]]></value>
+    <value><![CDATA[Eredetileg össze szerette volna kapcsolni {0}-fiókját az e-mail-fiókjával, a linket azonban olyan eszközön nyitotta meg, amelyen nem jelentkezett be. Ha továbbra is össze kívánja kapcsolni {0}-fiókját, akkor azon az eszközön nyissa meg a linket, amelyen megkezdte a bejelentkezést. Ha ezen az eszközön kíván bejelentkezni, akkor koppintson a Tovább gombra.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Bejelentkezés a következővel: {0}]]></value>

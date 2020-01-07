@@ -198,19 +198,16 @@
     <value><![CDATA[Welcome back!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[You already have an account
-]]></value>
+    <value><![CDATA[You already have an account]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
-    <value><![CDATA[         You've already used {0}.         Sign in with {1} to continue.     ]]></value>
+    <value><![CDATA[You've already used {0}. Sign in with {1} to continue.]]></value>
   </data>
   <data name="fui_welcome_back_password_prompt_body" xml:space="preserve">
-    <value><![CDATA[         You've already used {0}         to sign in. Enter your password for that account.     ]]></value>
+    <value><![CDATA[You've already used {0} to sign in. Enter your password for that account.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[         You've already used {0}.         You can connect your {1} account with {0} by signing in with email link below.
-
-For this flow to successfully connect your {1} account with this email, you have to open the link on the same device or browser.     ]]></value>
+    <value><![CDATA[You've already used {0}. You can connect your {1} account with {0} by signing in with email link below. For this flow to successfully connect your {1} account with this email, you have to open the link on the same device or browser.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Signing in…]]></value>
@@ -225,7 +222,7 @@ For this flow to successfully connect your {1} account with this email, you have
     <value><![CDATA[Check your email]]></value>
   </data>
   <data name="fui_password_recovery_body" xml:space="preserve">
-    <value><![CDATA[Get instructions sent to this email that explain how to         reset your password.]]></value>
+    <value><![CDATA[Get instructions sent to this email that explain how to reset your password.]]></value>
   </data>
   <data name="fui_button_text_send" xml:space="preserve">
     <value><![CDATA[Send]]></value>
@@ -249,8 +246,7 @@ For this flow to successfully connect your {1} account with this email, you have
     <value><![CDATA[App logo]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[Sign-in email sent
-]]></value>
+    <value><![CDATA[Sign-in email sent]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[A sign-in email with additional instructions was sent to {0}. Check your email to complete sign-in.]]></value>
@@ -259,15 +255,10 @@ For this flow to successfully connect your {1} account with this email, you have
     <value><![CDATA[Trouble getting email?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Try these common fixes:
-\u2022 Check if the email was marked as spam or filtered.
-\u2022 Check your internet connection.
-\u2022 Check that you did not misspell your email.
-\u2022 Check that your inbox space is not running out or other inbox setting related issues.
-]]></value>
+    <value><![CDATA[Try these common fixes: \u2022 Check if the email was marked as spam or filtered. \u2022 Check your internet connection. \u2022 Check that you did not misspell your email. \u2022 Check that your inbox space is not running out or other inbox setting related issues.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
-    <value><![CDATA[If the steps above didn't work, you can resend the email. Note that this will deactivate the link in the older email. ]]></value>
+    <value><![CDATA[If the steps above didn't work, you can resend the email. Note that this will deactivate the link in the older email.]]></value>
   </data>
   <data name="fui_email_link_resend" xml:space="preserve">
     <value><![CDATA[Resend]]></value>
@@ -300,9 +291,7 @@ For this flow to successfully connect your {1} account with this email, you have
     <value><![CDATA[Dismiss]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[You originally intended to connect {0} to your email account but have opened the link on a different device where you are not signed in.
-
-If you still want to connect your {0} account, open the link on the same device where you started sign-in. Otherwise, tap Continue to sign-in on this device.]]></value>
+    <value><![CDATA[You originally intended to connect {0} to your email account but have opened the link on a different device where you are not signed in. If you still want to connect your {0} account, open the link on the same device where you started sign-in. Otherwise, tap Continue to sign-in on this device.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Sign in with {0}]]></value>

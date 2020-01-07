@@ -72,13 +72,13 @@
     <value><![CDATA[Pokračovat]]></value>
   </data>
   <data name="fui_tos_and_pp" xml:space="preserve">
-    <value><![CDATA[Budete-li pokračovat, vyjadřujete svůj souhlas s dokumenty {0} a {1}.]]></value>
+    <value><![CDATA[Budete-li pokračovat, vyjadřujete svůj souhlas s dokumenty {0} a {1}.]]></value>
   </data>
   <data name="fui_tos_and_pp_footer" xml:space="preserve">
     <value><![CDATA[{0} \u00A0 \u00A0 {1}]]></value>
   </data>
   <data name="fui_no_internet" xml:space="preserve">
-    <value><![CDATA[Chyba sítě. Zkontrolujte připojení k internetu.]]></value>
+    <value><![CDATA[Chyba sítě. Zkontrolujte připojení k internetu.]]></value>
   </data>
   <data name="fui_idp_name_google" xml:space="preserve">
     <value><![CDATA[Google]]></value>
@@ -150,7 +150,7 @@
     <value><![CDATA[Nejprve zadejte svou e-mailovou adresu]]></value>
   </data>
   <data name="fui_missing_first_and_last_name" xml:space="preserve">
-    <value><![CDATA[Zadejte jméno a příjmení]]></value>
+    <value><![CDATA[Zadejte jméno a příjmení]]></value>
   </data>
   <data name="fui_progress_dialog_checking_accounts" xml:space="preserve">
     <value><![CDATA[Vyhledávání stávajících účtů…]]></value>
@@ -159,7 +159,7 @@
     <value><![CDATA[Registrace]]></value>
   </data>
   <data name="fui_name_hint" xml:space="preserve">
-    <value><![CDATA[Jméno a příjmení]]></value>
+    <value><![CDATA[Jméno a příjmení]]></value>
   </data>
   <data name="fui_button_text_save" xml:space="preserve">
     <value><![CDATA[Uložit]]></value>
@@ -183,25 +183,22 @@
     <value><![CDATA[Vítejte zpět!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Již máte účet
-]]></value>
+    <value><![CDATA[Již máte účet]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[Již jste použili adresu {0}. Chcete-li pokračovat, přihlaste se prostřednictvím služby {1}.]]></value>
   </data>
   <data name="fui_welcome_back_password_prompt_body" xml:space="preserve">
-    <value><![CDATA[K přihlášení jste již použili adresu {0}. Zadejte příslušné heslo k účtu.]]></value>
+    <value><![CDATA[K přihlášení jste již použili adresu {0}. Zadejte příslušné heslo k účtu.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[E-mailovou adresu {0} jste již použili. Svůj účet {1} můžete s e-mailovou adresou {0} propojit přihlášením prostřednictvím odkazu níže.
-
-Aby došlo k úspěšnému propojení účtu {1} s touto e-mailovou adresou, musíte odkaz otevřít na stejném zařízení nebo ve stejném prohlížeči.]]></value>
+    <value><![CDATA[E-mailovou adresu {0} jste již použili. Svůj účet {1} můžete s e-mailovou adresou {0} propojit přihlášením prostřednictvím odkazu níže. Aby došlo k úspěšnému propojení účtu {1} s touto e-mailovou adresou, musíte odkaz otevřít na stejném zařízení nebo ve stejném prohlížeči.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Přihlašování…]]></value>
   </data>
   <data name="fui_trouble_signing_in" xml:space="preserve">
-    <value><![CDATA[Máte potíže s přihlášením?]]></value>
+    <value><![CDATA[Máte potíže s přihlášením?]]></value>
   </data>
   <data name="fui_title_recover_password_activity" xml:space="preserve">
     <value><![CDATA[Obnovit heslo]]></value>
@@ -216,7 +213,7 @@ Aby došlo k úspěšnému propojení účtu {1} s touto e-mailovou adresou, m
     <value><![CDATA[Odeslat]]></value>
   </data>
   <data name="fui_confirm_recovery_body" xml:space="preserve">
-    <value><![CDATA[Postupujte podle pokynů odeslaných na adresu {0} a obnovte heslo.]]></value>
+    <value><![CDATA[Postupujte podle pokynů odeslaných na adresu {0} a obnovte heslo.]]></value>
   </data>
   <data name="fui_progress_dialog_sending" xml:space="preserve">
     <value><![CDATA[Odesílání…]]></value>
@@ -225,7 +222,7 @@ Aby došlo k úspěšnému propojení účtu {1} s touto e-mailovou adresou, m
     <value><![CDATA[E-mailová adresa neodpovídá žádnému stávajícímu účtu]]></value>
   </data>
   <data name="fui_error_unknown" xml:space="preserve">
-    <value><![CDATA[Došlo k neznámé chybě.]]></value>
+    <value><![CDATA[Došlo k neznámé chybě.]]></value>
   </data>
   <data name="fui_error_invalid_password" xml:space="preserve">
     <value><![CDATA[Nesprávné heslo.]]></value>
@@ -234,25 +231,19 @@ Aby došlo k úspěšnému propojení účtu {1} s touto e-mailovou adresou, m
     <value><![CDATA[Logo aplikace]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[Přihlašovací e-mail odeslán
-]]></value>
+    <value><![CDATA[Přihlašovací e-mail odeslán]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
-    <value><![CDATA[Na adresu {0} byl odeslán přihlašovací e-mail s dalšími pokyny. Dokončete přihlášení podle instrukcí v e-mailu.]]></value>
+    <value><![CDATA[Na adresu {0} byl odeslán přihlašovací e-mail s dalšími pokyny. Dokončete přihlášení podle instrukcí v e-mailu.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_header" xml:space="preserve">
     <value><![CDATA[Nepřišel vám e-mail?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Vyzkoušejte tyto běžné opravy:
-\u2022 Zkontrolujte, jestli nebyl e-mail označen jako spam nebo vyfiltrován.
-\u2022 Zkontrolujte své připojení k internetu.
-\u2022 Zkontrolujte, že jste napsali e-mailovou adresu správně.
-\u2022 Zkontrolujte, že ve vaší e-mailové schránce máte dostatek úložného prostoru nebo jiné problémy týkající se nastavení schránky.
-]]></value>
+    <value><![CDATA[Vyzkoušejte tyto běžné opravy: \u2022 Zkontrolujte, jestli nebyl e-mail označen jako spam nebo vyfiltrován. \u2022 Zkontrolujte své připojení k internetu. \u2022 Zkontrolujte, že jste napsali e-mailovou adresu správně. \u2022 Zkontrolujte, že ve vaší e-mailové schránce máte dostatek úložného prostoru nebo jiné problémy týkající se nastavení schránky.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
-    <value><![CDATA[Pokud žádné z uvedených řešení nepomohlo, můžete si e-mail nechat zaslat znovu. Odkaz v prvním e-mailu pak bude deaktivován.]]></value>
+    <value><![CDATA[Pokud žádné z uvedených řešení nepomohlo, můžete si e-mail nechat zaslat znovu. Odkaz v prvním e-mailu pak bude deaktivován.]]></value>
   </data>
   <data name="fui_email_link_resend" xml:space="preserve">
     <value><![CDATA[Odeslat znovu]]></value>
@@ -273,21 +264,19 @@ Aby došlo k úspěšnému propojení účtu {1} s touto e-mailovou adresou, m
     <value><![CDATA[Relace byla ukončena]]></value>
   </data>
   <data name="fui_email_link_different_anonymous_user_message" xml:space="preserve">
-    <value><![CDATA[Relace přidružená k této žádosti o přihlášení buď vypršela, nebo byla vymazána.]]></value>
+    <value><![CDATA[Relace přidružená k této žádosti o přihlášení buď vypršela, nebo byla vymazána.]]></value>
   </data>
   <data name="fui_email_link_confirm_email_header" xml:space="preserve">
     <value><![CDATA[Potvrzení·e-mailu]]></value>
   </data>
   <data name="fui_email_link_confirm_email_message" xml:space="preserve">
-    <value><![CDATA[Pokud chcete pokračovat v přihlášení, potvrďte e-mailovou adresu.]]></value>
+    <value><![CDATA[Pokud chcete pokračovat v přihlášení, potvrďte e-mailovou adresu.]]></value>
   </data>
   <data name="fui_email_link_dismiss_button" xml:space="preserve">
     <value><![CDATA[Zavřít]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Původně jste chtěli propojit {0} se svým e-mailovým účtem, ale otevřeli jste odkaz na jiném zařízení, na kterém nejste přihlášení.
-
-Pokud stále chcete propojit svůj účet {0}, otevřete odkaz na stejném zařízení, na kterém jste se začali přihlašovat. V opačném případě klepněte na možnost Pokračovat a přihlaste se na tomto zařízení.]]></value>
+    <value><![CDATA[Původně jste chtěli propojit {0} se svým e-mailovým účtem, ale otevřeli jste odkaz na jiném zařízení, na kterém nejste přihlášení. Pokud stále chcete propojit svůj účet {0}, otevřete odkaz na stejném zařízení, na kterém jste se začali přihlašovat. V opačném případě klepněte na možnost Pokračovat a přihlaste se na tomto zařízení.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Přihlásit se prostřednictvím {0}]]></value>
@@ -302,7 +291,7 @@ Pokud stále chcete propojit svůj účet {0}, otevřete odkaz na stejném zař�
     <value><![CDATA[Zadejte šestimístný kód, který jsme vám zaslali]]></value>
   </data>
   <data name="fui_resend_code_in" xml:space="preserve">
-    <value><![CDATA[Znovu zaslat kód za 0:%02d]]></value>
+    <value><![CDATA[Znovu zaslat kód za 0:%02d]]></value>
   </data>
   <data name="fui_verify_your_phone_title" xml:space="preserve">
     <value><![CDATA[Ověřit telefonní číslo]]></value>
@@ -317,7 +306,7 @@ Pokud stále chcete propojit svůj účet {0}, otevřete odkaz na stejném zař�
     <value><![CDATA[Toto telefonní číslo již bylo použito příliš mnohokrát]]></value>
   </data>
   <data name="fui_error_quota_exceeded" xml:space="preserve">
-    <value><![CDATA[Při ověřování vašeho telefonního čísla došlo k potížím]]></value>
+    <value><![CDATA[Při ověřování vašeho telefonního čísla došlo k potížím]]></value>
   </data>
   <data name="fui_error_session_expired" xml:space="preserve">
     <value><![CDATA[Platnost kódu vypršela]]></value>
@@ -335,22 +324,22 @@ Pokud stále chcete propojit svůj účet {0}, otevřete odkaz na stejném zař�
     <value><![CDATA[Ověřit telefonní číslo]]></value>
   </data>
   <data name="fui_sms_terms_of_service" xml:space="preserve">
-    <value><![CDATA[Po klepnutí na možnost {0} může být odeslána SMS. Mohou být účtovány poplatky za zprávy a data.]]></value>
+    <value><![CDATA[Po klepnutí na možnost {0} může být odeslána SMS. Mohou být účtovány poplatky za zprávy a data.]]></value>
   </data>
   <data name="fui_sms_terms_of_service_and_privacy_policy_extended" xml:space="preserve">
-    <value><![CDATA[Klepnutím na tlačítko {0} vyjadřujete svůj souhlas s dokumenty {1} a {2}. Může být odeslána SMS a mohou být účtovány poplatky za zprávy a data.]]></value>
+    <value><![CDATA[Klepnutím na tlačítko {0} vyjadřujete svůj souhlas s dokumenty {1} a {2}. Může být odeslána SMS a mohou být účtovány poplatky za zprávy a data.]]></value>
   </data>
   <data name="fui_error_weak_password_one" xml:space="preserve">
-    <value><![CDATA[Heslo není dostatečně silné. Použijte alespoň {0} znak a kombinaci písmen a číslic]]></value>
+    <value><![CDATA[Heslo není dostatečně silné. Použijte alespoň {0} znak a kombinaci písmen a číslic]]></value>
   </data>
   <data name="fui_error_weak_password_few" xml:space="preserve">
-    <value><![CDATA[Heslo není dostatečně silné. Použijte alespoň {0} znaky a kombinaci písmen a číslic]]></value>
+    <value><![CDATA[Heslo není dostatečně silné. Použijte alespoň {0} znaky a kombinaci písmen a číslic]]></value>
   </data>
   <data name="fui_error_weak_password_many" xml:space="preserve">
-    <value><![CDATA[Heslo není dostatečně silné. Použijte alespoň {0} znaku a kombinaci písmen a číslic]]></value>
+    <value><![CDATA[Heslo není dostatečně silné. Použijte alespoň {0} znaku a kombinaci písmen a číslic]]></value>
   </data>
   <data name="fui_error_weak_password_other" xml:space="preserve">
-    <value><![CDATA[Heslo není dostatečně silné. Použijte alespoň {0} znaků a kombinaci písmen a číslic]]></value>
+    <value><![CDATA[Heslo není dostatečně silné. Použijte alespoň {0} znaků a kombinaci písmen a číslic]]></value>
   </data>
 
 </root>

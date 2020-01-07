@@ -183,8 +183,7 @@
     <value><![CDATA[Bine ați revenit!]]></value>
   </data>
   <data name="fui_welcome_back_email_link_header" xml:space="preserve">
-    <value><![CDATA[Aveți deja un cont
-]]></value>
+    <value><![CDATA[Aveți deja un cont]]></value>
   </data>
   <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
     <value><![CDATA[Ați folosit deja {0}. Pentru a continua, conectați-vă cu {1}.]]></value>
@@ -193,9 +192,7 @@
     <value><![CDATA[Ați folosit deja {0} pentru a vă conecta. Introduceți parola acestui cont.]]></value>
   </data>
   <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
-    <value><![CDATA[Ați folosit deja {0}. Vă puteți conecta contul {1} la {0} folosind linkul din e-mail, aflat mai jos.
-
-Pentru ca acest flux să conecteze contul {1} la această adresă de e-mail, trebuie să accesați linkul pe același dispozitiv sau browser.]]></value>
+    <value><![CDATA[Ați folosit deja {0}. Vă puteți conecta contul {1} la {0} folosind linkul din e-mail, aflat mai jos. Pentru ca acest flux să conecteze contul {1} la această adresă de e-mail, trebuie să accesați linkul pe același dispozitiv sau browser.]]></value>
   </data>
   <data name="fui_progress_dialog_signing_in" xml:space="preserve">
     <value><![CDATA[Se conectează…]]></value>
@@ -234,8 +231,7 @@ Pentru ca acest flux să conecteze contul {1} la această adresă de e-mail, tre
     <value><![CDATA[Sigla aplicației]]></value>
   </data>
   <data name="fui_email_link_header" xml:space="preserve">
-    <value><![CDATA[A fost trimis e-mailul de conectare
-]]></value>
+    <value><![CDATA[A fost trimis e-mailul de conectare]]></value>
   </data>
   <data name="fui_email_link_email_sent" xml:space="preserve">
     <value><![CDATA[Un e-mail de conectare cu instrucțiuni suplimentare a fost trimis la {0}. Verificați-vă căsuța de e-mail pentru a finaliza conectarea.]]></value>
@@ -244,12 +240,7 @@ Pentru ca acest flux să conecteze contul {1} la această adresă de e-mail, tre
     <value><![CDATA[Nu primiți e-mailuri?]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
-    <value><![CDATA[Încercați aceste soluții folosite frecvent:
-\u2022 verificați dacă e-mailul a fost marcat ca spam sau filtrat;
-\u2022 verificați conexiunea la internet;
-\u2022 verificați dacă ați scris corect adresa de e-mail;
-\u2022 verificați dacă aveți spațiu în căsuța de e-mail sau dacă există alte probleme legate de setările căsuței de e-mail.
-]]></value>
+    <value><![CDATA[Încercați aceste soluții folosite frecvent: \u2022 verificați dacă e-mailul a fost marcat ca spam sau filtrat; \u2022 verificați conexiunea la internet; \u2022 verificați dacă ați scris corect adresa de e-mail; \u2022 verificați dacă aveți spațiu în căsuța de e-mail sau dacă există alte probleme legate de setările căsuței de e-mail.]]></value>
   </data>
   <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
     <value><![CDATA[Dacă pașii de mai sus nu funcționează, puteți să trimiteți din nou e-mailul. Rețineți că va fi dezactivat linkul din e-mailul anterior.]]></value>
@@ -285,9 +276,7 @@ Pentru ca acest flux să conecteze contul {1} la această adresă de e-mail, tre
     <value><![CDATA[Închideți]]></value>
   </data>
   <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
-    <value><![CDATA[Inițial ați intenționat să conectați {0} la contul de e-mail, dar ați deschis linkul pe un dispozitiv pe care nu sunteți conectat(ă).
-
-Dacă doriți să continuați conectarea contului {0}, deschideți linkul pe același dispozitiv pe care ați început conectarea. În caz contrar, atingeți Continuați pentru a vă conecta pe acest dispozitiv.]]></value>
+    <value><![CDATA[Inițial ați intenționat să conectați {0} la contul de e-mail, dar ați deschis linkul pe un dispozitiv pe care nu sunteți conectat(ă). Dacă doriți să continuați conectarea contului {0}, deschideți linkul pe același dispozitiv pe care ați început conectarea. În caz contrar, atingeți Continuați pentru a vă conecta pe acest dispozitiv.]]></value>
   </data>
   <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
     <value><![CDATA[Conectați-vă cu {0}]]></value>
