@@ -13,6 +13,7 @@ namespace Firebase.Auth
         private readonly ProjectConfig projectConfig;
         private readonly SignupNewUser signupNewUser;
         private readonly CreateAuthUri createAuthUri;
+        private readonly UserManager userManager;
 
         private bool domainChecked;
         private event EventHandler<UserEventArgs> authStateChanged;
@@ -33,13 +34,14 @@ namespace Firebase.Auth
             this.projectConfig = new ProjectConfig(this.config);
             this.signupNewUser = new SignupNewUser(this.config);
             this.createAuthUri = new CreateAuthUri(this.config);
+            this.userManager = new UserManager(this.config.UserRepository);
 
             foreach (var provider in this.config.Providers)
             {
                 provider.Initialize(this.config);
             }
 
-            this.config.UserRepository.UserChanged += (s, e) => this.TriggerAuthStateChanged(this.authStateChanged, e.User);
+            this.userManager.UserChanged += (s, e) => this.TriggerAuthStateChanged(this.authStateChanged, e.User);
         }
 
         public User User
@@ -55,7 +57,7 @@ namespace Firebase.Auth
                 this.authStateChanged += value;
                 if (this.User == null)
                 {
-                    this.config.UserRepository.GetUserAsync().ContinueWith(t =>
+                    this.userManager.GetUserAsync().ContinueWith(t =>
                     {
                         if (t.Result.Item1 == null)
                         {
@@ -176,7 +178,7 @@ namespace Firebase.Auth
 
         public async Task SignOutAsync()
         {
-            await this.config.UserRepository.SaveUserAsync(null);
+            await this.userManager.SaveUserAsync(null);
             this.User = null;
             this.authStateChanged?.Invoke(this, new UserEventArgs(null));
         }
@@ -189,7 +191,7 @@ namespace Firebase.Auth
 
         private async Task SaveTokenAsync(User user)
         {
-            await this.config.UserRepository.SaveUserAsync(user);
+            await this.userManager.SaveUserAsync(user);
         }
 
         private FirebaseAuthProvider GetAuthProvider(FirebaseProviderType authType)

@@ -186,6 +186,7 @@ FirebaseUI.Instance.Client.AuthStateChanged += this.AuthStateChanged;
 
 private void AuthStateChanged(object sender, UserEventArgs e)
 {
+    // the callback is not guaranteed to be on UI thread
     Application.Current.Dispatcher.Invoke(() =>
     {
         if (e.User == null)

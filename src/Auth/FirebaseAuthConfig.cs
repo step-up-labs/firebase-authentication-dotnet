@@ -1,4 +1,5 @@
 ﻿using Firebase.Auth.Providers;
+using Firebase.Auth.Repository;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
@@ -15,7 +16,7 @@ namespace Firebase.Auth
         public FirebaseAuthConfig()
         {
             this.HttpClient = new HttpClient();
-            this.UserRepository = InMemoryUserRepository.Instance;
+            this.UserRepository = InMemoryRepository.Instance;
             this.Providers = Array.Empty<FirebaseAuthProvider>();
             this.JsonSettings = new JsonSerializerSettings
             {
