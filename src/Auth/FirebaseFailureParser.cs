@@ -101,6 +101,10 @@ namespace Firebase.Auth
                     // possible errors from Email/Password Signin
                     return AuthErrorReason.TooManyAttemptsTryLater;
                 }
+                else if (errorData?.error?.message?.Contains("Bad access token") ?? false)
+                {
+                    return AuthErrorReason.InvalidAccessToken;
+                }
                 
             }
             catch (JsonReaderException)

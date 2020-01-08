@@ -39,6 +39,21 @@ namespace Firebase.Auth.Tests
                         }
                     }",
                     AuthErrorReason.WrongPassword },
+                new object[] {
+                    @"{
+                      ""error"": {
+                        ""code"": 400,
+                        ""message"": ""INVALID_IDP_RESPONSE : Bad access token: {\""code\"":190,\""subcode\"":463,\""message\"":\""Error validating access token: Session has expired on Friday, 03-Jan-20 15:00:00 PST. The current time is Wednesday, 08-Jan-20 06:04:25 PST.\""}"",
+                        ""errors"": [
+                          {
+                            ""message"": ""INVALID_IDP_RESPONSE : Bad access token: {\""code\"":190,\""subcode\"":463,\""message\"":\""Error validating access token: Session has expired on Friday, 03-Jan-20 15:00:00 PST. The current time is Wednesday, 08-Jan-20 06:04:25 PST.\""}"",
+                            ""domain"": ""global"",
+                            ""reason"": ""invalid""
+                          }
+                        ]
+                      }
+                    }",
+                    AuthErrorReason.InvalidAccessToken},
 
             };
 

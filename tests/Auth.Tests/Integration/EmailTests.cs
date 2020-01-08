@@ -118,5 +118,22 @@ namespace Firebase.Auth.Tests.Integration
                 await user.DeleteAsync();
             }
         }
+        
+        [Fact]
+        public async Task FetchSignInProvidersTest()
+        {
+            var user = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
+
+            try
+            {
+                // only check the call succeeds
+                var result = await client.FetchSignInMethodsForEmailAsync(NewUserEmail);
+                result.AllProviders.Should().BeEquivalentTo(FirebaseProviderType.EmailAndPassword);
+            }
+            finally
+            {
+                await user.DeleteAsync();
+            }
+        }
     }
 }

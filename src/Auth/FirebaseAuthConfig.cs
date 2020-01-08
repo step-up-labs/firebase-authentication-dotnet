@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
+using System;
 using System.Net.Http;
 
 namespace Firebase.Auth
@@ -15,6 +16,7 @@ namespace Firebase.Auth
         {
             this.HttpClient = new HttpClient();
             this.UserRepository = InMemoryUserRepository.Instance;
+            this.Providers = Array.Empty<FirebaseAuthProvider>();
             this.JsonSettings = new JsonSerializerSettings
             {
                 ContractResolver = new DefaultContractResolver
