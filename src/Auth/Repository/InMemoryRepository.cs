@@ -10,8 +10,6 @@ namespace Firebase.Auth.Repository
 
         private User user;
 
-        public event EventHandler<UserEventArgs> UserChanged;
-
         private InMemoryRepository()
         {
         }

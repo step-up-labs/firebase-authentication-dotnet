@@ -1,4 +1,5 @@
 ﻿using Firebase.Auth.Providers;
+using Firebase.Auth.Repository;
 using Firebase.Auth.UI;
 using System.Globalization;
 using System.Windows;
@@ -8,7 +9,7 @@ namespace Firebase.Auth.Wpf.Sample
     public partial class App : Application
     {
         public App()
-        {    
+        {
             // Force override culture & language
             //CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("cs");
             //CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("cs");
