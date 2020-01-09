@@ -122,7 +122,7 @@ namespace Firebase.Auth
             }
 
             var token = await this.GetIdTokenAsync().ConfigureAwait(false);
-            var user = await provider.SignInWithCredentialAsync(credential).ConfigureAwait(false);
+            var user = await provider.LinkWithCredentialAsync(token, credential).ConfigureAwait(false);
 
             this.Credential = user.Credential;
             this.Info = user.Info;
