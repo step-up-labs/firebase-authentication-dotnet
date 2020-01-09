@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Threading.Tasks;
 
 namespace Firebase.Auth.Requests
@@ -44,6 +45,8 @@ namespace Firebase.Auth.Requests
         
         public string OauthAccessToken { get; set; }
         
+        public string OauthTokenSecret { get; set; }
+        
         public int OauthExpireIn { get; set; }
         
         public string RefreshToken { get; set; }
@@ -84,7 +87,7 @@ namespace Firebase.Auth.Requests
             return result;
         }
 
-        public async Task<User> ExecuteWithUserAsync(FirebaseProviderType providerType, VerifyAssertionRequest request)
+        public async Task<UserCredential> ExecuteWithUserAsync(FirebaseProviderType providerType, VerifyAssertionRequest request, Func<User, VerifyAssertionResponse, UserCredential> userCredentialFactory)
         {
             var assertion = await this.ExecuteAsync(request).ConfigureAwait(false);
             
@@ -115,7 +118,7 @@ namespace Firebase.Auth.Requests
                 ProviderType = providerType
             };
 
-            return new User(this.config, userInfo, token);
+            return userCredentialFactory(new User(this.config, userInfo, token), assertion);
         }
 
         protected override string UrlFormat => Endpoints.GoogleIdentityUrl;

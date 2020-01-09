@@ -1,5 +1,5 @@
 # FirebaseAuthentication.net
-![](https://github.com/step-up-labs/firebase-authentication-dotnet/workflows/build/badge.svg)
+[![build](https://github.com/step-up-labs/firebase-authentication-dotnet/workflows/build/badge.svg)](https://github.com/step-up-labs/firebase-authentication-dotnet/actions)
 [![latest version](https://img.shields.io/nuget/v/FirebaseAuthentication.net)](https://www.nuget.org/packages/FirebaseAuthentication.net)
 [![feedz.io](https://img.shields.io/badge/endpoint.svg?url=https%3A%2F%2Ff.feedz.io%2Fstep-up-labs%2Ffirebase%2Fshield%2FFirebaseAuthentication.net%2Flatest)](https://f.feedz.io/step-up-labs/firebase/packages/FirebaseAuthentication.net/latest/download)
 
@@ -8,7 +8,7 @@ and [FirebaseUI](https://firebase.google.com/docs/auth).
 
 The libraries provide a drop-in auth solution that handles the flows for signing in users with email addresses and passwords, Identity Provider Sign In including Google, Facebook, GitHub, Twitter, Apple, Microsoft, Yahoo and anonymous sign-in.
 
-The solutions consists of 4 libraries, a base one and 3 platform specific ones:
+The solution consists of 4 libraries, a base one and 3 platform specific ones:
 * FirebaseAuthentication<strong>.net</strong> targets [.NET Standard 2.0](https://github.com/dotnet/standard/blob/master/docs/versions.md)
 * FirebaseAuthentication<strong>.WPF</strong> targets [WPF on .NET Core 3.1](https://github.com/dotnet/wpf)
 * FirebaseAuthentication<strong>.UWP</strong> targets UWP (*TODO*)
@@ -19,13 +19,13 @@ The solutions consists of 4 libraries, a base one and 3 platform specific ones:
 # base package
 dotnet add package FirebaseAuthentication.net
 
-# Platform specific FirebaseUI 
+# Platform specific FirebaseUI (has dependency on base package)
 dotnet add package FirebaseAuthentication.WPF
 dotnet add package FirebaseAuthentication.UWP
 dotnet add package FirebaseAuthentication.Xamarin
 ```
 
-Daily builds are also available on [feedz.io](https://feedz.io). Just add the following Package Source to your Visual Studio:
+Daily preview builds are also available on [feedz.io](https://feedz.io). Just add the following Package Source to your Visual Studio:
 
 ```
 https://f.feedz.io/step-up-labs/firebase/nuget/index.json
@@ -34,7 +34,7 @@ https://f.feedz.io/step-up-labs/firebase/nuget/index.json
 ## Usage
 
 In general the terminology and API naming conventions try to follow the official JavaScript implementation, adjusting it to fit the .NET conventions. 
-E.g. `SignInWithCredential` is called `SignInWithCredentialAsync` because it is meant to be `await`ed, but otherwise the terminology should be mostly the same.
+E.g. `signInWithCredential` is called `SignInWithCredentialAsync` because it is meant to be `await`ed, but otherwise the terminology should be mostly the same.
 
 
 ### Samples

@@ -32,7 +32,7 @@ namespace Firebase.Auth.Sample
 
             if (config.ApiKey == "<YOUR API KEY>" || config.AuthDomain == "<YOUR PROJECT DOMAIN>.firebaseapp.com")
             {
-                Console.WriteLine("You need to setup your API key and auth domain first in Program.cs");
+                WriteLine("You need to setup your API key and auth domain first in Program.cs");
                 return;
             }
 
@@ -43,12 +43,12 @@ namespace Firebase.Auth.Sample
             WriteLine($"[{config.Providers.Count()}]: Anonymously");
 
             var i = int.Parse(ReadLine());
-            User user;
+            UserCredential userCredential;
 
             if (i == config.Providers.Count())
             {
-                user = await client.SignInAnonymouslyAsync();
-                WriteLine($"You're anonymously signed with uid: {user.Uid}. Link with email? [y/n]");
+                userCredential = await client.SignInAnonymouslyAsync();
+                WriteLine($"You're anonymously signed with uid: {userCredential.User.Uid}. Link with email? [y/n]");
                 if (ReadLine().ToLower() == "y")
                 {
                     Write("Enter email: ");
@@ -57,20 +57,20 @@ namespace Firebase.Auth.Sample
                     var password = ReadPassword();
 
                     var credential = EmailProvider.GetCredential(email, password);
-                    user = await user.LinkWithCredentialAsync(credential);
+                    userCredential = await userCredential.User.LinkWithCredentialAsync(credential);
 
-                    Console.WriteLine("Unlink? [y/n]");
+                    WriteLine("Unlink? [y/n]");
 
                     if (ReadLine().ToLower() == "y")
                     {
-                        user = await user.UnlinkAsync(FirebaseProviderType.EmailAndPassword);
+                        userCredential.User = await userCredential.User.UnlinkAsync(FirebaseProviderType.EmailAndPassword);
                     }
                 }
             }
             else
             {
                 var provider = config.Providers[i].ProviderType;
-                user = provider == FirebaseProviderType.EmailAndPassword
+                userCredential = provider == FirebaseProviderType.EmailAndPassword
                     ? await SignInWithEmail(client)
                     : await client.SignInWithRedirectAsync(provider, uri =>
                     {
@@ -78,7 +78,7 @@ namespace Firebase.Auth.Sample
                         return Task.FromResult(ReadLine());
                     });
 
-                WriteLine($"You're signed in as {user.Uid} | {user.Info.DisplayName} | {user.Info.Email}");
+                WriteLine($"You're signed in as {userCredential.User.Uid} | {userCredential.User.Info.DisplayName} | {userCredential.User.Info.Email}");
             }
 
             WriteLine($"New password (empty to skip):");
@@ -86,21 +86,21 @@ namespace Firebase.Auth.Sample
 
             if (!string.IsNullOrWhiteSpace(pwd))
             {
-                await user.ChangePasswordAsync(pwd);
+                await userCredential.User.ChangePasswordAsync(pwd);
             }
 
-            WriteLine($"Trying to force refresh the idToken {user.Credential.IdToken}");
-            var token = await user.GetIdTokenAsync(true);
+            WriteLine($"Trying to force refresh the idToken {userCredential.User.Credential.IdToken}");
+            var token = await userCredential.User.GetIdTokenAsync(true);
             WriteLine($"Success, new token: {token}");
 
             WriteLine("Delete this account? [y/n]");
             if (ReadLine().ToLower() == "y")
             {
-                await user.DeleteAsync();
+                await userCredential.User.DeleteAsync();
             }            
         }
 
-        private static async Task<User> SignInWithEmail(FirebaseAuthClient client)
+        private static async Task<UserCredential> SignInWithEmail(FirebaseAuthClient client)
         {
             Write("Enter email: ");
             var email = ReadLine();

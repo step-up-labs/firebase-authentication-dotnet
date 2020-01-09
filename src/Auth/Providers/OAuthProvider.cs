@@ -49,6 +49,11 @@ namespace Firebase.Auth.Providers
             return this;
         }
 
+        internal virtual AuthCredential GetCredential(VerifyAssertionResponse response)
+        {
+            return GetCredential(this.ProviderType, response.OauthAccessToken);
+        }
+
         internal virtual async Task<OAuthContinuation> SignInAsync()
         {
             if (this.LocaleParameterName != null && !this.parameters.ContainsKey(this.LocaleParameterName))
@@ -69,20 +74,19 @@ namespace Firebase.Auth.Providers
             return new OAuthContinuation(this.config, response.AuthUri, response.SessionId, this.ProviderType);
         }
 
-        protected internal override Task<User> SignInWithCredentialAsync(AuthCredential credential)
+        protected internal override Task<UserCredential> SignInWithCredentialAsync(AuthCredential credential)
         {
             var c = (OAuthCredential)credential;
-
             return this.verifyAssertion.ExecuteWithUserAsync(credential.ProviderType, new VerifyAssertionRequest
             {
                 RequestUri = $"https://{this.config.AuthDomain}",
                 PostBody = c.GetPostBodyValue(credential.ProviderType),
                 ReturnIdpCredential = true,
                 ReturnSecureToken = true
-            });
+            }, (u, response) => new UserCredential(u, this.GetCredential(response), OperationType.SignIn));
         }
 
-        protected internal override Task<User> LinkWithCredentialAsync(string idToken, AuthCredential credential)
+        protected internal override Task<UserCredential> LinkWithCredentialAsync(string idToken, AuthCredential credential)
         {
             var c = (OAuthCredential)credential;
             return this.verifyAssertion.ExecuteWithUserAsync(credential.ProviderType, new VerifyAssertionRequest
@@ -92,7 +96,7 @@ namespace Firebase.Auth.Providers
                 PostBody = c.GetPostBodyValue(c.ProviderType),
                 ReturnIdpCredential = true,
                 ReturnSecureToken = true
-            });
+            }, (u, response) => new UserCredential(u, this.GetCredential(response), OperationType.SignIn));
         }
 
         protected string GetParsedOauthScopes()

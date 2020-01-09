@@ -47,29 +47,14 @@ namespace Firebase.Auth.Providers
             return this.resetPassword.ExecuteAsync(request);
         }
 
-        public async Task<User> SignInUserAsync(string email, string password)
+        public Task<UserCredential> SignInUserAsync(string email, string password)
         {
-            var response = await this.verifyPassword.ExecuteAsync(new VerifyPasswordRequest
-            {
-                Email = email,
-                Password = password,
-                ReturnSecureToken = true
-            }).ConfigureAwait(false);
-
-            var user = await this.GetUserInfoAsync(response.IdToken).ConfigureAwait(false);
-            var credential = new FirebaseCredential
-            {
-                ExpiresIn = response.ExpiresIn,
-                IdToken = response.IdToken,
-                RefreshToken = response.RefreshToken,
-                ProviderType = FirebaseProviderType.EmailAndPassword
-            };
-
-            return new User(this.config, user, credential);
+            return this.SignInWithCredentialAsync(GetCredential(email, password));
         }
 
-        public async Task<User> SignUpUserAsync(string email, string password, string displayName)
+        public async Task<UserCredential> SignUpUserAsync(string email, string password, string displayName)
         {
+            var authCredential = GetCredential(email, password);
             var signupResponse = await this.signupNewUser.ExecuteAsync(new SignupNewUserRequest
             {
                 Email = email,
@@ -104,22 +89,38 @@ namespace Firebase.Auth.Providers
                     IsAnonymous = false
                 };
 
-                return new User(this.config, setUser, credential);
+                return new UserCredential(new User(this.config, setUser, credential), authCredential, OperationType.SignIn);
             }
 
             var getUser = await this.GetUserInfoAsync(signupResponse.IdToken).ConfigureAwait(false);
 
-            return new User(this.config, getUser, credential);
+            return new UserCredential(new User(this.config, getUser, credential), authCredential, OperationType.SignIn);
         }
 
-        protected internal override Task<User> SignInWithCredentialAsync(AuthCredential credential)
+        protected internal override async Task<UserCredential> SignInWithCredentialAsync(AuthCredential credential)
         {
-            var ep = (EmailCredential)credential;
+            var ec = (EmailCredential)credential;
 
-            return this.SignInUserAsync(ep.Email, ep.Password);
+            var response = await this.verifyPassword.ExecuteAsync(new VerifyPasswordRequest
+            {
+                Email = ec.Email,
+                Password = ec.Password,
+                ReturnSecureToken = true
+            }).ConfigureAwait(false);
+
+            var user = await this.GetUserInfoAsync(response.IdToken).ConfigureAwait(false);
+            var fc = new FirebaseCredential
+            {
+                ExpiresIn = response.ExpiresIn,
+                IdToken = response.IdToken,
+                RefreshToken = response.RefreshToken,
+                ProviderType = FirebaseProviderType.EmailAndPassword
+            };
+
+            return new UserCredential(new User(this.config, user, fc), ec, OperationType.SignIn);
         }
 
-        protected internal override async Task<User> LinkWithCredentialAsync(string token, AuthCredential credential)
+        protected internal override async Task<UserCredential> LinkWithCredentialAsync(string token, AuthCredential credential)
         {
             var c = (EmailCredential)credential;
             var request = new SetAccountLinkRequest
@@ -153,7 +154,7 @@ namespace Firebase.Auth.Providers
                 RefreshToken = link.RefreshToken
             };
 
-            return new User(this.config, info, fc);
+            return new UserCredential(new User(this.config, info, fc), credential, OperationType.Link);
         }
 
         private async Task<UserInfo> GetUserInfoAsync(string idToken)

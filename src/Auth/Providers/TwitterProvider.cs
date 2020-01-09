@@ -1,4 +1,6 @@
-﻿namespace Firebase.Auth.Providers
+﻿using Firebase.Auth.Requests;
+
+namespace Firebase.Auth.Providers
 {
     public class TwitterProvider : OAuthProvider
     {
@@ -15,6 +17,11 @@
         public override FirebaseProviderType ProviderType => FirebaseProviderType.Twitter;
 
         protected override string LocaleParameterName => "lang";
+
+        internal override AuthCredential GetCredential(VerifyAssertionResponse response)
+        {
+            return GetCredential(response.OauthAccessToken, response.OauthTokenSecret);
+        }
 
         internal class TwitterCredential : OAuthCredential
         {

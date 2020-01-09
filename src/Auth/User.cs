@@ -65,7 +65,7 @@ namespace Firebase.Auth
                     RefreshToken = refresh.RefreshToken
                 };
 
-                await this.config.UserRepository.SaveUserAsync(this).ConfigureAwait(false);
+                await this.config.UserManager.SaveUserAsync(this).ConfigureAwait(false);
             }
 
             return this.Credential.IdToken;
@@ -80,7 +80,7 @@ namespace Firebase.Auth
 
             await this.deleteAccount.ExecuteAsync(new IdTokenRequest { IdToken = token }).ConfigureAwait(false);
 
-            await this.config.UserRepository.SaveUserAsync(null).ConfigureAwait(false);
+            await this.config.UserManager.SaveUserAsync(null).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -105,14 +105,14 @@ namespace Firebase.Auth
                 RefreshToken = result.RefreshToken
             };
 
-            await this.config.UserRepository.SaveUserAsync(this).ConfigureAwait(false);
+            await this.config.UserManager.SaveUserAsync(this).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Link this user with another credential. The user represented by the <paramref name="credential"/> object must not already exist in Firebase.
         /// </summary>
         /// <param name="credential"> Platform-specifc credentials. </param>
-        public async Task<User> LinkWithCredentialAsync(AuthCredential credential)
+        public async Task<UserCredential> LinkWithCredentialAsync(AuthCredential credential)
         {
             var provider = this.config.Providers.FirstOrDefault(p => p.ProviderType == credential.ProviderType);
 
@@ -122,14 +122,14 @@ namespace Firebase.Auth
             }
 
             var token = await this.GetIdTokenAsync().ConfigureAwait(false);
-            var user = await provider.LinkWithCredentialAsync(token, credential).ConfigureAwait(false);
+            var userCredential = await provider.LinkWithCredentialAsync(token, credential).ConfigureAwait(false);
 
-            this.Credential = user.Credential;
-            this.Info = user.Info;
+            this.Credential = userCredential.User.Credential;
+            this.Info = userCredential.User.Info;
 
-            await this.config.UserRepository.SaveUserAsync(this).ConfigureAwait(false);
+            await this.config.UserManager.SaveUserAsync(userCredential.User).ConfigureAwait(false);
 
-            return this;
+            return userCredential;
         }
 
         /// <summary>

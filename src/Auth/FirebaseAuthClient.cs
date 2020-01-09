@@ -13,8 +13,7 @@ namespace Firebase.Auth
         private readonly ProjectConfig projectConfig;
         private readonly SignupNewUser signupNewUser;
         private readonly CreateAuthUri createAuthUri;
-        private readonly UserManager userManager;
-
+        
         private bool domainChecked;
         private event EventHandler<UserEventArgs> authStateChanged;
 
@@ -34,14 +33,13 @@ namespace Firebase.Auth
             this.projectConfig = new ProjectConfig(this.config);
             this.signupNewUser = new SignupNewUser(this.config);
             this.createAuthUri = new CreateAuthUri(this.config);
-            this.userManager = new UserManager(this.config.UserRepository);
 
             foreach (var provider in this.config.Providers)
             {
                 provider.Initialize(this.config);
             }
 
-            this.userManager.UserChanged += (s, e) => this.TriggerAuthStateChanged(this.authStateChanged, e.User);
+            this.config.UserManager.UserChanged += (s, e) => this.TriggerAuthStateChanged(this.authStateChanged, e.User);
         }
 
         public User User
@@ -57,7 +55,7 @@ namespace Firebase.Auth
                 this.authStateChanged += value;
                 if (this.User == null)
                 {
-                    this.userManager.GetUserAsync().ContinueWith(t =>
+                    this.config.UserManager.GetUserAsync().ContinueWith(t =>
                     {
                         if (t.Result.Item1 == null)
                         {
@@ -76,9 +74,9 @@ namespace Firebase.Auth
             }
         }
 
-        public async Task<User> SignInWithRedirectAsync(FirebaseProviderType authType, SignInRedirectDelegate redirectDelegate)
+        public async Task<UserCredential> SignInWithRedirectAsync(FirebaseProviderType authType, SignInRedirectDelegate redirectDelegate)
         {
-            var provider = this.GetAuthProvider(authType);
+            var provider = this.config.GetAuthProvider(authType);
 
             if (!(provider is OAuthProvider oauthProvider))
             {
@@ -89,23 +87,23 @@ namespace Firebase.Auth
 
             var continuation = await oauthProvider.SignInAsync().ConfigureAwait(false);
             var redirectUri = await redirectDelegate(continuation.Uri).ConfigureAwait(false);
-            var user = await continuation.ContinueSignInAsync(redirectUri).ConfigureAwait(false);
+            var userCredential = await continuation.ContinueSignInAsync(redirectUri).ConfigureAwait(false);
 
-            await this.SaveTokenAsync(user).ConfigureAwait(false);
+            await this.SaveTokenAsync(userCredential.User).ConfigureAwait(false);
 
-            return user;
+            return userCredential;
         }
 
-        public async Task<User> SignInWithCredentialAsync(AuthCredential credential)
+        public async Task<UserCredential> SignInWithCredentialAsync(AuthCredential credential)
         {
             await this.CheckAuthDomain().ConfigureAwait(false);
             
-            return await this
+            return await this.config
                 .GetAuthProvider(credential.ProviderType)
                 .SignInWithCredentialAsync(credential);
         }
 
-        public async Task<User> SignInAnonymouslyAsync()
+        public async Task<UserCredential> SignInAnonymouslyAsync()
         {
             var response = await this.signupNewUser.ExecuteAsync(new SignupNewUserRequest { ReturnSecureToken = true }).ConfigureAwait(false);
             var credential = new FirebaseCredential
@@ -126,7 +124,7 @@ namespace Firebase.Auth
 
             await this.SaveTokenAsync(user);
 
-            return user;
+            return new UserCredential(user, null, OperationType.SignIn);
         }
 
         public async Task<FetchUserProvidersResult> FetchSignInMethodsForEmailAsync(string email)
@@ -144,26 +142,26 @@ namespace Firebase.Auth
             return new FetchUserProvidersResult(email, response.Registered, response.SigninMethods, response.AllProviders);
         }
 
-        public async Task<User> SignInWithEmailAndPasswordAsync(string email, string password)
+        public async Task<UserCredential> SignInWithEmailAndPasswordAsync(string email, string password)
         {
             await this.CheckAuthDomain().ConfigureAwait(false);
 
-            var provider = (EmailProvider)this.GetAuthProvider(FirebaseProviderType.EmailAndPassword);
+            var provider = (EmailProvider)this.config.GetAuthProvider(FirebaseProviderType.EmailAndPassword);
             var result = await provider.SignInUserAsync(email, password).ConfigureAwait(false);
 
-            await this.SaveTokenAsync(result).ConfigureAwait(false);
+            await this.SaveTokenAsync(result.User).ConfigureAwait(false);
 
             return result;
         }
 
-        public async Task<User> CreateUserWithEmailAndPasswordAsync(string email, string password, string displayName = null)
+        public async Task<UserCredential> CreateUserWithEmailAndPasswordAsync(string email, string password, string displayName = null)
         {
             await this.CheckAuthDomain().ConfigureAwait(false);
 
-            var provider = (EmailProvider)this.GetAuthProvider(FirebaseProviderType.EmailAndPassword);
+            var provider = (EmailProvider)this.config.GetAuthProvider(FirebaseProviderType.EmailAndPassword);
             var result = await provider.SignUpUserAsync(email, password, displayName).ConfigureAwait(false);
 
-            await this.SaveTokenAsync(result).ConfigureAwait(false);
+            await this.SaveTokenAsync(result.User).ConfigureAwait(false);
 
             return result;
         }
@@ -172,13 +170,13 @@ namespace Firebase.Auth
         {
             await this.CheckAuthDomain().ConfigureAwait(false);
 
-            var provider = (EmailProvider)this.GetAuthProvider(FirebaseProviderType.EmailAndPassword);
+            var provider = (EmailProvider)this.config.GetAuthProvider(FirebaseProviderType.EmailAndPassword);
             await provider.ResetEmailPasswordAsync(email).ConfigureAwait(false);
         }
 
         public async Task SignOutAsync()
         {
-            await this.userManager.SaveUserAsync(null);
+            await this.config.UserManager.SaveUserAsync(null);
             this.User = null;
             this.authStateChanged?.Invoke(this, new UserEventArgs(null));
         }
@@ -191,13 +189,7 @@ namespace Firebase.Auth
 
         private async Task SaveTokenAsync(User user)
         {
-            await this.userManager.SaveUserAsync(user);
-        }
-
-        private FirebaseAuthProvider GetAuthProvider(FirebaseProviderType authType)
-        {
-            return this.config.Providers.FirstOrDefault(f => f.ProviderType == authType)
-                ?? throw new InvalidOperationException($"Provider {authType} is not configured, you need to add it to your FirebaseAuthConfig");
+            await this.config.UserManager.SaveUserAsync(user);
         }
 
         private async Task CheckAuthDomain()

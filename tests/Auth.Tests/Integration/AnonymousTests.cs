@@ -10,7 +10,7 @@ namespace Firebase.Auth.Tests.Integration
     {
         private readonly FirebaseAuthClient client;
 
-        private User user;
+        private UserCredential userCredential;
 
         public AnonymousTests()
         {
@@ -25,11 +25,26 @@ namespace Firebase.Auth.Tests.Integration
         [Fact]
         public async Task AnonymousSignInTest()
         {
-            user = await this.client.SignInAnonymouslyAsync();
+            userCredential = await this.client.SignInAnonymouslyAsync();
 
-            user.Info.IsAnonymous.Should().BeTrue();
-            user.Uid.Should().NotBeNullOrEmpty();
-            user.Info.Email.Should().BeNull();
+            userCredential.AuthCredential.Should().BeNull();
+            userCredential.User.Info.IsAnonymous.Should().BeTrue();
+            userCredential.User.Uid.Should().NotBeNullOrEmpty();
+            userCredential.User.Info.Email.Should().BeNull();
+        }
+
+        [Fact]
+        public async Task AuthStateChangedInvokeAfterTokenRefresh()
+        {
+            userCredential = await this.client.SignInAnonymouslyAsync();
+
+            var invoked = 0;
+
+            this.client.AuthStateChanged += (s, e) => invoked++;
+
+            await userCredential.User.GetIdTokenAsync(true);
+
+            invoked.Should().Be(1);
         }
 
         public Task InitializeAsync()
@@ -39,7 +54,7 @@ namespace Firebase.Auth.Tests.Integration
 
         public async Task DisposeAsync()
         {
-            await this.user?.DeleteAsync();
+            await this.userCredential?.User?.DeleteAsync();
         }
     }
 }

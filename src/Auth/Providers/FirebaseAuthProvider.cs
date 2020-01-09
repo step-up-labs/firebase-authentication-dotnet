@@ -19,8 +19,8 @@ namespace Firebase.Auth.Providers
             this.createAuthUri = new CreateAuthUri(config);
         }
 
-        protected internal abstract Task<User> SignInWithCredentialAsync(AuthCredential credential);
+        protected internal abstract Task<UserCredential> SignInWithCredentialAsync(AuthCredential credential);
 
-        protected internal abstract Task<User> LinkWithCredentialAsync(string idToken, AuthCredential credential);
+        protected internal abstract Task<UserCredential> LinkWithCredentialAsync(string idToken, AuthCredential credential);
     }
 }

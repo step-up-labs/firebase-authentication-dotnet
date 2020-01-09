@@ -16,7 +16,7 @@ namespace Firebase.Auth.Tests.Integration
 
         private readonly FirebaseAuthClient client;
 
-        private User user;
+        private UserCredential userCredential;
 
         public EmailTests()
         {
@@ -35,51 +35,51 @@ namespace Firebase.Auth.Tests.Integration
         [Fact]
         public async Task CreateUserTest()
         {
-            user = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
+            userCredential = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
 
-            user.Uid.Should().NotBeNullOrEmpty();
-            user.Info.Email.Should().Be(NewUserEmail);
-            user.Info.DisplayName.Should().Be(DisplayName);
+            userCredential.User.Uid.Should().NotBeNullOrEmpty();
+            userCredential.User.Info.Email.Should().Be(NewUserEmail);
+            userCredential.User.Info.DisplayName.Should().Be(DisplayName);
         }
 
         [Fact]
         public async Task SignInTest()
         {
-            user = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
+            userCredential = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
             
-            var signedInUser = await this.client.SignInWithEmailAndPasswordAsync(NewUserEmail, ValidPassword);
+            var signedInUserCrdential = await this.client.SignInWithEmailAndPasswordAsync(NewUserEmail, ValidPassword);
 
-            signedInUser.Uid.Should().NotBeNullOrEmpty();
-            signedInUser.Info.Email.Should().Be(NewUserEmail);
-            signedInUser.Info.DisplayName.Should().Be(DisplayName);
+            signedInUserCrdential.User.Uid.Should().NotBeNullOrEmpty();
+            signedInUserCrdential.User.Info.Email.Should().Be(NewUserEmail);
+            signedInUserCrdential.User.Info.DisplayName.Should().Be(DisplayName);
         }
 
         [Fact]
         public async Task SignInWithCredentialTest()
         {
-            user = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
+            userCredential = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
 
             var credential = EmailProvider.GetCredential(NewUserEmail, ValidPassword);
-            var signedInUser = await this.client.SignInWithCredentialAsync(credential);
+            var signedInUserCrdential = await this.client.SignInWithCredentialAsync(credential);
 
-            signedInUser.Uid.Should().NotBeNullOrEmpty();
-            signedInUser.Info.Email.Should().Be(NewUserEmail);
-            signedInUser.Info.DisplayName.Should().Be(DisplayName);
+            signedInUserCrdential.User.Uid.Should().NotBeNullOrEmpty();
+            signedInUserCrdential.User.Info.Email.Should().Be(NewUserEmail);
+            signedInUserCrdential.User.Info.DisplayName.Should().Be(DisplayName);
         }
 
         [Fact]
         public async Task SignInInvalidPasswordTest()
         {
-            user = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
+            userCredential = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
 
-            Func<Task<User>> signIn = () => this.client.SignInWithEmailAndPasswordAsync(NewUserEmail, InvalidPassword);
+            Func<Task<UserCredential>> signIn = () => this.client.SignInWithEmailAndPasswordAsync(NewUserEmail, InvalidPassword);
             await signIn.Should().ThrowAsync<FirebaseAuthException>();
         }
 
         [Fact]
         public async Task ResetPasswordTest()
         {
-            user = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
+            userCredential = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
 
             // only check the call succeeds
             await client.ResetEmailPasswordAsync(NewUserEmail);
@@ -88,7 +88,7 @@ namespace Firebase.Auth.Tests.Integration
         [Fact]
         public async Task FetchSignInProvidersTest()
         {
-            user = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
+            userCredential = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
 
             // only check the call succeeds
             var result = await client.FetchSignInMethodsForEmailAsync(NewUserEmail);
@@ -98,12 +98,12 @@ namespace Firebase.Auth.Tests.Integration
         [Fact]
         public async Task LinkAnonymousWithEmailTest()
         {
-            user = await this.client.SignInAnonymouslyAsync();
+            userCredential = await this.client.SignInAnonymouslyAsync();
 
-            var u = await user.LinkWithCredentialAsync(EmailProvider.GetCredential(NewUserEmail, ValidPassword));
+            var u = await userCredential.User.LinkWithCredentialAsync(EmailProvider.GetCredential(NewUserEmail, ValidPassword));
 
-            u.Uid.Should().BeEquivalentTo(user.Uid);
-            u.Info.Email.Should().BeEquivalentTo(NewUserEmail);
+            u.User.Uid.Should().BeEquivalentTo(userCredential.User.Uid);
+            u.User.Info.Email.Should().BeEquivalentTo(NewUserEmail);
         }
 
         public Task InitializeAsync()
@@ -113,7 +113,7 @@ namespace Firebase.Auth.Tests.Integration
 
         public async Task DisposeAsync()
         {
-            await this.user?.DeleteAsync();
+            await this.userCredential?.User?.DeleteAsync();
         }
     }
 }
