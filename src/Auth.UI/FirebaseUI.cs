@@ -87,7 +87,7 @@ namespace Firebase.Auth.UI
         /// </summary>
         /// <param name="flow"> Sign in flow which contains platform specific UI actions. </param>
         /// <param name="provider"> Provider to use for sign in. </param>
-        public virtual async Task<User> SignInAsync(IFirebaseUIFlow flow, FirebaseProviderType provider)
+        public virtual async Task<UserCredential> SignInAsync(IFirebaseUIFlow flow, FirebaseProviderType provider)
         {
             try
             {
@@ -111,7 +111,7 @@ namespace Firebase.Auth.UI
             }
         }
 
-        protected virtual async Task<User> SignInWithEmailAsync(IFirebaseUIFlow flow)
+        protected virtual async Task<UserCredential> SignInWithEmailAsync(IFirebaseUIFlow flow)
         {
             var fetchResult = await this.RetryAction(e => flow.PromptForEmailAsync(e), email => this.Client.FetchSignInMethodsForEmailAsync(email));
 
@@ -129,7 +129,7 @@ namespace Firebase.Auth.UI
 
             if (fetchResult.UserExists)
             {
-                Func<Task<User>> signInUserFunc = null;
+                Func<Task<UserCredential>> signInUserFunc = null;
                     
                 // This func can recursively call itself in case user asks to recover email password
                 // - it shows reset page
@@ -171,7 +171,7 @@ namespace Firebase.Auth.UI
                 user => this.Client.CreateUserWithEmailAndPasswordAsync(user.Email, user.Password, user.DisplayName));
         }
 
-        protected virtual async Task<User> HandleConflictAsync(IFirebaseUIFlow flow, FirebaseAuthLinkConflictException exception)
+        protected virtual async Task<UserCredential> HandleConflictAsync(IFirebaseUIFlow flow, FirebaseAuthLinkConflictException exception)
         {
             var provider = exception.Providers.First();
             if (!await flow.ShowEmailProviderConflictAsync(exception.Email, provider))

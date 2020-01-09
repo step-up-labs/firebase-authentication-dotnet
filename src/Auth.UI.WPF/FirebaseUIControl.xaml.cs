@@ -53,7 +53,7 @@ namespace Firebase.Auth.UI
             }
         }
 
-        Task<User> IFirebaseUIFlow.SignInWithRedirectAsync(FirebaseProviderType provider)
+        Task<UserCredential> IFirebaseUIFlow.SignInWithRedirectAsync(FirebaseProviderType provider)
         {
             var redirectUri = FirebaseUI.Instance.Config.RedirectUri;
             var window = Window.GetWindow(this);

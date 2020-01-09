@@ -15,7 +15,7 @@ namespace Firebase.Auth.UI
         /// <summary>
         /// Do an oauth redirect sign in in webview / browser. 
         /// </summary>
-        Task<User> SignInWithRedirectAsync(FirebaseProviderType providerType);
+        Task<UserCredential> SignInWithRedirectAsync(FirebaseProviderType providerType);
 
         /// <summary>
         /// Get user's email. Used to determine if the user exists or not.
