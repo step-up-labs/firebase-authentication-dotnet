@@ -1,5 +1,4 @@
-﻿using Firebase.Auth;
-using Firebase.Auth.Providers;
+﻿using Firebase.Auth.Providers;
 using FluentAssertions;
 using System;
 using System.Threading.Tasks;
@@ -8,7 +7,7 @@ using Xunit;
 namespace Firebase.Auth.Tests.Integration
 {
     [Trait("Category", "Integration")]
-    public class EmailTests
+    public class EmailTests : IAsyncLifetime
     {
         private const string ValidPassword = "super_secret_password";
         private const string InvalidPassword = "short";
@@ -16,7 +15,9 @@ namespace Firebase.Auth.Tests.Integration
         private const string DisplayName = "Test User"; 
 
         private readonly FirebaseAuthClient client;
-        
+
+        private User user;
+
         public EmailTests()
         {
             var setup = Setup.LoadFromEnvironment();
@@ -34,106 +35,85 @@ namespace Firebase.Auth.Tests.Integration
         [Fact]
         public async Task CreateUserTest()
         {
-            var user = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
+            user = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
 
-            try
-            {
-                user.Uid.Should().NotBeNullOrEmpty();
-                user.Info.Email.Should().Be(NewUserEmail);
-                user.Info.DisplayName.Should().Be(DisplayName);
-            }
-            finally
-            {
-                await user.DeleteAsync();
-            }
+            user.Uid.Should().NotBeNullOrEmpty();
+            user.Info.Email.Should().Be(NewUserEmail);
+            user.Info.DisplayName.Should().Be(DisplayName);
         }
 
         [Fact]
         public async Task SignInTest()
         {
-            var originalUser = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
+            user = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
             
-            try
-            {
-                var user = await this.client.SignInWithEmailAndPasswordAsync(NewUserEmail, ValidPassword);
+            var signedInUser = await this.client.SignInWithEmailAndPasswordAsync(NewUserEmail, ValidPassword);
 
-                user.Uid.Should().NotBeNullOrEmpty();
-                user.Info.Email.Should().Be(NewUserEmail);
-                user.Info.DisplayName.Should().Be(DisplayName);
-            }
-            finally
-            {
-                await originalUser.DeleteAsync();
-            }
+            signedInUser.Uid.Should().NotBeNullOrEmpty();
+            signedInUser.Info.Email.Should().Be(NewUserEmail);
+            signedInUser.Info.DisplayName.Should().Be(DisplayName);
         }
 
         [Fact]
         public async Task SignInWithCredentialTest()
         {
-            var originalUser = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
+            user = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
 
-            try
-            {
-                var credential = EmailProvider.GetCredential(NewUserEmail, ValidPassword);
-                var user = await this.client.SignInWithCredentialAsync(credential);
+            var credential = EmailProvider.GetCredential(NewUserEmail, ValidPassword);
+            var signedInUser = await this.client.SignInWithCredentialAsync(credential);
 
-                user.Uid.Should().NotBeNullOrEmpty();
-                user.Info.Email.Should().Be(NewUserEmail);
-                user.Info.DisplayName.Should().Be(DisplayName);
-            }
-            finally
-            {
-                await originalUser.DeleteAsync();
-            }
+            signedInUser.Uid.Should().NotBeNullOrEmpty();
+            signedInUser.Info.Email.Should().Be(NewUserEmail);
+            signedInUser.Info.DisplayName.Should().Be(DisplayName);
         }
 
         [Fact]
         public async Task SignInInvalidPasswordTest()
         {
-            var user = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
+            user = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
 
-            try
-            {
-                Func<Task<User>> signIn = () => this.client.SignInWithEmailAndPasswordAsync(NewUserEmail, InvalidPassword);
-                await signIn.Should().ThrowAsync<FirebaseAuthException>();
-            }
-            finally
-            {
-                await user.DeleteAsync();
-            }
+            Func<Task<User>> signIn = () => this.client.SignInWithEmailAndPasswordAsync(NewUserEmail, InvalidPassword);
+            await signIn.Should().ThrowAsync<FirebaseAuthException>();
         }
 
         [Fact]
         public async Task ResetPasswordTest()
         {
-            var user = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
+            user = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
 
-            try
-            {
-                // only check the call succeeds
-                await client.ResetEmailPasswordAsync(NewUserEmail);
-            }
-            finally
-            {
-                await user.DeleteAsync();
-            }
+            // only check the call succeeds
+            await client.ResetEmailPasswordAsync(NewUserEmail);
         }
         
         [Fact]
         public async Task FetchSignInProvidersTest()
         {
-            var user = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
+            user = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword, DisplayName);
 
-            try
-            {
-                // only check the call succeeds
-                var result = await client.FetchSignInMethodsForEmailAsync(NewUserEmail);
-                result.AllProviders.Should().BeEquivalentTo(FirebaseProviderType.EmailAndPassword);
-            }
-            finally
-            {
-                await user.DeleteAsync();
-            }
+            // only check the call succeeds
+            var result = await client.FetchSignInMethodsForEmailAsync(NewUserEmail);
+            result.AllProviders.Should().BeEquivalentTo(FirebaseProviderType.EmailAndPassword);
+        }
+
+        [Fact]
+        public async Task LinkAnonymousWithEmailTest()
+        {
+            user = await this.client.SignInAnonymouslyAsync();
+
+            var u = await user.LinkWithCredentialAsync(EmailProvider.GetCredential(NewUserEmail, ValidPassword));
+
+            u.Uid.Should().BeEquivalentTo(user.Uid);
+            u.Info.Email.Should().BeEquivalentTo(NewUserEmail);
+        }
+
+        public Task InitializeAsync()
+        {
+            return Task.CompletedTask;
+        }
+
+        public async Task DisposeAsync()
+        {
+            await this.user?.DeleteAsync();
         }
     }
 }
