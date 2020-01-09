@@ -58,9 +58,16 @@ namespace Firebase.Auth.Sample
 
                     var credential = EmailProvider.GetCredential(email, password);
                     user = await user.LinkWithCredentialAsync(credential);
+
+                    Console.WriteLine("Unlink? [y/n]");
+
+                    if (ReadLine().ToLower() == "y")
+                    {
+                        user = await user.UnlinkAsync(FirebaseProviderType.EmailAndPassword);
+                    }
                 }
             }
-            else 
+            else
             {
                 var provider = config.Providers[i].ProviderType;
                 user = provider == FirebaseProviderType.EmailAndPassword

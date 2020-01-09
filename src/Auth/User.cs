@@ -17,6 +17,7 @@ namespace Firebase.Auth
         private readonly DeleteAccount deleteAccount;
         private readonly RefreshToken token;
         private readonly UpdateAccount updateAccount;
+        private readonly SetAccountUnlink unlinkAccount;
         private readonly FirebaseAuthConfig config;
 
         internal User(FirebaseAuthConfig config, UserInfo userInfo, FirebaseCredential credential)
@@ -27,6 +28,7 @@ namespace Firebase.Auth
             this.deleteAccount = new DeleteAccount(config);
             this.token = new RefreshToken(config);
             this.updateAccount = new UpdateAccount(config);
+            this.unlinkAccount = new SetAccountUnlink(config);
         }
 
         /// <summary>
@@ -126,6 +128,24 @@ namespace Firebase.Auth
             this.Info = user.Info;
 
             await this.config.UserRepository.SaveUserAsync(this).ConfigureAwait(false);
+
+            return this;
+        }
+
+        /// <summary>
+        /// Unlinks a provider from a user account.
+        /// </summary>
+        public async Task<User> UnlinkAsync(FirebaseProviderType providerType)
+        {
+            var token = await this.GetIdTokenAsync().ConfigureAwait(false);
+            await this.unlinkAccount.ExecuteAsync(new SetAccountUnlinkRequest
+            {
+                IdToken = token,
+                DeleteProviders = new[]
+                {
+                    providerType
+                }
+            });
 
             return this;
         }
