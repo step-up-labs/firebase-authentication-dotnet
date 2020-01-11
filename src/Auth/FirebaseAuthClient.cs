@@ -87,6 +87,12 @@ namespace Firebase.Auth
 
             var continuation = await oauthProvider.SignInAsync().ConfigureAwait(false);
             var redirectUri = await redirectDelegate(continuation.Uri).ConfigureAwait(false);
+
+            if (string.IsNullOrEmpty(redirectUri))
+            {
+                return null;
+            }
+
             var userCredential = await continuation.ContinueSignInAsync(redirectUri).ConfigureAwait(false);
 
             await this.SaveTokenAsync(userCredential.User).ConfigureAwait(false);

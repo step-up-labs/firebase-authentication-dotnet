@@ -18,13 +18,17 @@ namespace Firebase.Auth.UI
                     if (e.Uri.ToString().StartsWith(redirectUri))
                     {
                         tcs.SetResult(e.Uri.ToString());
+                        window.DialogResult = true;
                         window.Close();
                     }
                 };
                 window.Title = ProviderToTitleConverter.Convert(provider);
                 window.WebView.Loaded += (s, e) => window.WebView.Navigate(uri);
                 window.Owner = owner;
-                window.ShowDialog();
+                if (!(window.ShowDialog() ?? false))
+                {
+                    tcs.SetResult(null);
+                }
             });
 
             return tcs.Task;
