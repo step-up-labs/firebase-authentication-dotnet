@@ -5,7 +5,18 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>FirebaseAuthentication.net</PackageId>
     <Authors>Step Up Labs, Inc.</Authors>
-    <Description>Firebase authentication library. It can generate Firebase auth token based on given OAuth token (issued by Google, Facebook...). This Firebase token can then be used with REST queries against Firebase endpoints. </Description>
+    <Description>
+Unofficial C# implementation of Firebase authentication targetting .NET Standard.
+      
+The library provides a drop-in auth solution that handles the flows for signing in users with email addresses and passwords, Identity Provider Sign In including Google, Facebook, GitHub, Twitter, Apple, Microsoft, Yahoo and anonymous sign-in.
+      
+FirebaseUI is supported by platform-specific libraries:
+      
+* FirebaseAuthentication.WPF
+* FirebaseAuthentication.UWP
+* FirebaseAuthentication.Xamarin
+    </Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageIcon>firebase.png</PackageIcon>
     <PackageProjectUrl>https://github.com/step-up-labs/firebase-authentication-dotnet</PackageProjectUrl>
@@ -27,6 +38,7 @@
     </AssemblyAttribute>
     <None Include="Assets\firebase.png" Pack="true" PackagePath="" />
     <None Include="..\..\LICENSE.txt" Link="Assets\LICENSE.txt" Pack="true" PackagePath="" />
+    <None Include="..\..\README.md" Link="Assets\README.md" Pack="true" PackagePath=""/>
   </ItemGroup>
   
   <ItemGroup>

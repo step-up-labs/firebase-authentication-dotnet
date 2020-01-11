@@ -5,7 +5,12 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackageId>FirebaseAuthentication.WPF</PackageId>
     <Authors>Step Up Labs, Inc.</Authors>
-    <Description>FirebaseUI for WPF</Description>
+    <Description>
+FirebaseUI for WPF.
+
+The library provides a drop-in auth solution that handles the flows for signing in users with email addresses and passwords, Identity Provider Sign In including Google, Facebook, GitHub, Twitter, Apple, Microsoft, Yahoo and anonymous sign-in.
+    </Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageIcon>firebase.png</PackageIcon>
     <PackageProjectUrl>https://github.com/step-up-labs/firebase-authentication-dotnet</PackageProjectUrl>
@@ -13,7 +18,7 @@
     <IncludeSource>True</IncludeSource>
     <IncludeSymbols>True</IncludeSymbols>
     <Copyright>Step Up Labs, Inc. 2019</Copyright>
-    <PackageTags>Firebase FirebaseUI Auth Authentication Google Facebook Github Twitter</PackageTags>
+    <PackageTags>Firebase FirebaseUI Auth Authentication OAuth Apple Google Facebook Github Twitter</PackageTags>
     <LangVersion>8.0</LangVersion>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -46,6 +51,7 @@
     <Resource Include="..\Auth.UI\Assets\twitter.png" Link="Assets\twitter.png" />
     <None Include="..\Auth.UI\Assets\firebase.png" Link="Assets\firebase.png" Pack="true" PackagePath=""/>
     <None Include="..\..\LICENSE.txt" Link="Assets\LICENSE.txt" Pack="true" PackagePath=""/>
+    <None Include="..\..\README.md" Link="Assets\README.md" Pack="true" PackagePath=""/>
     <None Include="tools\VisualStudioToolsManifest.xml" Pack="true" PackagePath="tools" />
   </ItemGroup>
 

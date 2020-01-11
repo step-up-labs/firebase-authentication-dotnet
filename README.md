@@ -6,15 +6,18 @@
 FirebaseAuthentication.net is an unofficial C# implementation of [Firebase Authentication](https://firebase.google.com/docs/auth)
 and [FirebaseUI](https://firebase.google.com/docs/auth). 
 
-The libraries provide a drop-in auth solution that handles the flows for signing in users with email addresses and passwords, Identity Provider Sign In including Google, Facebook, GitHub, Twitter, Apple, Microsoft, Yahoo and anonymous sign-in.
+The libraries provide a drop-in auth solution that handles the flows for signing in users with email addresses and passwords, Identity Provider Sign In including Google, Facebook, GitHub, Twitter, Apple, Microsoft and anonymous sign-in.
 
-The solution consists of 4 libraries, a base one and 3 platform specific ones:
+The solution consists of 4 libraries - a base one and 3 platform specific ones:
 * FirebaseAuthentication<strong>.net</strong> targets [.NET Standard 2.0](https://github.com/dotnet/standard/blob/master/docs/versions.md)
 * FirebaseAuthentication<strong>.WPF</strong> targets [WPF on .NET Core 3.1](https://github.com/dotnet/wpf)
 * FirebaseAuthentication<strong>.UWP</strong> targets UWP (*TODO*)
 * FirebaseAuthentication<strong>.Xamarin</strong> targets Xamarin.Forms (*TODO*)
 
 ## Installation
+
+Either via Visual Studio [Nuget](https://www.nuget.org/packages/FirebaseAuthentication.net) package manager, or from command line:
+
 ```powershell
 # base package
 dotnet add package FirebaseAuthentication.net
@@ -24,6 +27,8 @@ dotnet add package FirebaseAuthentication.WPF
 dotnet add package FirebaseAuthentication.UWP
 dotnet add package FirebaseAuthentication.Xamarin
 ```
+
+Use the `--version` option to specify a [preview version](https://www.nuget.org/packages/FirebaseAuthentication.net/absoluteLatest) to install.
 
 Daily preview builds are also available on [feedz.io](https://feedz.io). Just add the following Package Source to your Visual Studio:
 
