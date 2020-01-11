@@ -72,6 +72,11 @@ namespace Firebase.Auth.UI
         public static FirebaseUI Instance => firebaseUI ?? throw new InvalidOperationException("FirebaseUI hasn't been initialized yet.");
 
         /// <summary>
+        /// Specifies whether <see cref="Initialize(FirebaseUIConfig)"/> has been called yet.
+        /// </summary>
+        public static bool IsInitialized => firebaseUI != null;
+
+        /// <summary>
         /// Callection of registered auth providers.
         /// </summary>
         public IReadOnlyCollection<FirebaseProviderType> Providers { get; }

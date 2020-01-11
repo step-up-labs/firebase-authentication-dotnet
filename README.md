@@ -129,7 +129,7 @@ await user.LinkWithCredentialAsync(authCredential)
 
 ### FirebaseUI
 
-The platform specific UI libraries use the `FirebaseAuthClient` under the hood, but are initilized via the static `Initialize` method of `FirebaseUI`:
+The platform specific UI libraries use the `FirebaseAuthClient` under the hood, but need to be initilized via the static `Initialize` method of `FirebaseUI`:
 
 ```csharp
 // Initialize FirebaseUI during your application startup (e.g. App.xaml.cs)
@@ -146,7 +146,7 @@ FirebaseUI.Initialize(new FirebaseUIConfig
     PrivacyPolicyUrl = "<PP URL>",
     TermsOfServiceUrl = "<TOS URL>",
     IsAnonymousAllowed = true,
-    UserRepository = new FileUserRepository("FirebaseSample")
+    UserRepository = new FileUserRepository("FirebaseSample") // persist data into %AppData%\FirebaseSample
 });
 ```
 

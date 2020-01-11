@@ -21,14 +21,26 @@ namespace Firebase.Auth.UI
         {
             InitializeComponent();
 
+            if (!FirebaseUI.IsInitialized)
+            {
+                this.Content = new TextBlock
+                {
+                    Text = "FirebaseUI has not been initialized yet. Make sure to initialize it during the startup of your application, e.g. in App.xaml.cs",
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    TextWrapping = TextWrapping.Wrap
+                };
+                return;
+            }
+
             this.DataContext = this;
             this.emailPage = new EmailPage();
             this.signInPage = new SignInPage();
             this.signUpPage = new SignUpPage();
             this.recoverPasswordPage = new RecoverPasswordPage();
             this.providersPage = new ProvidersPage(this);
-            this.Frame.Navigate(providersPage);
             this.Loaded += this.ControlLoaded;
+            this.Frame.Navigate(providersPage);
         }
 
         public event EventHandler<UserEventArgs> AuthStateChanged;
