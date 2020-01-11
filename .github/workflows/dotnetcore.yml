@@ -62,9 +62,9 @@ jobs:
       with:
         name: artifacts
         path: ./artifacts
-    - name: Publish preview packages
+    - name: Publish to Feedz.io
       if: startsWith(github.ref, 'refs/tags/') == false
       run: dotnet nuget push ./artifacts/**/*.nupkg --source https://f.feedz.io/step-up-labs/firebase/nuget/index.json --api-key ${{secrets.FEEDZ_TOKEN}}
-    - name: Publish release packages
+    - name: Publish to Nuget.org
       if: startsWith(github.ref, 'refs/tags/')
-      run: dotnet nuget push ./artifacts/**/*.nupkg --source https://f.feedz.io/step-up-labs/firebase/nuget/index.json --api-key ${{secrets.FEEDZ_TOKEN}}
+      run: dotnet nuget push ./artifacts/**/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_TOKEN}}
