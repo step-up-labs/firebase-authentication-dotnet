@@ -1,6 +1,7 @@
 ﻿using Firebase.Auth.UI.Pages;
 using Firebase.Auth.UI.Resources;
 using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,7 +22,7 @@ namespace Firebase.Auth.UI
         {
             InitializeComponent();
 
-            if (!FirebaseUI.IsInitialized)
+            if (!DesignerProperties.GetIsInDesignMode(this) && !FirebaseUI.IsInitialized)
             {
                 this.Content = new TextBlock
                 {

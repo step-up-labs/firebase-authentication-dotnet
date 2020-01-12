@@ -63,6 +63,7 @@ Notice that Firebase doesn't officially support Windows as a platform so you wil
 The base library gives you the same features as the official *Firebase SDK Authentication*, that is without any UI. Your entrypoint is the `FirebaseAuthClient`.
 
 ```csharp
+// main namespaces
 using Firebase.Auth;
 using Firebase.Auth.Providers;
 using Firebase.Auth.Repository;
@@ -92,9 +93,6 @@ By default the libraries use in-memory repository; to preserve user's credential
 After you have your `client`, you can sign-in or sign-up the user with any of the configured providers.
 
 ```csharp
-using Firebase.Auth;
-using Firebase.Auth.Providers;
-
 // anonymous sign in
 var user = await client.SignInAnonymouslyAsync();
 
@@ -205,7 +203,7 @@ private void AuthStateChanged(object sender, UserEventArgs e)
             // no user is signed in (first run of the app, user signed out..), show login UI 
             this.ShowLoginUI();
         }
-        else if (!this.loginUIShowing)
+        else if (this.loginUIShowing)
         {
             // user signed in (or was already signed in), hide the login UI
             // this event can be raised multiple times (e.g. when access token gets refreshed), you need to be ready for that
