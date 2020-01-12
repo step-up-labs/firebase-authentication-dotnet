@@ -63,6 +63,10 @@ Notice that Firebase doesn't officially support Windows as a platform so you wil
 The base library gives you the same features as the official *Firebase SDK Authentication*, that is without any UI. Your entrypoint is the `FirebaseAuthClient`.
 
 ```csharp
+using Firebase.Auth;
+using Firebase.Auth.Providers;
+using Firebase.Auth.Repository;
+
 // Configure...
 var config = new FirebaseAuthConfig
 {
@@ -75,7 +79,7 @@ var config = new FirebaseAuthConfig
         new EmailProvider()
         // ...
     },
-    UserRepository = new FileUserRepository("FirebaseSample")
+    UserRepository = new FileUserRepository("FirebaseSample") // persist data into %AppData%\FirebaseSample
 };
 
 // ...and create your FirebaseAuthClient
@@ -95,27 +99,29 @@ using Firebase.Auth.Providers;
 var user = await client.SignInAnonymouslyAsync();
 
 // sign up or sign in with email and password
-var user = await client.CreateUserWithEmailAndPasswordAsync("email", "pwd", "Display Name");
-var user = await client.SignInWithEmailAndPasswordAsync("email", "pwd");
+var userCredential = await client.CreateUserWithEmailAndPasswordAsync("email", "pwd", "Display Name");
+var userCredential = await client.SignInWithEmailAndPasswordAsync("email", "pwd");
 
 // sign in via provider specific AuthCredential
 var credential = TwitterProvider.GetCredential("access_token", "oauth_token_secret");
-var user = await client.SignInWithCredentialAsync(credential);
+var userCredential = await client.SignInWithCredentialAsync(credential);
 
 // sign in via web browser redirect - navigate to given uri, monitor a redirect to 
 // your authdomain.firebaseapp.com/__/auth/handler
 // and return the whole redirect uri back to the client;
 // this method is actually used by FirebaseUI
-await client.SignInWithRedirectAsync(provider, async uri =>
+var userCredential = await client.SignInWithRedirectAsync(provider, async uri =>
 {    
     return await OpenBrowserAndWaitForRedirectToAuthDomain(uri);
 });
 ```
 
-As you can see the sign-in methods give you a `User` object, which contains information about a user as well as some useful method, e.g. `GetIdTokenAsync()` to get a valid *IdToken* you can use as an access token to other Firebase API (e.g. Realtime Database).
+As you can see the sign-in methods give you a `UserCredential` object, which contains an `AuthCredential` and a `User` objects.
+`User` holds details about a user as well as some useful methods, e.g. `GetIdTokenAsync()` to get a valid *IdToken* you can use as an access token to other Firebase API (e.g. Realtime Database).
 
 ```csharp
 // user and auth properties
+var user = userCredential.User;
 var uid = user.Uid;
 var name = user.Info.DisplayName; // more properties are available in user.Info
 var refreshToken = user.Credential.RefreshToken; // more properties are available in user.Credential
@@ -124,7 +130,7 @@ var refreshToken = user.Credential.RefreshToken; // more properties are availabl
 var token = await user.GetIdTokenAsync();
 await user.DeleteAsync();
 await user.ChangePasswordAsync("new_password");
-await user.LinkWithCredentialAsync(authCredential)
+await user.LinkWithCredentialAsync(authCredential);
 ```
 
 ### FirebaseUI
