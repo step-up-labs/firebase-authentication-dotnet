@@ -12,5 +12,7 @@
         public static AuthCredential GetCredential(string accessToken) => GetCredential(FirebaseProviderType.Facebook, accessToken);
 
         public override FirebaseProviderType ProviderType => FirebaseProviderType.Facebook;
+
+        protected override string LocaleParameterName => "locale";
     }
 }
