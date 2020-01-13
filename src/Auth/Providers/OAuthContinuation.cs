@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 
 namespace Firebase.Auth.Providers
 {
+    /// <summary>
+    /// Continuation of OAuth sign in. This class processes the redirect uri user is navigated to and signs the user in.
+    /// </summary>
     public class OAuthContinuation
     {
         private readonly VerifyAssertion verifyAssertion;
@@ -20,14 +23,24 @@ namespace Firebase.Auth.Providers
             this.providerType = providerType;
         }
 
+        /// <summary>
+        /// The uri user should be initially navigated to in browser.
+        /// </summary>
         public string Uri { get; }
 
-        public Task<UserCredential> ContinueSignInAsync(string redirectUri)
+        /// <summary>
+        /// Finishes OAuth sign in after user signs in in browser.
+        /// </summary>
+        /// <param name="redirectUri"> Final uri that user lands on after completing sign in in browser. </param>
+        /// <param name="idToken"> Optional id token  of an existing Firebase user. If set, it will effectivelly perform account linking. </param>
+        /// <returns></returns>
+        public Task<UserCredential> ContinueSignInAsync(string redirectUri, string idToken = null)
         {
             return this.verifyAssertion.ExecuteWithUserAsync(
                 this.providerType, 
                 new VerifyAssertionRequest
                 {
+                    IdToken = idToken,
                     RequestUri = redirectUri,
                     SessionId = this.sessionId,
                     ReturnIdpCredential = true,

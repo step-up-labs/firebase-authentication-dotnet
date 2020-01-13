@@ -1,4 +1,5 @@
-﻿using Firebase.Auth.Requests;
+﻿using Firebase.Auth.Providers;
+using Firebase.Auth.Requests;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -123,6 +124,34 @@ namespace Firebase.Auth
 
             var token = await this.GetIdTokenAsync().ConfigureAwait(false);
             var userCredential = await provider.LinkWithCredentialAsync(token, credential).ConfigureAwait(false);
+
+            this.Credential = userCredential.User.Credential;
+            this.Info = userCredential.User.Info;
+
+            await this.config.UserManager.SaveUserAsync(userCredential.User).ConfigureAwait(false);
+
+            return userCredential;
+        }
+
+        public async Task<UserCredential> LinkWithRedirectAsync(FirebaseProviderType providerType, SignInRedirectDelegate redirectDelegate)
+        {
+            var provider = this.config.Providers.FirstOrDefault(p => p.ProviderType == providerType);
+
+            if (!(provider is OAuthProvider oauthProvider))
+            {
+                throw new InvalidOperationException("You cannot sign in with this provider using this method.");
+            }
+
+            var continuation = await oauthProvider.SignInAsync().ConfigureAwait(false);
+            var redirectUri = await redirectDelegate(continuation.Uri).ConfigureAwait(false);
+
+            if (string.IsNullOrEmpty(redirectUri))
+            {
+                return null;
+            }
+
+            var token = await this.GetIdTokenAsync().ConfigureAwait(false);
+            var userCredential = await continuation.ContinueSignInAsync(redirectUri, token).ConfigureAwait(false);
 
             this.Credential = userCredential.User.Credential;
             this.Info = userCredential.User.Info;
