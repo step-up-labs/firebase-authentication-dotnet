@@ -48,9 +48,11 @@ namespace Firebase.Auth.Sample
             if (i == config.Providers.Count())
             {
                 userCredential = await client.SignInAnonymouslyAsync();
-                WriteLine($"You're anonymously signed with uid: {userCredential.User.Uid}. Link with email? [y/n]");
-                if (ReadLine().ToLower() == "y")
+                WriteLine($"You're anonymously signed with uid: {userCredential.User.Uid}. Link with email / redirect? [e/r/n]");
+                var r = ReadLine().ToLower();
+                if (r == "e")
                 {
+                    // link with email
                     Write("Enter email: ");
                     var email = ReadLine();
                     Write("Enter password: ");
@@ -58,9 +60,25 @@ namespace Firebase.Auth.Sample
 
                     var credential = EmailProvider.GetCredential(email, password);
                     userCredential = await userCredential.User.LinkWithCredentialAsync(credential);
+                } 
+                else if (r == "r")
+                {
+                    // link with redirect
+                    WriteLine("How do you want to link?");
+                    config.Providers.Where(p => p.ProviderType != FirebaseProviderType.EmailAndPassword).Select((provider, i) => (provider, i)).ToList().ForEach(p => WriteLine($"[{p.i}]: {p.provider.ProviderType}"));
 
+                    i = int.Parse(ReadLine());
+                    userCredential = await userCredential.User.LinkWithRedirectAsync(config.Providers[i].ProviderType, uri =>
+                    {
+                        WriteLine($"Go to \n{uri}\n and paste here the redirect uri after you finish signing in");
+                        return Task.FromResult(ReadLine());
+                    });
+                }
+
+                if (r == "e" || r == "r")
+                {
+                    // if linked, offer unlink
                     WriteLine("Unlink? [y/n]");
-
                     if (ReadLine().ToLower() == "y")
                     {
                         userCredential.User = await userCredential.User.UnlinkAsync(FirebaseProviderType.EmailAndPassword);
