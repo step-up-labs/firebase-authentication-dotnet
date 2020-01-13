@@ -53,6 +53,20 @@
     }
 
     /// <summary>
+    /// Exception thrown when user tries to link an account which already exists.
+    /// </summary>
+    public class FirebaseAuthAlreadyLinkedException : FirebaseAuthException
+    {
+        public FirebaseAuthAlreadyLinkedException(AuthCredential credential)
+            : base($"This account is already linked", AuthErrorReason.AccountAlreadyLinked)
+        {
+            this.Credential = credential;
+        }
+
+        public AuthCredential Credential { get; }
+    }
+
+    /// <summary>
     /// Exception thrown during invocation of an HTTP request.
     /// </summary>
     public class FirebaseAuthHttpException : FirebaseAuthException

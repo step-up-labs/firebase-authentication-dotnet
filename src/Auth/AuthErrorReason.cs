@@ -105,6 +105,10 @@
         /// <summary>
         /// The email user tried to sign in with is already registered under a different provider.
         /// </summary>
-        AccountExistsWithDifferentCredential
+        AccountExistsWithDifferentCredential,
+        /// <summary>
+        /// Given account is already linked and cannot be linked again.
+        /// </summary>
+        AccountAlreadyLinked
     }
 }

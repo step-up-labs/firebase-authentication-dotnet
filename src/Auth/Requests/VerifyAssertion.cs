@@ -59,6 +59,10 @@ namespace Firebase.Auth.Requests
 
         [JsonProperty("verifiedProvider")]
         public FirebaseProviderType[] VerifiedProviders { get; set; }
+
+        public string ErrorMessage { get; set; }
+
+        public void Validate(AuthCredential credential) => VerifyAssertion.ValidateAssertionResponse(this, credential);
     }
 
     /// <summary>
@@ -72,40 +76,35 @@ namespace Firebase.Auth.Requests
         {
             this.accountInfo = new GetAccountInfo(config);
         }
-
-        public override async Task<VerifyAssertionResponse> ExecuteAsync(VerifyAssertionRequest request)
+        
+        public static void ValidateAssertionResponse(VerifyAssertionResponse response, AuthCredential credential)
         {
-            var result = await base.ExecuteAsync(request).ConfigureAwait(false);
-
-            if (result.NeedConfirmation)
+            if (response.NeedConfirmation)
             {
                 throw new FirebaseAuthLinkConflictException(
-                    result.Email,
-                    result.VerifiedProviders);
+                    response.Email,
+                    response.VerifiedProviders);
             }
 
-            return result;
+            if (response.ErrorMessage == "FEDERATED_USER_ID_ALREADY_LINKED")
+            {
+                throw new FirebaseAuthAlreadyLinkedException(credential);
+            }
         }
 
-        public async Task<UserCredential> ExecuteWithUserAsync(FirebaseProviderType providerType, VerifyAssertionRequest request, Func<User, VerifyAssertionResponse, UserCredential> userCredentialFactory)
+        public async Task<(User, VerifyAssertionResponse)> ExecuteAndParseAsync(FirebaseProviderType providerType, VerifyAssertionRequest request)
         {
             var assertion = await this.ExecuteAsync(request).ConfigureAwait(false);
-            
-            var accountInfo = await this.accountInfo.ExecuteAsync(new IdTokenRequest
-            {
-                IdToken = assertion.IdToken
-            }).ConfigureAwait(false);
 
-            var u = accountInfo.Users[0];
             var userInfo = new UserInfo
             {
-                DisplayName = u.DisplayName ?? assertion.DisplayName,
+                DisplayName = assertion.DisplayName,
                 FirstName = assertion.FirstName,
                 LastName = assertion.LastName,
-                Email = u.Email ?? assertion.Email,
-                IsEmailVerified = u.EmailVerified,
+                Email = assertion.Email,
+                IsEmailVerified = assertion.EmailVerified,
                 FederatedId = assertion.FederatedId,
-                Uid = u.LocalId,
+                Uid = assertion.LocalId,
                 PhotoUrl = assertion.PhotoUrl,
                 IsAnonymous = false
             };
@@ -118,7 +117,7 @@ namespace Firebase.Auth.Requests
                 ProviderType = providerType
             };
 
-            return userCredentialFactory(new User(this.config, userInfo, token), assertion);
+            return (new User(this.config, userInfo, token), assertion);
         }
 
         protected override string UrlFormat => Endpoints.GoogleIdentityUrl;

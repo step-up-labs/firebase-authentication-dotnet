@@ -74,29 +74,41 @@ namespace Firebase.Auth.Providers
             return new OAuthContinuation(this.config, response.AuthUri, response.SessionId, this.ProviderType);
         }
 
-        protected internal override Task<UserCredential> SignInWithCredentialAsync(AuthCredential credential)
+        protected internal override async Task<UserCredential> SignInWithCredentialAsync(AuthCredential credential)
         {
             var c = (OAuthCredential)credential;
-            return this.verifyAssertion.ExecuteWithUserAsync(credential.ProviderType, new VerifyAssertionRequest
+            var (user, response) = await this.verifyAssertion.ExecuteAndParseAsync(credential.ProviderType, new VerifyAssertionRequest
             {
                 RequestUri = $"https://{this.config.AuthDomain}",
                 PostBody = c.GetPostBodyValue(credential.ProviderType),
                 ReturnIdpCredential = true,
                 ReturnSecureToken = true
-            }, (u, response) => new UserCredential(u, this.GetCredential(response), OperationType.SignIn));
+            }).ConfigureAwait(false);
+            
+            credential = this.GetCredential(response);
+
+            response.Validate(credential);
+
+            return new UserCredential(user, credential, OperationType.SignIn);
         }
 
-        protected internal override Task<UserCredential> LinkWithCredentialAsync(string idToken, AuthCredential credential)
+        protected internal override async Task<UserCredential> LinkWithCredentialAsync(string idToken, AuthCredential credential)
         {
             var c = (OAuthCredential)credential;
-            return this.verifyAssertion.ExecuteWithUserAsync(credential.ProviderType, new VerifyAssertionRequest
+            var (user, response) = await this.verifyAssertion.ExecuteAndParseAsync(credential.ProviderType, new VerifyAssertionRequest
             {
                 IdToken = idToken,
                 RequestUri = $"https://{this.config.AuthDomain}",
                 PostBody = c.GetPostBodyValue(c.ProviderType),
                 ReturnIdpCredential = true,
                 ReturnSecureToken = true
-            }, (u, response) => new UserCredential(u, this.GetCredential(response), OperationType.SignIn));
+            }).ConfigureAwait(false);
+
+            credential = this.GetCredential(response);
+
+            response.Validate(credential);
+
+            return new UserCredential(user, this.GetCredential(response), OperationType.Link);
         }
 
         protected string GetParsedOauthScopes()
