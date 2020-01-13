@@ -52,13 +52,16 @@
         public IEnumerable<FirebaseProviderType> Providers { get; }
     }
 
-    /// <summary>
-    /// Exception thrown when user tries to link an account which already exists.
-    /// </summary>
-    public class FirebaseAuthAlreadyLinkedException : FirebaseAuthException
+    public class FirebaseAuthWithCredentialException : FirebaseAuthException
     {
-        public FirebaseAuthAlreadyLinkedException(AuthCredential credential)
-            : base($"This account is already linked", AuthErrorReason.AccountAlreadyLinked)
+        public FirebaseAuthWithCredentialException(Exception innerException, AuthCredential credential, AuthErrorReason reason)
+            : base(innerException, reason)
+        {
+            this.Credential = credential;
+        }
+
+        public FirebaseAuthWithCredentialException(string message, AuthCredential credential, AuthErrorReason reason)
+            : base(message, reason)
         {
             this.Credential = credential;
         }

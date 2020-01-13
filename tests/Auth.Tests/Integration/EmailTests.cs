@@ -106,6 +106,26 @@ namespace Firebase.Auth.Tests.Integration
             u.User.Info.Email.Should().BeEquivalentTo(NewUserEmail);
         }
 
+        [Fact]
+        public async Task LinkAnonymousWithExistingEmailThrowsExceptionTest()
+        {
+            var emailCredential = await this.client.CreateUserWithEmailAndPasswordAsync(NewUserEmail, ValidPassword);
+
+            userCredential = await this.client.SignInAnonymouslyAsync();
+
+            try
+            {
+                var e = await Assert.ThrowsAsync<FirebaseAuthWithCredentialException>(() => userCredential.User.LinkWithCredentialAsync(emailCredential.AuthCredential));
+                e.Reason.Should().Be(AuthErrorReason.EmailExists);
+            }
+            finally
+            {
+                // anonymous user gets deleted in DisposeAsync, also delete the email user here
+                await emailCredential.User.DeleteAsync();
+            }
+
+        }
+
         public Task InitializeAsync()
         {
             return Task.CompletedTask;

@@ -88,7 +88,7 @@ namespace Firebase.Auth.Requests
 
             if (response.ErrorMessage == "FEDERATED_USER_ID_ALREADY_LINKED")
             {
-                throw new FirebaseAuthAlreadyLinkedException(credential);
+                throw new FirebaseAuthWithCredentialException("This credential is already associated with a different user account", credential, AuthErrorReason.AlreadyLinked);
             }
         }
 

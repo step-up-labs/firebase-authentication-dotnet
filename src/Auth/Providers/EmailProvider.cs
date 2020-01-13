@@ -131,7 +131,17 @@ namespace Firebase.Auth.Providers
                 ReturnSecureToken = true
             };
 
-            var link = await this.linkAccount.ExecuteAsync(request).ConfigureAwait(false);
+            SetAccountLinkResponse link;
+
+            try
+            {
+                link = await this.linkAccount.ExecuteAsync(request).ConfigureAwait(false);
+            }
+            catch (FirebaseAuthException e) when (e.Reason == AuthErrorReason.EmailExists)
+            {
+                throw new FirebaseAuthWithCredentialException(e, credential, AuthErrorReason.EmailExists);
+            }
+
             var getResult = await this.getAccountInfo.ExecuteAsync(new IdTokenRequest { IdToken = link.IdToken }).ConfigureAwait(false);
 
             var u = getResult.Users[0];
