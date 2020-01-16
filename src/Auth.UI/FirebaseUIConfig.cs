@@ -1,4 +1,6 @@
 ﻿using Firebase.Auth.Providers;
+using System;
+using System.Threading.Tasks;
 
 namespace Firebase.Auth.UI
 {
@@ -21,5 +23,22 @@ namespace Firebase.Auth.UI
         /// Specifies whether anonymous signin is allowed.
         /// </summary>
         public bool IsAnonymousAllowed { get; set; }
+
+        /// <summary>
+        /// Specifies whether signed in anonymous users should be linked to newly created users.
+        /// </summary>
+        public bool AutoUpgradeAnonymousUsers { get; set; }
+
+        public Func<FirebaseUpgradeConflict, Task<UserCredential>> FirebaseUpgradeConflict;
+
+        internal Task<UserCredential> RaiseUpgradeConflictAsync(FirebaseAuthClient client, AuthCredential credential)
+        {
+            if (this.FirebaseUpgradeConflict == null)
+            {
+                new InvalidOperationException($"{nameof(FirebaseUpgradeConflict)} must be set when {nameof(AutoUpgradeAnonymousUsers)} is set");
+            }
+
+            return this.FirebaseUpgradeConflict(new FirebaseUpgradeConflict(client, credential));
+        }
     }
 }

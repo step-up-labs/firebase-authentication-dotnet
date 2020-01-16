@@ -180,11 +180,10 @@ namespace Firebase.Auth
             await provider.ResetEmailPasswordAsync(email).ConfigureAwait(false);
         }
 
-        public async Task SignOutAsync()
+        public Task SignOutAsync()
         {
-            await this.config.UserManager.SaveUserAsync(null);
             this.User = null;
-            this.authStateChanged?.Invoke(this, new UserEventArgs(null));
+            return this.config.UserManager.SaveUserAsync(null);
         }
 
         private void TriggerAuthStateChanged(EventHandler<UserEventArgs> value, User user)

@@ -13,9 +13,11 @@ namespace Firebase.Auth.UI
         void Reset();
 
         /// <summary>
-        /// Do an oauth redirect sign in in webview / browser. 
+        /// Do an oauth redirect sign in in webview / browser and return the final uri.
         /// </summary>
-        Task<UserCredential> SignInWithRedirectAsync(FirebaseProviderType providerType);
+        /// <param name="provider"> <see cref="FirebaseProviderType"/> </param>
+        /// <param name="redirectUri"> The uri to navigate user to. </param>
+        Task<string> GetRedirectResponseUriAsync(FirebaseProviderType provider, string redirectUri);
 
         /// <summary>
         /// Get user's email. Used to determine if the user exists or not.

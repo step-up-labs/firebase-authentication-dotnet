@@ -139,7 +139,7 @@ namespace Firebase.Auth.Providers
             }
             catch (FirebaseAuthException e) when (e.Reason == AuthErrorReason.EmailExists)
             {
-                throw new FirebaseAuthWithCredentialException(e, credential, AuthErrorReason.EmailExists);
+                throw new FirebaseAuthWithCredentialException("The email address is already in use by another account.", credential, AuthErrorReason.EmailExists);
             }
 
             var getResult = await this.getAccountInfo.ExecuteAsync(new IdTokenRequest { IdToken = link.IdToken }).ConfigureAwait(false);

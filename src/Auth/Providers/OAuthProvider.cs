@@ -20,12 +20,13 @@ namespace Firebase.Auth.Providers
 
         protected virtual string LocaleParameterName => null;
 
-        protected static AuthCredential GetCredential(FirebaseProviderType providerType, string accessToken)
+        protected static AuthCredential GetCredential(FirebaseProviderType providerType, string accessToken, OAuthCredentialTokenType tokenType)
         {
             return new OAuthCredential
             {
                 ProviderType = providerType,
-                Token = accessToken
+                Token = accessToken,
+                TokenType = tokenType
             };
         }
 
@@ -51,7 +52,10 @@ namespace Firebase.Auth.Providers
 
         internal virtual AuthCredential GetCredential(VerifyAssertionResponse response)
         {
-            return GetCredential(this.ProviderType, response.OauthAccessToken);
+            return GetCredential(
+                this.ProviderType, 
+                response.PendingToken ?? response.OauthAccessToken, 
+                response.PendingToken == null ? OAuthCredentialTokenType.AccessToken : OAuthCredentialTokenType.PendingToken);
         }
 
         internal virtual async Task<OAuthContinuation> SignInAsync()
@@ -81,6 +85,7 @@ namespace Firebase.Auth.Providers
             {
                 RequestUri = $"https://{this.config.AuthDomain}",
                 PostBody = c.GetPostBodyValue(credential.ProviderType),
+                PendingToken = c.GetPendingTokenValue(),
                 ReturnIdpCredential = true,
                 ReturnSecureToken = true
             }).ConfigureAwait(false);
@@ -100,6 +105,7 @@ namespace Firebase.Auth.Providers
                 IdToken = idToken,
                 RequestUri = $"https://{this.config.AuthDomain}",
                 PostBody = c.GetPostBodyValue(c.ProviderType),
+                PendingToken = c.GetPendingTokenValue(),
                 ReturnIdpCredential = true,
                 ReturnSecureToken = true
             }).ConfigureAwait(false);
@@ -132,10 +138,20 @@ namespace Firebase.Auth.Providers
                 var tokenType = this.TokenType switch
                 {
                     OAuthCredentialTokenType.IdToken => "id_token",
+                    OAuthCredentialTokenType.PendingToken => null,
                     _ => "access_token"
                 };
 
-                return $"{tokenType}={this.Token}&providerId={ProviderType.ToEnumString()}";
+                return tokenType == null 
+                    ? null 
+                    : $"{tokenType}={this.Token}&providerId={ProviderType.ToEnumString()}";
+            }
+
+            internal virtual string GetPendingTokenValue()
+            {
+                return this.TokenType == OAuthCredentialTokenType.PendingToken
+                    ? this.Token
+                    : null;
             }
         }
     }
@@ -143,6 +159,7 @@ namespace Firebase.Auth.Providers
     public enum OAuthCredentialTokenType
     {
         AccessToken = 0,
-        IdToken
+        IdToken,
+        PendingToken
     }
 }

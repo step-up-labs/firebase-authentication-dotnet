@@ -66,12 +66,11 @@ namespace Firebase.Auth.UI
             }
         }
 
-        Task<UserCredential> IFirebaseUIFlow.SignInWithRedirectAsync(FirebaseProviderType provider)
+        Task<string> IFirebaseUIFlow.GetRedirectResponseUriAsync(FirebaseProviderType provider, string uri)
         {
             var redirectUri = FirebaseUI.Instance.Config.RedirectUri;
             var window = Window.GetWindow(this);
-
-            return FirebaseUI.Instance.Client.SignInWithRedirectAsync(provider, uri => WebAuthenticationBroker.AuthenticateAsync(window, provider, uri, redirectUri));
+            return WebAuthenticationBroker.AuthenticateAsync(window, provider, uri, redirectUri);
         }
 
         Task<string> IFirebaseUIFlow.PromptForEmailAsync(string error)

@@ -103,7 +103,7 @@ namespace Firebase.Auth.UI
                     case FirebaseProviderType.Anonymous:
                         return await this.Client.SignInAnonymouslyAsync();
                     default:
-                        return await flow.SignInWithRedirectAsync(provider);
+                        return await this.SignInWithRedirectAsync(flow, provider);
                 }
             }
             catch (FirebaseAuthLinkConflictException ex)
@@ -113,6 +113,23 @@ namespace Firebase.Auth.UI
             finally
             {
                 flow.Reset();
+            }
+        }
+
+        protected virtual async Task<UserCredential> SignInWithRedirectAsync(IFirebaseUIFlow flow, FirebaseProviderType provider)
+        {
+            try
+            {
+                if (this.Config.AutoUpgradeAnonymousUsers && (this.Client.User?.Info.IsAnonymous ?? false))
+                {
+                    return await this.Client.User.LinkWithRedirectAsync(provider, uri => flow.GetRedirectResponseUriAsync(provider, uri));
+                }
+
+                return await this.Client.SignInWithRedirectAsync(provider, uri => flow.GetRedirectResponseUriAsync(provider, uri));
+            }
+            catch (FirebaseAuthWithCredentialException e) when (e.Reason == AuthErrorReason.AlreadyLinked)
+            {
+                return await this.Config.RaiseUpgradeConflictAsync(this.Client, e.Credential);
             }
         }
 

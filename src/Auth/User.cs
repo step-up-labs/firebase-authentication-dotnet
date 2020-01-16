@@ -38,6 +38,11 @@ namespace Firebase.Auth
         public string Uid => this.Info.Uid;
 
         /// <summary>
+        /// Specifies whether this user is anonymous.
+        /// </summary>
+        public bool IsAnonymous => this.Info.IsAnonymous;
+
+        /// <summary>
         /// More information about current user.
         /// </summary>
         public UserInfo Info { get; private set; }

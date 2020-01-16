@@ -29,7 +29,14 @@ namespace Firebase.Auth.Providers
 
             internal override string GetPostBodyValue(FirebaseProviderType ProviderType)
             {
-                return $"{base.GetPostBodyValue(ProviderType)}&oauth_token_secret={this.Secret}";
+                var value = base.GetPostBodyValue(ProviderType);
+
+                if (value == null)
+                {
+                    return value;
+                }
+
+                return $"{value}&oauth_token_secret={this.Secret}";
             }
         }
     }

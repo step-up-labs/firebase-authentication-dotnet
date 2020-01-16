@@ -9,6 +9,8 @@ namespace Firebase.Auth.Requests
         public string RequestUri { get; set; }
         
         public string PostBody { get; set; }
+        
+        public string PendingToken { get; set; }
 
         public string SessionId { get; set; }
 
@@ -54,6 +56,8 @@ namespace Firebase.Auth.Requests
         public int ExpiresIn { get; set; }
 
         public string OauthIdToken { get; set; }
+
+        public string PendingToken { get; set; }
 
         public bool NeedConfirmation { get; set; }
 

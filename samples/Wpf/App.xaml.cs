@@ -32,7 +32,9 @@ namespace Firebase.Auth.Wpf.Sample
                 PrivacyPolicyUrl = "https://github.com/step-up-labs/firebase-authentication-dotnet",
                 TermsOfServiceUrl = "https://github.com/step-up-labs/firebase-database-dotnet",
                 IsAnonymousAllowed = true,
-                UserRepository = new FileUserRepository("FirebaseSample")
+                AutoUpgradeAnonymousUsers = true,
+                UserRepository = new FileUserRepository("FirebaseSample"),
+                FirebaseUpgradeConflict = conflict => conflict.SignInWithPendingCredentialAsync(true)
             });
         }
     }
