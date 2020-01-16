@@ -37,20 +37,40 @@ namespace Firebase.Auth
             return this.cache.Value;
         }
 
-        public async Task SaveUserAsync(User user)
+        public async Task SaveNewUserAsync(User user)
         {
-            this.cache = (user?.Info, user?.Credential);
+            this.cache = (user.Info, user.Credential);
 
-            if (user == null)
-            {
-                await this.fs.DeleteUserAsync().ConfigureAwait(false);
-            }
-            else
-            {
-                await this.fs.SaveUserAsync(user).ConfigureAwait(false);
-            }
+            await this.fs.SaveUserAsync(user).ConfigureAwait(false);
 
             this.UserChanged?.Invoke(this, new UserEventArgs(user));
+        }
+
+        public Task UpdateExistingUserAsync(User user)
+        {
+            if (user.Uid != this.cache?.info.Uid)
+            {
+                // if updating a user, it needs to be the active one, otherwise don't do anything
+                return Task.CompletedTask;
+            }
+
+            // continue updating current user
+            return this.SaveNewUserAsync(user);
+        }
+
+        public async Task DeleteExistingUserAsync(string uid)
+        {
+            if (cache?.info.Uid != uid)
+            {
+                // deleting a user which is not an active user
+                return;
+            }
+
+            this.cache = (null, null);
+
+            await this.fs.DeleteUserAsync().ConfigureAwait(false);
+            
+            this.UserChanged?.Invoke(this, new UserEventArgs(null));
         }
     }
 }

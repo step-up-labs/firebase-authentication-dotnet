@@ -74,11 +74,8 @@ namespace Firebase.Auth.Requests
     /// </summary>
     public class VerifyAssertion : FirebaseRequestBase<VerifyAssertionRequest, VerifyAssertionResponse>
     {
-        private readonly GetAccountInfo accountInfo;
-
         public VerifyAssertion(FirebaseAuthConfig config) : base(config)
         {
-            this.accountInfo = new GetAccountInfo(config);
         }
         
         public static void ValidateAssertionResponse(VerifyAssertionResponse response, AuthCredential credential)

@@ -44,7 +44,7 @@ namespace Firebase.Auth.Tests.Integration
 
             await userCredential.User.GetIdTokenAsync(true);
 
-            invoked.Should().Be(1);
+            invoked.Should().Be(2); // 1x after event subscribe, one after refresh
         }
 
         public Task InitializeAsync()

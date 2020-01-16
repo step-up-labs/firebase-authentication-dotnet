@@ -71,7 +71,7 @@ namespace Firebase.Auth
                     RefreshToken = refresh.RefreshToken
                 };
 
-                await this.config.UserManager.SaveUserAsync(this).ConfigureAwait(false);
+                await this.config.UserManager.UpdateExistingUserAsync(this).ConfigureAwait(false);
             }
 
             return this.Credential.IdToken;
@@ -86,11 +86,11 @@ namespace Firebase.Auth
 
             await this.deleteAccount.ExecuteAsync(new IdTokenRequest { IdToken = token }).ConfigureAwait(false);
 
-            await this.config.UserManager.SaveUserAsync(null).ConfigureAwait(false);
+            await this.config.UserManager.DeleteExistingUserAsync(this.Uid).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Change a user's password.
+        /// Change user's password.
         /// </summary>
         /// <param name="password"> The new password. </param>
         public async Task ChangePasswordAsync(string password)
@@ -111,13 +111,13 @@ namespace Firebase.Auth
                 RefreshToken = result.RefreshToken
             };
 
-            await this.config.UserManager.SaveUserAsync(this).ConfigureAwait(false);
+            await this.config.UserManager.UpdateExistingUserAsync(this).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Link this user with another credential. The user represented by the <paramref name="credential"/> object must not already exist in Firebase.
         /// </summary>
-        /// <param name="credential"> Platform-specifc credentials. </param>
+        /// <param name="credential"> Provider-specifc credentials. </param>
         public async Task<UserCredential> LinkWithCredentialAsync(AuthCredential credential)
         {
             var provider = this.config.Providers.FirstOrDefault(p => p.ProviderType == credential.ProviderType);
@@ -133,7 +133,7 @@ namespace Firebase.Auth
             this.Credential = userCredential.User.Credential;
             this.Info = userCredential.User.Info;
 
-            await this.config.UserManager.SaveUserAsync(userCredential.User).ConfigureAwait(false);
+            await this.config.UserManager.UpdateExistingUserAsync(userCredential.User).ConfigureAwait(false);
 
             return userCredential;
         }
@@ -147,7 +147,7 @@ namespace Firebase.Auth
                 throw new InvalidOperationException("You cannot sign in with this provider using this method.");
             }
 
-            var continuation = await oauthProvider.SignInAsync().ConfigureAwait(false);
+            var continuation = await oauthProvider.SignInAsync();
             var redirectUri = await redirectDelegate(continuation.Uri).ConfigureAwait(false);
 
             if (string.IsNullOrEmpty(redirectUri))
@@ -161,7 +161,7 @@ namespace Firebase.Auth
             this.Credential = userCredential.User.Credential;
             this.Info = userCredential.User.Info;
 
-            await this.config.UserManager.SaveUserAsync(userCredential.User).ConfigureAwait(false);
+            await this.config.UserManager.UpdateExistingUserAsync(userCredential.User).ConfigureAwait(false);
 
             return userCredential;
         }

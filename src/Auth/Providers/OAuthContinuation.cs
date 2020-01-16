@@ -45,7 +45,7 @@ namespace Firebase.Auth.Providers
                     SessionId = this.sessionId,
                     ReturnIdpCredential = true,
                     ReturnSecureToken = true
-                });
+                }).ConfigureAwait(false);
 
             var provider = this.config.GetAuthProvider(this.providerType) as OAuthProvider ?? throw new InvalidOperationException($"{this.providerType} is not a OAuthProvider");
             var credential = provider.GetCredential(response);

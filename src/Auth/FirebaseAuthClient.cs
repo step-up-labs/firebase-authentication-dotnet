@@ -2,6 +2,7 @@
 using Firebase.Auth.Requests;
 using System;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Firebase.Auth
@@ -53,20 +54,19 @@ namespace Firebase.Auth
             add
             {
                 this.authStateChanged += value;
-                if (this.User == null)
+
+                // for every new listener trigger the AuthStateChanged event
+                this.config.UserManager.GetUserAsync().ContinueWith(t =>
                 {
-                    this.config.UserManager.GetUserAsync().ContinueWith(t =>
+                    if (t.Result.Item1 == null)
                     {
-                        if (t.Result.Item1 == null)
-                        {
-                            this.TriggerAuthStateChanged(value, null);
-                        }
-                        else
-                        {
-                            this.TriggerAuthStateChanged(value, new User(this.config, t.Result.info, t.Result.credential));
-                        }
-                    });
-                }
+                        this.TriggerAuthStateChanged(value, null);
+                    }
+                    else
+                    {
+                        this.TriggerAuthStateChanged(value, new User(this.config, t.Result.info, t.Result.credential));
+                    }
+                });
             }
             remove
             {
@@ -77,15 +77,15 @@ namespace Firebase.Auth
         public async Task<UserCredential> SignInWithRedirectAsync(FirebaseProviderType authType, SignInRedirectDelegate redirectDelegate)
         {
             var provider = this.config.GetAuthProvider(authType);
-
+            
             if (!(provider is OAuthProvider oauthProvider))
             {
                 throw new InvalidOperationException("You cannot sign in with this provider using this method.");
             }
 
-            await this.CheckAuthDomain().ConfigureAwait(false);
+            await this.CheckAuthDomain();
 
-            var continuation = await oauthProvider.SignInAsync().ConfigureAwait(false);
+            var continuation = await oauthProvider.SignInAsync();
             var redirectUri = await redirectDelegate(continuation.Uri).ConfigureAwait(false);
 
             if (string.IsNullOrEmpty(redirectUri))
@@ -95,8 +95,6 @@ namespace Firebase.Auth
 
             var userCredential = await continuation.ContinueSignInAsync(redirectUri).ConfigureAwait(false);
 
-            await this.SaveTokenAsync(userCredential.User).ConfigureAwait(false);
-
             return userCredential;
         }
 
@@ -104,9 +102,13 @@ namespace Firebase.Auth
         {
             await this.CheckAuthDomain().ConfigureAwait(false);
             
-            return await this.config
+            var userCredential = await this.config
                 .GetAuthProvider(credential.ProviderType)
                 .SignInWithCredentialAsync(credential);
+
+            await this.SaveTokenAsync(userCredential.User).ConfigureAwait(false);
+
+            return userCredential;
         }
 
         public async Task<UserCredential> SignInAnonymouslyAsync()
@@ -182,8 +184,9 @@ namespace Firebase.Auth
 
         public Task SignOutAsync()
         {
+            var uid = this.User?.Uid;
             this.User = null;
-            return this.config.UserManager.SaveUserAsync(null);
+            return this.config.UserManager.DeleteExistingUserAsync(uid);
         }
 
         private void TriggerAuthStateChanged(EventHandler<UserEventArgs> value, User user)
@@ -194,7 +197,7 @@ namespace Firebase.Auth
 
         private async Task SaveTokenAsync(User user)
         {
-            await this.config.UserManager.SaveUserAsync(user);
+            await this.config.UserManager.SaveNewUserAsync(user);
         }
 
         private async Task CheckAuthDomain()

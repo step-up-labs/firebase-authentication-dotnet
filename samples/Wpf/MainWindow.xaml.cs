@@ -21,7 +21,11 @@ namespace Firebase.Auth.Wpf.Sample
                     await FirebaseUI.Instance.Client.SignInAnonymouslyAsync();
                     this.Frame.Navigate(new LoginPage());
                 }
-                else if (!e.User.IsAnonymous && (this.Frame.Content == null || this.Frame.Content.GetType() != typeof(MainPage)))
+                else if (e.User.IsAnonymous)
+                {
+                    this.Frame.Navigate(new LoginPage());
+                }
+                else if ((this.Frame.Content == null || this.Frame.Content.GetType() != typeof(MainPage)))
                 {
                     this.Frame.Navigate(new MainPage());
                 }
