@@ -91,6 +91,12 @@ namespace Firebase.Auth.Requests
             {
                 throw new FirebaseAuthWithCredentialException("This credential is already associated with a different user account", credential, AuthErrorReason.AlreadyLinked);
             }
+
+            if (response.ErrorMessage == "EMAIL_EXISTS")
+            {
+                // trying to link OAuth account to email which already exists
+                throw new FirebaseAuthWithCredentialException("This email is already associated with another account", response.Email, credential, AuthErrorReason.EmailExists);
+            }
         }
 
         public async Task<(User, VerifyAssertionResponse)> ExecuteAndParseAsync(FirebaseProviderType providerType, VerifyAssertionRequest request)

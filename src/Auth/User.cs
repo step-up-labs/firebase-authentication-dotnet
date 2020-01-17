@@ -19,6 +19,7 @@ namespace Firebase.Auth
         private readonly RefreshToken token;
         private readonly UpdateAccount updateAccount;
         private readonly SetAccountUnlink unlinkAccount;
+        private readonly SetAccountInfo setAccountInfo;
         private readonly FirebaseAuthConfig config;
 
         internal User(FirebaseAuthConfig config, UserInfo userInfo, FirebaseCredential credential)
@@ -30,6 +31,7 @@ namespace Firebase.Auth
             this.token = new RefreshToken(config);
             this.updateAccount = new UpdateAccount(config);
             this.unlinkAccount = new SetAccountUnlink(config);
+            this.setAccountInfo = new SetAccountInfo(config);
         }
 
         /// <summary>
@@ -110,6 +112,25 @@ namespace Firebase.Auth
                 ProviderType = this.Credential.ProviderType,
                 RefreshToken = result.RefreshToken
             };
+
+            await this.config.UserManager.UpdateExistingUserAsync(this).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Change user's display name.
+        /// </summary>
+        /// <param name="displayName"> The new display name. </param>
+        public async Task ChangeDisplayNameAsync(string displayName)
+        {
+            var token = await this.GetIdTokenAsync().ConfigureAwait(false);
+            var result = await this.setAccountInfo.ExecuteAsync(new SetAccountDisplayName
+            {
+                IdToken = token,
+                DisplayName = displayName,
+                ReturnSecureToken = true
+            }).ConfigureAwait(false);
+
+            this.Info.DisplayName = result.DisplayName;
 
             await this.config.UserManager.UpdateExistingUserAsync(this).ConfigureAwait(false);
         }

@@ -15,13 +15,17 @@ namespace Firebase.Auth.UI.Pages
             InitializeComponent();
         }
 
-        public SignInPage Initialize(TaskCompletionSource<EmailPasswordResult> tcs, string email, string error = "")
+        public SignInPage Initialize(TaskCompletionSource<EmailPasswordResult> tcs, string email, bool oauthEmailAttempt, string error = "")
         {
             this.tcs = tcs;
             this.Progressbar.Visibility = Visibility.Hidden;
             this.ButtonsPanel.IsEnabled = true;
             this.PasswordBox.IsEnabled = true;
             this.PasswordBox.Focus();
+
+            this.TitleTextBlock.Text = oauthEmailAttempt
+                ? AppResources.Instance.FuiWelcomeBackIdpHeader
+                : AppResources.Instance.FuiWelcomeBackEmailHeader;
 
             var message = string.Format(AppResources.Instance.FuiWelcomeBackPasswordPromptBody, email).Split(email);
             this.WelcomeSubtitleTextBlock.Inlines.Clear();

@@ -35,8 +35,9 @@ namespace Firebase.Auth.UI
         /// Get user's password. Used to sign in an existing user via email.
         /// </summary>
         /// <param name="email"> Email the user entered in the previous step. </param>
+        /// <param name="oauthEmailAttempt"> Specifies whether federated oauth sign-in was attempted. </param>
         /// <param name="error"> Error encountered in previous attempt. </param>
-        Task<EmailPasswordResult> PromptForPasswordAsync(string email, string error = "");
+        Task<EmailPasswordResult> PromptForPasswordAsync(string email, bool oauthEmailAttempt, string error = "");
 
         /// <summary>
         /// Ask user to confirm email password reset.

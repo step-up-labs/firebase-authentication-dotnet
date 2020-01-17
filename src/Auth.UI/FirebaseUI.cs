@@ -120,7 +120,7 @@ namespace Firebase.Auth.UI
         {
             try
             {
-                if (this.Config.AutoUpgradeAnonymousUsers && (this.Client.User?.Info.IsAnonymous ?? false))
+                if (this.UpgradeAnonymousUser)
                 {
                     return await this.Client.User.LinkWithRedirectAsync(provider, uri => flow.GetRedirectResponseUriAsync(provider, uri));
                 }
@@ -130,6 +130,13 @@ namespace Firebase.Auth.UI
             catch (FirebaseAuthWithCredentialException e) when (e.Reason == AuthErrorReason.AlreadyLinked)
             {
                 return await this.Config.RaiseUpgradeConflictAsync(this.Client, e.Credential);
+            }
+            catch (FirebaseAuthWithCredentialException e) when (e.Reason == AuthErrorReason.EmailExists)
+            {
+                // trigger email login (password screen)
+                // link credential with email
+                // link result with anonymous
+                return await this.SignInWithEmailAsync(flow, e.Email, e.Credential);
             }
         }
 
@@ -151,46 +158,74 @@ namespace Firebase.Auth.UI
 
             if (fetchResult.UserExists)
             {
-                Func<Task<UserCredential>> signInUserFunc = null;
-                    
-                // This func can recursively call itself in case user asks to recover email password
-                // - it shows reset page
-                // - after reset can try to enter password again
-                signInUserFunc = () =>
-                {
-                    return this.RetryAction(
-                        e => flow.PromptForPasswordAsync(email, e),
-                        async result =>
-                        {
-                            if (result.ResetPassword)
-                            {
-                                var reset = await this.RetryAction(
-                                    e => flow.PromptForPasswordResetAsync(email, e),
-                                    async res => 
-                                    {
-                                        await this.Client.ResetEmailPasswordAsync(email);
-                                        await flow.ShowPasswordResetConfirmationAsync(email);
-                                        return true;
-                                    });
-
-                                if (!reset)
-                                {
-                                    return null;
-                                }
-
-                                return await signInUserFunc();
-                            }
-
-                            return await this.Client.SignInWithEmailAndPasswordAsync(email, result.Password);
-                        });
-                };
-
-                return await signInUserFunc();
+                return await this.SignInWithEmailAsync(flow, email);
             }
 
             return await this.RetryAction(
                 e => flow.PromptForEmailPasswordNameAsync(email, e),
-                user => this.Client.CreateUserWithEmailAndPasswordAsync(user.Email, user.Password, user.DisplayName));
+                async user =>
+                {
+                    if (this.UpgradeAnonymousUser)
+                    {
+                        var userCredential = await this.Client.User.LinkWithCredentialAsync(EmailProvider.GetCredential(user.Email, user.Password));
+
+                        if (!string.IsNullOrWhiteSpace(user.DisplayName))
+                        {
+                            await userCredential.User.ChangeDisplayNameAsync(user.DisplayName);
+                        }
+
+                        return userCredential;
+                    }
+
+                    return await this.Client.CreateUserWithEmailAndPasswordAsync(user.Email, user.Password, user.DisplayName);
+                });
+        }
+
+        protected virtual Task<UserCredential> SignInWithEmailAsync(IFirebaseUIFlow flow, string email, AuthCredential pendingCredential = null)
+        {
+            var provider = (EmailProvider)this.Config.GetAuthProvider(FirebaseProviderType.EmailAndPassword);
+
+            // This method can recursively call itself in case user asks to recover email password
+            // - it shows reset page
+            // - after reset can try to enter password again
+            return this.RetryAction(
+                e => flow.PromptForPasswordAsync(email, pendingCredential != null, e),
+                async result =>
+                {
+                    if (result.ResetPassword)
+                    {
+                        var reset = await this.RetryAction(
+                            e => flow.PromptForPasswordResetAsync(email, e),
+                            async res =>
+                            {
+                                await this.Client.ResetEmailPasswordAsync(email);
+                                await flow.ShowPasswordResetConfirmationAsync(email);
+                                return true;
+                            });
+
+                        if (!reset)
+                        {
+                            return null;
+                        }
+
+                        return await SignInWithEmailAsync(flow, email);
+                    }
+
+                    var userCredential = await provider.SignInUserAsync(email, result.Password);
+
+                    if (pendingCredential != null)
+                    {
+                        // pending credential should be linked with the existing email credential
+                        userCredential = await userCredential.User.LinkWithCredentialAsync(pendingCredential);
+                    }
+
+                    if (this.UpgradeAnonymousUser)
+                    {
+                        userCredential = await this.Config.RaiseUpgradeConflictAsync(this.Client, userCredential.AuthCredential);
+                    }
+
+                    return userCredential;
+                });
         }
 
         protected virtual async Task<UserCredential> HandleConflictAsync(IFirebaseUIFlow flow, FirebaseAuthLinkConflictException exception)
@@ -227,5 +262,11 @@ namespace Firebase.Auth.UI
                 }
             }
         }
+        
+        private bool UpgradeAnonymousUser
+        {
+            get => this.Config.AutoUpgradeAnonymousUsers && (this.Client.User?.Info.IsAnonymous ?? false);
+        }
+
     }
 }

@@ -12,21 +12,30 @@ namespace Firebase.Auth.Wpf.Sample
         {
             InitializeComponent();
 
-            var user = FirebaseUI.Instance.Client.User;
+            FirebaseUI.Instance.Client.AuthStateChanged += this.AuthStateChanged;
+        }
 
-            this.UidTextBlock.Text = user.Uid;
-            this.NameTextBlock.Text = user.Info.DisplayName;
-            this.EmailTextBlock.Text = user.Info.Email;
-            this.ProviderTextBlock.Text = user.Credential.ProviderType.ToString();
+        private void AuthStateChanged(object sender, UserEventArgs e)
+        {
+            var user = e.User;
 
-            if (!string.IsNullOrWhiteSpace(user.Info.PhotoUrl))
+            Application.Current.Dispatcher.Invoke(() =>
             {
-                this.ProfileImage.Source = new BitmapImage(new Uri(user.Info.PhotoUrl));
-            }
+                this.UidTextBlock.Text = user.Uid;
+                this.NameTextBlock.Text = user.Info.DisplayName;
+                this.EmailTextBlock.Text = user.Info.Email;
+                this.ProviderTextBlock.Text = user.Credential.ProviderType.ToString();
+
+                if (!string.IsNullOrWhiteSpace(user.Info.PhotoUrl))
+                {
+                    this.ProfileImage.Source = new BitmapImage(new Uri(user.Info.PhotoUrl));
+                }
+            });
         }
 
         private async void SignOutClick(object sender, RoutedEventArgs e)
         {
+            FirebaseUI.Instance.Client.AuthStateChanged -= this.AuthStateChanged;
             await FirebaseUI.Instance.Client.SignOutAsync();
         }
     }

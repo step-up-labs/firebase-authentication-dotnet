@@ -95,6 +95,8 @@ namespace Firebase.Auth
 
             var userCredential = await continuation.ContinueSignInAsync(redirectUri).ConfigureAwait(false);
 
+            await this.SaveTokenAsync(userCredential.User).ConfigureAwait(false);
+
             return userCredential;
         }
 

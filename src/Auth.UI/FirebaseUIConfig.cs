@@ -29,16 +29,16 @@ namespace Firebase.Auth.UI
         /// </summary>
         public bool AutoUpgradeAnonymousUsers { get; set; }
 
-        public Func<FirebaseUpgradeConflict, Task<UserCredential>> FirebaseUpgradeConflict;
+        public Func<FirebaseUpgradeConflict, Task<UserCredential>> AnonymousUpgradeConflict;
 
         internal Task<UserCredential> RaiseUpgradeConflictAsync(FirebaseAuthClient client, AuthCredential credential)
         {
-            if (this.FirebaseUpgradeConflict == null)
+            if (this.AnonymousUpgradeConflict == null)
             {
-                new InvalidOperationException($"{nameof(FirebaseUpgradeConflict)} must be set when {nameof(AutoUpgradeAnonymousUsers)} is set");
+                new InvalidOperationException($"{nameof(AnonymousUpgradeConflict)} must be set when {nameof(AutoUpgradeAnonymousUsers)} is set");
             }
 
-            return this.FirebaseUpgradeConflict(new FirebaseUpgradeConflict(client, credential));
+            return this.AnonymousUpgradeConflict(new FirebaseUpgradeConflict(client, credential));
         }
     }
 }

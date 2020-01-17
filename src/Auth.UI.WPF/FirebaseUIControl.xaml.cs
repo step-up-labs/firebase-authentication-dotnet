@@ -87,10 +87,10 @@ namespace Firebase.Auth.UI
             return tcs.Task;
         }
 
-        Task<EmailPasswordResult> IFirebaseUIFlow.PromptForPasswordAsync(string email, string error)
+        Task<EmailPasswordResult> IFirebaseUIFlow.PromptForPasswordAsync(string email, bool oauthEmailAttempt, string error)
         {
             var tcs = new TaskCompletionSource<EmailPasswordResult>();
-            this.Frame.Navigate(this.signInPage.Initialize(tcs, email, error));
+            this.Frame.Navigate(this.signInPage.Initialize(tcs, email, oauthEmailAttempt, error));
             return tcs.Task;
         }
 

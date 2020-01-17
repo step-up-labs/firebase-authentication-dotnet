@@ -54,19 +54,22 @@
 
     public class FirebaseAuthWithCredentialException : FirebaseAuthException
     {
-        public FirebaseAuthWithCredentialException(Exception innerException, AuthCredential credential, AuthErrorReason reason)
-            : base(innerException, reason)
-        {
-            this.Credential = credential;
-        }
-
         public FirebaseAuthWithCredentialException(string message, AuthCredential credential, AuthErrorReason reason)
             : base(message, reason)
         {
             this.Credential = credential;
         }
 
+        public FirebaseAuthWithCredentialException(string message, string email, AuthCredential credential, AuthErrorReason reason)
+            : base(message, reason)
+        {
+            this.Credential = credential;
+            this.Email = email;
+        }
+
         public AuthCredential Credential { get; }
+
+        public string Email { get; set; }
     }
 
     /// <summary>
