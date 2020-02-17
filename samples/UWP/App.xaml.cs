@@ -1,16 +1,20 @@
 ﻿using Firebase.Auth.Providers;
 using Firebase.Auth.Repository;
 using Firebase.Auth.UI;
-using System.Globalization;
+using Firebase.Auth;
+using System;
 using Windows.ApplicationModel.Activation;
 using Windows.Globalization;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Core;
 
 namespace Auth.UWP.Sample
 {
     sealed partial class App : Application
     {
+        private Frame frame = new Frame();
+
         public App()
         {
             this.InitializeComponent();
@@ -46,26 +50,37 @@ namespace Auth.UWP.Sample
             });
         }
 
+        private async void AuthStateChanged(object sender, UserEventArgs e)
+        {
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
+                CoreDispatcherPriority.Normal,
+                async () =>
+                {
+                    if (e.User == null)
+                    {
+                        await FirebaseUI.Instance.Client.SignInAnonymouslyAsync();
+                        this.frame.Navigate(typeof(LoginPage));
+                    }
+                    else if (e.User.IsAnonymous)
+                    {
+                        this.frame.Navigate(typeof(LoginPage));
+                    }
+                    else if ((this.frame.Content == null || this.frame.Content.GetType() != typeof(MainPage)))
+                    {
+                        this.frame.Navigate(typeof(MainPage));
+                    }
+                });
+        }
+
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            var rootFrame = Window.Current.Content as Frame;
-
-            if (rootFrame == null)
+            if (Window.Current.Content as Frame == null)
             {
-                rootFrame = new Frame();
-
-                Window.Current.Content = rootFrame;
+                Window.Current.Content = this.frame;
+                FirebaseUI.Instance.Client.AuthStateChanged += this.AuthStateChanged;
             }
 
-            if (e.PrelaunchActivated == false)
-            {
-                if (rootFrame.Content == null)
-                {
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
-                }
-
-                Window.Current.Activate();
-            }
+            Window.Current.Activate();
         }
     }
 }
