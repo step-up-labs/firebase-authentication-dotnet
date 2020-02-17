@@ -21,7 +21,7 @@ namespace Firebase.Auth.UI.Pages
             this.Progressbar.Visibility = Visibility.Hidden;
             this.ButtonsPanel.IsEnabled = true;
             this.PasswordBox.IsEnabled = true;
-            this.PasswordBox.Focus();
+            this.NameTextBox.Focus();
             this.EmailTextBox.Text = email;
 
             if (error == "")
@@ -60,6 +60,8 @@ namespace Firebase.Auth.UI.Pages
             {
                 return;
             }
+
+            this.ButtonsPanel.IsEnabled = false;
 
             this.tcs.SetResult(new EmailUser
             {
