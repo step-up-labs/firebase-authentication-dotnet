@@ -25,6 +25,7 @@
         <TextBox
             x:Name="EmailTextBox"
             KeyDown="EmailTextBoxKeyDown"
+            InputScope="EmailNameOrAddress"
             TabIndex="0"
             />
 
