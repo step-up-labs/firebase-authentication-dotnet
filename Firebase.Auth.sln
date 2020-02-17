@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Console.Sample", "samp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{E7929450-C7E2-433F-9AB9-7AFC6C418054}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Wpf.Sample", "samples\Wpf\Auth.Wpf.Sample.csproj", "{9C0B8B45-EDB0-40EF-A76E-F5E1401364B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.WPF.Sample", "samples\WPF\Auth.WPF.Sample.csproj", "{9C0B8B45-EDB0-40EF-A76E-F5E1401364B5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.UI", "src\Auth.UI\Auth.UI.csproj", "{B0EE13F0-FEC4-4ACA-8EA5-E1369012C568}"
 EndProject
