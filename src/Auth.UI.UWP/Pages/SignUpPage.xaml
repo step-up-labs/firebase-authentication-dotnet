@@ -1,0 +1,110 @@
+﻿<Page
+    x:Class="Firebase.Auth.UI.Pages.SignUpPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Firebase.Auth.UI.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:loc="using:Firebase.Auth.UI.Resources"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel VerticalAlignment="Center">
+
+        <TextBlock
+            Margin="0 0 0 12"
+            Style="{x:Bind Styles.TitleStyle}"
+            Text="{x:Bind loc:AppResources.Instance.FuiTitleRegisterEmail}"
+            />
+
+        <TextBlock
+            Margin="0 12 0 0"
+            Style="{x:Bind Styles.HeaderStyle}"
+            Text="{x:Bind loc:AppResources.Instance.FuiEmailHint}"
+            />
+
+        <TextBox
+            x:Name="EmailTextBox"
+            IsReadOnly="True"
+            Margin="0 0 0 10"
+            />
+
+        <TextBlock
+            Margin="0 12 0 0"
+            Style="{x:Bind Styles.HeaderStyle}"
+            Text="{x:Bind loc:AppResources.Instance.FuiNameHint}"
+            />
+
+        <TextBox
+            x:Name="NameTextBox"
+            LostFocus="NameTextBoxLostFocus"
+            KeyDown="NameTextBoxKeyDown"
+            TabIndex="0"
+            />
+
+        <Border Height="20">
+            <TextBlock
+                x:Name="NameErrorTextBlock"
+                Style="{x:Bind Styles.ErrorStyle}"
+                Text="{x:Bind loc:AppResources.Instance.FuiMissingFirstAndLastName}"
+                />
+        </Border>
+
+        <TextBlock 
+            Margin="0 6 0 0"
+            Style="{x:Bind Styles.HeaderStyle}"
+            Text="{x:Bind loc:AppResources.Instance.FuiPasswordHint}"
+            />
+
+        <PasswordBox
+            x:Name="PasswordBox"
+            LostFocus="PasswordBoxLostFocus"
+            KeyDown="PasswordBoxKeyDown"
+            TabIndex="1"
+            />
+
+        <Border Height="20">
+            <TextBlock
+                x:Name="ErrorTextBlock"
+                Style="{x:Bind Styles.ErrorStyle}"
+                Text="Error"
+                TextWrapping="Wrap"
+                />
+        </Border>
+
+        <Border x:Name="ProgressBorder" Height="16">
+            <ProgressBar 
+                x:Name="Progressbar"
+                Margin="0 12 0 0"
+                IsIndeterminate="True"
+                />
+        </Border>
+
+        <StackPanel
+            x:Name="ButtonsPanel"
+            Margin="0 12 0 0"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+
+            <Button
+                x:Name="SignUpButton"
+                Click="SignUpClick"
+                Margin="0 0 12 0"
+                Content="{x:Bind loc:AppResources.Instance.FuiButtonTextSave}"
+                Style="{x:Bind Styles.ConfirmButtonStyle}"
+                TabIndex="2"
+                />
+
+            <Button
+                x:Name="CancelButton"
+                Click="CancelClick"
+                Content="{x:Bind loc:AppResources.Instance.FuiCancel}"
+                Style="{x:Bind Styles.CancelButtonStyle}"
+                TabIndex="3"
+                />
+        </StackPanel>
+
+        <local:LinksFooter />
+
+    </StackPanel>
+</Page>

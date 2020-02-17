@@ -125,7 +125,9 @@ namespace Firebase.Auth.UI
 
         Task<EmailUser> IFirebaseUIFlow.PromptForEmailPasswordNameAsync(string email, string error)
         {
-            throw new NotImplementedException();
+            var tcs = new TaskCompletionSource<EmailUser>();
+            this.frame.Navigate(typeof(SignUpPage), (this.Styles, tcs, email, error), new SlideNavigationTransitionInfo { Effect = SlideNavigationTransitionEffect.FromRight });
+            return tcs.Task;
         }
 
         Task<EmailPasswordResult> IFirebaseUIFlow.PromptForPasswordAsync(string email, bool oauthEmailAttempt, string error)
