@@ -137,7 +137,9 @@ namespace Firebase.Auth.UI
 
         Task<object> IFirebaseUIFlow.PromptForPasswordResetAsync(string email, string error)
         {
-            throw new NotImplementedException();
+            var tcs = new TaskCompletionSource<object>();
+            this.frame.Navigate(typeof(RecoverPasswordPage), (this.Styles, tcs, email, error), new SlideNavigationTransitionInfo { Effect = SlideNavigationTransitionEffect.FromRight });
+            return tcs.Task;
         }
 
         async Task IFirebaseUIFlow.ShowPasswordResetConfirmationAsync(string email)

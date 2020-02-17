@@ -135,6 +135,9 @@
     <Compile Include="Pages\ProvidersPage.xaml.cs">
       <DependentUpon>ProvidersPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RecoverPasswordPage.xaml.cs">
+      <DependentUpon>RecoverPasswordPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SignInPage.xaml.cs">
       <DependentUpon>SignInPage.xaml</DependentUpon>
     </Compile>
@@ -200,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ProvidersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RecoverPasswordPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
