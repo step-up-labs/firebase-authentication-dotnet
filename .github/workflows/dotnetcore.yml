@@ -15,6 +15,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
+    - name: Setup UWP
+      uses: crazy-max/ghaction-chocolatey@v1.0.2
+      with:
+        args: install visualstudio2019-workload-universal
     - name: Build
       run: dotnet build --configuration Release
     - name: Run Unit Tests
