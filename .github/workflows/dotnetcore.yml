@@ -35,6 +35,10 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.101
+      - name: Setup UWP
+        uses: crazy-max/ghaction-chocolatey@v1.0.2
+        with:
+          args: install visualstudio2019-workload-universal
       - name: Pack preview
         if: startsWith(github.ref, 'refs/tags/') == false
         run: dotnet pack --output ./artifacts --configuration Release --version-suffix "preview-$(date +%Y%m%d%H%M%S)"
