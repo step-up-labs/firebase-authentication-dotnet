@@ -178,8 +178,12 @@ function Write-DesignerProperty([string] $name, [string] $value) {
         /// </summary>
 		public string $camel {
             get {
-                var x = ResourceManager.GetString(`"$name`", this.resourceCulture);
-				return string.IsNullOrWhiteSpace(x) ? @`"$val`" : x;
+                try {
+                    var x = ResourceManager.GetString(`"$name`", this.resourceCulture);
+				    return string.IsNullOrWhiteSpace(x) ? @`"$val`" : x;
+                } catch {
+                    return @`"$val`";
+                }
             }
         }
 "
@@ -276,11 +280,13 @@ function Download-Localizations([string] $folder, [string[]]$languages) {
   $languages | foreach {
 
     $lng = $_
+    $down = $lng.Split("-")[0]
+
     try {
       Write-Output "Downloading $lng"
              
       # Firebase Auth
-      Invoke-WebRequest -uri "https://raw.githubusercontent.com/firebase/FirebaseUI-Android/master/auth/src/main/res/values-$lng/strings.xml" -OutFile "$folder/$lng.xml"
+      Invoke-WebRequest -uri "https://raw.githubusercontent.com/firebase/FirebaseUI-Android/master/auth/src/main/res/values-$down/strings.xml" -OutFile "$folder/$lng.xml"
     }
     catch {
       Write-Error "Couldn't fetch language file '$lng'"
@@ -318,7 +324,7 @@ function Download-Localizations([string] $folder, [string[]]$languages) {
 "pt",
 "ro",
 "ru",
-"sr",
+"sr-cyrl",
 "sk",
 "sl",
 "sv",
