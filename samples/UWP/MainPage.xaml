@@ -19,8 +19,8 @@
                     />
             </fui:FirebaseUIControl.Header>
             <fui:FirebaseUIControl.ErrorTextBlockStyle>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="Green" />
+                <Style TargetType="TextBlock" BasedOn="{StaticResource CaptionTextBlockStyle}">
+                    <Setter Property="Foreground" Value="PaleVioletRed" />
                 </Style>
             </fui:FirebaseUIControl.ErrorTextBlockStyle>
         </fui:FirebaseUIControl>
