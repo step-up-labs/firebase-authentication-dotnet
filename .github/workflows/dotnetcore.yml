@@ -14,7 +14,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.100
+        dotnet-version: 3.1.101
     - name: Build
       run: dotnet build --configuration Release
     - name: Run Unit Tests
@@ -34,7 +34,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 3.1.100
+          dotnet-version: 3.1.101
       - name: Pack preview
         if: startsWith(github.ref, 'refs/tags/') == false
         run: dotnet pack --output ./artifacts --configuration Release --version-suffix "preview-$(date +%Y%m%d%H%M%S)"
@@ -57,7 +57,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.100
+        dotnet-version: 3.1.101
     - uses: actions/download-artifact@v1
       with:
         name: artifacts
