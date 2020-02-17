@@ -62,6 +62,7 @@ namespace Firebase.Auth.UI.Pages
             }
 
             this.ButtonsPanel.IsEnabled = false;
+            this.Progressbar.Visibility = Visibility.Visible;
 
             this.tcs.SetResult(new EmailUser
             {
