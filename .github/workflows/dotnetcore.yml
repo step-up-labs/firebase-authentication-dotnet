@@ -15,12 +15,8 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
-    - name: Setup UWP
-      uses: crazy-max/ghaction-chocolatey@v1.0.2
-      with:
-        args: install visualstudio2019-workload-universal
     - name: Build
-      run: dotnet build --configuration Release
+      run: .\build\build-libs.ps1
     - name: Run Unit Tests
       run: dotnet test --no-build --configuration Release --filter Category!=Integration
     - name: Run Integration Tests
@@ -39,10 +35,6 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.101
-      - name: Setup UWP
-        uses: crazy-max/ghaction-chocolatey@v1.0.2
-        with:
-          args: install visualstudio2019-workload-universal
       - name: Pack preview
         if: startsWith(github.ref, 'refs/tags/') == false
         run: dotnet pack --output ./artifacts --configuration Release --version-suffix "preview-$(date +%Y%m%d%H%M%S)"
