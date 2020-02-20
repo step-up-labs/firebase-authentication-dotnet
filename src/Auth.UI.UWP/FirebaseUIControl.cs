@@ -3,6 +3,7 @@ using Firebase.Auth.UI.Resources;
 using System;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
+using Windows.Foundation.Metadata;
 using Windows.Security.Authentication.Web;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -118,30 +119,22 @@ namespace Firebase.Auth.UI
 
         Task<string> IFirebaseUIFlow.PromptForEmailAsync(string error)
         {
-            var tcs = new TaskCompletionSource<string>();
-            this.frame.Navigate(typeof(EmailPage), (this.Styles, tcs, error), new SlideNavigationTransitionInfo { Effect = SlideNavigationTransitionEffect.FromRight });
-            return tcs.Task;
+            return NavigateFrame<EmailPage, string>(tcs => (this.Styles, tcs, error));
         }
 
         Task<EmailUser> IFirebaseUIFlow.PromptForEmailPasswordNameAsync(string email, string error)
         {
-            var tcs = new TaskCompletionSource<EmailUser>();
-            this.frame.Navigate(typeof(SignUpPage), (this.Styles, tcs, email, error), new SlideNavigationTransitionInfo { Effect = SlideNavigationTransitionEffect.FromRight });
-            return tcs.Task;
+            return NavigateFrame<SignUpPage, EmailUser>(tcs => (this.Styles, tcs, email, error));
         }
 
         Task<EmailPasswordResult> IFirebaseUIFlow.PromptForPasswordAsync(string email, bool oauthEmailAttempt, string error)
         {
-            var tcs = new TaskCompletionSource<EmailPasswordResult>();
-            this.frame.Navigate(typeof(SignInPage), (this.Styles, tcs, email, oauthEmailAttempt, error), new SlideNavigationTransitionInfo { Effect = SlideNavigationTransitionEffect.FromRight });
-            return tcs.Task;
+            return NavigateFrame<SignInPage, EmailPasswordResult>(tcs => (this.Styles, tcs, email, oauthEmailAttempt, error));
         }
 
         Task<object> IFirebaseUIFlow.PromptForPasswordResetAsync(string email, string error)
         {
-            var tcs = new TaskCompletionSource<object>();
-            this.frame.Navigate(typeof(RecoverPasswordPage), (this.Styles, tcs, email, error), new SlideNavigationTransitionInfo { Effect = SlideNavigationTransitionEffect.FromRight });
-            return tcs.Task;
+            return NavigateFrame<RecoverPasswordPage, object>(tcs => (this.Styles, tcs, email, error));
         }
 
         async Task IFirebaseUIFlow.ShowPasswordResetConfirmationAsync(string email)
@@ -162,5 +155,22 @@ namespace Firebase.Auth.UI
         }
 
         private Styles Styles => new Styles(this.TitleTextBlockStyle, this.HeaderTextBlockStyle, this.ErrorTextBlockStyle, this.BodyTextBlockStyle, this.ConfirmButtonStyle, this.CancelButtonStyle);
+
+        private Task<TResult> NavigateFrame<TPage, TResult>(Func<TaskCompletionSource<TResult>, object> param)
+            where TPage: Page
+        {
+            var tcs = new TaskCompletionSource<TResult>();
+
+            if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.Media.Animation.SlideNavigationTransitionInfo", "Effect"))
+            {
+                this.frame.Navigate(typeof(TPage), param(tcs), new SlideNavigationTransitionInfo { Effect = SlideNavigationTransitionEffect.FromRight });
+            }
+            else
+            {
+                this.frame.Navigate(typeof(TPage), param(tcs), new SlideNavigationTransitionInfo());
+            }
+
+            return tcs.Task;
+        }
     }
 }

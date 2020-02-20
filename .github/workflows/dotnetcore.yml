@@ -15,38 +15,40 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
-    - name: MSBuild setup
+    - name: Setup MSBuild
       uses: warrenbuckley/Setup-MSBuild@v1
     - name: Build
       run: .\build\build-libs.ps1
-    - name: Run Unit Tests
-      run: dotnet test --no-build --configuration Release --filter Category!=Integration
-    - name: Run Integration Tests
+    - name: Run Tests
       env:
         FIREBASE_AUTH_TEST_API_KEY: ${{ secrets.FIREBASE_AUTH_TEST_API_KEY }}
         FIREBASE_AUTH_TEST_DOMAIN: ${{ secrets.FIREBASE_AUTH_TEST_DOMAIN }}
-      run: dotnet test --no-build --configuration Release --filter Category=Integration
+      run: .\build\run-tests.ps1
+    - uses: actions/upload-artifact@v1
+      with: 
+        name: binaries
+        path: .
   pack:
     runs-on: windows-latest
     needs: build
     if: github.event_name == 'push'
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
+      - uses: actions/download-artifact@v1
+        with:
+          name: binaries
+          path: .
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.101
+      - name: Setup MSBuild
+        uses: warrenbuckley/Setup-MSBuild@v1
       - name: Pack preview
         if: startsWith(github.ref, 'refs/tags/') == false
-        run: dotnet pack --output ./artifacts --configuration Release --version-suffix "preview-$(date +%Y%m%d%H%M%S)"
-      - name: Determine tag version
-        shell: bash
-        if: startsWith(github.ref, 'refs/tags/')
-        run: echo "::set-env name=TAG_VERSION::$(git describe --tags --abbrev=0 | cut -c2-)"
+        run: run: .\build\run-tests.ps1 -preview
       - name: Pack from tag
         if: startsWith(github.ref, 'refs/tags/')
-        run: dotnet pack --output ./artifacts --configuration Release -p:version=$ENV:TAG_VERSION
+        run: run: .\build\run-tests.ps1
       - uses: actions/upload-artifact@v1
         with: 
           name: artifacts
