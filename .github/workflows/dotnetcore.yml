@@ -45,10 +45,10 @@ jobs:
         uses: warrenbuckley/Setup-MSBuild@v1
       - name: Pack preview
         if: startsWith(github.ref, 'refs/tags/') == false
-        run: run: .\build\run-tests.ps1 -preview
+        run: .\build\run-tests.ps1 -preview
       - name: Pack from tag
         if: startsWith(github.ref, 'refs/tags/')
-        run: run: .\build\run-tests.ps1
+        run: .\build\run-tests.ps1
       - uses: actions/upload-artifact@v1
         with: 
           name: artifacts
