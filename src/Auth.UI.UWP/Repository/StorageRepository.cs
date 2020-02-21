@@ -7,8 +7,8 @@ namespace Firebase.Auth.Repository
 {
     public class StorageRepository : IUserRepository
     {
-        private const string UserStorageKey = "user";
-        private const string CredentialStorageKey = "credential";
+        private const string UserStorageKey = "FirebaseUser";
+        private const string CredentialStorageKey = "FirebaseCredential";
 
         private readonly ApplicationDataContainer settings;
         private readonly JsonSerializerSettings options;
