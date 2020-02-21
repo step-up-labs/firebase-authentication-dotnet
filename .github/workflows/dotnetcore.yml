@@ -19,6 +19,8 @@ jobs:
       uses: warrenbuckley/Setup-MSBuild@v1
     - name: Build
       run: .\build\build-libs.ps1
+      env:
+        DOTNET_CLI_TELEMETRY_OPTOUT: 1
     - name: Run Tests
       env:
         FIREBASE_AUTH_TEST_API_KEY: ${{ secrets.FIREBASE_AUTH_TEST_API_KEY }}
@@ -29,6 +31,7 @@ jobs:
     needs: build
     if: github.event_name == 'push'
     steps:
+      - uses: actions/checkout@v1
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
