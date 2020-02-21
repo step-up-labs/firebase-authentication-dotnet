@@ -24,19 +24,11 @@ jobs:
         FIREBASE_AUTH_TEST_API_KEY: ${{ secrets.FIREBASE_AUTH_TEST_API_KEY }}
         FIREBASE_AUTH_TEST_DOMAIN: ${{ secrets.FIREBASE_AUTH_TEST_DOMAIN }}
       run: .\build\run-tests.ps1
-    - uses: actions/upload-artifact@v1
-      with: 
-        name: binaries
-        path: .
   pack:
     runs-on: windows-latest
     needs: build
     if: github.event_name == 'push'
     steps:
-      - uses: actions/download-artifact@v1
-        with:
-          name: binaries
-          path: .
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
