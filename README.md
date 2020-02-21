@@ -11,7 +11,7 @@ The libraries provide a drop-in auth solution that handles the flows for signing
 The solution consists of 4 libraries - a base one and 3 platform specific ones:
 * FirebaseAuthentication<strong>.net</strong> targets [.NET Standard 2.0](https://github.com/dotnet/standard/blob/master/docs/versions.md)
 * FirebaseAuthentication<strong>.WPF</strong> targets [WPF on .NET Core 3.1](https://github.com/dotnet/wpf)
-* FirebaseAuthentication<strong>.UWP</strong> targets UWP (*TODO*)
+* FirebaseAuthentication<strong>.UWP</strong> targets [UWP with min version 16299 (Fall Creators Update)](https://docs.microsoft.com/en-us/windows/uwp/updates-and-versions/choose-a-uwp-version)
 * FirebaseAuthentication<strong>.Xamarin</strong> targets Xamarin.Forms (*TODO*)
 
 ## Installation
@@ -43,10 +43,11 @@ E.g. `signInWithCredential` is called `SignInWithCredentialAsync` because it is 
 
 
 ### Samples
-There are currently 2 sample projects in the [samples folder](/samples/):
+There are currently 3 sample projects in the [samples folder](/samples/):
 
 * .NET Core Console application (uses only the base library, no UI)
 * WPF sample with UI
+* UWP sample with UI
 
 Feel free to clone the repo and check them out, just don't forget to add your custom API keys and other setup (typically in `Program.cs` or `App.xaml.cs`).
 
@@ -80,7 +81,10 @@ var config = new FirebaseAuthConfig
         new EmailProvider()
         // ...
     },
+    // WPF:
     UserRepository = new FileUserRepository("FirebaseSample") // persist data into %AppData%\FirebaseSample
+    // UWP:
+    UserRepository = new StorageRepository() // persist data into ApplicationDataContainer
 };
 
 // ...and create your FirebaseAuthClient
