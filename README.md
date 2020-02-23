@@ -135,6 +135,11 @@ await user.ChangePasswordAsync("new_password");
 await user.LinkWithCredentialAsync(authCredential);
 ```
 
+To sign out a user simply call
+```csharp
+await client.SignOutAsync();
+```
+
 ### FirebaseUI
 
 The platform specific UI libraries use the `FirebaseAuthClient` under the hood, but need to be initilized via the static `Initialize` method of `FirebaseUI`:
