@@ -21,6 +21,8 @@
         private const string FirebaseEmail = "<TEST USER EMAIL>";
         private const string FirebasePassword = "<TEST USER PASSWORD>";
 
+        private const string FirebaseTenant = "<TEST USER TENANT ID>";
+
         [TestMethod]
         public void FacebookTest()
         {
@@ -49,6 +51,17 @@
             var authProvider = new FirebaseAuthProvider(new FirebaseConfig(ApiKey));
 
             var auth = authProvider.SignInWithEmailAndPasswordAsync(FirebaseEmail, FirebasePassword).Result;
+
+            auth.User.Email.Should().BeEquivalentTo(FirebaseEmail);
+            auth.FirebaseToken.Should().NotBeNullOrWhiteSpace();
+        }
+
+        [TestMethod]
+        public void EmailWithTenantTest()
+        {
+            var authProvider = new FirebaseAuthProvider(new FirebaseConfig(ApiKey));
+
+            var auth = authProvider.SignInWithEmailAndPasswordAsync(FirebaseEmail, FirebasePassword, FirebaseTenant).Result;
 
             auth.User.Email.Should().BeEquivalentTo(FirebaseEmail);
             auth.FirebaseToken.Should().NotBeNullOrWhiteSpace();

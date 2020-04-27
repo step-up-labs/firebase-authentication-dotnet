@@ -150,12 +150,21 @@
         /// </summary>
         /// <param name="email"> The email. </param>
         /// <param name="password"> The password. </param>
+        /// <param name="tenantId"></param>
         /// <returns> The <see cref="FirebaseAuth"/>. </returns>
-        public async Task<FirebaseAuthLink> SignInWithEmailAndPasswordAsync(string email, string password)
+        public async Task<FirebaseAuthLink> SignInWithEmailAndPasswordAsync(string email, string password,
+            string tenantId = null)
         {
-            var content = $"{{\"email\":\"{email}\",\"password\":\"{password}\",\"returnSecureToken\":true}}";
+            StringBuilder sb = new StringBuilder($"{{\"email\":\"{email}\",\"password\":\"{password}\",");
 
-            return await this.ExecuteWithPostContentAsync(GooglePasswordUrl, content).ConfigureAwait(false);
+            if (tenantId != null)
+            {
+                sb.Append($"\"tenantId\":\"{tenantId}\"");
+            }
+
+            sb.Append("\"returnSecureToken\":true}}");
+
+            return await ExecuteWithPostContentAsync(GooglePasswordUrl, sb.ToString()).ConfigureAwait(false);
         }
         
         /// <summary>
