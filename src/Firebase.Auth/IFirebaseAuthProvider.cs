@@ -35,8 +35,9 @@
         /// </summary>
         /// <param name="email"> The email. </param>
         /// <param name="password"> The password. </param>
+        /// <param name="tenantId"></param>
         /// <returns> The <see cref="FirebaseAuthLink"/>. </returns>
-        Task<FirebaseAuthLink> SignInWithEmailAndPasswordAsync(string email, string password);
+        Task<FirebaseAuthLink> SignInWithEmailAndPasswordAsync(string email, string password, string tenantId = null);
 
         /// <summary>
         /// Using the provided access token from third party auth provider (google, facebook...), get the firebase auth with token and basic user credentials.
