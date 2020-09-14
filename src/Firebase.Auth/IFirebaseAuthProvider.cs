@@ -55,6 +55,14 @@
         Task<FirebaseAuthLink> SignInWithCustomTokenAsync(string customToken);
 
         /// <summary>
+        /// Updates the User email.
+        /// </summary>
+        /// <param name="idToken"> The idToken of an authenticated user. </param>
+        /// <param name="newEmail"> The new email</param>
+        /// <returns></returns>
+        Task<FirebaseAuthLink> ChangeUserEmail(string idToken, string newEmail);
+
+        /// <summary>
         /// Updates profile (displayName and photoUrl) of user tied to given user token.
         /// </summary>
         /// <param name="displayName"> The new display name. </param>
