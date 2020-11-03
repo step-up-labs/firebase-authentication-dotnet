@@ -162,7 +162,7 @@
                 sb.Append($"\"tenantId\":\"{tenantId}\"");
             }
 
-            sb.Append("\"returnSecureToken\":true}}");
+            sb.Append("\"returnSecureToken\":true}");
 
             return await ExecuteWithPostContentAsync(GooglePasswordUrl, sb.ToString()).ConfigureAwait(false);
         }
