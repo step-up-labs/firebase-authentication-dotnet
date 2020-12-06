@@ -20,7 +20,7 @@
         private const string FirebaseEmail = "<TEST USER EMAIL>";
         private const string FirebasePassword = "<TEST USER PASSWORD>";
 
-        private const string AppleAccessToken = "<APPLE USER ACCESS TOKEN>";
+        private const string AppleIDToken = "<APPLE USER ID TOKEN>";
 
         [TestMethod]
         public void FacebookTest()
@@ -49,7 +49,7 @@
         {
             var authProvider = new FirebaseAuthProvider(new FirebaseConfig(ApiKey));
 
-            var auth = authProvider.SignInWithOAuthAsync(FirebaseAuthType.Apple, AppleAccessToken).Result;
+            var auth = authProvider.SignInWithOAuthAsync(FirebaseAuthType.Apple, AppleIDToken).Result;
 
             auth.FirebaseToken.Should().NotBeNullOrWhiteSpace();
         }
