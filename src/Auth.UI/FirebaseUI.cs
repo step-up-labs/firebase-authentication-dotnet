@@ -224,6 +224,7 @@ namespace Firebase.Auth.UI
                         userCredential = await this.Config.RaiseUpgradeConflictAsync(this.Client, userCredential.AuthCredential);
                     }
 
+                    await Client.SignInWithCredentialAsync(userCredential.AuthCredential);
                     return userCredential;
                 });
         }
