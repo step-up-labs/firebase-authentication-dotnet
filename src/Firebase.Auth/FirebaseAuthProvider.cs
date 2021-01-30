@@ -102,7 +102,9 @@
             var providerId = this.GetProviderId(authType);
             var content = $"{{\"postBody\":\"access_token={oauthAccessToken}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
 
-            return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+            FirebaseAuthLink firebaseAuthLink = await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+            firebaseAuthLink.User = await this.GetUserAsync(firebaseAuthLink.FirebaseToken).ConfigureAwait(false);
+            return firebaseAuthLink;
         }
 
         /// <summary>
@@ -117,7 +119,9 @@
             var providerId = this.GetProviderId(FirebaseAuthType.Twitter);
             var content = $"{{\"postBody\":\"access_token={oauthAccessToken}&oauth_token_secret={oauthTokenSecret}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
             
-            return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+            FirebaseAuthLink firebaseAuthLink = await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+            firebaseAuthLink.User = await this.GetUserAsync(firebaseAuthLink.FirebaseToken).ConfigureAwait(false);
+            return firebaseAuthLink;
         }
 
         /// <summary>
@@ -131,7 +135,9 @@
             var providerId = this.GetProviderId(FirebaseAuthType.Google);
             var content = $"{{\"postBody\":\"id_token={idToken}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
 
-            return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+            FirebaseAuthLink firebaseAuthLink = await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+            firebaseAuthLink.User = await this.GetUserAsync(firebaseAuthLink.FirebaseToken).ConfigureAwait(false);
+            return firebaseAuthLink;
         }
 
         /// <summary>
@@ -164,7 +170,9 @@
 
             sb.Append("\"returnSecureToken\":true}}");
 
-            return await ExecuteWithPostContentAsync(GooglePasswordUrl, sb.ToString()).ConfigureAwait(false);
+            FirebaseAuthLink firebaseAuthLink = await this.ExecuteWithPostContentAsync(GooglePasswordUrl, sb.ToString()).ConfigureAwait(false);
+            firebaseAuthLink.User = await this.GetUserAsync(firebaseAuthLink.FirebaseToken).ConfigureAwait(false);
+            return firebaseAuthLink;
         }
         
         /// <summary>
