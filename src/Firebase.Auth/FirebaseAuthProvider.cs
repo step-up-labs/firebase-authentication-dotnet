@@ -165,7 +165,7 @@
 
             if (tenantId != null)
             {
-                sb.Append($"\"tenantId\":\"{tenantId}\"");
+                sb.Append($"\"tenantId\":\"{tenantId}\",");
             }
 
             sb.Append("\"returnSecureToken\":true}");
