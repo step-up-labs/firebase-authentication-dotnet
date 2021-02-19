@@ -165,10 +165,10 @@
 
             if (tenantId != null)
             {
-                sb.Append($"\"tenantId\":\"{tenantId}\"");
+                sb.Append($"\"tenantId\":\"{tenantId}\",");
             }
 
-            sb.Append("\"returnSecureToken\":true}}");
+            sb.Append("\"returnSecureToken\":true}");
 
             FirebaseAuthLink firebaseAuthLink = await this.ExecuteWithPostContentAsync(GooglePasswordUrl, sb.ToString()).ConfigureAwait(false);
             firebaseAuthLink.User = await this.GetUserAsync(firebaseAuthLink.FirebaseToken).ConfigureAwait(false);
