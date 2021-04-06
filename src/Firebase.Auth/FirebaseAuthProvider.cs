@@ -199,7 +199,19 @@
             return await this.ExecuteWithPostContentAsync(GoogleUpdateUserPassword, content).ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Change a email from an user with his token.
+        /// </summary>
+        /// <param name="idToken"> The Token from an user. </param>
+        /// <param name="newEmail"> The new email. </param>
+        /// <returns> The <see cref="FirebaseAuth"/>. </returns>
+        public async Task<FirebaseAuthLink> ChangeUserEmail(string idToken, string newEmail)
+        { 
+            var content = $"{{\"idToken\":\"{idToken}\",\"email\":\"{newEmail}\",\"returnSecureToken\":true}}";
 
+            return await this.ExecuteWithPostContentAsync(GoogleUpdateUserPassword, content).ConfigureAwait(false);
+        }
+        
         /// <summary>
         /// Creates new user with given credentials.
         /// </summary>
