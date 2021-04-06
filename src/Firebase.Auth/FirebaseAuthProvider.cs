@@ -25,8 +25,8 @@
         private const string GoogleSetAccountUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/setAccountInfo?key={0}";
         private const string GoogleCreateAuthUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/createAuthUri?key={0}";
         private const string GoogleUpdateUserPassword = "https://identitytoolkit.googleapis.com/v1/accounts:update?key={0}";
-        
-        
+
+
         private const string ProfileDeleteDisplayName = "DISPLAY_NAME";
         private const string ProfileDeletePhotoUrl = "PHOTO_URL";
 
@@ -55,7 +55,7 @@
             firebaseAuthLink.User = await this.GetUserAsync(firebaseAuthLink.FirebaseToken).ConfigureAwait(false);
             return firebaseAuthLink;
         }
-        
+
         /// <summary>
         /// Using the idToken of an authenticated user, get the details of the user's account
         /// </summary>
@@ -66,14 +66,14 @@
             var content = $"{{\"idToken\":\"{firebaseToken}\"}}";
             var responseData = "N/A";
             try
-            { 
+            {
                 var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetUser, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
                 responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 response.EnsureSuccessStatusCode();
 
                 var resultJson = JObject.Parse(responseData);
                 var user = JsonConvert.DeserializeObject<User>(resultJson["users"].First().ToString());
-                return user; 
+                return user;
             }
             catch (Exception ex)
             {
@@ -92,17 +92,30 @@
         }
 
         /// <summary>
-        /// Using the provided access token from third party auth provider (google, facebook...), get the firebase auth with token and basic user credentials.
+        /// Using the provided access token from third party auth provider (google, facebook...), or ID token (apple), get the firebase auth with token and basic user credentials.
         /// </summary>
         /// <param name="authType"> The auth type. </param>
-        /// <param name="oauthAccessToken"> The access token retrieved from login provider of your choice. </param>
+        /// <param name="oauthToken"> The access token or ID token retrieved from login provider of your choice. </param>
         /// <returns> The <see cref="FirebaseAuth"/>. </returns>
-        public async Task<FirebaseAuthLink> SignInWithOAuthAsync(FirebaseAuthType authType, string oauthAccessToken)
+        public async Task<FirebaseAuthLink> SignInWithOAuthAsync(FirebaseAuthType authType, string oauthToken)
         {
             var providerId = this.GetProviderId(authType);
-            var content = $"{{\"postBody\":\"access_token={oauthAccessToken}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
 
-            return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+            string content;
+
+            switch (authType)
+            {
+                case FirebaseAuthType.Apple:
+                    content = $"{{\"postBody\":\"id_token={oauthToken}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
+                    break;
+                default:
+                    content = $"{{\"postBody\":\"access_token={oauthToken}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
+                    break;
+            }
+
+            FirebaseAuthLink firebaseAuthLink = await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+            firebaseAuthLink.User = await this.GetUserAsync(firebaseAuthLink.FirebaseToken).ConfigureAwait(false);
+            return firebaseAuthLink;
         }
 
         /// <summary>
@@ -117,7 +130,9 @@
             var providerId = this.GetProviderId(FirebaseAuthType.Twitter);
             var content = $"{{\"postBody\":\"access_token={oauthAccessToken}&oauth_token_secret={oauthTokenSecret}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
             
-            return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+            FirebaseAuthLink firebaseAuthLink = await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+            firebaseAuthLink.User = await this.GetUserAsync(firebaseAuthLink.FirebaseToken).ConfigureAwait(false);
+            return firebaseAuthLink;
         }
 
         /// <summary>
@@ -131,7 +146,9 @@
             var providerId = this.GetProviderId(FirebaseAuthType.Google);
             var content = $"{{\"postBody\":\"id_token={idToken}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
 
-            return await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+            FirebaseAuthLink firebaseAuthLink = await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
+            firebaseAuthLink.User = await this.GetUserAsync(firebaseAuthLink.FirebaseToken).ConfigureAwait(false);
+            return firebaseAuthLink;
         }
 
         /// <summary>
@@ -159,14 +176,16 @@
 
             if (tenantId != null)
             {
-                sb.Append($"\"tenantId\":\"{tenantId}\"");
+                sb.Append($"\"tenantId\":\"{tenantId}\",");
             }
 
-            sb.Append("\"returnSecureToken\":true}}");
+            sb.Append("\"returnSecureToken\":true}");
 
-            return await ExecuteWithPostContentAsync(GooglePasswordUrl, sb.ToString()).ConfigureAwait(false);
+            FirebaseAuthLink firebaseAuthLink = await this.ExecuteWithPostContentAsync(GooglePasswordUrl, sb.ToString()).ConfigureAwait(false);
+            firebaseAuthLink.User = await this.GetUserAsync(firebaseAuthLink.FirebaseToken).ConfigureAwait(false);
+            return firebaseAuthLink;
         }
-        
+
         /// <summary>
         /// Change a password from an user with his token.
         /// </summary>
@@ -192,7 +211,6 @@
 
             return await this.ExecuteWithPostContentAsync(GoogleUpdateUserPassword, content).ConfigureAwait(false);
         }
-        
         
         /// <summary>
         /// Creates new user with given credentials.
@@ -278,15 +296,15 @@
         {
             var content = $"{{ \"idToken\": \"{firebaseToken}\" }}";
             var responseData = "N/A";
-            
-            try 
+
+            try
             {
                 var response = await this.client.PostAsync(new Uri(string.Format(GoogleDeleteUserUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
                 responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                
+
                 response.EnsureSuccessStatusCode();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 AuthErrorReason errorReason = GetFailureReason(responseData);
                 throw new FirebaseAuthException(GoogleDeleteUserUrl, content, responseData, ex, errorReason);
@@ -301,12 +319,12 @@
         {
             var content = $"{{\"requestType\":\"PASSWORD_RESET\",\"email\":\"{email}\"}}";
             var responseData = "N/A";
-            
+
             try
             {
                 var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
                 responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                
+
                 response.EnsureSuccessStatusCode();
             }
             catch (Exception ex)
@@ -555,6 +573,9 @@
                         case "A system error has occurred - missing or invalid postBody":
                             failureReason = AuthErrorReason.SystemError;
                             break;
+                        case "MISSING_OR_INVALID_NONCE : Duplicate credential received. Please try again with a new credential.":
+                            failureReason = AuthErrorReason.DuplicateCredentialUse;
+                            break;
 
                         //possible errors from Email/Password Account Signup (via signupNewUser or setAccountInfo) or Signin
                         case "INVALID_EMAIL":
@@ -568,7 +589,7 @@
                         case "EMAIL_EXISTS":
                             failureReason = AuthErrorReason.EmailExists;
                             break;
-                            
+
                         //possible errors from Account Delete
                         case "USER_NOT_FOUND":
                             failureReason = AuthErrorReason.UserNotFound;
@@ -615,12 +636,14 @@
                             break;
                     }
 
-                    if(failureReason == AuthErrorReason.Undefined)
-                    {                            
+                    if (failureReason == AuthErrorReason.Undefined)
+                    {
                         //possible errors from Email/Password Account Signup (via signupNewUser or setAccountInfo)
-                        if(errorData?.error?.message?.StartsWith("WEAK_PASSWORD :") ?? false) failureReason = AuthErrorReason.WeakPassword;
+                        if (errorData?.error?.message?.StartsWith("WEAK_PASSWORD :") ?? false) failureReason = AuthErrorReason.WeakPassword;
                         //possible errors from Email/Password Signin
                         else if (errorData?.error?.message?.StartsWith("TOO_MANY_ATTEMPTS_TRY_LATER :") ?? false) failureReason = AuthErrorReason.TooManyAttemptsTryLater;
+                        //ID Token issued is stale to sign-in (e.g. with Apple)
+                        else if (errorData?.error?.message?.StartsWith("ERROR_INVALID_CREDENTIAL") ?? false) failureReason = AuthErrorReason.StaleIDToken;
                     }
                 }
             }
@@ -643,6 +666,7 @@
             {
                 case FirebaseAuthType.Facebook:
                 case FirebaseAuthType.Google:
+                case FirebaseAuthType.Apple:
                 case FirebaseAuthType.Github:
                 case FirebaseAuthType.Twitter:
                     return authType.ToEnumString();

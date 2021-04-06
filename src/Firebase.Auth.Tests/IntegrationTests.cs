@@ -21,6 +21,7 @@
         private const string FirebaseEmail = "<TEST USER EMAIL>";
         private const string FirebasePassword = "<TEST USER PASSWORD>";
 
+        private const string AppleIDToken = "<APPLE USER ID TOKEN>";
         private const string FirebaseTenant = "<TEST USER TENANT ID>";
 
         [TestMethod]
@@ -42,6 +43,16 @@
             var auth = authProvider.SignInWithOAuthAsync(FirebaseAuthType.Google, GoogleAccessToken).Result;
 
             auth.User.FirstName.Should().BeEquivalentTo(GoogleTestUserFirstName);
+            auth.FirebaseToken.Should().NotBeNullOrWhiteSpace();
+        }
+
+        [TestMethod]
+        public void AppleTest()
+        {
+            var authProvider = new FirebaseAuthProvider(new FirebaseConfig(ApiKey));
+
+            var auth = authProvider.SignInWithOAuthAsync(FirebaseAuthType.Apple, AppleIDToken).Result;
+
             auth.FirebaseToken.Should().NotBeNullOrWhiteSpace();
         }
 
@@ -79,7 +90,7 @@
                 }
                 catch (Exception e)
                 {
-                    var exception = (FirebaseAuthException) e.InnerException;
+                    var exception = (FirebaseAuthException)e.InnerException;
                     exception.Reason.Should().Be(AuthErrorReason.UnknownEmailAddress);
                 }
             }
@@ -127,7 +138,7 @@
         public void CreateUserTest()
         {
             var authProvider = new FirebaseAuthProvider(new FirebaseConfig(ApiKey));
-            var email = $"abcd{new Random().Next()}@test.com"; 
+            var email = $"abcd{new Random().Next()}@test.com";
 
             var auth = authProvider.SignInWithEmailAndPasswordAsync(email, "test1234").Result;
 
@@ -182,10 +193,10 @@
 
             var auth = authProvider.SignInWithOAuthAsync(FirebaseAuthType.Facebook, FacebookAccessToken).Result;
             var originalToken = auth.FirebaseToken;
-            
+
             // simulate the token already expired
             auth.Created = DateTime.MinValue;
-            
+
             var freshAuth = auth.GetFreshAuthAsync().Result;
 
             freshAuth.FirebaseToken.Should().NotBe(originalToken);

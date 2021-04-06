@@ -93,6 +93,14 @@
         /// <summary>
         /// Linked accounts: account to link has already been linked.
         /// </summary>
-        AlreadyLinked
+        AlreadyLinked,
+        /// <summary>
+        /// Third-party Auth Providers: PostBody contains an Id Token string obtained from Auth Provider which is actually stale.
+        /// </summary>
+        StaleIDToken,
+        /// <summary>
+        /// Third-party Auth Providers: PostBody contains an Id Token string obtained from Auth Provider which has already been received.
+        /// </summary>
+        DuplicateCredentialUse
     }
 }
