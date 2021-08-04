@@ -14,15 +14,18 @@
         /// <param name="password"> The password. </param>
         /// <param name="displayName"> Optional display name. </param>
         /// <param name="sendVerificationEmail"> Optional. Whether to send user a link to verfiy his email address. </param>
+        /// <param name="locale"> The language code of language that the email will be in. </param>
         /// <returns> The <see cref="FirebaseAuthLink"/>. </returns>
-        Task<FirebaseAuthLink> CreateUserWithEmailAndPasswordAsync(string email, string password, string displayName = "", bool sendVerificationEmail = false);
-        
+        Task<FirebaseAuthLink> CreateUserWithEmailAndPasswordAsync(string email, string password, string displayName = "", 
+            bool sendVerificationEmail = false, string locale = null);
+
         /// <summary>
         /// Sends user an email with a link to reset his password.
         /// </summary>
         /// <param name="email"> The email.  </param>
+        /// <param name="locale"> The language code of language that the email will be in. </param>
         /// <returns> The <see cref="Task"/>. </returns>
-        Task SendPasswordResetEmailAsync(string email);
+        Task SendPasswordResetEmailAsync(string email, string locale = null);
 
         /// <summary>
         /// Sign in user anonymously. He would still have a user id and access token generated, but name and other personal user properties will be null.
@@ -147,13 +150,15 @@
         /// Sends user an email with a link to verify his email address.
         /// </summary>
         /// <param name="firebaseToken"> The FirebaseToken (idToken) of an authenticated user. </param>
-        Task SendEmailVerificationAsync(string firebaseToken);
+        /// <param name="locale"> The language code of language that the email will be in. </param>
+        Task SendEmailVerificationAsync(string firebaseToken, string locale = null);
 
         /// <summary>
         /// Sends user an email with a link to verify his email address.
         /// </summary>
         /// <param name="auth"> The authenticated user to verify email address. </param>
-        Task SendEmailVerificationAsync(FirebaseAuth auth);
+        /// <param name="locale"> The language code of language that the email will be in. </param>
+        Task SendEmailVerificationAsync(FirebaseAuth auth, string locale = null);
 
         /// <summary>
         /// Refreshes given auth using its refresh token.

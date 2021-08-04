@@ -211,7 +211,7 @@
 
             return await this.ExecuteWithPostContentAsync(GoogleUpdateUserPassword, content).ConfigureAwait(false);
         }
-        
+
         /// <summary>
         /// Creates new user with given credentials.
         /// </summary>
@@ -219,8 +219,10 @@
         /// <param name="password"> The password. </param>
         /// <param name="displayName"> Optional display name. </param>
         /// <param name="sendVerificationEmail"> Optional. Whether to send user a link to verfiy his email address. </param>
+        /// <param name="locale"> The language code of language that the email will be in. </param>
         /// <returns> The <see cref="FirebaseAuth"/>. </returns>
-        public async Task<FirebaseAuthLink> CreateUserWithEmailAndPasswordAsync(string email, string password, string displayName = "", bool sendVerificationEmail = false)
+        public async Task<FirebaseAuthLink> CreateUserWithEmailAndPasswordAsync(string email, string password, string displayName = "", 
+            bool sendVerificationEmail = false, string locale = null)
         {
             var content = $"{{\"email\":\"{email}\",\"password\":\"{password}\",\"returnSecureToken\":true}}";
 
@@ -239,7 +241,7 @@
             if (sendVerificationEmail)
             {
                 //send verification email
-                await this.SendEmailVerificationAsync(signup).ConfigureAwait(false);
+                await this.SendEmailVerificationAsync(signup, locale).ConfigureAwait(false);
             }
 
             return signup;
@@ -315,14 +317,21 @@
         /// Sends user an email with a link to reset his password.
         /// </summary>
         /// <param name="email"> The email. </param>
-        public async Task SendPasswordResetEmailAsync(string email)
+        /// <param name="locale"> The language code of language that the email will be in. </param>
+        public async Task SendPasswordResetEmailAsync(string email, string locale = null)
         {
             var content = $"{{\"requestType\":\"PASSWORD_RESET\",\"email\":\"{email}\"}}";
             var responseData = "N/A";
 
             try
             {
-                var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+                if (locale != null)
+                {
+                    httpContent = AddFirebaseLocaleHeader(httpContent, locale);
+                }
+
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, this.authConfig.ApiKey)), httpContent).ConfigureAwait(false);
                 responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();
@@ -338,11 +347,18 @@
         /// Sends user an email with a link to verify his email address.
         /// </summary>
         /// <param name="firebaseToken"> The FirebaseToken (idToken) of an authenticated user. </param>
-        public async Task SendEmailVerificationAsync(string firebaseToken)
+        /// <param name="locale"> The language code of language that the email will be in. </param>
+        public async Task SendEmailVerificationAsync(string firebaseToken, string locale = null)
         {
             var content = $"{{\"requestType\":\"VERIFY_EMAIL\",\"idToken\":\"{firebaseToken}\"}}";
 
-            var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+            if (locale != null)
+            {
+                httpContent = AddFirebaseLocaleHeader(httpContent, locale);
+            }
+
+            var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, this.authConfig.ApiKey)), httpContent).ConfigureAwait(false);
 
             response.EnsureSuccessStatusCode();
         }
@@ -351,9 +367,10 @@
         /// Sends user an email with a link to verify his email address.
         /// </summary>
         /// <param name="auth"> The authenticated user to verify email address. </param>
-        public async Task SendEmailVerificationAsync(FirebaseAuth auth)
+        /// <param name="locale"> The language code of language that the email will be in. </param>
+        public async Task SendEmailVerificationAsync(FirebaseAuth auth, string locale = null)
         {
-            await this.SendEmailVerificationAsync(auth.FirebaseToken).ConfigureAwait(false);
+            await this.SendEmailVerificationAsync(auth.FirebaseToken, locale).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -504,6 +521,21 @@
         public void Dispose()
         {
             this.client.Dispose();
+        }
+
+        /// <summary>
+        ///     Adds firebase locale header used to send email in chosen language.
+        ///     If locale is incorrect default language will be chosen.
+        /// </summary>
+        /// <typeparam name="T"> Class deriving from HttpContent </typeparam>
+        /// <param name="content"> Http content to add locale header to. </param>
+        /// <param name="locale"> Locale string. </param>
+        /// <returns> Passed http content with added header. </returns>
+        private static T AddFirebaseLocaleHeader<T>(T content, string locale) where T : HttpContent
+        {
+            content.Headers.Add("X-Firebase-Locale", locale);
+
+            return content;
         }
 
         private async Task<FirebaseAuthLink> ExecuteWithPostContentAsync(string googleUrl, string postContent)
