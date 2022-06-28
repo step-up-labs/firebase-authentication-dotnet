@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <VersionPrefix>4.0.0</VersionPrefix>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFrameworks>netcoreapp3.1;net462</TargetFrameworks>
     <PackageId>FirebaseAuthentication.WPF</PackageId>
     <Title>FirebaseUI for WPF</Title>
     <Authors>Step Up Labs, Inc.</Authors>
@@ -32,12 +32,12 @@ The library provides a drop-in auth solution that handles the flows for signing 
   <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="BuildOnlySettings;ResolveReferences">
     <ItemGroup>
       <!-- Filter out unnecessary files -->
-      <_ReferenceCopyLocalPaths Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')->WithMetadataValue('PrivateAssets', 'All'))"/>
+      <_ReferenceCopyLocalPaths Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')-&gt;WithMetadataValue('PrivateAssets', 'All'))" />
     </ItemGroup>
 
     <ItemGroup>
       <!-- Add file to package with consideration of sub folder. If empty, the root folder is chosen. -->
-      <BuildOutputInPackage Include="@(_ReferenceCopyLocalPaths)" TargetPath="%(_ReferenceCopyLocalPaths.DestinationSubDirectory)"/>
+      <BuildOutputInPackage Include="@(_ReferenceCopyLocalPaths)" TargetPath="%(_ReferenceCopyLocalPaths.DestinationSubDirectory)" />
     </ItemGroup>
   </Target>
 
@@ -50,9 +50,9 @@ The library provides a drop-in auth solution that handles the flows for signing 
     <Resource Include="..\Auth.UI\Assets\mail.png" Link="Assets\mail.png" />
     <Resource Include="..\Auth.UI\Assets\microsoft.png" Link="Assets\microsoft.png" />
     <Resource Include="..\Auth.UI\Assets\twitter.png" Link="Assets\twitter.png" />
-    <None Include="..\Auth.UI\Assets\firebase.png" Link="Assets\firebase.png" Pack="true" PackagePath=""/>
-    <None Include="..\..\LICENSE.txt" Link="Assets\LICENSE.txt" Pack="true" PackagePath=""/>
-    <None Include="..\..\README.md" Link="Assets\README.md" Pack="true" PackagePath=""/>
+    <None Include="..\Auth.UI\Assets\firebase.png" Link="Assets\firebase.png" Pack="true" PackagePath="" />
+    <None Include="..\..\LICENSE.txt" Link="Assets\LICENSE.txt" Pack="true" PackagePath="" />
+    <None Include="..\..\README.md" Link="Assets\README.md" Pack="true" PackagePath="" />
     <None Include="tools\VisualStudioToolsManifest.xml" Pack="true" PackagePath="tools" />
   </ItemGroup>
 
@@ -62,7 +62,7 @@ The library provides a drop-in auth solution that handles the flows for signing 
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls.WebView" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls.WebView" Version="6.1.2" />
   </ItemGroup>
 
   <ItemGroup>

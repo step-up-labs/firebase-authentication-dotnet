@@ -27,7 +27,7 @@ namespace Firebase.Auth.UI.Pages
                 ? AppResources.Instance.FuiWelcomeBackIdpHeader
                 : AppResources.Instance.FuiWelcomeBackEmailHeader;
 
-            var message = string.Format(AppResources.Instance.FuiWelcomeBackPasswordPromptBody, email).Split(email);
+            var message = string.Format(AppResources.Instance.FuiWelcomeBackPasswordPromptBody, email).Split(new string[] { email }, System.StringSplitOptions.None);
             this.WelcomeSubtitleTextBlock.Inlines.Clear();
             this.WelcomeSubtitleTextBlock.Inlines.Add(message[0]);
             this.WelcomeSubtitleTextBlock.Inlines.Add(new Bold(new Run(email)));
