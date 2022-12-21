@@ -14,17 +14,17 @@
     /// </summary>
     public class FirebaseAuthProvider : IDisposable, IFirebaseAuthProvider
     {
-        private const string GoogleRefreshAuth = "https://securetoken.googleapis.com/v1/token?key={0}";
-        private const string GoogleCustomAuthUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyCustomToken?key={0}";
-        private const string GoogleGetUser = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/getAccountInfo?key={0}";
-        private const string GoogleIdentityUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyAssertion?key={0}";
-        private const string GoogleSignUpUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key={0}";
-        private const string GooglePasswordUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key={0}";
-        private const string GoogleDeleteUserUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/deleteAccount?key={0}";
-        private const string GoogleGetConfirmationCodeUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/getOobConfirmationCode?key={0}";
-        private const string GoogleSetAccountUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/setAccountInfo?key={0}";
-        private const string GoogleCreateAuthUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/createAuthUri?key={0}";
-        private const string GoogleUpdateUserPassword = "https://identitytoolkit.googleapis.com/v1/accounts:update?key={0}";
+        private const string GoogleRefreshAuth = "{0}securetoken.googleapis.com/v1/token?key={1}";
+        private const string GoogleCustomAuthUrl = "{0}www.googleapis.com/identitytoolkit/v3/relyingparty/verifyCustomToken?key={1}";
+        private const string GoogleGetUser = "{0}www.googleapis.com/identitytoolkit/v3/relyingparty/getAccountInfo?key={1}";
+        private const string GoogleIdentityUrl = "{0}www.googleapis.com/identitytoolkit/v3/relyingparty/verifyAssertion?key={1}";
+        private const string GoogleSignUpUrl = "{0}www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key={1}";
+        private const string GooglePasswordUrl = "{0}www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key={1}";
+        private const string GoogleDeleteUserUrl = "{0}www.googleapis.com/identitytoolkit/v3/relyingparty/deleteAccount?key={1}";
+        private const string GoogleGetConfirmationCodeUrl = "{0}www.googleapis.com/identitytoolkit/v3/relyingparty/getOobConfirmationCode?key={1}";
+        private const string GoogleSetAccountUrl = "{0}www.googleapis.com/identitytoolkit/v3/relyingparty/setAccountInfo?key={1}";
+        private const string GoogleCreateAuthUrl = "{0}www.googleapis.com/identitytoolkit/v3/relyingparty/createAuthUri?key={1}";
+        private const string GoogleUpdateUserPassword = "{0}identitytoolkit.googleapis.com/v1/accounts:update?key={1}";
 
 
         private const string ProfileDeleteDisplayName = "DISPLAY_NAME";
@@ -32,6 +32,8 @@
 
         private readonly FirebaseConfig authConfig;
         private readonly HttpClient client;
+
+        private readonly string prefix;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FirebaseAuthProvider"/> class.
@@ -41,6 +43,8 @@
         {
             this.authConfig = authConfig;
             this.client = new HttpClient();
+
+            this.prefix = authConfig.UsesEmulator ? $"http://localhost:{authConfig.EmulatorPort}/" : "https://";
         }
 
         /// <summary>
@@ -67,7 +71,7 @@
             var responseData = "N/A";
             try
             {
-                var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetUser, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetUser, prefix, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
                 responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 response.EnsureSuccessStatusCode();
 
@@ -129,7 +133,7 @@
         {
             var providerId = this.GetProviderId(FirebaseAuthType.Twitter);
             var content = $"{{\"postBody\":\"access_token={oauthAccessToken}&oauth_token_secret={oauthTokenSecret}&providerId={providerId}\",\"requestUri\":\"http://localhost\",\"returnSecureToken\":true}}";
-            
+
             FirebaseAuthLink firebaseAuthLink = await this.ExecuteWithPostContentAsync(GoogleIdentityUrl, content).ConfigureAwait(false);
             firebaseAuthLink.User = await this.GetUserAsync(firebaseAuthLink.FirebaseToken).ConfigureAwait(false);
             return firebaseAuthLink;
@@ -206,7 +210,7 @@
         /// <param name="newEmail"> The new email. </param>
         /// <returns> The <see cref="FirebaseAuth"/>. </returns>
         public async Task<FirebaseAuthLink> ChangeUserEmail(string idToken, string newEmail)
-        { 
+        {
             var content = $"{{\"idToken\":\"{idToken}\",\"email\":\"{newEmail}\",\"returnSecureToken\":true}}";
 
             return await this.ExecuteWithPostContentAsync(GoogleUpdateUserPassword, content).ConfigureAwait(false);
@@ -221,7 +225,7 @@
         /// <param name="sendVerificationEmail"> Optional. Whether to send user a link to verfiy his email address. </param>
         /// <param name="locale"> The language code of language that the email will be in. </param>
         /// <returns> The <see cref="FirebaseAuth"/>. </returns>
-        public async Task<FirebaseAuthLink> CreateUserWithEmailAndPasswordAsync(string email, string password, string displayName = "", 
+        public async Task<FirebaseAuthLink> CreateUserWithEmailAndPasswordAsync(string email, string password, string displayName = "",
             bool sendVerificationEmail = false, string locale = null)
         {
             var content = $"{{\"email\":\"{email}\",\"password\":\"{password}\",\"returnSecureToken\":true}}";
@@ -301,7 +305,7 @@
 
             try
             {
-                var response = await this.client.PostAsync(new Uri(string.Format(GoogleDeleteUserUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleDeleteUserUrl, prefix, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
                 responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();
@@ -331,7 +335,7 @@
                     httpContent = AddFirebaseLocaleHeader(httpContent, locale);
                 }
 
-                var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, this.authConfig.ApiKey)), httpContent).ConfigureAwait(false);
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, prefix, this.authConfig.ApiKey)), httpContent).ConfigureAwait(false);
                 responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();
@@ -358,7 +362,7 @@
                 httpContent = AddFirebaseLocaleHeader(httpContent, locale);
             }
 
-            var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, this.authConfig.ApiKey)), httpContent).ConfigureAwait(false);
+            var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, prefix, this.authConfig.ApiKey)), httpContent).ConfigureAwait(false);
 
             response.EnsureSuccessStatusCode();
         }
@@ -472,7 +476,7 @@
 
             try
             {
-                var response = await this.client.PostAsync(new Uri(string.Format(GoogleCreateAuthUrl, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleCreateAuthUrl, prefix, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
                 responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();
@@ -495,7 +499,7 @@
 
             try
             {
-                var response = await this.client.PostAsync(new Uri(string.Format(GoogleRefreshAuth, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleRefreshAuth, prefix, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
 
                 responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var refreshAuth = JsonConvert.DeserializeObject<RefreshAuth>(responseData);
@@ -544,7 +548,7 @@
 
             try
             {
-                var response = await this.client.PostAsync(new Uri(string.Format(googleUrl, this.authConfig.ApiKey)), new StringContent(postContent, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                var response = await this.client.PostAsync(new Uri(string.Format(googleUrl, prefix, this.authConfig.ApiKey)), new StringContent(postContent, Encoding.UTF8, "application/json")).ConfigureAwait(false);
                 responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();
