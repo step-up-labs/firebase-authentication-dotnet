@@ -33,7 +33,7 @@
         private readonly FirebaseConfig authConfig;
         private readonly HttpClient client;
 
-        private readonly string protocol;
+        private readonly string prefix;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FirebaseAuthProvider"/> class.
@@ -44,7 +44,7 @@
             this.authConfig = authConfig;
             this.client = new HttpClient();
 
-            this.protocol = authConfig.UsesEmulator ? $"http://localhost:{authConfig.EmulatorPort}/" : "https://";
+            this.prefix = authConfig.UsesEmulator ? $"http://localhost:{authConfig.EmulatorPort}/" : "https://";
         }
 
         /// <summary>
@@ -71,7 +71,7 @@
             var responseData = "N/A";
             try
             {
-                var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetUser, protocol, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetUser, prefix, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
                 responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 response.EnsureSuccessStatusCode();
 
@@ -305,7 +305,7 @@
 
             try
             {
-                var response = await this.client.PostAsync(new Uri(string.Format(GoogleDeleteUserUrl, protocol, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleDeleteUserUrl, prefix, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
                 responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();
@@ -335,7 +335,7 @@
                     httpContent = AddFirebaseLocaleHeader(httpContent, locale);
                 }
 
-                var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, protocol, this.authConfig.ApiKey)), httpContent).ConfigureAwait(false);
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, prefix, this.authConfig.ApiKey)), httpContent).ConfigureAwait(false);
                 responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();
@@ -362,7 +362,7 @@
                 httpContent = AddFirebaseLocaleHeader(httpContent, locale);
             }
 
-            var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, protocol, this.authConfig.ApiKey)), httpContent).ConfigureAwait(false);
+            var response = await this.client.PostAsync(new Uri(string.Format(GoogleGetConfirmationCodeUrl, prefix, this.authConfig.ApiKey)), httpContent).ConfigureAwait(false);
 
             response.EnsureSuccessStatusCode();
         }
@@ -476,7 +476,7 @@
 
             try
             {
-                var response = await this.client.PostAsync(new Uri(string.Format(GoogleCreateAuthUrl, protocol, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleCreateAuthUrl, prefix, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
                 responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();
@@ -499,7 +499,7 @@
 
             try
             {
-                var response = await this.client.PostAsync(new Uri(string.Format(GoogleRefreshAuth, protocol, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                var response = await this.client.PostAsync(new Uri(string.Format(GoogleRefreshAuth, prefix, this.authConfig.ApiKey)), new StringContent(content, Encoding.UTF8, "application/json")).ConfigureAwait(false);
 
                 responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var refreshAuth = JsonConvert.DeserializeObject<RefreshAuth>(responseData);
@@ -548,7 +548,7 @@
 
             try
             {
-                var response = await this.client.PostAsync(new Uri(string.Format(googleUrl, protocol, this.authConfig.ApiKey)), new StringContent(postContent, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                var response = await this.client.PostAsync(new Uri(string.Format(googleUrl, prefix, this.authConfig.ApiKey)), new StringContent(postContent, Encoding.UTF8, "application/json")).ConfigureAwait(false);
                 responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();
