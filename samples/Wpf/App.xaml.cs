@@ -17,8 +17,8 @@ namespace Firebase.Auth.Wpf.Sample
             // Firebase UI initialization
             FirebaseUI.Initialize(new FirebaseUIConfig
             {
-                ApiKey = "AIzaSyCfMEZut1bOgu9d1NHrJiZ7ruRdzfKEHbk",
-                AuthDomain = "settle-up-sandbox.firebaseapp.com",
+                ApiKey = "<YOUR API KEY>",
+                AuthDomain = "<YOUR PROJECT DOMAIN>.firebaseapp.com",
                 Providers = new FirebaseAuthProvider[]
                 {
                     new GoogleProvider(),
