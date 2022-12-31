@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <VersionPrefix>4.0.0</VersionPrefix>
-    <TargetFrameworks>uap10.0.18362</TargetFrameworks>
+    <TargetFrameworks>uap10.0.19041</TargetFrameworks>
     <Configurations>Debug;Release</Configurations>
     <Platforms>AnyCPU</Platforms>
     <PackageId>FirebaseAuthentication.UWP</PackageId>
@@ -24,7 +24,7 @@ The library provides a drop-in auth solution that handles the flows for signing 
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>Firebase.Auth.UI.UWP</AssemblyName>
     <RootNamespace>Firebase.Auth.UI</RootNamespace>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
     <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
   </PropertyGroup>
 
