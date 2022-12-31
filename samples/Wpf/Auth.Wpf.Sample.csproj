@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <AssemblyName>Firebase.Auth.Wpf.Sample</AssemblyName>
     <RootNamespace>Firebase.Auth.Wpf.Sample</RootNamespace>

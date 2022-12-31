@@ -15,15 +15,16 @@ namespace Firebase.Auth.UI
                 var window = new WebAuthenticationBrokerWindow();
                 window.WebView.NavigationCompleted += (s, e) =>
                 {
-                    if (e.Uri.ToString().StartsWith(redirectUri))
+                    var uri = (s as Microsoft.Web.WebView2.Wpf.WebView2).Source.ToString();
+                    if (uri.StartsWith(redirectUri))
                     {
-                        tcs.SetResult(e.Uri.ToString());
+                        tcs.SetResult(uri);
                         window.DialogResult = true;
                         window.Close();
                     }
                 };
                 window.Title = ProviderToTitleConverter.Convert(provider);
-                window.WebView.Loaded += (s, e) => window.WebView.Navigate(uri);
+                window.WebView.Loaded += (s, e) => window.WebView.Source = new System.Uri(uri);
                 window.Owner = owner;
                 if (!(window.ShowDialog() ?? false))
                 {

@@ -38,11 +38,11 @@ FirebaseUI is supported by platform-specific libraries:
     </AssemblyAttribute>
     <None Include="Assets\firebase.png" Pack="true" PackagePath="" />
     <None Include="..\..\LICENSE.txt" Link="Assets\LICENSE.txt" Pack="true" PackagePath="" />
-    <None Include="..\..\README.md" Link="Assets\README.md" Pack="true" PackagePath=""/>
+    <None Include="..\..\README.md" Link="Assets\README.md" Pack="true" PackagePath="" />
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
 </Project>

@@ -29,7 +29,7 @@ namespace Firebase.Auth
                 },
                 DefaultValueHandling = DefaultValueHandling.Ignore
             };
-            this.JsonSettings.Converters.Add(new StringEnumConverter { CamelCaseText = true });
+            this.JsonSettings.Converters.Add(new StringEnumConverter { NamingStrategy = new CamelCaseNamingStrategy() });
         }
 
         /// <summary>

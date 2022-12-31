@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <VersionPrefix>4.0.0</VersionPrefix>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6-windows</TargetFramework>
     <PackageId>FirebaseAuthentication.WPF</PackageId>
     <Title>FirebaseUI for WPF</Title>
     <Authors>Step Up Labs, Inc.</Authors>
@@ -62,7 +62,7 @@ The library provides a drop-in auth solution that handles the flows for signing 
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls.WebView" Version="6.0.0" />
+	<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1462.37" />
   </ItemGroup>
 
   <ItemGroup>
