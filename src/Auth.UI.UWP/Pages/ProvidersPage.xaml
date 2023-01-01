@@ -5,8 +5,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="using:Firebase.Auth.UI.Converters"
-    xmlns:Windows10version1809="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
-    xmlns:Windows10version1903="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 8)"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -25,6 +23,13 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+
+        <Grid 
+            x:Name="BackgroundGrid"
+            Grid.RowSpan="4"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            />
 
         <ContentPresenter 
             Content="{Binding Header}"
@@ -71,7 +76,7 @@
                                     <Setter Property="Margin" Value="12 5" />
                                 </Style>
 
-                                <Windows10version1903:ThemeShadow x:Name="ThemeShadow" />
+                                <ThemeShadow x:Name="ThemeShadow" />
                                 <SolidColorBrush 
                                     x:Key="ButtonBackgroundPointerOver"
                                     Color="{Binding Converter={StaticResource BackgroundConverter}}"
@@ -84,17 +89,11 @@
                                     />
                             </Grid.Resources>
 
-                            <Grid 
-                                x:Name="BackgroundGrid"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Stretch"
-                                />
-
                             <Button 
                                 Click="ProviderSignInClick"
-                                Windows10version1809:CornerRadius="5"
-                                Windows10version1809:Translation="0 0 18"
-                                Windows10version1903:Shadow="{StaticResource ThemeShadow}"
+                                CornerRadius="5"
+                                Translation="0 0 18"
+                                Shadow="{StaticResource ThemeShadow}"
                                 Background="{Binding Converter={StaticResource BackgroundConverter}}">
                                 
                                 <StackPanel Orientation="Horizontal">

@@ -89,8 +89,8 @@ namespace Firebase.Auth.UI.Pages
             if (sender is Grid grid)
             {
                 var shadow = grid.Resources["ThemeShadow"] as ThemeShadow;
-                var background = grid.Children.Cast<FrameworkElement>().First(e => e.Name == "BackgroundGrid");
-                shadow.Receivers.Add(background);
+                shadow.Receivers.Add(BackgroundGrid);
+                grid.Translation = new System.Numerics.Vector3(0, 0, 32);
             }
         }
     }
