@@ -41,14 +41,25 @@ namespace Firebase.Auth.UI
             this.recoverPasswordPage = new RecoverPasswordPage();
             this.providersPage = new ProvidersPage(this);
             this.Loaded += this.ControlLoaded;
+            this.Unloaded += this.ControlUnloaded;
             this.Frame.Navigate(providersPage);
         }
 
         public event EventHandler<UserEventArgs> AuthStateChanged;
 
-        private void ControlLoaded(object sender, RoutedEventArgs e)
+        private void ControlUnloaded(object sender, RoutedEventArgs e)
         {
-            FirebaseUI.Instance.Client.AuthStateChanged += (s, e) => this.AuthStateChanged?.Invoke(s, e);
+            FirebaseUI.Instance.Client.AuthStateChanged -= ClientAuthStateChanged;
+        }
+
+        private void ControlLoaded(object sender, RoutedEventArgs args)
+        {
+            FirebaseUI.Instance.Client.AuthStateChanged += ClientAuthStateChanged;
+        }
+
+        private void ClientAuthStateChanged(object sender, UserEventArgs e)
+        {
+            this.AuthStateChanged?.Invoke(sender, e);
         }
 
         public object Header

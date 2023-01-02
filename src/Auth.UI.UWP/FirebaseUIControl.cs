@@ -94,13 +94,24 @@ namespace Firebase.Auth.UI
 
             this.DataContext = this;
             this.Loaded += this.ControlLoaded;
+            this.Unloaded += this.ControlUnloaded;
 
             this.frame.Navigate(typeof(ProvidersPage), this, new DrillInNavigationTransitionInfo());
         }
-        
+
+        private void ControlUnloaded(object sender, RoutedEventArgs e)
+        {
+            FirebaseUI.Instance.Client.AuthStateChanged -= ClientAuthStateChanged;
+        }
+
         private void ControlLoaded(object sender, RoutedEventArgs args)
         {
-            FirebaseUI.Instance.Client.AuthStateChanged += (s, e) => this.AuthStateChanged?.Invoke(s, e);
+            FirebaseUI.Instance.Client.AuthStateChanged += ClientAuthStateChanged;
+        }
+
+        private void ClientAuthStateChanged(object sender, UserEventArgs e)
+        {
+            this.AuthStateChanged?.Invoke(sender, e);
         }
 
         void IFirebaseUIFlow.Reset()
