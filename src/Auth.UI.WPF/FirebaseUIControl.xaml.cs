@@ -59,7 +59,7 @@ namespace Firebase.Auth.UI
 
         private void ClientAuthStateChanged(object sender, UserEventArgs e)
         {
-            this.AuthStateChanged?.Invoke(sender, e);
+            Dispatcher.BeginInvoke(new Action(() => this.AuthStateChanged?.Invoke(sender, e)));
         }
 
         public object Header

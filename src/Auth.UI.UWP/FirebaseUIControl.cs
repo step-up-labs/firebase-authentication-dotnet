@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.Foundation.Metadata;
 using Windows.Security.Authentication.Web;
+using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -109,9 +110,11 @@ namespace Firebase.Auth.UI
             FirebaseUI.Instance.Client.AuthStateChanged += ClientAuthStateChanged;
         }
 
-        private void ClientAuthStateChanged(object sender, UserEventArgs e)
+        private async void ClientAuthStateChanged(object sender, UserEventArgs e)
         {
-            this.AuthStateChanged?.Invoke(sender, e);
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
+                CoreDispatcherPriority.Normal,
+                () => this.AuthStateChanged?.Invoke(sender, e));
         }
 
         void IFirebaseUIFlow.Reset()
