@@ -1,7 +1,6 @@
 ﻿using Firebase.Auth.Repository;
 using FluentAssertions;
 using Moq;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Firebase.Auth.Tests
@@ -9,7 +8,7 @@ namespace Firebase.Auth.Tests
     public class RepositoryTests
     {
         [Fact]
-        public async Task UserRepositoryInvokesChangedEventTest()
+        public void UserRepositoryInvokesChangedEventTest()
         {
             var manager = new UserManager(InMemoryRepository.Instance);
             var user = new User(new FirebaseAuthConfig(), new UserInfo(), new FirebaseCredential());
@@ -17,27 +16,27 @@ namespace Firebase.Auth.Tests
 
             manager.UserChanged += (s, e) => invokedUser = e.User;
 
-            await manager.SaveNewUserAsync(user);
+            manager.SaveNewUser(user);
 
             invokedUser.Should().Be(user);
         }
 
         [Fact]
-        public async Task UserRepositoryUsesCacheTest()
+        public void UserRepositoryUsesCacheTest()
         {
             var fs = new Mock<IUserRepository>();
             var repository = new UserManager(fs.Object);
             var user = new User(new FirebaseAuthConfig(), new UserInfo(), new FirebaseCredential());
 
-            await repository.SaveNewUserAsync(user);
-            await repository.GetUserAsync();
+            repository.SaveNewUser(user);
+            repository.GetUser();
 
-            fs.Verify(f => f.ReadUserAsync(), Times.Never);
-            fs.Verify(f => f.SaveUserAsync(user), Times.Once);
+            fs.Verify(f => f.ReadUser(), Times.Never);
+            fs.Verify(f => f.SaveUser(user), Times.Once);
         }
 
         [Fact]
-        public async Task UpdatingOldUserIsIgnoredTest()
+        public void UpdatingOldUserIsIgnoredTest()
         {
             const string uid = "abcd";
             const string obsoleteUid = "efgh";
@@ -47,18 +46,18 @@ namespace Firebase.Auth.Tests
             var user = new User(new FirebaseAuthConfig(), new UserInfo { Uid = uid }, new FirebaseCredential());
             var obsoleteUser = new User(new FirebaseAuthConfig(), new UserInfo { Uid = obsoleteUid }, new FirebaseCredential());
 
-            await repository.SaveNewUserAsync(user);
-            await repository.UpdateExistingUserAsync(obsoleteUser);
+            repository.SaveNewUser(user);
+            repository.UpdateExistingUser(obsoleteUser);
 
-            fs.Verify(f => f.SaveUserAsync(It.IsAny<User>()), Times.Once);
+            fs.Verify(f => f.SaveUser(It.IsAny<User>()), Times.Once);
 
-            await repository.SaveNewUserAsync(obsoleteUser);
+            repository.SaveNewUser(obsoleteUser);
 
-            fs.Verify(f => f.SaveUserAsync(It.IsAny<User>()), Times.Exactly(2));
+            fs.Verify(f => f.SaveUser(It.IsAny<User>()), Times.Exactly(2));
         }
 
         [Fact]
-        public async Task DeletingOldUserIsIgnoredTest()
+        public void DeletingOldUserIsIgnoredTest()
         {
             const string uid = "abcd";
             const string obsoleteUid = "efgh";
@@ -67,14 +66,14 @@ namespace Firebase.Auth.Tests
             var repository = new UserManager(fs.Object);
             var user = new User(new FirebaseAuthConfig(), new UserInfo { Uid = uid }, new FirebaseCredential());
             
-            await repository.SaveNewUserAsync(user);
-            await repository.DeleteExistingUserAsync(obsoleteUid);
+            repository.SaveNewUser(user);
+            repository.DeleteExistingUser(obsoleteUid);
 
-            fs.Verify(f => f.DeleteUserAsync(), Times.Never);
+            fs.Verify(f => f.DeleteUser(), Times.Never);
 
-            await repository.DeleteExistingUserAsync(uid);
+            repository.DeleteExistingUser(uid);
 
-            fs.Verify(f => f.DeleteUserAsync(), Times.Once);
+            fs.Verify(f => f.DeleteUser(), Times.Once);
         }
     }
 }

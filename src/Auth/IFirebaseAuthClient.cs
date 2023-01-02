@@ -62,6 +62,6 @@ namespace Firebase.Auth
         /// <summary>
         /// Signs current user out.
         /// </summary>
-        Task SignOutAsync();
+        void SignOut();
     }
 }

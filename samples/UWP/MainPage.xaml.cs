@@ -43,9 +43,9 @@ namespace Auth.UWP.Sample
                 });
         }
 
-        private async void SignOutClick(object sender, RoutedEventArgs e)
+        private void SignOutClick(object sender, RoutedEventArgs e)
         {
-            await FirebaseUI.Instance.Client.SignOutAsync();
+            FirebaseUI.Instance.Client.SignOut();
         }
     }
 }

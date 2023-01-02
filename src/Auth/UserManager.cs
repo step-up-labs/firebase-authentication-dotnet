@@ -21,44 +21,42 @@ namespace Firebase.Auth
             this.fs = fileSystem;
         }
 
-        public async Task<(UserInfo info, FirebaseCredential credential)> GetUserAsync()
+        public (UserInfo info, FirebaseCredential credential) GetUser()
         {
             if (!this.cache.HasValue)
             {
-                if (!await this.fs.UserExistsAsync().ConfigureAwait(false))
+                if (!this.fs.UserExists())
                 {
                     this.cache = (null, null);
                     return this.cache.Value;
                 }
 
-                this.cache = await this.fs.ReadUserAsync().ConfigureAwait(false);
+                this.cache = this.fs.ReadUser();
             }
 
             return this.cache.Value;
         }
 
-        public async Task SaveNewUserAsync(User user)
+        public void SaveNewUser(User user)
         {
             this.cache = (user.Info, user.Credential);
-
-            await this.fs.SaveUserAsync(user).ConfigureAwait(false);
-
+            this.fs.SaveUser(user);
             this.UserChanged?.Invoke(this, new UserEventArgs(user));
         }
 
-        public Task UpdateExistingUserAsync(User user)
+        public void UpdateExistingUser(User user)
         {
             if (user.Uid != this.cache?.info.Uid)
             {
                 // if updating a user, it needs to be the active one, otherwise don't do anything
-                return Task.CompletedTask;
+                return;
             }
 
             // continue updating current user
-            return this.SaveNewUserAsync(user);
+            this.SaveNewUser(user);
         }
 
-        public async Task DeleteExistingUserAsync(string uid)
+        public void DeleteExistingUser(string uid)
         {
             if (cache?.info.Uid != uid)
             {
@@ -67,9 +65,7 @@ namespace Firebase.Auth
             }
 
             this.cache = (null, null);
-
-            await this.fs.DeleteUserAsync().ConfigureAwait(false);
-            
+            this.fs.DeleteUser();
             this.UserChanged?.Invoke(this, new UserEventArgs(null));
         }
     }

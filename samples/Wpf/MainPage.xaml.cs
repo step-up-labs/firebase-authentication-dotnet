@@ -33,10 +33,10 @@ namespace Firebase.Auth.Wpf.Sample
             });
         }
 
-        private async void SignOutClick(object sender, RoutedEventArgs e)
+        private void SignOutClick(object sender, RoutedEventArgs e)
         {
             FirebaseUI.Instance.Client.AuthStateChanged -= this.AuthStateChanged;
-            await FirebaseUI.Instance.Client.SignOutAsync();
+            FirebaseUI.Instance.Client.SignOut();
         }
     }
 }

@@ -7,12 +7,12 @@ namespace Firebase.Auth.Repository
     /// </summary>
     public interface IUserRepository
     {
-        Task<bool> UserExistsAsync();
+        bool UserExists();
 
-        Task<(UserInfo userInfo, FirebaseCredential credential)> ReadUserAsync();
+        (UserInfo userInfo, FirebaseCredential credential) ReadUser();
 
-        Task SaveUserAsync(User user);
+        void SaveUser(User user);
 
-        Task DeleteUserAsync();
+        void DeleteUser();
     }
 }

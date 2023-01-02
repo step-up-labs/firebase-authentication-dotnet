@@ -31,29 +31,27 @@ namespace Firebase.Auth.Repository
             Directory.CreateDirectory(Path.Combine(appdata, folder));
         }
 
-        public virtual Task<(UserInfo, FirebaseCredential)> ReadUserAsync()
+        public virtual (UserInfo, FirebaseCredential) ReadUser()
         {
             var content = File.ReadAllText(this.filename);
             var obj = JsonConvert.DeserializeObject<UserDal>(content, this.options);
-            return Task.FromResult((obj.UserInfo, obj.Credential));
+            return (obj.UserInfo, obj.Credential);
         }
 
-        public virtual Task SaveUserAsync(User user)
+        public virtual void SaveUser(User user)
         {
             var content = JsonConvert.SerializeObject(new UserDal(user.Info, user.Credential), this.options);
             File.WriteAllText(this.filename, content);
-            return Task.CompletedTask;
         }
 
-        public virtual Task DeleteUserAsync()
+        public virtual void DeleteUser()
         {
             File.Delete(this.filename);
-            return Task.CompletedTask;
         }
 
-        public Task<bool> UserExistsAsync()
+        public bool UserExists()
         {
-            return Task.FromResult(File.Exists(this.filename));
+            return File.Exists(this.filename);
         }
 
 

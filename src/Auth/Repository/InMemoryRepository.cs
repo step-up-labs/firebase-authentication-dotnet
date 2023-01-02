@@ -16,26 +16,24 @@ namespace Firebase.Auth.Repository
 
         public static InMemoryRepository Instance => instance ?? (instance = new InMemoryRepository());
 
-        public Task<bool> UserExistsAsync()
+        public bool UserExists()
         {
-            return Task.FromResult(this.user != null);
+            return this.user != null;
         }
 
-        public Task<(UserInfo, FirebaseCredential)> ReadUserAsync()
+        public (UserInfo, FirebaseCredential) ReadUser()
         {
-            return Task.FromResult((this.user?.Info, this.user?.Credential));
+            return (this.user?.Info, this.user?.Credential);
         }
 
-        public Task SaveUserAsync(User user)
+        public void SaveUser(User user)
         {
             this.user = user;
-            return Task.CompletedTask;
         }
 
-        public Task DeleteUserAsync()
+        public void DeleteUser()
         {
             this.user = null;
-            return Task.CompletedTask;
         }
     }
 }

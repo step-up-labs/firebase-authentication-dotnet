@@ -73,7 +73,7 @@ namespace Firebase.Auth
                     RefreshToken = refresh.RefreshToken
                 };
 
-                await this.config.UserManager.UpdateExistingUserAsync(this).ConfigureAwait(false);
+                this.config.UserManager.UpdateExistingUser(this);
             }
 
             return this.Credential.IdToken;
@@ -88,7 +88,7 @@ namespace Firebase.Auth
 
             await this.deleteAccount.ExecuteAsync(new IdTokenRequest { IdToken = token }).ConfigureAwait(false);
 
-            await this.config.UserManager.DeleteExistingUserAsync(this.Uid).ConfigureAwait(false);
+            this.config.UserManager.DeleteExistingUser(this.Uid);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Firebase.Auth
                 RefreshToken = result.RefreshToken
             };
 
-            await this.config.UserManager.UpdateExistingUserAsync(this).ConfigureAwait(false);
+            this.config.UserManager.UpdateExistingUser(this);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Firebase.Auth
 
             this.Info.DisplayName = result.DisplayName;
 
-            await this.config.UserManager.UpdateExistingUserAsync(this).ConfigureAwait(false);
+            this.config.UserManager.UpdateExistingUser(this);
         }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace Firebase.Auth
             this.Credential = userCredential.User.Credential;
             this.Info = userCredential.User.Info;
 
-            await this.config.UserManager.UpdateExistingUserAsync(userCredential.User).ConfigureAwait(false);
+            this.config.UserManager.UpdateExistingUser(userCredential.User);
 
             return userCredential;
         }
@@ -182,7 +182,7 @@ namespace Firebase.Auth
             this.Credential = userCredential.User.Credential;
             this.Info = userCredential.User.Info;
 
-            await this.config.UserManager.UpdateExistingUserAsync(userCredential.User).ConfigureAwait(false);
+            this.config.UserManager.UpdateExistingUser(userCredential.User);
 
             return userCredential;
         }

@@ -2,7 +2,6 @@
 using Firebase.Auth.Requests;
 using System;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Firebase.Auth
@@ -41,6 +40,14 @@ namespace Firebase.Auth
             }
 
             this.config.UserManager.UserChanged += (s, e) => this.TriggerAuthStateChanged(this.authStateChanged, e.User);
+
+            var user = this.config.UserManager.GetUser();
+
+            // initialize user 
+            if (user.info != null)
+            {
+                User = new User(this.config, user.info, user.credential);
+            }
         }
 
         public User User
@@ -56,17 +63,17 @@ namespace Firebase.Auth
                 this.authStateChanged += value;
 
                 // for every new listener trigger the AuthStateChanged event
-                this.config.UserManager.GetUserAsync().ContinueWith(t =>
+                var user = this.config.UserManager.GetUser();
+
+                if (user.info == null)
                 {
-                    if (t.Result.Item1 == null)
-                    {
-                        this.TriggerAuthStateChanged(value, null);
-                    }
-                    else
-                    {
-                        this.TriggerAuthStateChanged(value, new User(this.config, t.Result.info, t.Result.credential));
-                    }
-                });
+                    this.TriggerAuthStateChanged(value, null);
+                }
+                else
+                {
+                    this.TriggerAuthStateChanged(value, new User(this.config, user.info, user.credential));
+                }
+                
             }
             remove
             {
@@ -95,7 +102,7 @@ namespace Firebase.Auth
 
             var userCredential = await continuation.ContinueSignInAsync(redirectUri).ConfigureAwait(false);
 
-            await this.SaveTokenAsync(userCredential.User).ConfigureAwait(false);
+            this.SaveToken(userCredential.User);
 
             return userCredential;
         }
@@ -108,7 +115,7 @@ namespace Firebase.Auth
                 .GetAuthProvider(credential.ProviderType)
                 .SignInWithCredentialAsync(credential);
 
-            await this.SaveTokenAsync(userCredential.User).ConfigureAwait(false);
+            this.SaveToken(userCredential.User);
 
             return userCredential;
         }
@@ -132,7 +139,7 @@ namespace Firebase.Auth
 
             var user = new User(this.config, info, credential);
 
-            await this.SaveTokenAsync(user);
+            this.SaveToken(user);
 
             return new UserCredential(user, null, OperationType.SignIn);
         }
@@ -159,7 +166,7 @@ namespace Firebase.Auth
             var provider = (EmailProvider)this.config.GetAuthProvider(FirebaseProviderType.EmailAndPassword);
             var result = await provider.SignInUserAsync(email, password).ConfigureAwait(false);
 
-            await this.SaveTokenAsync(result.User).ConfigureAwait(false);
+            this.SaveToken(result.User);
 
             return result;
         }
@@ -171,7 +178,7 @@ namespace Firebase.Auth
             var provider = (EmailProvider)this.config.GetAuthProvider(FirebaseProviderType.EmailAndPassword);
             var result = await provider.SignUpUserAsync(email, password, displayName).ConfigureAwait(false);
 
-            await this.SaveTokenAsync(result.User).ConfigureAwait(false);
+            this.SaveToken(result.User);
 
             return result;
         }
@@ -184,11 +191,11 @@ namespace Firebase.Auth
             await provider.ResetEmailPasswordAsync(email).ConfigureAwait(false);
         }
 
-        public Task SignOutAsync()
+        public void SignOut()
         {
             var uid = this.User?.Uid;
             this.User = null;
-            return this.config.UserManager.DeleteExistingUserAsync(uid);
+            this.config.UserManager.DeleteExistingUser(uid);
         }
 
         private void TriggerAuthStateChanged(EventHandler<UserEventArgs> value, User user)
@@ -197,9 +204,9 @@ namespace Firebase.Auth
             value?.Invoke(this, new UserEventArgs(user));
         }
 
-        private async Task SaveTokenAsync(User user)
+        private void SaveToken(User user)
         {
-            await this.config.UserManager.SaveNewUserAsync(user);
+            this.config.UserManager.SaveNewUser(user);
         }
 
         private async Task CheckAuthDomain()
