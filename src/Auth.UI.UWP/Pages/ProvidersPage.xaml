@@ -13,6 +13,7 @@
         <Grid.Resources>
             <converters:BackgroundConverter x:Key="BackgroundConverter" />
             <converters:ForegroundConverter x:Key="ForegroundConverter" />
+            <converters:BorderThicknessConverter x:Key="BorderThicknessConverter" />
             <converters:TitleConverter x:Key="TitleConverter" />
             <converters:AssetConverter x:Key="AssetConverter" />
         </Grid.Resources>
@@ -94,6 +95,8 @@
                                 CornerRadius="5"
                                 Translation="0 0 18"
                                 Shadow="{StaticResource ThemeShadow}"
+                                BorderBrush="#D6D6D6"
+                                BorderThickness="{Binding Converter={StaticResource BorderThicknessConverter}}"
                                 Background="{Binding Converter={StaticResource BackgroundConverter}}">
                                 
                                 <StackPanel Orientation="Horizontal">

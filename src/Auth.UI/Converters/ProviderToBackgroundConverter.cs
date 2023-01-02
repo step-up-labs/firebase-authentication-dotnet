@@ -10,7 +10,7 @@
             switch (provider)
             {
                 case FirebaseProviderType.Facebook: return "#3b5998";
-                case FirebaseProviderType.Google: return "#ffffff";
+                case FirebaseProviderType.Google: return "#f9f9f9";
                 case FirebaseProviderType.Github: return "#333333";
                 case FirebaseProviderType.Twitter: return "#55acee";
                 case FirebaseProviderType.Microsoft: return "#2f2f2f";
