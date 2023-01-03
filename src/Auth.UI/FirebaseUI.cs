@@ -183,8 +183,6 @@ namespace Firebase.Auth.UI
 
         protected virtual Task<UserCredential> SignInWithEmailAsync(IFirebaseUIFlow flow, string email, AuthCredential pendingCredential = null)
         {
-            var provider = (EmailProvider)this.Config.GetAuthProvider(FirebaseProviderType.EmailAndPassword);
-
             // This method can recursively call itself in case user asks to recover email password
             // - it shows reset page
             // - after reset can try to enter password again
@@ -211,7 +209,7 @@ namespace Firebase.Auth.UI
                         return await SignInWithEmailAsync(flow, email);
                     }
 
-                    var userCredential = await provider.SignInUserAsync(email, result.Password);
+                    var userCredential = await this.Client.SignInWithEmailAndPasswordAsync(email, result.Password);
 
                     if (pendingCredential != null)
                     {
