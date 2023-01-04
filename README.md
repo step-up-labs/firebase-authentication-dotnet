@@ -137,7 +137,7 @@ await user.LinkWithCredentialAsync(authCredential);
 
 To sign out a user simply call
 ```csharp
-await client.SignOutAsync();
+client.SignOut();
 ```
 
 ### FirebaseUI
