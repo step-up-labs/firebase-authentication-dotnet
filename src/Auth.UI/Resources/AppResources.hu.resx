@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="fui_progress_dialog_loading" xml:space="preserve">
+    <value><![CDATA[Betöltés…]]></value>
+  </data>
+  <data name="fui_sign_in_default" xml:space="preserve">
+    <value><![CDATA[Bejelentkezés]]></value>
+  </data>
+  <data name="fui_cancel" xml:space="preserve">
+    <value><![CDATA[Mégse]]></value>
+  </data>
+  <data name="fui_continue" xml:space="preserve">
+    <value><![CDATA[Tovább]]></value>
+  </data>
+  <data name="fui_tos_and_pp" xml:space="preserve">
+    <value><![CDATA[A folytatással elfogadja a következő dokumentumokat: {0} és {1}.]]></value>
+  </data>
+  <data name="fui_tos_and_pp_footer" xml:space="preserve">
+    <value><![CDATA[{0} \u00A0 \u00A0 {1}]]></value>
+  </data>
+  <data name="fui_no_internet" xml:space="preserve">
+    <value><![CDATA[Hálózati hiba; ellenőrizze az internetkapcsolatot.]]></value>
+  </data>
+  <data name="fui_idp_name_google" xml:space="preserve">
+    <value><![CDATA[Google]]></value>
+  </data>
+  <data name="fui_idp_name_facebook" xml:space="preserve">
+    <value><![CDATA[Facebook]]></value>
+  </data>
+  <data name="fui_idp_name_twitter" xml:space="preserve">
+    <value><![CDATA[Twitter]]></value>
+  </data>
+  <data name="fui_idp_name_github" xml:space="preserve">
+    <value><![CDATA[GitHub]]></value>
+  </data>
+  <data name="fui_idp_name_phone" xml:space="preserve">
+    <value><![CDATA[Telefon]]></value>
+  </data>
+  <data name="fui_idp_name_email" xml:space="preserve">
+    <value><![CDATA[E-mail]]></value>
+  </data>
+  <data name="fui_sign_in_with_google" xml:space="preserve">
+    <value><![CDATA[Bejelentkezés Google-fiókkal]]></value>
+  </data>
+  <data name="fui_sign_in_with_facebook" xml:space="preserve">
+    <value><![CDATA[Bejelentkezés Facebook-fiókkal]]></value>
+  </data>
+  <data name="fui_sign_in_with_twitter" xml:space="preserve">
+    <value><![CDATA[Bejelentkezés Twitter-fiókkal]]></value>
+  </data>
+  <data name="fui_sign_in_with_github" xml:space="preserve">
+    <value><![CDATA[Bejelentkezés GitHubbal]]></value>
+  </data>
+  <data name="fui_sign_in_with_email" xml:space="preserve">
+    <value><![CDATA[Bejelentkezés e-mail-fiókkal]]></value>
+  </data>
+  <data name="fui_sign_in_with_phone" xml:space="preserve">
+    <value><![CDATA[Bejelentkezés telefonnal]]></value>
+  </data>
+  <data name="fui_sign_in_anonymously" xml:space="preserve">
+    <value><![CDATA[Folytatás vendégként]]></value>
+  </data>
+  <data name="fui_sign_in_with_apple" xml:space="preserve">
+    <value><![CDATA[Bejelentkezés Apple-fiókkal]]></value>
+  </data>
+  <data name="fui_sign_in_with_microsoft" xml:space="preserve">
+    <value><![CDATA[Bejelentkezés Microsoft-fiókkal]]></value>
+  </data>
+  <data name="fui_sign_in_with_yahoo" xml:space="preserve">
+    <value><![CDATA[Bejelentkezés Yahoo-fiókkal]]></value>
+  </data>
+  <data name="fui_next_default" xml:space="preserve">
+    <value><![CDATA[Következő]]></value>
+  </data>
+  <data name="fui_email_hint" xml:space="preserve">
+    <value><![CDATA[E-mail]]></value>
+  </data>
+  <data name="fui_phone_hint" xml:space="preserve">
+    <value><![CDATA[Telefonszám]]></value>
+  </data>
+  <data name="fui_password_hint" xml:space="preserve">
+    <value><![CDATA[Jelszó]]></value>
+  </data>
+  <data name="fui_required_field" xml:space="preserve">
+    <value><![CDATA[Ezt nem hagyhatja üresen.]]></value>
+  </data>
+  <data name="fui_invalid_email_address" xml:space="preserve">
+    <value><![CDATA[Az e-mail-cím helytelen.]]></value>
+  </data>
+  <data name="fui_missing_email_address" xml:space="preserve">
+    <value><![CDATA[A folytatáshoz adja meg e-mail-címét.]]></value>
+  </data>
+  <data name="fui_missing_first_and_last_name" xml:space="preserve">
+    <value><![CDATA[Írja be utónevét és vezetéknevét.]]></value>
+  </data>
+  <data name="fui_progress_dialog_checking_accounts" xml:space="preserve">
+    <value><![CDATA[Meglévő fiókok ellenőrzése…]]></value>
+  </data>
+  <data name="fui_title_register_email" xml:space="preserve">
+    <value><![CDATA[Regisztráció]]></value>
+  </data>
+  <data name="fui_name_hint" xml:space="preserve">
+    <value><![CDATA[Utónév és vezetéknév]]></value>
+  </data>
+  <data name="fui_button_text_save" xml:space="preserve">
+    <value><![CDATA[Mentés]]></value>
+  </data>
+  <data name="fui_progress_dialog_signing_up" xml:space="preserve">
+    <value><![CDATA[Regisztráció…]]></value>
+  </data>
+  <data name="fui_email_account_creation_error" xml:space="preserve">
+    <value><![CDATA[Az e-mail-fiók regisztrációja sikertelen volt.]]></value>
+  </data>
+  <data name="fui_terms_of_service" xml:space="preserve">
+    <value><![CDATA[Általános Szerződési Feltételek]]></value>
+  </data>
+  <data name="fui_privacy_policy" xml:space="preserve">
+    <value><![CDATA[Adatvédelmi irányelvek]]></value>
+  </data>
+  <data name="fui_welcome_back_idp_header" xml:space="preserve">
+    <value><![CDATA[Már rendelkezik fiókkal]]></value>
+  </data>
+  <data name="fui_welcome_back_email_header" xml:space="preserve">
+    <value><![CDATA[Örülünk, hogy visszatért!]]></value>
+  </data>
+  <data name="fui_welcome_back_email_link_header" xml:space="preserve">
+    <value><![CDATA[Már rendelkezik fiókkal]]></value>
+  </data>
+  <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
+    <value><![CDATA[Már használta a következő e-mail-címet: {0}. A folytatáshoz jelentkezzen be {1}-fiókjával.]]></value>
+  </data>
+  <data name="fui_welcome_back_password_prompt_body" xml:space="preserve">
+    <value><![CDATA[Ezt az e-mail-fiókot ({0}) már használta bejelentkezésre. Adja meg a fiókhoz tartozó jelszót.]]></value>
+  </data>
+  <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
+    <value><![CDATA[Már használta a következő e-mail-címet: {0}. Most már összekapcsolhatja {1}-fiókját a(z) {0} e-mail-címmel, ha az alábbi e-mail-linkkel jelentkezik be. {1}-fiókjának és az e-mail-címnek az összekapcsolásához a linket ugyanazon az eszközön vagy ugyanabban a böngészőben kell megnyitni.]]></value>
+  </data>
+  <data name="fui_progress_dialog_signing_in" xml:space="preserve">
+    <value><![CDATA[Bejelentkezés…]]></value>
+  </data>
+  <data name="fui_trouble_signing_in" xml:space="preserve">
+    <value><![CDATA[Problémái vannak a bejelentkezéssel?]]></value>
+  </data>
+  <data name="fui_title_recover_password_activity" xml:space="preserve">
+    <value><![CDATA[Jelszó visszaállítása]]></value>
+  </data>
+  <data name="fui_title_confirm_recover_password" xml:space="preserve">
+    <value><![CDATA[Ellenőrizze az e-mailjeit.]]></value>
+  </data>
+  <data name="fui_password_recovery_body" xml:space="preserve">
+    <value><![CDATA[Olvassa el az e-mailben elküldött utasításokat, amelyekből megtudhatja, hogyan állíthatja vissza a jelszavát.]]></value>
+  </data>
+  <data name="fui_button_text_send" xml:space="preserve">
+    <value><![CDATA[Küldés]]></value>
+  </data>
+  <data name="fui_confirm_recovery_body" xml:space="preserve">
+    <value><![CDATA[A jelszó visszaállításához kövesse az ide ({0}) elküldött utasításokat.]]></value>
+  </data>
+  <data name="fui_progress_dialog_sending" xml:space="preserve">
+    <value><![CDATA[Küldés…]]></value>
+  </data>
+  <data name="fui_error_email_does_not_exist" xml:space="preserve">
+    <value><![CDATA[Ehhez az e-mail-címhez egyetlen meglévő fiók sem tartozik.]]></value>
+  </data>
+  <data name="fui_error_unknown" xml:space="preserve">
+    <value><![CDATA[Ismeretlen hiba történt.]]></value>
+  </data>
+  <data name="fui_error_invalid_password" xml:space="preserve">
+    <value><![CDATA[Helytelen jelszó]]></value>
+  </data>
+  <data name="fui_accessibility_logo" xml:space="preserve">
+    <value><![CDATA[Alkalmazás emblémája]]></value>
+  </data>
+  <data name="fui_email_link_header" xml:space="preserve">
+    <value><![CDATA[Bejelentkezési e-mail elküldve]]></value>
+  </data>
+  <data name="fui_email_link_email_sent" xml:space="preserve">
+    <value><![CDATA[A további utasításokat tartalmazó bejelentkezési e-mailt elküldtük ide: {0}. A bejelentkezés befejezéséhez keresse meg az e-mailjei között.]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_email_header" xml:space="preserve">
+    <value><![CDATA[Az e-mail-fogadással kapcsolatos problémát észlel?]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
+    <value><![CDATA[Próbálja ki ezeket az általános problémamegoldó lépéseket: \u2022 Ellenőrizze, hogy az e-mail nem lett-e spamként megjelölve, vagy kiszűrve. \u2022 Ellenőrizze az internetkapcsolatát. \u2022 Ellenőrizze, hogy nem tévesen írta-e le az e-mail-címét. \u2022 Ellenőrizze, hogy a beérkező levelek számára van-e tárhely, illetve nincs-e gond a beérkező levelek beállításaival.]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
+    <value><![CDATA[Ha a fenti lépések végrehajtása nem járt eredménnyel, küldje el újra az e-mailt. Ne feledje, hogy ezzel deaktiválja az előző e-mailben szereplő linket.]]></value>
+  </data>
+  <data name="fui_email_link_resend" xml:space="preserve">
+    <value><![CDATA[Újraküldés]]></value>
+  </data>
+  <data name="fui_email_link_wrong_device_header" xml:space="preserve">
+    <value><![CDATA[A rendszer új eszközt vagy böngészőt észlelt.]]></value>
+  </data>
+  <data name="fui_email_link_wrong_device_message" xml:space="preserve">
+    <value><![CDATA[Ugyanazzal az eszközzel vagy böngészővel nyissa meg a linket, amellyel elkezdte a bejelentkezési műveletet.]]></value>
+  </data>
+  <data name="fui_email_link_invalid_link_header" xml:space="preserve">
+    <value><![CDATA[Nem sikerült a bejelentkezés]]></value>
+  </data>
+  <data name="fui_email_link_invalid_link_message" xml:space="preserve">
+    <value><![CDATA[Érvénytelen műveleti kód. Ez akkor fordulhat elő, ha a kód rossz formátumú, lejárt, vagy ha már felhasználták.]]></value>
+  </data>
+  <data name="fui_email_link_different_anonymous_user_header" xml:space="preserve">
+    <value><![CDATA[A munkamenet befejeződött]]></value>
+  </data>
+  <data name="fui_email_link_different_anonymous_user_message" xml:space="preserve">
+    <value><![CDATA[A bejelentkezési kérelemhez kapcsolódó munkamenet lejárt, vagy törölték.]]></value>
+  </data>
+  <data name="fui_email_link_confirm_email_header" xml:space="preserve">
+    <value><![CDATA[E-mail megerősítése]]></value>
+  </data>
+  <data name="fui_email_link_confirm_email_message" xml:space="preserve">
+    <value><![CDATA[A bejelentkezés folytatásához erősítse meg az e-mail-címet]]></value>
+  </data>
+  <data name="fui_email_link_dismiss_button" xml:space="preserve">
+    <value><![CDATA[Elvetés]]></value>
+  </data>
+  <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
+    <value><![CDATA[Eredetileg össze szerette volna kapcsolni {0}-fiókját az e-mail-fiókjával, a linket azonban olyan eszközön nyitotta meg, amelyen nem jelentkezett be. Ha továbbra is össze kívánja kapcsolni {0}-fiókját, akkor azon az eszközön nyissa meg a linket, amelyen megkezdte a bejelentkezést. Ha ezen az eszközön kíván bejelentkezni, akkor koppintson a Tovább gombra.]]></value>
+  </data>
+  <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
+    <value><![CDATA[Bejelentkezés a következővel: {0}]]></value>
+  </data>
+  <data name="fui_verify_phone_number_title" xml:space="preserve">
+    <value><![CDATA[Adja meg telefonszámát]]></value>
+  </data>
+  <data name="fui_invalid_phone_number" xml:space="preserve">
+    <value><![CDATA[Érvényes telefonszámot adjon meg.]]></value>
+  </data>
+  <data name="fui_enter_confirmation_code" xml:space="preserve">
+    <value><![CDATA[Adja meg a telefonszámra elküldött 6 számjegyű kódot]]></value>
+  </data>
+  <data name="fui_resend_code_in" xml:space="preserve">
+    <value><![CDATA[Kód újraküldése ennyi idő elteltével: 0:%02d]]></value>
+  </data>
+  <data name="fui_verify_your_phone_title" xml:space="preserve">
+    <value><![CDATA[Telefonszám igazolása]]></value>
+  </data>
+  <data name="fui_verifying" xml:space="preserve">
+    <value><![CDATA[Ellenőrzés…]]></value>
+  </data>
+  <data name="fui_incorrect_code_dialog_body" xml:space="preserve">
+    <value><![CDATA[Hibás kód. Próbálja újra.]]></value>
+  </data>
+  <data name="fui_error_too_many_attempts" xml:space="preserve">
+    <value><![CDATA[Ezt a telefonszámot már túl sokszor használták.]]></value>
+  </data>
+  <data name="fui_error_quota_exceeded" xml:space="preserve">
+    <value><![CDATA[Hiba történt a telefonszám ellenőrzésekor.]]></value>
+  </data>
+  <data name="fui_error_session_expired" xml:space="preserve">
+    <value><![CDATA[Ez a kód már nem érvényes.]]></value>
+  </data>
+  <data name="fui_sign_in_with_phone_number" xml:space="preserve">
+    <value><![CDATA[Bejelentkezés telefonszámmal]]></value>
+  </data>
+  <data name="fui_auto_verified" xml:space="preserve">
+    <value><![CDATA[A telefonszám automatikusan ellenőrizve]]></value>
+  </data>
+  <data name="fui_resend_code" xml:space="preserve">
+    <value><![CDATA[Kód újraküldése]]></value>
+  </data>
+  <data name="fui_verify_phone_number" xml:space="preserve">
+    <value><![CDATA[Telefonszám igazolása]]></value>
+  </data>
+  <data name="fui_sms_terms_of_service" xml:space="preserve">
+    <value><![CDATA[Ha a(z) „{0}” gombra koppint, a rendszer SMS-t küldhet Önnek. A szolgáltató ezért üzenet- és adatforgalmi díjat számíthat fel.]]></value>
+  </data>
+  <data name="fui_sms_terms_of_service_and_privacy_policy_extended" xml:space="preserve">
+    <value><![CDATA[A(z) „{0}” gombra való koppintással elfogadja a következő dokumentumokat: {1} és {2}. A rendszer SMS-t küldhet Önnek. A szolgáltató ezért üzenet- és adatforgalmi díjat számíthat fel.]]></value>
+  </data>
+  <data name="fui_error_weak_password_one" xml:space="preserve">
+    <value><![CDATA[A jelszó nem elég erős. Legalább {0} karaktert használjon, amelyben betűk és számok is szerepeljenek.]]></value>
+  </data>
+  <data name="fui_error_weak_password_other" xml:space="preserve">
+    <value><![CDATA[A jelszó nem elég erős. Legalább {0} karaktert használjon, amelyben betűk és számok is szerepeljenek.]]></value>
+  </data>
+
+</root>

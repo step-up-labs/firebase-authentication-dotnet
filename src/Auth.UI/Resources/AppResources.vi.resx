@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="fui_progress_dialog_loading" xml:space="preserve">
+    <value><![CDATA[Đang tải…]]></value>
+  </data>
+  <data name="fui_sign_in_default" xml:space="preserve">
+    <value><![CDATA[Đăng nhập]]></value>
+  </data>
+  <data name="fui_cancel" xml:space="preserve">
+    <value><![CDATA[Hủy]]></value>
+  </data>
+  <data name="fui_continue" xml:space="preserve">
+    <value><![CDATA[Tiếp tục]]></value>
+  </data>
+  <data name="fui_tos_and_pp" xml:space="preserve">
+    <value><![CDATA[Bằng cách tiếp tục, bạn cho biết rằng bạn chấp nhận {0} và {1} của chúng tôi.]]></value>
+  </data>
+  <data name="fui_tos_and_pp_footer" xml:space="preserve">
+    <value><![CDATA[{0} \u00A0 \u00A0 {1}]]></value>
+  </data>
+  <data name="fui_no_internet" xml:space="preserve">
+    <value><![CDATA[Đã xảy ra lỗi mạng, hãy kiểm tra kết nối Internet của bạn.]]></value>
+  </data>
+  <data name="fui_idp_name_google" xml:space="preserve">
+    <value><![CDATA[Google]]></value>
+  </data>
+  <data name="fui_idp_name_facebook" xml:space="preserve">
+    <value><![CDATA[Facebook]]></value>
+  </data>
+  <data name="fui_idp_name_twitter" xml:space="preserve">
+    <value><![CDATA[Twitter]]></value>
+  </data>
+  <data name="fui_idp_name_github" xml:space="preserve">
+    <value><![CDATA[GitHub]]></value>
+  </data>
+  <data name="fui_idp_name_phone" xml:space="preserve">
+    <value><![CDATA[Điện thoại]]></value>
+  </data>
+  <data name="fui_idp_name_email" xml:space="preserve">
+    <value><![CDATA[Email]]></value>
+  </data>
+  <data name="fui_sign_in_with_google" xml:space="preserve">
+    <value><![CDATA[Đăng nhập bằng Google]]></value>
+  </data>
+  <data name="fui_sign_in_with_facebook" xml:space="preserve">
+    <value><![CDATA[Đăng nhập bằng Facebook]]></value>
+  </data>
+  <data name="fui_sign_in_with_twitter" xml:space="preserve">
+    <value><![CDATA[Đăng nhập bằng Twitter]]></value>
+  </data>
+  <data name="fui_sign_in_with_github" xml:space="preserve">
+    <value><![CDATA[Đăng nhập bằng GitHub]]></value>
+  </data>
+  <data name="fui_sign_in_with_email" xml:space="preserve">
+    <value><![CDATA[Đăng nhập bằng email]]></value>
+  </data>
+  <data name="fui_sign_in_with_phone" xml:space="preserve">
+    <value><![CDATA[Đăng nhập bằng điện thoại]]></value>
+  </data>
+  <data name="fui_sign_in_anonymously" xml:space="preserve">
+    <value><![CDATA[Tiếp tục với vai trò người dùng khách]]></value>
+  </data>
+  <data name="fui_sign_in_with_apple" xml:space="preserve">
+    <value><![CDATA[Đăng nhập bằng Apple]]></value>
+  </data>
+  <data name="fui_sign_in_with_microsoft" xml:space="preserve">
+    <value><![CDATA[Đăng nhập bằng Microsoft]]></value>
+  </data>
+  <data name="fui_sign_in_with_yahoo" xml:space="preserve">
+    <value><![CDATA[Đăng nhập bằng Yahoo]]></value>
+  </data>
+  <data name="fui_next_default" xml:space="preserve">
+    <value><![CDATA[Tiếp]]></value>
+  </data>
+  <data name="fui_email_hint" xml:space="preserve">
+    <value><![CDATA[Email]]></value>
+  </data>
+  <data name="fui_phone_hint" xml:space="preserve">
+    <value><![CDATA[Số điện thoại]]></value>
+  </data>
+  <data name="fui_password_hint" xml:space="preserve">
+    <value><![CDATA[Mật khẩu]]></value>
+  </data>
+  <data name="fui_required_field" xml:space="preserve">
+    <value><![CDATA[Bạn không được để trống trường này.]]></value>
+  </data>
+  <data name="fui_invalid_email_address" xml:space="preserve">
+    <value><![CDATA[Địa chỉ email đó không đúng]]></value>
+  </data>
+  <data name="fui_missing_email_address" xml:space="preserve">
+    <value><![CDATA[Nhập địa chỉ email của bạn để tiếp tục]]></value>
+  </data>
+  <data name="fui_missing_first_and_last_name" xml:space="preserve">
+    <value><![CDATA[Vui lòng nhập họ và tên.]]></value>
+  </data>
+  <data name="fui_progress_dialog_checking_accounts" xml:space="preserve">
+    <value><![CDATA[Đang kiểm tra các tài khoản hiện có…]]></value>
+  </data>
+  <data name="fui_title_register_email" xml:space="preserve">
+    <value><![CDATA[Đăng ký]]></value>
+  </data>
+  <data name="fui_name_hint" xml:space="preserve">
+    <value><![CDATA[Họ và tên]]></value>
+  </data>
+  <data name="fui_button_text_save" xml:space="preserve">
+    <value><![CDATA[Lưu]]></value>
+  </data>
+  <data name="fui_progress_dialog_signing_up" xml:space="preserve">
+    <value><![CDATA[Đang đăng ký…]]></value>
+  </data>
+  <data name="fui_email_account_creation_error" xml:space="preserve">
+    <value><![CDATA[Đăng ký tài khoản email không thành công]]></value>
+  </data>
+  <data name="fui_terms_of_service" xml:space="preserve">
+    <value><![CDATA[Điều khoản dịch vụ]]></value>
+  </data>
+  <data name="fui_privacy_policy" xml:space="preserve">
+    <value><![CDATA[Chính sách quyền riêng tư]]></value>
+  </data>
+  <data name="fui_welcome_back_idp_header" xml:space="preserve">
+    <value><![CDATA[Bạn đã có tài khoản]]></value>
+  </data>
+  <data name="fui_welcome_back_email_header" xml:space="preserve">
+    <value><![CDATA[Chào mừng bạn quay trở lại!]]></value>
+  </data>
+  <data name="fui_welcome_back_email_link_header" xml:space="preserve">
+    <value><![CDATA[Bạn đã có tài khoản]]></value>
+  </data>
+  <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
+    <value><![CDATA[Bạn đã sử dụng {0}. Đăng nhập bằng {1} để tiếp tục.]]></value>
+  </data>
+  <data name="fui_welcome_back_password_prompt_body" xml:space="preserve">
+    <value><![CDATA[Bạn đã sử dụng {0} để đăng nhập. Hãy nhập mật khẩu của bạn cho tài khoản đó.]]></value>
+  </data>
+  <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
+    <value><![CDATA[Bạn đã sử dụng {0}. Bạn có thể kết nối tài khoản {1} của mình với {0} bằng cách đăng nhập vào liên kết email bên dưới. Để quy trình kết nối tài khoản {1} của bạn với email này diễn ra thành công, bạn phải mở liên kết trên cùng một thiết bị hoặc trình duyệt.]]></value>
+  </data>
+  <data name="fui_progress_dialog_signing_in" xml:space="preserve">
+    <value><![CDATA[Đang đăng nhập…]]></value>
+  </data>
+  <data name="fui_trouble_signing_in" xml:space="preserve">
+    <value><![CDATA[Bạn gặp sự cố khi đăng nhập?]]></value>
+  </data>
+  <data name="fui_title_recover_password_activity" xml:space="preserve">
+    <value><![CDATA[Khôi phục mật khẩu]]></value>
+  </data>
+  <data name="fui_title_confirm_recover_password" xml:space="preserve">
+    <value><![CDATA[Kiểm tra email của bạn]]></value>
+  </data>
+  <data name="fui_password_recovery_body" xml:space="preserve">
+    <value><![CDATA[Xem hướng dẫn gửi tới email này có giải thích cách đặt lại mật khẩu của bạn.]]></value>
+  </data>
+  <data name="fui_button_text_send" xml:space="preserve">
+    <value><![CDATA[Gửi]]></value>
+  </data>
+  <data name="fui_confirm_recovery_body" xml:space="preserve">
+    <value><![CDATA[Làm theo hướng dẫn gửi tới {0} để khôi phục mật khẩu của bạn.]]></value>
+  </data>
+  <data name="fui_progress_dialog_sending" xml:space="preserve">
+    <value><![CDATA[Đang gửi…]]></value>
+  </data>
+  <data name="fui_error_email_does_not_exist" xml:space="preserve">
+    <value><![CDATA[Địa chỉ email đó không khớp với tài khoản hiện có]]></value>
+  </data>
+  <data name="fui_error_unknown" xml:space="preserve">
+    <value><![CDATA[Đã xảy ra lỗi không xác định.]]></value>
+  </data>
+  <data name="fui_error_invalid_password" xml:space="preserve">
+    <value><![CDATA[Sai mật khẩu.]]></value>
+  </data>
+  <data name="fui_accessibility_logo" xml:space="preserve">
+    <value><![CDATA[Biểu trưng ứng dụng]]></value>
+  </data>
+  <data name="fui_email_link_header" xml:space="preserve">
+    <value><![CDATA[Đã gửi email đăng nhập]]></value>
+  </data>
+  <data name="fui_email_link_email_sent" xml:space="preserve">
+    <value><![CDATA[Email đăng nhập có hướng dẫn bổ sung đã được gửi tới {0}. Hãy tìm email này trong hộp thư của bạn để hoàn tất đăng nhập.]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_email_header" xml:space="preserve">
+    <value><![CDATA[Bạn gặp vấn đề khi nhận email?]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
+    <value><![CDATA[Hãy thử các biện pháp khắc phục phổ biến sau: \u2022 Kiểm tra xem email có bị đánh dấu là spam hay đã được lọc. \u2022 Kiểm tra kết nối Internet của bạn. \u2022 Kiểm tra để đảm bảo bạn không viết sai chính tả tên email. \u2022 Kiểm tra để đảm bảo hộp thư đến của bạn chưa hết dung lượng và không có vấn đề về cài đặt hộp thư đến.]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
+    <value><![CDATA[Nếu các bước trên không hiệu quả, bạn có thể gửi lại email. Vui lòng lưu ý rằng thao tác này sẽ hủy kích hoạt đường dẫn liên kết trong email cũ.]]></value>
+  </data>
+  <data name="fui_email_link_resend" xml:space="preserve">
+    <value><![CDATA[Gửi lại]]></value>
+  </data>
+  <data name="fui_email_link_wrong_device_header" xml:space="preserve">
+    <value><![CDATA[Đã phát hiện thiết bị hoặc trình duyệt mới.]]></value>
+  </data>
+  <data name="fui_email_link_wrong_device_message" xml:space="preserve">
+    <value><![CDATA[Hãy thử mở liên kết bằng cùng một thiết bị hoặc trình duyệt mà bạn dùng để bắt đầu quá trình đăng nhập.]]></value>
+  </data>
+  <data name="fui_email_link_invalid_link_header" xml:space="preserve">
+    <value><![CDATA[Không thể hoàn tất đăng nhập]]></value>
+  </data>
+  <data name="fui_email_link_invalid_link_message" xml:space="preserve">
+    <value><![CDATA[Mã kích hoạt không hợp lệ. Điều này có thể xảy ra nếu mã không đúng định dạng, đã hết hạn hoặc đã sử dụng.]]></value>
+  </data>
+  <data name="fui_email_link_different_anonymous_user_header" xml:space="preserve">
+    <value><![CDATA[Phiên hoạt động đã kết thúc]]></value>
+  </data>
+  <data name="fui_email_link_different_anonymous_user_message" xml:space="preserve">
+    <value><![CDATA[Phiên hoạt động liên quan đến yêu cầu đăng nhập này đã hết hạn hoặc đã bị xóa.]]></value>
+  </data>
+  <data name="fui_email_link_confirm_email_header" xml:space="preserve">
+    <value><![CDATA[Xác nhận email]]></value>
+  </data>
+  <data name="fui_email_link_confirm_email_message" xml:space="preserve">
+    <value><![CDATA[Xác nhận email để tiếp tục đăng nhập]]></value>
+  </data>
+  <data name="fui_email_link_dismiss_button" xml:space="preserve">
+    <value><![CDATA[Bỏ qua]]></value>
+  </data>
+  <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
+    <value><![CDATA[Ban đầu, bạn có ý định kết nối {0} với tài khoản email của bạn nhưng đã mở liên kết trên một thiết bị khác mà bạn chưa đăng nhập. Nếu bạn vẫn muốn kết nối với tài khoản {0} của mình, hãy mở liên kết này trên cùng một thiết bị mà bạn đã đăng nhập từ đầu. Nếu không, hãy nhấn Tiếp tục để đăng nhập trên thiết bị này.]]></value>
+  </data>
+  <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
+    <value><![CDATA[Đăng nhập bằng {0}]]></value>
+  </data>
+  <data name="fui_verify_phone_number_title" xml:space="preserve">
+    <value><![CDATA[Nhập số điện thoại của bạn]]></value>
+  </data>
+  <data name="fui_invalid_phone_number" xml:space="preserve">
+    <value><![CDATA[Nhập số điện thoại hợp lệ]]></value>
+  </data>
+  <data name="fui_enter_confirmation_code" xml:space="preserve">
+    <value><![CDATA[Nhập mã 6 chữ số mà chúng tôi đã gửi cho bạn]]></value>
+  </data>
+  <data name="fui_resend_code_in" xml:space="preserve">
+    <value><![CDATA[Gửi lại mã sau 0:%02d]]></value>
+  </data>
+  <data name="fui_verify_your_phone_title" xml:space="preserve">
+    <value><![CDATA[Xác minh số điện thoại của bạn]]></value>
+  </data>
+  <data name="fui_verifying" xml:space="preserve">
+    <value><![CDATA[Đang xác minh…]]></value>
+  </data>
+  <data name="fui_incorrect_code_dialog_body" xml:space="preserve">
+    <value><![CDATA[Mã không chính xác. Hãy thử lại.]]></value>
+  </data>
+  <data name="fui_error_too_many_attempts" xml:space="preserve">
+    <value><![CDATA[Số điện thoại này đã được sử dụng quá nhiều lần]]></value>
+  </data>
+  <data name="fui_error_quota_exceeded" xml:space="preserve">
+    <value><![CDATA[Đã xảy ra sự cố khi xác minh số điện thoại của bạn]]></value>
+  </data>
+  <data name="fui_error_session_expired" xml:space="preserve">
+    <value><![CDATA[Mã này không còn hợp lệ]]></value>
+  </data>
+  <data name="fui_sign_in_with_phone_number" xml:space="preserve">
+    <value><![CDATA[Đăng nhập bằng số điện thoại]]></value>
+  </data>
+  <data name="fui_auto_verified" xml:space="preserve">
+    <value><![CDATA[Đã tự động xác minh số điện thoại]]></value>
+  </data>
+  <data name="fui_resend_code" xml:space="preserve">
+    <value><![CDATA[Gửi lại mã]]></value>
+  </data>
+  <data name="fui_verify_phone_number" xml:space="preserve">
+    <value><![CDATA[Xác minh số điện thoại]]></value>
+  </data>
+  <data name="fui_sms_terms_of_service" xml:space="preserve">
+    <value><![CDATA[Bằng cách nhấn vào “{0}”, bạn có thể nhận được một tin nhắn SMS. Cước tin nhắn và dữ liệu có thể áp dụng.]]></value>
+  </data>
+  <data name="fui_sms_terms_of_service_and_privacy_policy_extended" xml:space="preserve">
+    <value><![CDATA[Bằng cách nhấn vào “{0}”, bạn cho biết rằng bạn chấp nhận {1} và {2} của chúng tôi. Bạn có thể nhận được một tin nhắn SMS. Cước tin nhắn và dữ liệu có thể áp dụng.]]></value>
+  </data>
+  <data name="fui_error_weak_password_one" xml:space="preserve">
+    <value><![CDATA[Mật khẩu không đủ mạnh. Sử dụng ít nhất {0} ký tự, kết hợp chữ cái và số]]></value>
+  </data>
+  <data name="fui_error_weak_password_other" xml:space="preserve">
+    <value><![CDATA[Mật khẩu không đủ mạnh. Sử dụng ít nhất {0} ký tự, kết hợp chữ cái và số]]></value>
+  </data>
+
+</root>

@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="fui_progress_dialog_loading" xml:space="preserve">
+    <value><![CDATA[Yükleniyor…]]></value>
+  </data>
+  <data name="fui_sign_in_default" xml:space="preserve">
+    <value><![CDATA[Oturum aç]]></value>
+  </data>
+  <data name="fui_cancel" xml:space="preserve">
+    <value><![CDATA[İptal]]></value>
+  </data>
+  <data name="fui_continue" xml:space="preserve">
+    <value><![CDATA[Devam]]></value>
+  </data>
+  <data name="fui_tos_and_pp" xml:space="preserve">
+    <value><![CDATA[Devam ederek {0} ve {1} hükümlerimizi kabul ettiğinizi bildirirsiniz.]]></value>
+  </data>
+  <data name="fui_tos_and_pp_footer" xml:space="preserve">
+    <value><![CDATA[{0} \u00A0 \u00A0 {1}]]></value>
+  </data>
+  <data name="fui_no_internet" xml:space="preserve">
+    <value><![CDATA[Ağ hatası, internet bağlantınızı kontrol edin.]]></value>
+  </data>
+  <data name="fui_idp_name_google" xml:space="preserve">
+    <value><![CDATA[Google]]></value>
+  </data>
+  <data name="fui_idp_name_facebook" xml:space="preserve">
+    <value><![CDATA[Facebook]]></value>
+  </data>
+  <data name="fui_idp_name_twitter" xml:space="preserve">
+    <value><![CDATA[Twitter]]></value>
+  </data>
+  <data name="fui_idp_name_github" xml:space="preserve">
+    <value><![CDATA[GitHub]]></value>
+  </data>
+  <data name="fui_idp_name_phone" xml:space="preserve">
+    <value><![CDATA[Telefon]]></value>
+  </data>
+  <data name="fui_idp_name_email" xml:space="preserve">
+    <value><![CDATA[E-posta]]></value>
+  </data>
+  <data name="fui_sign_in_with_google" xml:space="preserve">
+    <value><![CDATA[Google ile oturum aç]]></value>
+  </data>
+  <data name="fui_sign_in_with_facebook" xml:space="preserve">
+    <value><![CDATA[Facebook ile oturum aç]]></value>
+  </data>
+  <data name="fui_sign_in_with_twitter" xml:space="preserve">
+    <value><![CDATA[Twitter ile oturum aç]]></value>
+  </data>
+  <data name="fui_sign_in_with_github" xml:space="preserve">
+    <value><![CDATA[GitHub ile oturum aç]]></value>
+  </data>
+  <data name="fui_sign_in_with_email" xml:space="preserve">
+    <value><![CDATA[E-posta ile oturum aç]]></value>
+  </data>
+  <data name="fui_sign_in_with_phone" xml:space="preserve">
+    <value><![CDATA[Telefonla oturum aç]]></value>
+  </data>
+  <data name="fui_sign_in_anonymously" xml:space="preserve">
+    <value><![CDATA[Misafir olarak devam et]]></value>
+  </data>
+  <data name="fui_sign_in_with_apple" xml:space="preserve">
+    <value><![CDATA[Apple ile oturum aç]]></value>
+  </data>
+  <data name="fui_sign_in_with_microsoft" xml:space="preserve">
+    <value><![CDATA[Microsoft ile oturum aç]]></value>
+  </data>
+  <data name="fui_sign_in_with_yahoo" xml:space="preserve">
+    <value><![CDATA[Yahoo ile oturum aç]]></value>
+  </data>
+  <data name="fui_next_default" xml:space="preserve">
+    <value><![CDATA[İleri]]></value>
+  </data>
+  <data name="fui_email_hint" xml:space="preserve">
+    <value><![CDATA[E-posta]]></value>
+  </data>
+  <data name="fui_phone_hint" xml:space="preserve">
+    <value><![CDATA[Telefon Numarası]]></value>
+  </data>
+  <data name="fui_password_hint" xml:space="preserve">
+    <value><![CDATA[Şifre]]></value>
+  </data>
+  <data name="fui_required_field" xml:space="preserve">
+    <value><![CDATA[Bu alanı boş bırakamazsınız.]]></value>
+  </data>
+  <data name="fui_invalid_email_address" xml:space="preserve">
+    <value><![CDATA[E-posta adresi doğru değil]]></value>
+  </data>
+  <data name="fui_missing_email_address" xml:space="preserve">
+    <value><![CDATA[Devam etmek için e-posta adresinizi girin]]></value>
+  </data>
+  <data name="fui_missing_first_and_last_name" xml:space="preserve">
+    <value><![CDATA[Lütfen ad ve soyadı girin.]]></value>
+  </data>
+  <data name="fui_progress_dialog_checking_accounts" xml:space="preserve">
+    <value><![CDATA[Mevcut hesaplar kontrol ediliyor…]]></value>
+  </data>
+  <data name="fui_title_register_email" xml:space="preserve">
+    <value><![CDATA[Kaydol]]></value>
+  </data>
+  <data name="fui_name_hint" xml:space="preserve">
+    <value><![CDATA[Ad ve Soyad]]></value>
+  </data>
+  <data name="fui_button_text_save" xml:space="preserve">
+    <value><![CDATA[Kaydet]]></value>
+  </data>
+  <data name="fui_progress_dialog_signing_up" xml:space="preserve">
+    <value><![CDATA[Kaydolunuyor…]]></value>
+  </data>
+  <data name="fui_email_account_creation_error" xml:space="preserve">
+    <value><![CDATA[E-posta hesabı kaydı başarısız oldu]]></value>
+  </data>
+  <data name="fui_terms_of_service" xml:space="preserve">
+    <value><![CDATA[Hizmet Şartları]]></value>
+  </data>
+  <data name="fui_privacy_policy" xml:space="preserve">
+    <value><![CDATA[Gizlilik Politikası]]></value>
+  </data>
+  <data name="fui_welcome_back_idp_header" xml:space="preserve">
+    <value><![CDATA[Zaten bir hesabınız var]]></value>
+  </data>
+  <data name="fui_welcome_back_email_header" xml:space="preserve">
+    <value><![CDATA[Tekrar hoş geldiniz!]]></value>
+  </data>
+  <data name="fui_welcome_back_email_link_header" xml:space="preserve">
+    <value><![CDATA[Zaten bir hesabınız var]]></value>
+  </data>
+  <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
+    <value><![CDATA[{0} adresini zaten kullandınız. Devam etmek için {1} ile oturum açın.]]></value>
+  </data>
+  <data name="fui_welcome_back_password_prompt_body" xml:space="preserve">
+    <value><![CDATA[{0} adresini oturum açmak için zaten kullandınız. Bu hesap için şifrenizi girin.]]></value>
+  </data>
+  <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
+    <value><![CDATA[{0} adresini zaten kullandınız. Aşağıdaki e-posta bağlantısıyla oturum açarak {1} hesabınızı {0} adresine bağlayabilirsiniz. Akışın {1} hesabınızı bu e-posta adresine sorunsuz şekilde bağlayabilmesi için bağlantıyı aynı cihazda veya tarayıcıda açmanız gerekir.]]></value>
+  </data>
+  <data name="fui_progress_dialog_signing_in" xml:space="preserve">
+    <value><![CDATA[Oturum açılıyor…]]></value>
+  </data>
+  <data name="fui_trouble_signing_in" xml:space="preserve">
+    <value><![CDATA[Oturum açılamıyor mu?]]></value>
+  </data>
+  <data name="fui_title_recover_password_activity" xml:space="preserve">
+    <value><![CDATA[Şifreyi kurtarın]]></value>
+  </data>
+  <data name="fui_title_confirm_recover_password" xml:space="preserve">
+    <value><![CDATA[E-postanızı kontrol edin]]></value>
+  </data>
+  <data name="fui_password_recovery_body" xml:space="preserve">
+    <value><![CDATA[Şifrenizi nasıl sıfırlayacağınızı açıklayan talimatlar bu e-postaya gönderilsin.]]></value>
+  </data>
+  <data name="fui_button_text_send" xml:space="preserve">
+    <value><![CDATA[Gönder]]></value>
+  </data>
+  <data name="fui_confirm_recovery_body" xml:space="preserve">
+    <value><![CDATA[Şifrenizi kurtarmak için {0} adresine gönderilen talimatları uygulayın.]]></value>
+  </data>
+  <data name="fui_progress_dialog_sending" xml:space="preserve">
+    <value><![CDATA[Gönderiliyor…]]></value>
+  </data>
+  <data name="fui_error_email_does_not_exist" xml:space="preserve">
+    <value><![CDATA[Bu e-posta adresi mevcut bir hesapla eşleşmiyor]]></value>
+  </data>
+  <data name="fui_error_unknown" xml:space="preserve">
+    <value><![CDATA[Bilinmeyen bir hata oluştu.]]></value>
+  </data>
+  <data name="fui_error_invalid_password" xml:space="preserve">
+    <value><![CDATA[Yanlış şifre.]]></value>
+  </data>
+  <data name="fui_accessibility_logo" xml:space="preserve">
+    <value><![CDATA[Uygulama logosu]]></value>
+  </data>
+  <data name="fui_email_link_header" xml:space="preserve">
+    <value><![CDATA[Oturum açma e-postası gönderildi]]></value>
+  </data>
+  <data name="fui_email_link_email_sent" xml:space="preserve">
+    <value><![CDATA[Ek talimatlar içeren bir oturum açma e-postası {0} adresine gönderildi. Oturum açma işlemini tamamlamak için e-postanızı kontrol edin.]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_email_header" xml:space="preserve">
+    <value><![CDATA[E-posta almayla ilgili sorun mu yaşıyorsunuz?]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
+    <value><![CDATA[Şu sık başvurulan düzeltme yöntemlerini deneyin: \u2022 E-postanın spam olarak işaretlenme veya filtrelenme durumunu kontrol edin. \u2022 İnternet bağlantınızı kontrol edin. \u2022 E-postanızda yazım hatası bulunmadığından emin olun. \u2022 Gelen kutunuzdaki boş alanın azalıp azalmadığını ve gelen kutusu ayarlarıyla ilgili başka bir sorun olup olmadığını kontrol edin.]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
+    <value><![CDATA[Yukarıdaki adımların işe yaramadığı durumlarda e-postayı yeniden gönderebilirsiniz. Bu işlemin eski e-postadaki bağlantıyı devre dışı bırakacağını unutmayın.]]></value>
+  </data>
+  <data name="fui_email_link_resend" xml:space="preserve">
+    <value><![CDATA[Tekrar gönder]]></value>
+  </data>
+  <data name="fui_email_link_wrong_device_header" xml:space="preserve">
+    <value><![CDATA[Yeni bir cihaz veya tarayıcı algılandı.]]></value>
+  </data>
+  <data name="fui_email_link_wrong_device_message" xml:space="preserve">
+    <value><![CDATA[Bağlantıyı, oturum açma işlemini başlattığınız cihazda veya tarayıcıda açmayı deneyin.]]></value>
+  </data>
+  <data name="fui_email_link_invalid_link_header" xml:space="preserve">
+    <value><![CDATA[Oturum açılamıyor]]></value>
+  </data>
+  <data name="fui_email_link_invalid_link_message" xml:space="preserve">
+    <value><![CDATA[İşlem kodu geçersiz. Bunun nedeni kodun bozuk olması, süresinin dolması veya daha önce kullanılmış olması olabilir.]]></value>
+  </data>
+  <data name="fui_email_link_different_anonymous_user_header" xml:space="preserve">
+    <value><![CDATA[Oturum sona erdi]]></value>
+  </data>
+  <data name="fui_email_link_different_anonymous_user_message" xml:space="preserve">
+    <value><![CDATA[Bu oturum açma isteğiyle ilişkili oturumun süresi doldu veya oturum kaldırıldı.]]></value>
+  </data>
+  <data name="fui_email_link_confirm_email_header" xml:space="preserve">
+    <value><![CDATA[E-posta adresini onaylayın]]></value>
+  </data>
+  <data name="fui_email_link_confirm_email_message" xml:space="preserve">
+    <value><![CDATA[Oturum açma işlemine devam etmek için e-posta adresini onaylayın]]></value>
+  </data>
+  <data name="fui_email_link_dismiss_button" xml:space="preserve">
+    <value><![CDATA[Kapat]]></value>
+  </data>
+  <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
+    <value><![CDATA[Aslında {0} adlı sağlayıcıyı e-posta hesabınıza bağlamak istediniz ancak bağlantıyı, oturum açmadığınız farklı bir cihazda açtınız. Hâlâ {0} hesabınızı bağlamak istiyorsanız bağlantıyı oturum açma işlemini başlattığınız cihazda açın. Aksi takdirde bu cihazda oturum açmak için Devam'a dokunun.]]></value>
+  </data>
+  <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
+    <value><![CDATA[{0} ile oturum aç]]></value>
+  </data>
+  <data name="fui_verify_phone_number_title" xml:space="preserve">
+    <value><![CDATA[Telefon numaranızı girin]]></value>
+  </data>
+  <data name="fui_invalid_phone_number" xml:space="preserve">
+    <value><![CDATA[Geçerli bir telefon numarası girin]]></value>
+  </data>
+  <data name="fui_enter_confirmation_code" xml:space="preserve">
+    <value><![CDATA[Şu telefon numarasına gönderdiğimiz 6 haneli kodu girin:]]></value>
+  </data>
+  <data name="fui_resend_code_in" xml:space="preserve">
+    <value><![CDATA[0:%02d içinde kodu yeniden gönder]]></value>
+  </data>
+  <data name="fui_verify_your_phone_title" xml:space="preserve">
+    <value><![CDATA[Telefon numaranızı doğrulayın]]></value>
+  </data>
+  <data name="fui_verifying" xml:space="preserve">
+    <value><![CDATA[Doğrulanıyor…]]></value>
+  </data>
+  <data name="fui_incorrect_code_dialog_body" xml:space="preserve">
+    <value><![CDATA[Yanlış kod. Tekrar deneyin.]]></value>
+  </data>
+  <data name="fui_error_too_many_attempts" xml:space="preserve">
+    <value><![CDATA[Bu telefon numarası çok fazla kez kullanıldı]]></value>
+  </data>
+  <data name="fui_error_quota_exceeded" xml:space="preserve">
+    <value><![CDATA[Telefon numaranız doğrulanırken bir sorun oluştu]]></value>
+  </data>
+  <data name="fui_error_session_expired" xml:space="preserve">
+    <value><![CDATA[Bu kod artık geçerli değil]]></value>
+  </data>
+  <data name="fui_sign_in_with_phone_number" xml:space="preserve">
+    <value><![CDATA[Telefon numarasıyla oturum açın]]></value>
+  </data>
+  <data name="fui_auto_verified" xml:space="preserve">
+    <value><![CDATA[Telefon numarası otomatik olarak doğrulandı]]></value>
+  </data>
+  <data name="fui_resend_code" xml:space="preserve">
+    <value><![CDATA[Kodu Yeniden Gönder]]></value>
+  </data>
+  <data name="fui_verify_phone_number" xml:space="preserve">
+    <value><![CDATA[Telefon Numarasını Doğrula]]></value>
+  </data>
+  <data name="fui_sms_terms_of_service" xml:space="preserve">
+    <value><![CDATA[“{0}” öğesine dokunarak SMS gönderilebilir. Mesaj ve veri ücretleri uygulanabilir.]]></value>
+  </data>
+  <data name="fui_sms_terms_of_service_and_privacy_policy_extended" xml:space="preserve">
+    <value><![CDATA[“{0}” öğesine dokunarak {1} ve {2} hükümlerimizi kabul ettiğinizi bildirirsiniz. SMS gönderilebilir. Mesaj ve veri ücretleri uygulanabilir.]]></value>
+  </data>
+  <data name="fui_error_weak_password_one" xml:space="preserve">
+    <value><![CDATA[Şifre yeterince güçlü değil. En az {0} karakter kullanın ve hem harf hem de rakam ekleyin]]></value>
+  </data>
+  <data name="fui_error_weak_password_other" xml:space="preserve">
+    <value><![CDATA[Şifre yeterince güçlü değil. En az {0} karakter kullanın ve hem harf hem de rakam ekleyin]]></value>
+  </data>
+
+</root>

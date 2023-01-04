@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="fui_progress_dialog_loading" xml:space="preserve">
+    <value><![CDATA[Ladataan…]]></value>
+  </data>
+  <data name="fui_sign_in_default" xml:space="preserve">
+    <value><![CDATA[Kirjaudu sisään]]></value>
+  </data>
+  <data name="fui_cancel" xml:space="preserve">
+    <value><![CDATA[Peruuta]]></value>
+  </data>
+  <data name="fui_continue" xml:space="preserve">
+    <value><![CDATA[Jatka]]></value>
+  </data>
+  <data name="fui_tos_and_pp" xml:space="preserve">
+    <value><![CDATA[Jatkamalla vahvistat, että hyväksyt seuraavat: {0} ja {1}.]]></value>
+  </data>
+  <data name="fui_tos_and_pp_footer" xml:space="preserve">
+    <value><![CDATA[{0} \u00A0 \u00A0 {1}]]></value>
+  </data>
+  <data name="fui_no_internet" xml:space="preserve">
+    <value><![CDATA[Verkkovirhe, tarkista internetyhteys.]]></value>
+  </data>
+  <data name="fui_idp_name_google" xml:space="preserve">
+    <value><![CDATA[Google]]></value>
+  </data>
+  <data name="fui_idp_name_facebook" xml:space="preserve">
+    <value><![CDATA[Facebook]]></value>
+  </data>
+  <data name="fui_idp_name_twitter" xml:space="preserve">
+    <value><![CDATA[Twitter]]></value>
+  </data>
+  <data name="fui_idp_name_github" xml:space="preserve">
+    <value><![CDATA[GitHub]]></value>
+  </data>
+  <data name="fui_idp_name_phone" xml:space="preserve">
+    <value><![CDATA[Puhelin]]></value>
+  </data>
+  <data name="fui_idp_name_email" xml:space="preserve">
+    <value><![CDATA[Sähköposti]]></value>
+  </data>
+  <data name="fui_sign_in_with_google" xml:space="preserve">
+    <value><![CDATA[Kirjaudu Google-tilillä]]></value>
+  </data>
+  <data name="fui_sign_in_with_facebook" xml:space="preserve">
+    <value><![CDATA[Kirjaudu Facebook-tilillä]]></value>
+  </data>
+  <data name="fui_sign_in_with_twitter" xml:space="preserve">
+    <value><![CDATA[Kirjaudu Twitter-tilillä]]></value>
+  </data>
+  <data name="fui_sign_in_with_github" xml:space="preserve">
+    <value><![CDATA[Kirjaudu GitHub-tilillä]]></value>
+  </data>
+  <data name="fui_sign_in_with_email" xml:space="preserve">
+    <value><![CDATA[Kirjaudu sähköpostilla]]></value>
+  </data>
+  <data name="fui_sign_in_with_phone" xml:space="preserve">
+    <value><![CDATA[Kirjaudu puhelimella]]></value>
+  </data>
+  <data name="fui_sign_in_anonymously" xml:space="preserve">
+    <value><![CDATA[Jatka vieraana]]></value>
+  </data>
+  <data name="fui_sign_in_with_apple" xml:space="preserve">
+    <value><![CDATA[Kirjaudu sisään Apple-tilillä]]></value>
+  </data>
+  <data name="fui_sign_in_with_microsoft" xml:space="preserve">
+    <value><![CDATA[Kirjaudu sisään Microsoft-tilillä]]></value>
+  </data>
+  <data name="fui_sign_in_with_yahoo" xml:space="preserve">
+    <value><![CDATA[Kirjaudu sisään Yahoo-tilillä]]></value>
+  </data>
+  <data name="fui_next_default" xml:space="preserve">
+    <value><![CDATA[Seuraava]]></value>
+  </data>
+  <data name="fui_email_hint" xml:space="preserve">
+    <value><![CDATA[Sähköposti]]></value>
+  </data>
+  <data name="fui_phone_hint" xml:space="preserve">
+    <value><![CDATA[Puhelinnumero]]></value>
+  </data>
+  <data name="fui_password_hint" xml:space="preserve">
+    <value><![CDATA[Salasana]]></value>
+  </data>
+  <data name="fui_required_field" xml:space="preserve">
+    <value><![CDATA[Tätä ei voi jättää tyhjäksi.]]></value>
+  </data>
+  <data name="fui_invalid_email_address" xml:space="preserve">
+    <value><![CDATA[Virheellinen sähköpostiosoite]]></value>
+  </data>
+  <data name="fui_missing_email_address" xml:space="preserve">
+    <value><![CDATA[Jatka antamalla sähköpostiosoite.]]></value>
+  </data>
+  <data name="fui_missing_first_and_last_name" xml:space="preserve">
+    <value><![CDATA[Lisää etu- ja sukunimi.]]></value>
+  </data>
+  <data name="fui_progress_dialog_checking_accounts" xml:space="preserve">
+    <value><![CDATA[Tarkistetaan nykyisiä tilejä…]]></value>
+  </data>
+  <data name="fui_title_register_email" xml:space="preserve">
+    <value><![CDATA[Hanki tili]]></value>
+  </data>
+  <data name="fui_name_hint" xml:space="preserve">
+    <value><![CDATA[Etu- ja sukunimi]]></value>
+  </data>
+  <data name="fui_button_text_save" xml:space="preserve">
+    <value><![CDATA[Tallenna]]></value>
+  </data>
+  <data name="fui_progress_dialog_signing_up" xml:space="preserve">
+    <value><![CDATA[Rekisteröityminen käynnissä…]]></value>
+  </data>
+  <data name="fui_email_account_creation_error" xml:space="preserve">
+    <value><![CDATA[Sähköpostitilin rekisteröinti epäonnistui.]]></value>
+  </data>
+  <data name="fui_terms_of_service" xml:space="preserve">
+    <value><![CDATA[Käyttöehdot]]></value>
+  </data>
+  <data name="fui_privacy_policy" xml:space="preserve">
+    <value><![CDATA[tietosuojakäytännön]]></value>
+  </data>
+  <data name="fui_welcome_back_idp_header" xml:space="preserve">
+    <value><![CDATA[Sinulla on jo tili.]]></value>
+  </data>
+  <data name="fui_welcome_back_email_header" xml:space="preserve">
+    <value><![CDATA[Tervetuloa takaisin!]]></value>
+  </data>
+  <data name="fui_welcome_back_email_link_header" xml:space="preserve">
+    <value><![CDATA[Sinulla on jo tili]]></value>
+  </data>
+  <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
+    <value><![CDATA[Olet jo käyttänyt osoitetta {0}. Jatka kirjautumalla palvelun {1} kautta.]]></value>
+  </data>
+  <data name="fui_welcome_back_password_prompt_body" xml:space="preserve">
+    <value><![CDATA[Olet jo käyttänyt osoitetta {0} kirjautumiseen. Anna kyseisen tilin salasana.]]></value>
+  </data>
+  <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
+    <value><![CDATA[{0} on jo käytössä. Voit yhdistää {1} ‑tilin sähköpostiosoitteeseen {0} kirjautumalla sisään alla olevasta sähköpostilinkistä. Jotta palvelun {1} tilisi voidaan yhdistää tähän sähköpostiosoitteeseen tällä prosessilla, sinun on avattava linkki samalla laitteella tai selaimella.]]></value>
+  </data>
+  <data name="fui_progress_dialog_signing_in" xml:space="preserve">
+    <value><![CDATA[Kirjaudutaan sisään…]]></value>
+  </data>
+  <data name="fui_trouble_signing_in" xml:space="preserve">
+    <value><![CDATA[Eikö kirjautuminen onnistu?]]></value>
+  </data>
+  <data name="fui_title_recover_password_activity" xml:space="preserve">
+    <value><![CDATA[Palauta salasana]]></value>
+  </data>
+  <data name="fui_title_confirm_recover_password" xml:space="preserve">
+    <value><![CDATA[Tarkista sähköpostisi]]></value>
+  </data>
+  <data name="fui_password_recovery_body" xml:space="preserve">
+    <value><![CDATA[Tilaa tähän sähköpostiin ohjeet, joissa neuvotaan, miten voit nollata salasanan.]]></value>
+  </data>
+  <data name="fui_button_text_send" xml:space="preserve">
+    <value><![CDATA[Lähetä]]></value>
+  </data>
+  <data name="fui_confirm_recovery_body" xml:space="preserve">
+    <value><![CDATA[Palauta salasana noudattamalla osoitteeseen {0} lähetettyjä ohjeita.]]></value>
+  </data>
+  <data name="fui_progress_dialog_sending" xml:space="preserve">
+    <value><![CDATA[Lähetetään…]]></value>
+  </data>
+  <data name="fui_error_email_does_not_exist" xml:space="preserve">
+    <value><![CDATA[Sähköpostiosoite ei vastaa aiemmin luotua tiliä.]]></value>
+  </data>
+  <data name="fui_error_unknown" xml:space="preserve">
+    <value><![CDATA[Tapahtui tuntematon virhe.]]></value>
+  </data>
+  <data name="fui_error_invalid_password" xml:space="preserve">
+    <value><![CDATA[Väärä salasana]]></value>
+  </data>
+  <data name="fui_accessibility_logo" xml:space="preserve">
+    <value><![CDATA[Sovelluksen logo]]></value>
+  </data>
+  <data name="fui_email_link_header" xml:space="preserve">
+    <value><![CDATA[Kirjautumisviesti lähetetty]]></value>
+  </data>
+  <data name="fui_email_link_email_sent" xml:space="preserve">
+    <value><![CDATA[Lisäohjeita sisältävä kirjautumisviesti lähetettiin osoitteeseen {0}. Tarkista sähköpostisi kirjautumisen suorittamiseksi loppuun.]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_email_header" xml:space="preserve">
+    <value><![CDATA[Ongelmia sähköpostiviestin saamisessa?]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
+    <value><![CDATA[Kokeile näitä yleisiä ratkaisuja: \u2022 Tarkista merkittiinkö viesti roskapostiksi tai suodatettiinko se. \u2022 Tarkista internetyhteytesi. \u2022 Tarkista että kirjoitit sähköpostiosoitteesi oikein. \u2022 Tarkista ettei postilaatikkosi tila ole loppumassa tai ettei postilaatikon asetuksissa ole muita ongelmia.]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
+    <value><![CDATA[Jos edellä olevista ratkaisuista ei ollut apua, voit lähettää viestin uudelleen. Huomaa että tällöin aiemmassa viestissä oleva linkki poistetaan käytöstä.]]></value>
+  </data>
+  <data name="fui_email_link_resend" xml:space="preserve">
+    <value><![CDATA[Lähetä uudelleen]]></value>
+  </data>
+  <data name="fui_email_link_wrong_device_header" xml:space="preserve">
+    <value><![CDATA[Uusi laite tai selain havaittu.]]></value>
+  </data>
+  <data name="fui_email_link_wrong_device_message" xml:space="preserve">
+    <value><![CDATA[Kokeile avata linkki käyttäen samaa laitetta tai selainta, jolla aloitit kirjautumisen.]]></value>
+  </data>
+  <data name="fui_email_link_invalid_link_header" xml:space="preserve">
+    <value><![CDATA[Kirjautumista ei voi suorittaa loppuun]]></value>
+  </data>
+  <data name="fui_email_link_invalid_link_message" xml:space="preserve">
+    <value><![CDATA[Toimintakoodi on virheellinen. Syynä voi olla, että koodi on väärän muotoinen, vanhentunut tai jo käytetty.]]></value>
+  </data>
+  <data name="fui_email_link_different_anonymous_user_header" xml:space="preserve">
+    <value><![CDATA[Istunto päättyi]]></value>
+  </data>
+  <data name="fui_email_link_different_anonymous_user_message" xml:space="preserve">
+    <value><![CDATA[Tähän kirjautumispyyntöön liittyvä istunto on joko vanhentunut tai tyhjennetty.]]></value>
+  </data>
+  <data name="fui_email_link_confirm_email_header" xml:space="preserve">
+    <value><![CDATA[Vahvista sähköposti]]></value>
+  </data>
+  <data name="fui_email_link_confirm_email_message" xml:space="preserve">
+    <value><![CDATA[Vahvista sähköposti jatkaaksesi kirjautumista]]></value>
+  </data>
+  <data name="fui_email_link_dismiss_button" xml:space="preserve">
+    <value><![CDATA[Hylkää]]></value>
+  </data>
+  <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
+    <value><![CDATA[Tarkoituksesi oli yhdistää palvelu {0} sähköpostiosoitteeseesi, mutta avasit linkin eri laitteella, johon et ollut kirjautunut. \Jos haluat edelleen yhdistää palvelun {0} tilisi, avaa linkki samalla laitteella, jolla aloitit kirjautumisen. Jos haluat jatkaa kirjautumista tällä laitteella, napauta Jatka.]]></value>
+  </data>
+  <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
+    <value><![CDATA[Kirjaudu palvelun {0} kautta]]></value>
+  </data>
+  <data name="fui_verify_phone_number_title" xml:space="preserve">
+    <value><![CDATA[Anna puhelinnumerosi]]></value>
+  </data>
+  <data name="fui_invalid_phone_number" xml:space="preserve">
+    <value><![CDATA[Anna voimassa oleva puhelinnumero.]]></value>
+  </data>
+  <data name="fui_enter_confirmation_code" xml:space="preserve">
+    <value><![CDATA[Anna 6 merkin pituinen koodi, jonka lähetimme numeroon]]></value>
+  </data>
+  <data name="fui_resend_code_in" xml:space="preserve">
+    <value><![CDATA[Lähetä koodi uudelleen seuraavan ajan kuluttua: 0:%02d.]]></value>
+  </data>
+  <data name="fui_verify_your_phone_title" xml:space="preserve">
+    <value><![CDATA[Puhelinnumeron vahvistaminen]]></value>
+  </data>
+  <data name="fui_verifying" xml:space="preserve">
+    <value><![CDATA[Vahvistetaan…]]></value>
+  </data>
+  <data name="fui_incorrect_code_dialog_body" xml:space="preserve">
+    <value><![CDATA[Väärä koodi. Yritä uudelleen.]]></value>
+  </data>
+  <data name="fui_error_too_many_attempts" xml:space="preserve">
+    <value><![CDATA[Tätä puhelinnumeroa on käytetty liian monta kertaa.]]></value>
+  </data>
+  <data name="fui_error_quota_exceeded" xml:space="preserve">
+    <value><![CDATA[Puhelinnumerosi vahvistamisessa tapahtui virhe.]]></value>
+  </data>
+  <data name="fui_error_session_expired" xml:space="preserve">
+    <value><![CDATA[Tämä koodi ei ole enää voimassa.]]></value>
+  </data>
+  <data name="fui_sign_in_with_phone_number" xml:space="preserve">
+    <value><![CDATA[Kirjaudu puhelinnumerolla]]></value>
+  </data>
+  <data name="fui_auto_verified" xml:space="preserve">
+    <value><![CDATA[Puhelinnumero vahvistettu automaattisesti]]></value>
+  </data>
+  <data name="fui_resend_code" xml:space="preserve">
+    <value><![CDATA[Lähetä koodi uudelleen]]></value>
+  </data>
+  <data name="fui_verify_phone_number" xml:space="preserve">
+    <value><![CDATA[Vahvista puhelinnumero]]></value>
+  </data>
+  <data name="fui_sms_terms_of_service" xml:space="preserve">
+    <value><![CDATA[Kun napautat {0}, tekstiviesti voidaan lähettää. Datan ja viestien käyttö voi olla maksullista.]]></value>
+  </data>
+  <data name="fui_sms_terms_of_service_and_privacy_policy_extended" xml:space="preserve">
+    <value><![CDATA[Napauttamalla {0} vahvistat hyväksyväsi seuraavat: {1} ja {2}. Tekstiviesti voidaan lähettää, ja datan ja viestien käyttö voi olla maksullista.]]></value>
+  </data>
+  <data name="fui_error_weak_password_one" xml:space="preserve">
+    <value><![CDATA[Salasana ei ole tarpeeksi vahva. Siinä on oltava vähintään {0} merkkiä – sekä kirjaimia että numeroita.]]></value>
+  </data>
+  <data name="fui_error_weak_password_other" xml:space="preserve">
+    <value><![CDATA[Salasana ei ole tarpeeksi vahva. Siinä on oltava vähintään {0} merkkiä – sekä kirjaimia että numeroita.]]></value>
+  </data>
+
+</root>

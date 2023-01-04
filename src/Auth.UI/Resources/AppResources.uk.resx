@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="fui_progress_dialog_loading" xml:space="preserve">
+    <value><![CDATA[Завантаження…]]></value>
+  </data>
+  <data name="fui_sign_in_default" xml:space="preserve">
+    <value><![CDATA[Увійти]]></value>
+  </data>
+  <data name="fui_cancel" xml:space="preserve">
+    <value><![CDATA[Скасувати]]></value>
+  </data>
+  <data name="fui_continue" xml:space="preserve">
+    <value><![CDATA[Продовжити]]></value>
+  </data>
+  <data name="fui_tos_and_pp" xml:space="preserve">
+    <value><![CDATA[Продовжуючи, ви приймаєте такі документи: {0} і {1}.]]></value>
+  </data>
+  <data name="fui_tos_and_pp_footer" xml:space="preserve">
+    <value><![CDATA[{0} \u00A0 \u00A0 {1}]]></value>
+  </data>
+  <data name="fui_no_internet" xml:space="preserve">
+    <value><![CDATA[Помилка мережі. Перевірте інтернет-з’єднання.]]></value>
+  </data>
+  <data name="fui_idp_name_google" xml:space="preserve">
+    <value><![CDATA[Google]]></value>
+  </data>
+  <data name="fui_idp_name_facebook" xml:space="preserve">
+    <value><![CDATA[Facebook]]></value>
+  </data>
+  <data name="fui_idp_name_twitter" xml:space="preserve">
+    <value><![CDATA[Twitter]]></value>
+  </data>
+  <data name="fui_idp_name_github" xml:space="preserve">
+    <value><![CDATA[GitHub]]></value>
+  </data>
+  <data name="fui_idp_name_phone" xml:space="preserve">
+    <value><![CDATA[Телефон]]></value>
+  </data>
+  <data name="fui_idp_name_email" xml:space="preserve">
+    <value><![CDATA[Електронна пошта]]></value>
+  </data>
+  <data name="fui_sign_in_with_google" xml:space="preserve">
+    <value><![CDATA[Увійти через Google]]></value>
+  </data>
+  <data name="fui_sign_in_with_facebook" xml:space="preserve">
+    <value><![CDATA[Увійти через Facebook]]></value>
+  </data>
+  <data name="fui_sign_in_with_twitter" xml:space="preserve">
+    <value><![CDATA[Увійти через Twitter]]></value>
+  </data>
+  <data name="fui_sign_in_with_github" xml:space="preserve">
+    <value><![CDATA[Увійти через GitHub]]></value>
+  </data>
+  <data name="fui_sign_in_with_email" xml:space="preserve">
+    <value><![CDATA[Увійти, використовуючи електронну адресу]]></value>
+  </data>
+  <data name="fui_sign_in_with_phone" xml:space="preserve">
+    <value><![CDATA[Увійти, використовуючи телефон]]></value>
+  </data>
+  <data name="fui_sign_in_anonymously" xml:space="preserve">
+    <value><![CDATA[Продовжити як гість]]></value>
+  </data>
+  <data name="fui_sign_in_with_apple" xml:space="preserve">
+    <value><![CDATA[Увійти через обліковий запис Apple]]></value>
+  </data>
+  <data name="fui_sign_in_with_microsoft" xml:space="preserve">
+    <value><![CDATA[Увійти через обліковий запис Microsoft]]></value>
+  </data>
+  <data name="fui_sign_in_with_yahoo" xml:space="preserve">
+    <value><![CDATA[Увійти через обліковий запис Yahoo]]></value>
+  </data>
+  <data name="fui_next_default" xml:space="preserve">
+    <value><![CDATA[Далі]]></value>
+  </data>
+  <data name="fui_email_hint" xml:space="preserve">
+    <value><![CDATA[Електронна адреса]]></value>
+  </data>
+  <data name="fui_phone_hint" xml:space="preserve">
+    <value><![CDATA[Номер телефону]]></value>
+  </data>
+  <data name="fui_password_hint" xml:space="preserve">
+    <value><![CDATA[Пароль]]></value>
+  </data>
+  <data name="fui_required_field" xml:space="preserve">
+    <value><![CDATA[Потрібно заповнити це поле.]]></value>
+  </data>
+  <data name="fui_invalid_email_address" xml:space="preserve">
+    <value><![CDATA[Електронна адреса неправильна]]></value>
+  </data>
+  <data name="fui_missing_email_address" xml:space="preserve">
+    <value><![CDATA[Щоб продовжити, введіть електронну адресу]]></value>
+  </data>
+  <data name="fui_missing_first_and_last_name" xml:space="preserve">
+    <value><![CDATA[Введіть ім’я та прізвище.]]></value>
+  </data>
+  <data name="fui_progress_dialog_checking_accounts" xml:space="preserve">
+    <value><![CDATA[Перевірка наявних облікових записів…]]></value>
+  </data>
+  <data name="fui_title_register_email" xml:space="preserve">
+    <value><![CDATA[Зареєструватися]]></value>
+  </data>
+  <data name="fui_name_hint" xml:space="preserve">
+    <value><![CDATA[Ім’я та прізвище]]></value>
+  </data>
+  <data name="fui_button_text_save" xml:space="preserve">
+    <value><![CDATA[Зберегти]]></value>
+  </data>
+  <data name="fui_progress_dialog_signing_up" xml:space="preserve">
+    <value><![CDATA[Реєстрація…]]></value>
+  </data>
+  <data name="fui_email_account_creation_error" xml:space="preserve">
+    <value><![CDATA[Не вдалося зареєструвати обліковий запис електронної пошти]]></value>
+  </data>
+  <data name="fui_terms_of_service" xml:space="preserve">
+    <value><![CDATA[Умови використання]]></value>
+  </data>
+  <data name="fui_privacy_policy" xml:space="preserve">
+    <value><![CDATA[Політику конфіденційності]]></value>
+  </data>
+  <data name="fui_welcome_back_idp_header" xml:space="preserve">
+    <value><![CDATA[У вас уже є обліковий запис]]></value>
+  </data>
+  <data name="fui_welcome_back_email_header" xml:space="preserve">
+    <value><![CDATA[З поверненням!]]></value>
+  </data>
+  <data name="fui_welcome_back_email_link_header" xml:space="preserve">
+    <value><![CDATA[У вас уже є обліковий запис]]></value>
+  </data>
+  <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
+    <value><![CDATA[Ви вже використовували електронну адресу {0}. Щоб продовжити, увійдіть в обліковий запис {1}.]]></value>
+  </data>
+  <data name="fui_welcome_back_password_prompt_body" xml:space="preserve">
+    <value><![CDATA[Ви вже використовували електронну адресу {0} для входу. Введіть пароль для цього облікового запису.]]></value>
+  </data>
+  <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
+    <value><![CDATA[Ви вже використовували адресу {0}. Ви можете зв’язати свій обліковий запис {1} з адресою {0}, увійшовши за допомогою посилання нижче. Щоб зв’язати обліковий запис {1} з цією електронною адресою, потрібно відкрити посилання на тому ж пристрої або в тому ж веб-переглядачі.]]></value>
+  </data>
+  <data name="fui_progress_dialog_signing_in" xml:space="preserve">
+    <value><![CDATA[Виконується вхід…]]></value>
+  </data>
+  <data name="fui_trouble_signing_in" xml:space="preserve">
+    <value><![CDATA[Не вдається ввійти?]]></value>
+  </data>
+  <data name="fui_title_recover_password_activity" xml:space="preserve">
+    <value><![CDATA[Відновити пароль]]></value>
+  </data>
+  <data name="fui_title_confirm_recover_password" xml:space="preserve">
+    <value><![CDATA[Перевірте свою електронну пошту]]></value>
+  </data>
+  <data name="fui_password_recovery_body" xml:space="preserve">
+    <value><![CDATA[На цю електронну адресу надійдуть інструкції, як скинути пароль.]]></value>
+  </data>
+  <data name="fui_button_text_send" xml:space="preserve">
+    <value><![CDATA[Надіслати]]></value>
+  </data>
+  <data name="fui_confirm_recovery_body" xml:space="preserve">
+    <value><![CDATA[Виконайте інструкції з відновлення пароля, надіслані на адресу {0}.]]></value>
+  </data>
+  <data name="fui_progress_dialog_sending" xml:space="preserve">
+    <value><![CDATA[Надсилання…]]></value>
+  </data>
+  <data name="fui_error_email_does_not_exist" xml:space="preserve">
+    <value><![CDATA[Ця електронна адреса не відповідає адресі наявного облікового запису]]></value>
+  </data>
+  <data name="fui_error_unknown" xml:space="preserve">
+    <value><![CDATA[Сталася невідома помилка.]]></value>
+  </data>
+  <data name="fui_error_invalid_password" xml:space="preserve">
+    <value><![CDATA[Неправильний пароль.]]></value>
+  </data>
+  <data name="fui_accessibility_logo" xml:space="preserve">
+    <value><![CDATA[Логотип додатка]]></value>
+  </data>
+  <data name="fui_email_link_header" xml:space="preserve">
+    <value><![CDATA[Посилання для входу надіслано]]></value>
+  </data>
+  <data name="fui_email_link_email_sent" xml:space="preserve">
+    <value><![CDATA[Посилання для входу та додаткові вказівки надіслано на адресу {0}. Дотримуйтеся їх, щоб увійти в обліковий запис.]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_email_header" xml:space="preserve">
+    <value><![CDATA[Не отримали листа?]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
+    <value><![CDATA[Скористайтеся порадами нижче, щоб вирішити проблему. \u2022 Перевірте – можливо, електронний лист позначено як спам або відфільтровано. \u2022 Перевірте інтернет-з’єднання. \u2022 Переконайтеся, що ви правильно вказали електронну адресу. \u2022 Перевірте доступний обсяг пам’яті для папки \"Вхідні\" й інші можливі проблеми з налаштуваннями.]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
+    <value><![CDATA[Якщо наведені вище поради не допомагають, спробуйте знову надіслати електронний лист (у такому разі посилання в попередньому листі стане неактивним).]]></value>
+  </data>
+  <data name="fui_email_link_resend" xml:space="preserve">
+    <value><![CDATA[Надіслати повторно]]></value>
+  </data>
+  <data name="fui_email_link_wrong_device_header" xml:space="preserve">
+    <value><![CDATA[Виявлено новий пристрій або веб-переглядач.]]></value>
+  </data>
+  <data name="fui_email_link_wrong_device_message" xml:space="preserve">
+    <value><![CDATA[Спробуйте відкрити посилання на пристрої або у веб-переглядачі, де ви починали процедуру входу.]]></value>
+  </data>
+  <data name="fui_email_link_invalid_link_header" xml:space="preserve">
+    <value><![CDATA[Не вдалося ввійти]]></value>
+  </data>
+  <data name="fui_email_link_invalid_link_message" xml:space="preserve">
+    <value><![CDATA[Недійсний код активації. Можливо, він неправильний, застарілий або вже використаний.]]></value>
+  </data>
+  <data name="fui_email_link_different_anonymous_user_header" xml:space="preserve">
+    <value><![CDATA[Сеанс завершено]]></value>
+  </data>
+  <data name="fui_email_link_different_anonymous_user_message" xml:space="preserve">
+    <value><![CDATA[Сеанс, пов’язаний із цим запитом на вхід, завершено або видалено.]]></value>
+  </data>
+  <data name="fui_email_link_confirm_email_header" xml:space="preserve">
+    <value><![CDATA[Підтвердьте електронну адресу]]></value>
+  </data>
+  <data name="fui_email_link_confirm_email_message" xml:space="preserve">
+    <value><![CDATA[Щоб продовжити, підтвердьте електронну адресу]]></value>
+  </data>
+  <data name="fui_email_link_dismiss_button" xml:space="preserve">
+    <value><![CDATA[Закрити]]></value>
+  </data>
+  <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
+    <value><![CDATA[Ви збиралися зв’язати {0} зі своєю електронною адресою, але відкрили надане посилання на пристрої, на якому не ввійшли в обліковий запис. Щоб зв’язати обліковий запис {0}, відкрийте посилання на пристрої, де ви почали входити, або натисніть \"Продовжити\", щоб увійти на цьому пристрої.]]></value>
+  </data>
+  <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
+    <value><![CDATA[Увійти, використовуючи {0}]]></value>
+  </data>
+  <data name="fui_verify_phone_number_title" xml:space="preserve">
+    <value><![CDATA[Введіть свій номер телефону]]></value>
+  </data>
+  <data name="fui_invalid_phone_number" xml:space="preserve">
+    <value><![CDATA[Введіть дійсний номер телефону]]></value>
+  </data>
+  <data name="fui_enter_confirmation_code" xml:space="preserve">
+    <value><![CDATA[Введіть 6-значний код, який ми надіслали на номер]]></value>
+  </data>
+  <data name="fui_resend_code_in" xml:space="preserve">
+    <value><![CDATA[Повторно надіслати код через 0:%02d]]></value>
+  </data>
+  <data name="fui_verify_your_phone_title" xml:space="preserve">
+    <value><![CDATA[Підтвердити номер телефону]]></value>
+  </data>
+  <data name="fui_verifying" xml:space="preserve">
+    <value><![CDATA[Підтвердження…]]></value>
+  </data>
+  <data name="fui_incorrect_code_dialog_body" xml:space="preserve">
+    <value><![CDATA[Неправильний код. Повторіть спробу.]]></value>
+  </data>
+  <data name="fui_error_too_many_attempts" xml:space="preserve">
+    <value><![CDATA[Цей номер телефону використовувався забагато разів]]></value>
+  </data>
+  <data name="fui_error_quota_exceeded" xml:space="preserve">
+    <value><![CDATA[Не вдалося підтвердити ваш номер телефону]]></value>
+  </data>
+  <data name="fui_error_session_expired" xml:space="preserve">
+    <value><![CDATA[Цей код уже не дійсний]]></value>
+  </data>
+  <data name="fui_sign_in_with_phone_number" xml:space="preserve">
+    <value><![CDATA[Увійти, використовуючи номер телефону]]></value>
+  </data>
+  <data name="fui_auto_verified" xml:space="preserve">
+    <value><![CDATA[Номер телефону підтверджено автоматично]]></value>
+  </data>
+  <data name="fui_resend_code" xml:space="preserve">
+    <value><![CDATA[Повторно надіслати код]]></value>
+  </data>
+  <data name="fui_verify_phone_number" xml:space="preserve">
+    <value><![CDATA[Підтвердити номер телефону]]></value>
+  </data>
+  <data name="fui_sms_terms_of_service" xml:space="preserve">
+    <value><![CDATA[Коли ви торкнетесь опції “{0}”, вам може надійти SMS-повідомлення. За SMS і використання трафіку може стягуватися плата.]]></value>
+  </data>
+  <data name="fui_sms_terms_of_service_and_privacy_policy_extended" xml:space="preserve">
+    <value><![CDATA[Торкаючись кнопки “{0}”, ви приймаєте такі документи: {1} і {2}. Вам може надійти SMS-повідомлення. За SMS і використання трафіку може стягуватися плата.]]></value>
+  </data>
+  <data name="fui_error_weak_password_one" xml:space="preserve">
+    <value><![CDATA[Пароль недостатньо надійний. Введіть принаймні {0} символ та комбінацію літер і цифр]]></value>
+  </data>
+  <data name="fui_error_weak_password_few" xml:space="preserve">
+    <value><![CDATA[Пароль недостатньо надійний. Введіть принаймні {0} символи та комбінацію літер і цифр]]></value>
+  </data>
+  <data name="fui_error_weak_password_many" xml:space="preserve">
+    <value><![CDATA[Пароль недостатньо надійний. Введіть принаймні {0} символів та комбінацію літер і цифр]]></value>
+  </data>
+  <data name="fui_error_weak_password_other" xml:space="preserve">
+    <value><![CDATA[Пароль недостатньо надійний. Введіть принаймні {0} символу та комбінацію літер і цифр]]></value>
+  </data>
+
+</root>

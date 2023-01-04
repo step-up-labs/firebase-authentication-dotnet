@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <VersionPrefix>4.0.0</VersionPrefix>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>FirebaseAuthentication.net</PackageId>
+    <Authors>Step Up Labs, Inc.</Authors>
+    <Description>
+Unofficial C# implementation of Firebase authentication targetting .NET Standard.
+      
+The library provides a drop-in auth solution that handles the flows for signing in users with email addresses and passwords, Identity Provider Sign In including Google, Facebook, GitHub, Twitter, Apple, Microsoft, Yahoo and anonymous sign-in.
+      
+FirebaseUI is supported by platform-specific libraries:
+      
+* FirebaseAuthentication.WPF
+* FirebaseAuthentication.UWP
+* FirebaseAuthentication.Xamarin
+    </Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageIcon>firebase.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/step-up-labs/firebase-authentication-dotnet</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <IncludeSource>True</IncludeSource>
+    <IncludeSymbols>True</IncludeSymbols>
+    <Copyright>Step Up Labs, Inc. 2019</Copyright>
+    <PackageTags>Firebase Auth Authentication Google Facebook Github Twitter</PackageTags>
+    <LangVersion>8.0</LangVersion>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>Firebase.Auth</AssemblyName>
+    <RootNamespace>Firebase.Auth</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>Auth.Tests</_Parameter1>
+    </AssemblyAttribute>
+    <None Include="Assets\firebase.png" Pack="true" PackagePath="" />
+    <None Include="..\..\LICENSE.txt" Link="Assets\LICENSE.txt" Pack="true" PackagePath="" />
+    <None Include="..\..\README.md" Link="Assets\README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+  </ItemGroup>
+
+</Project>

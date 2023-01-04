@@ -1,0 +1,107 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras/3.0.44">
+
+  <PropertyGroup>
+    <VersionPrefix>4.0.0</VersionPrefix>
+    <TargetFrameworks>uap10.0.19041</TargetFrameworks>
+    <Configurations>Debug;Release</Configurations>
+    <Platforms>AnyCPU</Platforms>
+    <PackageId>FirebaseAuthentication.UWP</PackageId>
+    <Title>FirebaseUI for UWP</Title>
+    <Authors>Step Up Labs, Inc.</Authors>
+    <Description>
+FirebaseUI for UWP.
+
+The library provides a drop-in auth solution that handles the flows for signing in users with email addresses and passwords, Identity Provider Sign In including Google, Facebook, GitHub, Twitter, Apple, Microsoft, Yahoo and anonymous sign-in.
+    </Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/step-up-labs/firebase-authentication-dotnet</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <Copyright>Step Up Labs, Inc. 2020</Copyright>
+    <PackageTags>Firebase FirebaseUI Auth Authentication OAuth Apple Google Facebook Github Twitter</PackageTags>
+    <LangVersion>8.0</LangVersion>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>Firebase.Auth.UI.UWP</AssemblyName>
+    <RootNamespace>Firebase.Auth.UI</RootNamespace>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+  </PropertyGroup>
+
+  <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="BuildOnlySettings;ResolveReferences">
+    <ItemGroup>
+      <!-- Filter out unnecessary files -->
+      <_ReferenceCopyLocalPaths Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')->WithMetadataValue('PrivateAssets', 'All'))"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <!-- Add file to package with consideration of sub folder. If empty, the root folder is chosen. -->
+      <BuildOutputInPackage Include="@(_ReferenceCopyLocalPaths)" TargetPath="%(_ReferenceCopyLocalPaths.DestinationSubDirectory)"/>
+    </ItemGroup>
+  </Target>
+
+  <ItemGroup>
+    <None Remove="Pages\EmailPage.xaml" />
+    <None Remove="Pages\LinksFooter.xaml" />
+    <None Remove="Pages\ProvidersPage.xaml" />
+    <None Remove="Pages\RecoverPasswordPage.xaml" />
+    <None Remove="Pages\SignInPage.xaml" />
+    <None Remove="Pages\SignUpPage.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="Pages\EmailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LinksFooter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ProvidersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RecoverPasswordPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SignInPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SignUpPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\FirebaseUIControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Auth.UI\Auth.UI.csproj" PrivateAssets="All" Label="IncludeDll" />
+    <ProjectReference Include="..\Auth\Auth.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\Auth.UI\Assets\anonymous.png" Link="Assets\anonymous.png" />
+    <Content Include="..\Auth.UI\Assets\apple.png" Link="Assets\apple.png" />
+    <Content Include="..\Auth.UI\Assets\facebook.png" Link="Assets\facebook.png" />
+    <Content Include="..\Auth.UI\Assets\github.png" Link="Assets\github.png" />
+    <Content Include="..\Auth.UI\Assets\google.png" Link="Assets\google.png" />
+    <Content Include="..\Auth.UI\Assets\mail.png" Link="Assets\mail.png" />
+    <Content Include="..\Auth.UI\Assets\microsoft.png" Link="Assets\microsoft.png" />
+    <Content Include="..\Auth.UI\Assets\twitter.png" Link="Assets\twitter.png" />
+    <None Include="..\Auth.UI\Assets\firebase.png" Link="Assets\firebase.png" Pack="true" PackagePath="" />
+    <None Include="..\..\LICENSE.txt" Link="Assets\LICENSE.txt" Pack="true" PackagePath="" />
+    <None Include="..\..\README.md" Link="Assets\README.md" Pack="true" PackagePath="" />
+    <None Include="tools\VisualStudioToolsManifest.xml" Pack="true" PackagePath="tools" />
+  </ItemGroup>
+  
+</Project>

@@ -1,0 +1,7 @@
+﻿<FileList>
+  <File Reference="Firebase.Auth.UI.WPF.dll">
+    <ToolboxItems VSCategory="FirebaseUI" BlendCategory="FirebaseUI">
+      <Item Type="Firebase.Auth.UI.FirebaseUIControl" />
+    </ToolboxItems>
+  </File>
+</FileList>

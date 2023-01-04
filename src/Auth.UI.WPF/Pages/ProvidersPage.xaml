@@ -1,0 +1,171 @@
+﻿<Page x:Class="Firebase.Auth.UI.Pages.ProvidersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="600" 
+      d:DesignWidth="400">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    
+    <Grid x:Name="FirebaseAuthControl">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ContentPresenter 
+            Content="{Binding Header}"
+            />
+
+        <ScrollViewer
+            x:Name="ScrollViewer"
+            Grid.Row="1"
+            VerticalScrollBarVisibility="Hidden">
+            <ItemsControl HorizontalAlignment="Center" ItemsSource="{Binding Providers}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <ContentControl>
+                            <ContentControl.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="BorderBrush" Value="Transparent" />
+                                    <Setter Property="Margin" Value="25 6" />
+                                </Style>
+
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="3" />
+                                    <Setter Property="VerticalAlignment" Value="Stretch" />
+                                </Style>
+
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="White" />
+                                    <Setter Property="FontSize" Value="14" />
+                                    <Setter Property="FontWeight" Value="Medium" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="Margin" Value="0 0 12 0" />
+                                </Style>
+
+                                <Style TargetType="Image">
+                                    <Setter Property="Height" Value="20" />
+                                    <Setter Property="Width" Value="20" />
+                                    <Setter Property="Margin" Value="18 9" />
+                                </Style>
+                            </ContentControl.Resources>
+
+                            <Button 
+                                Click="ProviderSignInClick"
+                                Foreground="{Binding Converter={StaticResource ForegroundConverter}}"
+                                Background="{Binding Converter={StaticResource BackgroundConverter}}">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="{x:Type ButtonBase}">
+                                        <Grid 
+                                            x:Name="RootGrid"
+                                            RenderTransformOrigin="0.5 0.5">
+                                            
+                                            <Border 
+                                                x:Name="Border" 
+                                                Background="{TemplateBinding Background}"
+                                                CornerRadius="3"
+                                                SnapsToDevicePixels="True">
+                                                
+                                                <Border.Effect>
+                                                    <DropShadowEffect 
+                                                        Color="Black" 
+                                                        Opacity="0.2" 
+                                                        BlurRadius="12"
+                                                        />
+                                                </Border.Effect>
+                                                
+                                                <ContentPresenter 
+                                                    x:Name="ContentPresenter" 
+                                                    ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                                    Content="{TemplateBinding Content}" 
+                                                    ContentStringFormat="{TemplateBinding ContentStringFormat}" 
+                                                    Focusable="False" 
+                                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                                    Margin="{TemplateBinding Padding}"
+                                                    RecognizesAccessKey="True" 
+                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                    />
+                                            </Border>
+
+                                            <Border
+                                                x:Name="Cover"
+                                                Background="{TemplateBinding Foreground}"
+                                                Opacity="0"
+                                                CornerRadius="3"
+                                                />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Opacity" TargetName="Cover" Value="0.15"/>
+                                            </Trigger>
+                                            <Trigger Property="IsPressed" Value="True">
+                                                <Setter Property="Opacity" TargetName="Cover" Value="0.20"/>
+                                                <Setter TargetName="RootGrid" Property="RenderTransform">
+                                                    <Setter.Value>
+                                                        <ScaleTransform ScaleX="0.98" ScaleY="0.98"/>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Trigger>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter Property="Opacity" TargetName="Cover" Value="0.50"/>
+                                                <Setter Property="Background" TargetName="Cover" Value="White"/>
+                                                <Setter Property="TextElement.Foreground" TargetName="ContentPresenter" Value="#FF838383"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                                
+                                <StackPanel Orientation="Horizontal">
+                                    <Image 
+                                        Source="{Binding Converter={StaticResource AssetConverter}}" 
+                                        />
+
+                                    <TextBlock
+                                        Foreground="{Binding Converter={StaticResource ForegroundConverter}}"
+                                        Text="{Binding Converter={StaticResource TitleConverter}}"
+                                        />
+                                </StackPanel>
+                            </Button>
+                        </ContentControl>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <ProgressBar
+            x:Name="ProgressBar"
+            Grid.Row="2"
+            IsIndeterminate="True"
+            Height="1"
+            Visibility="Hidden"
+            Margin="0 6"
+            />
+
+        <TextBlock 
+            x:Name="FooterTextBlock"
+            Grid.Row="3"
+            Style="{StaticResource FuiTextBlockFooterStyle}"
+            />
+    </Grid>
+</Page>

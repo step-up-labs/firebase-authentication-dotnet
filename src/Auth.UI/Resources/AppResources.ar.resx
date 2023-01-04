@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="fui_progress_dialog_loading" xml:space="preserve">
+    <value><![CDATA[جارٍ التحميل…]]></value>
+  </data>
+  <data name="fui_sign_in_default" xml:space="preserve">
+    <value><![CDATA[تسجيل الدخول]]></value>
+  </data>
+  <data name="fui_cancel" xml:space="preserve">
+    <value><![CDATA[إلغاء]]></value>
+  </data>
+  <data name="fui_continue" xml:space="preserve">
+    <value><![CDATA[متابعة]]></value>
+  </data>
+  <data name="fui_tos_and_pp" xml:space="preserve">
+    <value><![CDATA[تشير المتابعة إلى موافقتك على {0} و{1}.]]></value>
+  </data>
+  <data name="fui_tos_and_pp_footer" xml:space="preserve">
+    <value><![CDATA[{0} \u00A0 \u00A0 {1}]]></value>
+  </data>
+  <data name="fui_no_internet" xml:space="preserve">
+    <value><![CDATA[حدث خطأ في الشبكة، يُرجى التحقّق من اتصال الإنترنت.]]></value>
+  </data>
+  <data name="fui_idp_name_google" xml:space="preserve">
+    <value><![CDATA[Google]]></value>
+  </data>
+  <data name="fui_idp_name_facebook" xml:space="preserve">
+    <value><![CDATA[Facebook]]></value>
+  </data>
+  <data name="fui_idp_name_twitter" xml:space="preserve">
+    <value><![CDATA[Twitter]]></value>
+  </data>
+  <data name="fui_idp_name_github" xml:space="preserve">
+    <value><![CDATA[GitHub]]></value>
+  </data>
+  <data name="fui_idp_name_phone" xml:space="preserve">
+    <value><![CDATA[الهاتف]]></value>
+  </data>
+  <data name="fui_idp_name_email" xml:space="preserve">
+    <value><![CDATA[البريد الإلكتروني]]></value>
+  </data>
+  <data name="fui_sign_in_with_google" xml:space="preserve">
+    <value><![CDATA[تسجيل الدخول عبر Google]]></value>
+  </data>
+  <data name="fui_sign_in_with_facebook" xml:space="preserve">
+    <value><![CDATA[تسجيل الدخول عبر Facebook]]></value>
+  </data>
+  <data name="fui_sign_in_with_twitter" xml:space="preserve">
+    <value><![CDATA[تسجيل الدخول عبر Twitter]]></value>
+  </data>
+  <data name="fui_sign_in_with_github" xml:space="preserve">
+    <value><![CDATA[تسجيل الدخول باستخدام GitHub]]></value>
+  </data>
+  <data name="fui_sign_in_with_email" xml:space="preserve">
+    <value><![CDATA[تسجيل الدخول عبر البريد الإلكتروني]]></value>
+  </data>
+  <data name="fui_sign_in_with_phone" xml:space="preserve">
+    <value><![CDATA[تسجيل الدخول عبر رقم الهاتف]]></value>
+  </data>
+  <data name="fui_sign_in_anonymously" xml:space="preserve">
+    <value><![CDATA[المتابعة كضيف]]></value>
+  </data>
+  <data name="fui_sign_in_with_apple" xml:space="preserve">
+    <value><![CDATA[تسجيل الدخول باستخدام Apple]]></value>
+  </data>
+  <data name="fui_sign_in_with_microsoft" xml:space="preserve">
+    <value><![CDATA[تسجيل الدخول باستخدام Microsoft]]></value>
+  </data>
+  <data name="fui_sign_in_with_yahoo" xml:space="preserve">
+    <value><![CDATA[تسجيل الدخول باستخدام Yahoo]]></value>
+  </data>
+  <data name="fui_next_default" xml:space="preserve">
+    <value><![CDATA[التالي]]></value>
+  </data>
+  <data name="fui_email_hint" xml:space="preserve">
+    <value><![CDATA[البريد الإلكتروني]]></value>
+  </data>
+  <data name="fui_phone_hint" xml:space="preserve">
+    <value><![CDATA[رقم الهاتف]]></value>
+  </data>
+  <data name="fui_password_hint" xml:space="preserve">
+    <value><![CDATA[كلمة المرور]]></value>
+  </data>
+  <data name="fui_required_field" xml:space="preserve">
+    <value><![CDATA[يجب ملء هذا الحقل.]]></value>
+  </data>
+  <data name="fui_invalid_email_address" xml:space="preserve">
+    <value><![CDATA[عنوان البريد الإلكتروني هذا غير صحيح]]></value>
+  </data>
+  <data name="fui_missing_email_address" xml:space="preserve">
+    <value><![CDATA[يجب إدخال عنوان بريدك الإلكتروني للمتابعة]]></value>
+  </data>
+  <data name="fui_missing_first_and_last_name" xml:space="preserve">
+    <value><![CDATA[يُرجى إدخال الاسم الأول واسم العائلة.]]></value>
+  </data>
+  <data name="fui_progress_dialog_checking_accounts" xml:space="preserve">
+    <value><![CDATA[جارٍ البحث عن حسابات حالية…]]></value>
+  </data>
+  <data name="fui_title_register_email" xml:space="preserve">
+    <value><![CDATA[اشتراك]]></value>
+  </data>
+  <data name="fui_name_hint" xml:space="preserve">
+    <value><![CDATA[الاسم الأول واسم العائلة]]></value>
+  </data>
+  <data name="fui_button_text_save" xml:space="preserve">
+    <value><![CDATA[حفظ]]></value>
+  </data>
+  <data name="fui_progress_dialog_signing_up" xml:space="preserve">
+    <value><![CDATA[جارٍ الاشتراك…]]></value>
+  </data>
+  <data name="fui_email_account_creation_error" xml:space="preserve">
+    <value><![CDATA[فشل تسجيل حساب البريد الإلكتروني]]></value>
+  </data>
+  <data name="fui_terms_of_service" xml:space="preserve">
+    <value><![CDATA[بنود الخدمة]]></value>
+  </data>
+  <data name="fui_privacy_policy" xml:space="preserve">
+    <value><![CDATA[سياسة الخصوصية]]></value>
+  </data>
+  <data name="fui_welcome_back_idp_header" xml:space="preserve">
+    <value><![CDATA[لديك حساب حاليًا]]></value>
+  </data>
+  <data name="fui_welcome_back_email_header" xml:space="preserve">
+    <value><![CDATA[تسرّنا عودتك!]]></value>
+  </data>
+  <data name="fui_welcome_back_email_link_header" xml:space="preserve">
+    <value><![CDATA[لديك حساب حاليًا]]></value>
+  </data>
+  <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
+    <value><![CDATA[لقد سبق أن استخدمت {0}. سجّل الدخول باستخدام {1} للمتابعة.]]></value>
+  </data>
+  <data name="fui_welcome_back_password_prompt_body" xml:space="preserve">
+    <value><![CDATA[لقد سبق أن استخدمت {0} لتسجيل الدخول. يُرجى إدخال كلمة المرور لهذا الحساب.]]></value>
+  </data>
+  <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
+    <value><![CDATA[سبق واستخدمت العنوان {0}. يمكنك ربط حسابك على {1} بحساب {0} عبر تسجيل الدخول باستخدام رابط البريد الإلكتروني المضمّن في الرسالة الإلكترونية أدناه. لكي تنجح في ربط حسابك على {1} بهذا البريد الإلكتروني، عليك فتح الرابط على الجهاز أو المتصفّح نفسه.]]></value>
+  </data>
+  <data name="fui_progress_dialog_signing_in" xml:space="preserve">
+    <value><![CDATA[جارٍ تسجيل الدخول…]]></value>
+  </data>
+  <data name="fui_trouble_signing_in" xml:space="preserve">
+    <value><![CDATA[هل تواجه مشكلة في تسجيل الدخول؟]]></value>
+  </data>
+  <data name="fui_title_recover_password_activity" xml:space="preserve">
+    <value><![CDATA[استرداد كلمة المرور]]></value>
+  </data>
+  <data name="fui_title_confirm_recover_password" xml:space="preserve">
+    <value><![CDATA[إثبات ملكية بريدك الإلكتروني]]></value>
+  </data>
+  <data name="fui_password_recovery_body" xml:space="preserve">
+    <value><![CDATA[تم إرسال تعليمات إلى البريد الإلكتروني هذا تشرح كيفية إعادة تعيين كلمة المرور.]]></value>
+  </data>
+  <data name="fui_button_text_send" xml:space="preserve">
+    <value><![CDATA[إرسال]]></value>
+  </data>
+  <data name="fui_confirm_recovery_body" xml:space="preserve">
+    <value><![CDATA[اتبع التعليمات التي تم إرسالها إلى {0} لاسترداد كلمة المرور.]]></value>
+  </data>
+  <data name="fui_progress_dialog_sending" xml:space="preserve">
+    <value><![CDATA[جارٍ الإرسال…]]></value>
+  </data>
+  <data name="fui_error_email_does_not_exist" xml:space="preserve">
+    <value><![CDATA[لا يتطابق عنوان البريد الإلكتروني هذا مع حساب حالي]]></value>
+  </data>
+  <data name="fui_error_unknown" xml:space="preserve">
+    <value><![CDATA[حدث خطأ غير معروف.]]></value>
+  </data>
+  <data name="fui_error_invalid_password" xml:space="preserve">
+    <value><![CDATA[كلمة المرور غير صحيحة.]]></value>
+  </data>
+  <data name="fui_accessibility_logo" xml:space="preserve">
+    <value><![CDATA[شعار التطبيق]]></value>
+  </data>
+  <data name="fui_email_link_header" xml:space="preserve">
+    <value><![CDATA[تمّ إرسال رسالة إلكترونية لتسجيل الدخول]]></value>
+  </data>
+  <data name="fui_email_link_email_sent" xml:space="preserve">
+    <value><![CDATA[تمّ إرسال رسالة إلكترونية لتسجيل الدخول تتضمّن تعليمات إضافية إلى {0}. يُرجى التحقق من بريدك الإلكتروني لإكمال عملية تسجيل الدخول.]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_email_header" xml:space="preserve">
+    <value><![CDATA[هل تواجه مشكلة في استلام الرسالة الإلكترونية؟]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
+    <value><![CDATA[يمكنك تجربة الحلول الشائعة التالية: \u2022 التأكّد ممّا إذا تمّ وضع علامة على الرسالة الإلكترونية بأنّها \"غير مرغوب فيها\" أو إذا تمّ نقلها تلقائيًا إلى مجلّد آخر \u2022 التحقّق من الاتصال بالإنترنت \u2022 التأكّد من كتابة عنوان البريد الإلكتروني بالشكل الصحيح \u2022 التحقق من عدم نفاد مساحة البريد الوارد أو من عدم وجود مشاكل أخرى في إعداده]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
+    <value><![CDATA[إذا لم تنجح الخطوات أعلاه، يمكنك إعادة إرسال الرسالة الإلكترونية إلّا أنّ ذلك سيُلغي الرابط المضمّن في الرسالة السابقة.]]></value>
+  </data>
+  <data name="fui_email_link_resend" xml:space="preserve">
+    <value><![CDATA[إعادة الإرسال]]></value>
+  </data>
+  <data name="fui_email_link_wrong_device_header" xml:space="preserve">
+    <value><![CDATA[تمّ رصد جهاز أو متصفّح جديد]]></value>
+  </data>
+  <data name="fui_email_link_wrong_device_message" xml:space="preserve">
+    <value><![CDATA[يُرجى محاولة فتح الرابط باستخدام الجهاز أو المتصفّح نفسه الذي استخدمته عند بدء عملية تسجيل الدخول.]]></value>
+  </data>
+  <data name="fui_email_link_invalid_link_header" xml:space="preserve">
+    <value><![CDATA[تعذُّر إكمال عملية تسجيل الدخول]]></value>
+  </data>
+  <data name="fui_email_link_invalid_link_message" xml:space="preserve">
+    <value><![CDATA[إنّ رمز الإجراء غير صالح. قد تحدث هذه المشكلة إذا كان الرمز غير صحيح أو منتهي الصلاحية أو إذا تمّ استخدامه سابقًا.]]></value>
+  </data>
+  <data name="fui_email_link_different_anonymous_user_header" xml:space="preserve">
+    <value><![CDATA[انتهت الجلسة]]></value>
+  </data>
+  <data name="fui_email_link_different_anonymous_user_message" xml:space="preserve">
+    <value><![CDATA[انتهت صلاحية الجلسة المرتبطة بطلب تسجيل الدخول هذا أو تمّ محوها.]]></value>
+  </data>
+  <data name="fui_email_link_confirm_email_header" xml:space="preserve">
+    <value><![CDATA[تأكيد عنوان البريد الإلكتروني]]></value>
+  </data>
+  <data name="fui_email_link_confirm_email_message" xml:space="preserve">
+    <value><![CDATA[تأكيد عنوان البريد الإلكتروني لمتابعة تسجيل الدخول]]></value>
+  </data>
+  <data name="fui_email_link_dismiss_button" xml:space="preserve">
+    <value><![CDATA[رفض]]></value>
+  </data>
+  <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
+    <value><![CDATA[لقد بدأت هذه العملية بهدف ربط {0} ببريدك الإلكتروني إلّا أنك فتحت الرابط على جهاز آخر لم يتمّ تسجيل الدخول عليه. لربط حسابك على {0}، يجب فتح الرابط على الجهاز نفسه حيث سجّلت الدخول في البداية. ولإلغاء عملية الربط، يُرجى النقر على \"متابعة\" لتسجيل الدخول على هذا الجهاز.]]></value>
+  </data>
+  <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
+    <value><![CDATA[تسجيل الدخول باستخدام {0}]]></value>
+  </data>
+  <data name="fui_verify_phone_number_title" xml:space="preserve">
+    <value><![CDATA[أدخل رقم هاتفك]]></value>
+  </data>
+  <data name="fui_invalid_phone_number" xml:space="preserve">
+    <value><![CDATA[يُرجى إدخال رقم هاتف صالح]]></value>
+  </data>
+  <data name="fui_enter_confirmation_code" xml:space="preserve">
+    <value><![CDATA[أدخل الرمز المكوّن من 6 أرقام الذي أرسلناه إلى]]></value>
+  </data>
+  <data name="fui_resend_code_in" xml:space="preserve">
+    <value><![CDATA[إعادة إرسال الرمز بعد 0:%02d]]></value>
+  </data>
+  <data name="fui_verify_your_phone_title" xml:space="preserve">
+    <value><![CDATA[إثبات ملكية رقم هاتفك]]></value>
+  </data>
+  <data name="fui_verifying" xml:space="preserve">
+    <value><![CDATA[جارٍ التحقق…]]></value>
+  </data>
+  <data name="fui_incorrect_code_dialog_body" xml:space="preserve">
+    <value><![CDATA[الرمز غير صحيح. يُرجى المحاولة مجددًا.]]></value>
+  </data>
+  <data name="fui_error_too_many_attempts" xml:space="preserve">
+    <value><![CDATA[تم استخدام رقم الهاتف هذا لعدد كبير جدًا من المرات]]></value>
+  </data>
+  <data name="fui_error_quota_exceeded" xml:space="preserve">
+    <value><![CDATA[حدثت مشكلة أثناء إثبات ملكية رقم هاتفك]]></value>
+  </data>
+  <data name="fui_error_session_expired" xml:space="preserve">
+    <value><![CDATA[لم يعد هذا الرمز صالحًا]]></value>
+  </data>
+  <data name="fui_sign_in_with_phone_number" xml:space="preserve">
+    <value><![CDATA[تسجيل الدخول عبر رقم الهاتف]]></value>
+  </data>
+  <data name="fui_auto_verified" xml:space="preserve">
+    <value><![CDATA[تمّ التحقّق تلقائيًا من رقم الهاتف.]]></value>
+  </data>
+  <data name="fui_resend_code" xml:space="preserve">
+    <value><![CDATA[إعادة إرسال الرمز]]></value>
+  </data>
+  <data name="fui_verify_phone_number" xml:space="preserve">
+    <value><![CDATA[تأكيد ملكية رقم الهاتف]]></value>
+  </data>
+  <data name="fui_sms_terms_of_service" xml:space="preserve">
+    <value><![CDATA[عند النقر على “{0}”، قد يتمّ إرسال رسالة قصيرة SMS وقد يتمّ تطبيق رسوم الرسائل والبيانات.]]></value>
+  </data>
+  <data name="fui_sms_terms_of_service_and_privacy_policy_extended" xml:space="preserve">
+    <value><![CDATA[يشير النقر على “{0}” إلى موافقتك على {1} و{2}. وقد يتمّ إرسال رسالة قصيرة كما قد تنطبق رسوم الرسائل والبيانات.]]></value>
+  </data>
+  <data name="fui_error_weak_password_zero" xml:space="preserve">
+    <value><![CDATA[كلمة المرور ليست قوية بما فيه الكفاية. يجب استخدام {0} رقم على الأقل ومزيج من الأحرف والأرقام]]></value>
+  </data>
+  <data name="fui_error_weak_password_one" xml:space="preserve">
+    <value><![CDATA[كلمة المرور ليست قوية بما فيه الكفاية. يجب استخدام رقم واحد ({0}) على الأقل ومزيج من الأحرف والأرقام]]></value>
+  </data>
+  <data name="fui_error_weak_password_two" xml:space="preserve">
+    <value><![CDATA[كلمة المرور ليست قوية بما فيه الكفاية. يجب استخدام رقمين ({0}) على الأقل ومزيج من الأحرف والأرقام]]></value>
+  </data>
+  <data name="fui_error_weak_password_few" xml:space="preserve">
+    <value><![CDATA[كلمة المرور ليست قوية بما فيه الكفاية. يجب استخدام {0} أرقام على الأقل ومزيج من الأحرف والأرقام]]></value>
+  </data>
+  <data name="fui_error_weak_password_many" xml:space="preserve">
+    <value><![CDATA[كلمة المرور ليست قوية بما فيه الكفاية. يجب استخدام {0} رقمًا على الأقل ومزيج من الأحرف والأرقام]]></value>
+  </data>
+  <data name="fui_error_weak_password_other" xml:space="preserve">
+    <value><![CDATA[كلمة المرور ليست قوية بما فيه الكفاية. يجب استخدام {0} رقم على الأقل ومزيج من الأحرف والأرقام]]></value>
+  </data>
+
+</root>

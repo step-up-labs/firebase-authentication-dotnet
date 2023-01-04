@@ -1,0 +1,110 @@
+﻿<Page x:Class="Firebase.Auth.UI.Pages.SignUpPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Firebase.Auth.UI.Pages"
+      xmlns:res="clr-namespace:Firebase.Auth.UI.Resources;assembly=Firebase.Auth.UI"
+      mc:Ignorable="d"
+      FocusManager.FocusedElement="{Binding ElementName=NameTextBox}"
+      MinWidth="300"
+      d:DesignHeight="450" 
+      d:DesignWidth="300">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <StackPanel>
+
+        <TextBlock
+            Style="{StaticResource FuiTextBlockTitleStyle}"
+            Margin="0 0 0 12"
+            Text="{Binding FuiTitleRegisterEmail, Source={x:Static res:AppResources.Instance}}"
+            />
+
+        <TextBlock
+            Margin="0 12 0 0"
+            Style="{StaticResource FuiTextBlockHeaderStyle}"
+            Text="{Binding FuiEmailHint, Source={x:Static res:AppResources.Instance}}"
+            />
+
+        <TextBox
+            x:Name="EmailTextBox"
+            IsReadOnly="True"
+            Margin="0 0 0 10"
+            />
+        
+        <TextBlock
+            Margin="0 12 0 0"
+            Style="{StaticResource FuiTextBlockHeaderStyle}"
+            Text="{Binding FuiNameHint, Source={x:Static res:AppResources.Instance}}"
+            />
+
+        <TextBox
+            x:Name="NameTextBox"
+            LostFocus="NameTextBoxLostFocus"
+            KeyDown="NameTextBoxKeyDown"
+            TabIndex="0"
+            />
+
+        <TextBlock
+            x:Name="NameErrorTextBlock"
+            Style="{StaticResource FuiTextBlockErrorStyle}"
+            Text="{Binding FuiMissingFirstAndLastName, Source={x:Static res:AppResources.Instance}}"
+            />
+
+        <TextBlock 
+            Margin="0 6 0 0"
+            Style="{StaticResource FuiTextBlockHeaderStyle}"
+            Text="{Binding FuiPasswordHint, Source={x:Static res:AppResources.Instance}}"
+            />
+
+        <PasswordBox
+            x:Name="PasswordBox"
+            LostFocus="PasswordBoxLostFocus"
+            KeyDown="PasswordBoxKeyDown"
+            TabIndex="1"
+            />
+
+        <TextBlock
+            x:Name="ErrorTextBlock"
+            Style="{StaticResource FuiTextBlockErrorStyle}"
+            Text="Error"
+            TextWrapping="Wrap"
+            />
+
+        <ProgressBar 
+            x:Name="Progressbar"
+            Margin="0 12 0 0"
+            IsIndeterminate="True"
+            />
+
+        <StackPanel
+            x:Name="ButtonsPanel"
+            Margin="0 12 0 0"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+
+            <Button
+                Click="CancelClick"
+                Content="{Binding FuiCancel, Source={x:Static res:AppResources.Instance}}"
+                TabIndex="3"
+                />
+
+            <Button
+                Click="SignUpClick"
+                Margin="12 0 0 0"
+                Content="{Binding FuiButtonTextSave, Source={x:Static res:AppResources.Instance}}"
+                TabIndex="2"
+                />
+        </StackPanel>
+
+        <local:LinksFooter />
+
+    </StackPanel>
+</Page>

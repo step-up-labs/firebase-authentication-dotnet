@@ -1,0 +1,73 @@
+name: build
+
+on:
+  push:
+    branches: '**'
+    tags: 'v*.*.*'
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+    - name: Build
+      run: .\build\build-libs.ps1
+      env:
+        DOTNET_CLI_TELEMETRY_OPTOUT: 1
+    - name: Run Tests
+      env:
+        FIREBASE_AUTH_TEST_API_KEY: ${{ secrets.FIREBASE_AUTH_TEST_API_KEY }}
+        FIREBASE_AUTH_TEST_DOMAIN: ${{ secrets.FIREBASE_AUTH_TEST_DOMAIN }}
+      run: .\build\run-tests.ps1
+  pack:
+    runs-on: windows-latest
+    needs: build
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
+      - name: Pack preview
+        if: startsWith(github.ref, 'refs/tags/') == false
+        run: .\build\run-pack.ps1 -preview
+        env:
+          DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      - name: Pack from tag
+        if: startsWith(github.ref, 'refs/tags/')
+        run: .\build\run-pack.ps1
+        env:
+          DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      - uses: actions/upload-artifact@v3
+        with: 
+          name: artifacts
+          path: ./artifacts
+  publish:
+    runs-on: ubuntu-latest
+    needs: pack
+    if: github.event_name == 'push'
+    steps:
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6
+    - uses: actions/download-artifact@v3
+      with:
+        name: artifacts
+        path: ./artifacts
+    - name: Publish to Feedz.io
+      if: startsWith(github.ref, 'refs/tags/') == false
+      run: dotnet nuget push ./artifacts/**/*.nupkg --source https://f.feedz.io/step-up-labs/firebase/nuget/index.json --api-key ${{secrets.FEEDZ_TOKEN}}
+    - name: Publish to Nuget.org
+      if: startsWith(github.ref, 'refs/tags/')
+      run: dotnet nuget push ./artifacts/**/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_TOKEN}}

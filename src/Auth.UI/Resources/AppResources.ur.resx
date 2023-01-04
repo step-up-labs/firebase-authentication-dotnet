@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="fui_progress_dialog_loading" xml:space="preserve">
+    <value><![CDATA[لوڈ ہو رہا ہے…]]></value>
+  </data>
+  <data name="fui_sign_in_default" xml:space="preserve">
+    <value><![CDATA[سائن ان کریں]]></value>
+  </data>
+  <data name="fui_cancel" xml:space="preserve">
+    <value><![CDATA[منسوخ کریں]]></value>
+  </data>
+  <data name="fui_continue" xml:space="preserve">
+    <value><![CDATA[جاری رکھیں]]></value>
+  </data>
+  <data name="fui_tos_and_pp" xml:space="preserve">
+    <value><![CDATA[جاری رکھ کر، آپ نشاندہی کر رہے ہیں کہ آپ ہماری {0} اور {1} کو قبول کرتے ہیں۔]]></value>
+  </data>
+  <data name="fui_tos_and_pp_footer" xml:space="preserve">
+    <value><![CDATA[{0} \u00A0 \u00A0 {1}]]></value>
+  </data>
+  <data name="fui_no_internet" xml:space="preserve">
+    <value><![CDATA[نیٹ ورک میں خرابی، اپنا انٹرنیٹ کنکشن چیک کریں۔]]></value>
+  </data>
+  <data name="fui_idp_name_google" xml:space="preserve">
+    <value><![CDATA[Google]]></value>
+  </data>
+  <data name="fui_idp_name_facebook" xml:space="preserve">
+    <value><![CDATA[Facebook]]></value>
+  </data>
+  <data name="fui_idp_name_twitter" xml:space="preserve">
+    <value><![CDATA[Twitter]]></value>
+  </data>
+  <data name="fui_idp_name_github" xml:space="preserve">
+    <value><![CDATA[Github]]></value>
+  </data>
+  <data name="fui_idp_name_phone" xml:space="preserve">
+    <value><![CDATA[فون]]></value>
+  </data>
+  <data name="fui_idp_name_email" xml:space="preserve">
+    <value><![CDATA[ای میل]]></value>
+  </data>
+  <data name="fui_sign_in_with_google" xml:space="preserve">
+    <value><![CDATA[Google کے ساتھ سائن ان کریں]]></value>
+  </data>
+  <data name="fui_sign_in_with_facebook" xml:space="preserve">
+    <value><![CDATA[Facebook کے ساتھ سائن ان کریں]]></value>
+  </data>
+  <data name="fui_sign_in_with_twitter" xml:space="preserve">
+    <value><![CDATA[Twitter کے ساتھ سائن ان کریں]]></value>
+  </data>
+  <data name="fui_sign_in_with_github" xml:space="preserve">
+    <value><![CDATA[GitHub کے ساتھ سائن ان کریں]]></value>
+  </data>
+  <data name="fui_sign_in_with_email" xml:space="preserve">
+    <value><![CDATA[ای میل کے ساتھ سائن ان کریں]]></value>
+  </data>
+  <data name="fui_sign_in_with_phone" xml:space="preserve">
+    <value><![CDATA[فون کے ساتھ سائں ان کریں]]></value>
+  </data>
+  <data name="fui_sign_in_anonymously" xml:space="preserve">
+    <value><![CDATA[مہمان کے طور پر جاری رکھیں]]></value>
+  </data>
+  <data name="fui_sign_in_with_apple" xml:space="preserve">
+    <value><![CDATA[Apple کے ساتھ سائن ان کریں]]></value>
+  </data>
+  <data name="fui_sign_in_with_microsoft" xml:space="preserve">
+    <value><![CDATA[Microsoft کے ساتھ سائن ان کریں]]></value>
+  </data>
+  <data name="fui_sign_in_with_yahoo" xml:space="preserve">
+    <value><![CDATA[Yahoo کے ساتھ سائن ان کریں]]></value>
+  </data>
+  <data name="fui_next_default" xml:space="preserve">
+    <value><![CDATA[اگلا]]></value>
+  </data>
+  <data name="fui_email_hint" xml:space="preserve">
+    <value><![CDATA[ای میل]]></value>
+  </data>
+  <data name="fui_phone_hint" xml:space="preserve">
+    <value><![CDATA[فون نمبر]]></value>
+  </data>
+  <data name="fui_password_hint" xml:space="preserve">
+    <value><![CDATA[پاس ورڈ]]></value>
+  </data>
+  <data name="fui_required_field" xml:space="preserve">
+    <value><![CDATA[آپ اسے خالی نہیں چھوڑ سکتے۔]]></value>
+  </data>
+  <data name="fui_invalid_email_address" xml:space="preserve">
+    <value><![CDATA[یہ ای میل پتہ غلط ہے]]></value>
+  </data>
+  <data name="fui_missing_email_address" xml:space="preserve">
+    <value><![CDATA[جاری رکھنے کے لیے اپنا ای میل پتہ درج کریں]]></value>
+  </data>
+  <data name="fui_missing_first_and_last_name" xml:space="preserve">
+    <value><![CDATA[براہ کرم پہلا اور آخری نام درج کریں۔]]></value>
+  </data>
+  <data name="fui_progress_dialog_checking_accounts" xml:space="preserve">
+    <value><![CDATA[موجودہ اکاؤنٹس چیک ہو رہے ہیں…]]></value>
+  </data>
+  <data name="fui_title_register_email" xml:space="preserve">
+    <value><![CDATA[سائن اپ کریں]]></value>
+  </data>
+  <data name="fui_name_hint" xml:space="preserve">
+    <value><![CDATA[پہلا اور آخری نام]]></value>
+  </data>
+  <data name="fui_button_text_save" xml:space="preserve">
+    <value><![CDATA[محفوظ کریں]]></value>
+  </data>
+  <data name="fui_progress_dialog_signing_up" xml:space="preserve">
+    <value><![CDATA[سائن اپ ہو رہا ہے…]]></value>
+  </data>
+  <data name="fui_email_account_creation_error" xml:space="preserve">
+    <value><![CDATA[ای میل اکاؤنٹ کی رجسٹریشن نا کام رہی]]></value>
+  </data>
+  <data name="fui_terms_of_service" xml:space="preserve">
+    <value><![CDATA[سروس کی شرائط]]></value>
+  </data>
+  <data name="fui_privacy_policy" xml:space="preserve">
+    <value><![CDATA[رازداری کی پالیسی]]></value>
+  </data>
+  <data name="fui_welcome_back_idp_header" xml:space="preserve">
+    <value><![CDATA[آپ کے پاس پہلے سے ہی ایک اکاؤنٹ موجود ہے]]></value>
+  </data>
+  <data name="fui_welcome_back_email_header" xml:space="preserve">
+    <value><![CDATA[واپسی پر خوش آمدید!]]></value>
+  </data>
+  <data name="fui_welcome_back_email_link_header" xml:space="preserve">
+    <value><![CDATA[آپ کے پاس پہلے سے ہی ایک اکاؤنٹ ہے‎]]></value>
+  </data>
+  <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
+    <value><![CDATA[آپ نے پہلے ہی {0} استعمال کر لیا ہے۔ جاری رکھنے کے لیے {1} کے ساتھ سائن ان کریں۔]]></value>
+  </data>
+  <data name="fui_welcome_back_password_prompt_body" xml:space="preserve">
+    <value><![CDATA[آپ نے پہلے ہی {0} استعمال کر لیا ہے سائن کرنے کے لیے۔ اس کاؤنٹ کے لیے اپنا پاس ورڈ درج کریں۔]]></value>
+  </data>
+  <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
+    <value><![CDATA[آپ پہلے ہی {0} استعمال کر چکے ہیں۔ ذیل میں موجود ای میل کے لنک کے ساتھ سائن ان کر کے آپ اپنے {1} اکاؤنٹ کو {0} سے منسلک کر سکتے ہیں۔‎ اس فلو کو کامیابی کے ساتھ آپ کے {1} اکاؤنٹ کو اس ای میل کے ساتھ شامل کرنے کیلئے آپ کو اسی آلہ یا براؤزر پر لنک کھولنا ہوگا۔]]></value>
+  </data>
+  <data name="fui_progress_dialog_signing_in" xml:space="preserve">
+    <value><![CDATA[سائن ان ہو رہا ہے…]]></value>
+  </data>
+  <data name="fui_trouble_signing_in" xml:space="preserve">
+    <value><![CDATA[سائن ان کرنے میں دشواری؟]]></value>
+  </data>
+  <data name="fui_title_recover_password_activity" xml:space="preserve">
+    <value><![CDATA[پاس ورڈ بازیافت کریں]]></value>
+  </data>
+  <data name="fui_title_confirm_recover_password" xml:space="preserve">
+    <value><![CDATA[اپنا ای میل چیک کریں]]></value>
+  </data>
+  <data name="fui_password_recovery_body" xml:space="preserve">
+    <value><![CDATA[اس ای میل پر بھیجی گئی وہ ہدایات حاصل کریں جن میں اس بات کی وضاحت ہے کہ کیسے اپنا پاس ورڈ دوبارہ ترتیب دیں۔]]></value>
+  </data>
+  <data name="fui_button_text_send" xml:space="preserve">
+    <value><![CDATA[بھیجیں]]></value>
+  </data>
+  <data name="fui_confirm_recovery_body" xml:space="preserve">
+    <value><![CDATA[اپنے پاس ورڈ کو بازیافت کرنے کے لیے {0} پر بھیجی گئی ہدایات کی پیروی کریں۔]]></value>
+  </data>
+  <data name="fui_progress_dialog_sending" xml:space="preserve">
+    <value><![CDATA[بھیجا جا رہا ہے…]]></value>
+  </data>
+  <data name="fui_error_email_does_not_exist" xml:space="preserve">
+    <value><![CDATA[یہ ای میل پتہ کسی موجودہ اکاؤنٹ کے مماثل نہیں ہے]]></value>
+  </data>
+  <data name="fui_error_unknown" xml:space="preserve">
+    <value><![CDATA[ایک نامعلوم خرابی پیش آ گئی۔]]></value>
+  </data>
+  <data name="fui_error_invalid_password" xml:space="preserve">
+    <value><![CDATA[غلط پاس ورڈ۔]]></value>
+  </data>
+  <data name="fui_accessibility_logo" xml:space="preserve">
+    <value><![CDATA[ایپ لوگو]]></value>
+  </data>
+  <data name="fui_email_link_header" xml:space="preserve">
+    <value><![CDATA[سائن ان ای میل بھیج دی گئی‎]]></value>
+  </data>
+  <data name="fui_email_link_email_sent" xml:space="preserve">
+    <value><![CDATA[ایک سائن ان ای میل اضافی ہدایات کے ساتھ {0} کو بھیج دی گئی ہے۔ سائن ان مکمل کرنے کیلئے اپنی ای میل چیک کریں۔]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_email_header" xml:space="preserve">
+    <value><![CDATA[ای میل حاصل کرنے میں دشواری پیش آ رہی ہے؟]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
+    <value><![CDATA[یہ عام اصلاحات آزمائیں:‎ \u2022 چیک کریں کہ آیا ای میل کو اسپام یا فلٹر شدہ کے بطور نشان زد تو نہیں کیا گیا ہے۔‎ \u2022 اپنا انٹرنیٹ کنکشن چیک کریں۔‎ \u2022 چیک کریں کہ آپ نے اپنی ای میل میں ہجے کی کوئی غلطی تو نہیں کی ہے۔‎ \u2022 چیک کریں کہ آپ کے ان باکس میں جگہ ختم تو نہیں ہو رہی ہے یا ان باکس کی ترتیب سے متعلق کوئی دوسرا مسئلہ تو نہیں ہے۔‎]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
+    <value><![CDATA[اگر مندرجہ بالا مراحل کام نہ کریں تو آپ ای میل دوبارہ بھیج سکتے ہیں۔ نوٹ کریں کہ اس سے پرانی ای میل میں موجود لنک غیر فعال ہو جائے گا۔]]></value>
+  </data>
+  <data name="fui_email_link_resend" xml:space="preserve">
+    <value><![CDATA[دوبارہ بھیجیں]]></value>
+  </data>
+  <data name="fui_email_link_wrong_device_header" xml:space="preserve">
+    <value><![CDATA[نئے آلہ یا براؤزر کا پتا چلا ہے۔]]></value>
+  </data>
+  <data name="fui_email_link_wrong_device_message" xml:space="preserve">
+    <value><![CDATA[جہاں آپ نے سائن ان کا عمل شروع کیا تھا، اسی آلہ یا براؤزر کا استعمال کر کے لنک کھولنے کی کوشش کریں۔]]></value>
+  </data>
+  <data name="fui_email_link_invalid_link_header" xml:space="preserve">
+    <value><![CDATA[سائن ان مکمل کرنے میں ناکام]]></value>
+  </data>
+  <data name="fui_email_link_invalid_link_message" xml:space="preserve">
+    <value><![CDATA[کارروائی کا کوڈ غلط ہے، اگر یہ کوڈ بے ترتیب ہے، اس کی میعاد ختم ہو گئی ہے،یا پہلے ہی استعمال کر لیا گیا ہے تو ایسا ہو سکتا ہے۔]]></value>
+  </data>
+  <data name="fui_email_link_different_anonymous_user_header" xml:space="preserve">
+    <value><![CDATA[سیشن ختم ہو گیا]]></value>
+  </data>
+  <data name="fui_email_link_different_anonymous_user_message" xml:space="preserve">
+    <value><![CDATA[سائن ان درخواست کے شروع ہونے والے سیشن کی میعاد آیا ختم ہو چکی ہے یا صاف ہو چکی ہے۔]]></value>
+  </data>
+  <data name="fui_email_link_confirm_email_header" xml:space="preserve">
+    <value><![CDATA[ای میل کی تصدیق کریں]]></value>
+  </data>
+  <data name="fui_email_link_confirm_email_message" xml:space="preserve">
+    <value><![CDATA[سائن ان جاری رکھنے کے لیے ای میل کی توثیق کریں]]></value>
+  </data>
+  <data name="fui_email_link_dismiss_button" xml:space="preserve">
+    <value><![CDATA[برخاست کریں]]></value>
+  </data>
+  <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
+    <value><![CDATA[آپ نے اصل میں اپنے ای میل اکاؤنٹ کو {0} کے ساتھ منسلک کرنا چاہتے تھے لیکن آپ نے لنک کو دوسرے آلہ پر کھولا ہے جہاں آپ سائن ان نہیں ہیں۔‎ اگر آپ ابھی بھی اپنے {0} اکاؤنٹ سے منسلک ہونا چاہتے ہیں، تو اسی آلہ پر لنک کو کھولیں جہاں سے آپ نے سائن ان شروع کیا تھا۔ بصورت دیگر، اس آلہ پر مسلسل سائن کرنے کے لیے تھپتھپائيں۔]]></value>
+  </data>
+  <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
+    <value><![CDATA[{0} کے ساتھ سائن ان کریں]]></value>
+  </data>
+  <data name="fui_verify_phone_number_title" xml:space="preserve">
+    <value><![CDATA[اپنا فون نمبر درج کریں]]></value>
+  </data>
+  <data name="fui_invalid_phone_number" xml:space="preserve">
+    <value><![CDATA[براہ کرم ایک درست فون نمبر درج کریں]]></value>
+  </data>
+  <data name="fui_enter_confirmation_code" xml:space="preserve">
+    <value><![CDATA[ہماری جانب سے حسبِ ذیل کو بھیجا گیا 6 عدد کا کوڈ درج کریں]]></value>
+  </data>
+  <data name="fui_resend_code_in" xml:space="preserve">
+    <value><![CDATA[0:%02d میں دوبارہ کوڈ بھیجیں]]></value>
+  </data>
+  <data name="fui_verify_your_phone_title" xml:space="preserve">
+    <value><![CDATA[اپنے فون نمبر کی توثیق کریں]]></value>
+  </data>
+  <data name="fui_verifying" xml:space="preserve">
+    <value><![CDATA[توثیق ہو رہی ہے…]]></value>
+  </data>
+  <data name="fui_incorrect_code_dialog_body" xml:space="preserve">
+    <value><![CDATA[غلط کوڈ۔ دوبارہ کوشش کریں۔]]></value>
+  </data>
+  <data name="fui_error_too_many_attempts" xml:space="preserve">
+    <value><![CDATA[یہ فون نمبر پہلے ہی کافی مرتبہ استعمال ہو چکا ہے]]></value>
+  </data>
+  <data name="fui_error_quota_exceeded" xml:space="preserve">
+    <value><![CDATA[آپ کے فون نمبر کی توثیق کرنے میں ایک مسئلہ تھا]]></value>
+  </data>
+  <data name="fui_error_session_expired" xml:space="preserve">
+    <value><![CDATA[یہ کوڈ اب جائز نہیں رہا]]></value>
+  </data>
+  <data name="fui_sign_in_with_phone_number" xml:space="preserve">
+    <value><![CDATA[فون نمبر کے ساتھ سائن ان کریں]]></value>
+  </data>
+  <data name="fui_auto_verified" xml:space="preserve">
+    <value><![CDATA[فون نمبر کی خودکار طور پر توثیق ہو گئی]]></value>
+  </data>
+  <data name="fui_resend_code" xml:space="preserve">
+    <value><![CDATA[کوڈ دوبارہ بھیجیں]]></value>
+  </data>
+  <data name="fui_verify_phone_number" xml:space="preserve">
+    <value><![CDATA[فون نمبر کی توثیق کریں]]></value>
+  </data>
+  <data name="fui_sms_terms_of_service" xml:space="preserve">
+    <value><![CDATA[{0} پر تھپتھپانے سے، ایک SMS بھیجا جا سکتا ہے۔ پیغام اور ڈیٹا کی شرحوں کا اطلاق ہو سکتا ہے۔]]></value>
+  </data>
+  <data name="fui_sms_terms_of_service_and_privacy_policy_extended" xml:space="preserve">
+    <value><![CDATA[“{0}” کو تھپتھپا کر، آپ نشاندہی کر رہے ہیں کہ آپ ہماری {1} اور {2} کو قبول کرتے ہیں۔ ایک SMS بھیجا جا سکتا ہے۔ پیغام اور ڈیٹا نرخ لاگو ہو سکتے ہیں۔]]></value>
+  </data>
+  <data name="fui_error_weak_password_one" xml:space="preserve">
+    <value><![CDATA[پاس ورڈ کافی مضبوط نہیں ہے۔ کم از کم {0} کریکٹر اور حروف و اعداد کا مرکب استعمال کریں]]></value>
+  </data>
+  <data name="fui_error_weak_password_other" xml:space="preserve">
+    <value><![CDATA[پاس ورڈ کافی مضبوط نہیں ہے۔ کم از کم {0} کریکٹرز اور حروف و اعداد کا مرکب استعمال کریں]]></value>
+  </data>
+
+</root>

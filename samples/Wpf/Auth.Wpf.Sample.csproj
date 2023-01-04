@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>Firebase.Auth.Wpf.Sample</AssemblyName>
+    <RootNamespace>Firebase.Auth.Wpf.Sample</RootNamespace>
+    <ApplicationIcon>Assets\firebase.ico</ApplicationIcon>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\firebase.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Auth.UI.WPF\Auth.UI.WPF.csproj" />
+    <ProjectReference Include="..\..\src\Auth.UI\Auth.UI.csproj" />
+    <ProjectReference Include="..\..\src\Auth\Auth.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\firebase.png" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="fui_progress_dialog_loading" xml:space="preserve">
+    <value><![CDATA[Γίνεται φόρτωση…]]></value>
+  </data>
+  <data name="fui_sign_in_default" xml:space="preserve">
+    <value><![CDATA[Σύνδεση]]></value>
+  </data>
+  <data name="fui_cancel" xml:space="preserve">
+    <value><![CDATA[Ακύρωση]]></value>
+  </data>
+  <data name="fui_continue" xml:space="preserve">
+    <value><![CDATA[Συνέχεια]]></value>
+  </data>
+  <data name="fui_tos_and_pp" xml:space="preserve">
+    <value><![CDATA[Αν συνεχίσετε, δηλώνετε ότι αποδέχεστε τους {0} και την {1}.]]></value>
+  </data>
+  <data name="fui_tos_and_pp_footer" xml:space="preserve">
+    <value><![CDATA[{0} \u00A0 \u00A0 {1}]]></value>
+  </data>
+  <data name="fui_no_internet" xml:space="preserve">
+    <value><![CDATA[Σφάλμα δικτύου, ελέγξτε τη σύνδεση στο διαδίκτυο.]]></value>
+  </data>
+  <data name="fui_idp_name_google" xml:space="preserve">
+    <value><![CDATA[Google]]></value>
+  </data>
+  <data name="fui_idp_name_facebook" xml:space="preserve">
+    <value><![CDATA[Facebook]]></value>
+  </data>
+  <data name="fui_idp_name_twitter" xml:space="preserve">
+    <value><![CDATA[Twitter]]></value>
+  </data>
+  <data name="fui_idp_name_github" xml:space="preserve">
+    <value><![CDATA[GitHub]]></value>
+  </data>
+  <data name="fui_idp_name_phone" xml:space="preserve">
+    <value><![CDATA[Τηλέφωνο]]></value>
+  </data>
+  <data name="fui_idp_name_email" xml:space="preserve">
+    <value><![CDATA[Ηλεκτρονικό ταχυδρομείο]]></value>
+  </data>
+  <data name="fui_sign_in_with_google" xml:space="preserve">
+    <value><![CDATA[Σύνδεση μέσω Google]]></value>
+  </data>
+  <data name="fui_sign_in_with_facebook" xml:space="preserve">
+    <value><![CDATA[Σύνδεση μέσω Facebook]]></value>
+  </data>
+  <data name="fui_sign_in_with_twitter" xml:space="preserve">
+    <value><![CDATA[Σύνδεση μέσω Twitter]]></value>
+  </data>
+  <data name="fui_sign_in_with_github" xml:space="preserve">
+    <value><![CDATA[Σύνδεση μέσω GitHub]]></value>
+  </data>
+  <data name="fui_sign_in_with_email" xml:space="preserve">
+    <value><![CDATA[Σύνδεση μέσω ηλεκτρονικού ταχυδρομείου]]></value>
+  </data>
+  <data name="fui_sign_in_with_phone" xml:space="preserve">
+    <value><![CDATA[Σύνδεση μέσω τηλεφώνου]]></value>
+  </data>
+  <data name="fui_sign_in_anonymously" xml:space="preserve">
+    <value><![CDATA[Συνέχεια ως επισκέπτης]]></value>
+  </data>
+  <data name="fui_sign_in_with_apple" xml:space="preserve">
+    <value><![CDATA[Σύνδεση μέσω Apple]]></value>
+  </data>
+  <data name="fui_sign_in_with_microsoft" xml:space="preserve">
+    <value><![CDATA[Σύνδεση μέσω Microsoft]]></value>
+  </data>
+  <data name="fui_sign_in_with_yahoo" xml:space="preserve">
+    <value><![CDATA[Σύνδεση μέσω Yahoo]]></value>
+  </data>
+  <data name="fui_next_default" xml:space="preserve">
+    <value><![CDATA[Επόμενο]]></value>
+  </data>
+  <data name="fui_email_hint" xml:space="preserve">
+    <value><![CDATA[Ηλεκτρονικό ταχυδρομείο]]></value>
+  </data>
+  <data name="fui_phone_hint" xml:space="preserve">
+    <value><![CDATA[Αριθμός τηλεφώνου]]></value>
+  </data>
+  <data name="fui_password_hint" xml:space="preserve">
+    <value><![CDATA[Κωδικός πρόσβασης]]></value>
+  </data>
+  <data name="fui_required_field" xml:space="preserve">
+    <value><![CDATA[Αυτό το πεδίο είναι υποχρεωτικό.]]></value>
+  </data>
+  <data name="fui_invalid_email_address" xml:space="preserve">
+    <value><![CDATA[Αυτή η διεύθυνση ηλεκτρονικού ταχυδρομείου δεν είναι σωστή]]></value>
+  </data>
+  <data name="fui_missing_email_address" xml:space="preserve">
+    <value><![CDATA[Εισαγάγετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου για να συνεχίσετε]]></value>
+  </data>
+  <data name="fui_missing_first_and_last_name" xml:space="preserve">
+    <value><![CDATA[Εισαγάγετε ένα όνομα και ένα επώνυμο.]]></value>
+  </data>
+  <data name="fui_progress_dialog_checking_accounts" xml:space="preserve">
+    <value><![CDATA[Γίνεται έλεγχος για υπάρχοντες λογαριασμούς…]]></value>
+  </data>
+  <data name="fui_title_register_email" xml:space="preserve">
+    <value><![CDATA[Εγγραφή]]></value>
+  </data>
+  <data name="fui_name_hint" xml:space="preserve">
+    <value><![CDATA[Όνομα και επώνυμο]]></value>
+  </data>
+  <data name="fui_button_text_save" xml:space="preserve">
+    <value><![CDATA[Αποθήκευση]]></value>
+  </data>
+  <data name="fui_progress_dialog_signing_up" xml:space="preserve">
+    <value><![CDATA[Γίνεται εγγραφή…]]></value>
+  </data>
+  <data name="fui_email_account_creation_error" xml:space="preserve">
+    <value><![CDATA[Η εγγραφή του λογαριασμού ηλεκτρονικού ταχυδρομείου δεν ήταν επιτυχής]]></value>
+  </data>
+  <data name="fui_terms_of_service" xml:space="preserve">
+    <value><![CDATA[Όρους Παροχής Υπηρεσιών]]></value>
+  </data>
+  <data name="fui_privacy_policy" xml:space="preserve">
+    <value><![CDATA[Πολιτική απορρήτου]]></value>
+  </data>
+  <data name="fui_welcome_back_idp_header" xml:space="preserve">
+    <value><![CDATA[Έχετε ήδη λογαριασμό]]></value>
+  </data>
+  <data name="fui_welcome_back_email_header" xml:space="preserve">
+    <value><![CDATA[Καλώς ορίσατε και πάλι!]]></value>
+  </data>
+  <data name="fui_welcome_back_email_link_header" xml:space="preserve">
+    <value><![CDATA[Έχετε ήδη λογαριασμό]]></value>
+  </data>
+  <data name="fui_welcome_back_idp_prompt" xml:space="preserve">
+    <value><![CDATA[Έχετε ήδη χρησιμοποιήσει τη διεύθυνση {0}. Συνδεθείτε μέσω {1} για να συνεχίσετε.]]></value>
+  </data>
+  <data name="fui_welcome_back_password_prompt_body" xml:space="preserve">
+    <value><![CDATA[Έχετε ήδη χρησιμοποιήσει τη διεύθυνση {0} για να συνδεθείτε. Εισαγάγετε τον κωδικό πρόσβασής σας για αυτόν τον λογαριασμό.]]></value>
+  </data>
+  <data name="fui_welcome_back_email_link_prompt_body" xml:space="preserve">
+    <value><![CDATA[Χρησιμοποιήσατε ήδη το {0}. Για να συνδέσετε τον λογαριασμό σας {1} με το {0}, συνδεθείτε στον σύνδεσμο ηλεκτρονικού ταχυδρομείου παρακάτω. Σε αυτήν τη ροή για την επιτυχή σύνδεση του λογαριασμού {1} με αυτήν τη διεύθυνση ηλεκτρονικού ταχυδρομείου, θα πρέπει να ανοίξετε τον σύνδεσμο στην ίδια συσκευή ή στο ίδιο πρόγραμμα περιήγησης.]]></value>
+  </data>
+  <data name="fui_progress_dialog_signing_in" xml:space="preserve">
+    <value><![CDATA[Γίνεται σύνδεση…]]></value>
+  </data>
+  <data name="fui_trouble_signing_in" xml:space="preserve">
+    <value><![CDATA[Πρόβλημα κατά τη σύνδεση;]]></value>
+  </data>
+  <data name="fui_title_recover_password_activity" xml:space="preserve">
+    <value><![CDATA[Ανάκτηση κωδικού πρόσβασης]]></value>
+  </data>
+  <data name="fui_title_confirm_recover_password" xml:space="preserve">
+    <value><![CDATA[Ελέγξτε τα εισερχόμενα του ηλεκτρονικού ταχυδρομείου σας]]></value>
+  </data>
+  <data name="fui_password_recovery_body" xml:space="preserve">
+    <value><![CDATA[Δείτε τις οδηγίες που στάλθηκαν σε αυτήν τη διεύθυνση ηλεκτρονικού ταχυδρομείου, οι οποίες εξηγούν πώς να επαναφέρετε τον κωδικό πρόσβασής σας.]]></value>
+  </data>
+  <data name="fui_button_text_send" xml:space="preserve">
+    <value><![CDATA[Αποστολή]]></value>
+  </data>
+  <data name="fui_confirm_recovery_body" xml:space="preserve">
+    <value><![CDATA[Ακολουθήστε τις οδηγίες που στάλθηκαν στο {0} για να ανακτήσετε τον κωδικό πρόσβασής σας.]]></value>
+  </data>
+  <data name="fui_progress_dialog_sending" xml:space="preserve">
+    <value><![CDATA[Γίνεται αποστολή…]]></value>
+  </data>
+  <data name="fui_error_email_does_not_exist" xml:space="preserve">
+    <value><![CDATA[Αυτή η διεύθυνση ηλεκτρονικού ταχυδρομείου δεν ταιριάζει με κάποιον υπάρχοντα λογαριασμό]]></value>
+  </data>
+  <data name="fui_error_unknown" xml:space="preserve">
+    <value><![CDATA[Παρουσιάστηκε άγνωστο σφάλμα.]]></value>
+  </data>
+  <data name="fui_error_invalid_password" xml:space="preserve">
+    <value><![CDATA[Λανθασμένος κωδικός πρόσβασης.]]></value>
+  </data>
+  <data name="fui_accessibility_logo" xml:space="preserve">
+    <value><![CDATA[Λογότυπο εφαρμογής]]></value>
+  </data>
+  <data name="fui_email_link_header" xml:space="preserve">
+    <value><![CDATA[Το μήνυμα ηλεκτρονικού ταχυδρομείου σύνδεσης στάλθηκε]]></value>
+  </data>
+  <data name="fui_email_link_email_sent" xml:space="preserve">
+    <value><![CDATA[Ένα μήνυμα ηλεκτρονικού ταχυδρομείου σύνδεσης με πρόσθετες οδηγίες στάλθηκε στη διεύθυνση {0}. Ελέγξτε τη διεύθυνση ηλεκτρονικού ταχυδρομείου για να ολοκληρώσετε τη σύνδεση.]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_email_header" xml:space="preserve">
+    <value><![CDATA[Αντιμετωπίζετε πρόβλημα με τη λήψη του μηνύματος ηλεκτρονικού ταχυδρομείου;]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_possible_fixes" xml:space="preserve">
+    <value><![CDATA[Δοκιμάστε αυτές τις συνήθεις διορθώσεις: \u2022 Ελέγξτε αν το μήνυμα ηλεκτρονικού ταχυδρομείου επισημάνθηκε ως ανεπιθύμητο ή φιλτραρισμένο. \u2022 Ελέγξτε τη σύνδεσή σας στο διαδίκτυο. \u2022 Βεβαιωθείτε ότι δεν έχετε γράψει λάθος το μήνυμα ηλεκτρονικού ταχυδρομείου. \u2022 Βεβαιωθείτε ότι δεν έχει γεμίσει ο χώρος εισερχομένων ή ότι δεν υπάρχουν άλλα προβλήματα που σχετίζονται με τις ρυθμίσεις εισερχομένων.]]></value>
+  </data>
+  <data name="fui_email_link_trouble_getting_email_resend_solution" xml:space="preserve">
+    <value><![CDATA[Αν τα παραπάνω βήματα δεν λειτούργησαν, μπορείτε να στείλετε ξανά το μήνυμα ηλεκτρονικού ταχυδρομείου. Έχετε υπόψη ότι με αυτήν την ενέργεια, ο σύνδεσμος στο παλιότερο μήνυμα ηλεκτρονικού ταχυδρομείου θα απενεργοποιηθεί.]]></value>
+  </data>
+  <data name="fui_email_link_resend" xml:space="preserve">
+    <value><![CDATA[Επανάληψη αποστολής]]></value>
+  </data>
+  <data name="fui_email_link_wrong_device_header" xml:space="preserve">
+    <value><![CDATA[Εντοπίστηκε νέα συσκευή ή πρόγραμμα περιήγησης.]]></value>
+  </data>
+  <data name="fui_email_link_wrong_device_message" xml:space="preserve">
+    <value><![CDATA[Δοκιμάστε να ανοίξετε τον σύνδεσμο χρησιμοποιώντας την ίδια συσκευή ή το ίδιο πρόγραμμα περιήγησης από όπου ξεκινήσατε τη διαδικασία σύνδεσης.]]></value>
+  </data>
+  <data name="fui_email_link_invalid_link_header" xml:space="preserve">
+    <value><![CDATA[Δεν είναι δυνατή η ολοκλήρωση της σύνδεσης]]></value>
+  </data>
+  <data name="fui_email_link_invalid_link_message" xml:space="preserve">
+    <value><![CDATA[Ο κωδικός ενέργειας δεν είναι έγκυρος. Αυτό μπορεί να συμβεί αν ο κωδικός έχει λανθασμένη μορφή, έχει λήξει ή χρησιμοποιείται ήδη.]]></value>
+  </data>
+  <data name="fui_email_link_different_anonymous_user_header" xml:space="preserve">
+    <value><![CDATA[Η περίοδος σύνδεσης έληξε]]></value>
+  </data>
+  <data name="fui_email_link_different_anonymous_user_message" xml:space="preserve">
+    <value><![CDATA[Η περίοδος σύνδεσης που συσχετίζεται με το αίτημα σύνδεσης είτε έληξε είτε διαγράφηκε.]]></value>
+  </data>
+  <data name="fui_email_link_confirm_email_header" xml:space="preserve">
+    <value><![CDATA[Επιβεβαίωση διεύθυνσης ηλεκτρονικού ταχυδρομείου]]></value>
+  </data>
+  <data name="fui_email_link_confirm_email_message" xml:space="preserve">
+    <value><![CDATA[Επιβεβαιώστε τη διεύθυνση ηλεκτρονικού ταχυδρομείου για να συνεχίσετε τη σύνδεση]]></value>
+  </data>
+  <data name="fui_email_link_dismiss_button" xml:space="preserve">
+    <value><![CDATA[Παράβλεψη]]></value>
+  </data>
+  <data name="fui_email_link_cross_device_linking_text" xml:space="preserve">
+    <value><![CDATA[Αρχικά, σκοπεύατε να συνδέσετε το {0} με τον λογαριασμό ηλεκτρονικού ταχυδρομείου, αλλά, για το άνοιγμα του συνδέσμου, χρησιμοποιήσατε άλλη συσκευή στην οποία δεν είστε συνδεδεμένοι. Αν θέλετε να συνεχίσετε τη σύνδεση του λογαριασμού {0}, ανοίξτε τον σύνδεσμο στην ίδια συσκευή από την οποία ξεκινήσατε τη σύνδεση. Διαφορετικά, πατήστε Συνέχεια για να συνδεθείτε σε αυτήν τη συσκευή.]]></value>
+  </data>
+  <data name="fui_email_link_cross_device_sign_in_button_text" xml:space="preserve">
+    <value><![CDATA[Συνδεθείτε μέσω {0}]]></value>
+  </data>
+  <data name="fui_verify_phone_number_title" xml:space="preserve">
+    <value><![CDATA[Εισαγάγετε τον αριθμό τηλεφώνου σας]]></value>
+  </data>
+  <data name="fui_invalid_phone_number" xml:space="preserve">
+    <value><![CDATA[Καταχωρίστε έναν έγκυρο αριθμό τηλεφώνου]]></value>
+  </data>
+  <data name="fui_enter_confirmation_code" xml:space="preserve">
+    <value><![CDATA[Εισαγάγετε τον 6ψήφιο κωδικό που σας στείλαμε στο]]></value>
+  </data>
+  <data name="fui_resend_code_in" xml:space="preserve">
+    <value><![CDATA[Επανάληψη αποστολής κωδικού σε 0:%02d]]></value>
+  </data>
+  <data name="fui_verify_your_phone_title" xml:space="preserve">
+    <value><![CDATA[Επαλήθευση του τηλεφώνου σας]]></value>
+  </data>
+  <data name="fui_verifying" xml:space="preserve">
+    <value><![CDATA[Επαλήθευση…]]></value>
+  </data>
+  <data name="fui_incorrect_code_dialog_body" xml:space="preserve">
+    <value><![CDATA[Εσφαλμένος κωδικός. Δοκιμάστε ξανά.]]></value>
+  </data>
+  <data name="fui_error_too_many_attempts" xml:space="preserve">
+    <value><![CDATA[Αυτός ο αριθμός τηλεφώνου χρησιμοποιήθηκε πάρα πολλές φορές]]></value>
+  </data>
+  <data name="fui_error_quota_exceeded" xml:space="preserve">
+    <value><![CDATA[Παρουσιάστηκε πρόβλημα με την επαλήθευση του αριθμού τηλεφώνου]]></value>
+  </data>
+  <data name="fui_error_session_expired" xml:space="preserve">
+    <value><![CDATA[Αυτός ο κωδικός δεν είναι πλέον έγκυρος]]></value>
+  </data>
+  <data name="fui_sign_in_with_phone_number" xml:space="preserve">
+    <value><![CDATA[Σύνδεση με αριθμό τηλεφώνου]]></value>
+  </data>
+  <data name="fui_auto_verified" xml:space="preserve">
+    <value><![CDATA[Ο αριθμός τηλεφώνου επαληθεύτηκε αυτόματα]]></value>
+  </data>
+  <data name="fui_resend_code" xml:space="preserve">
+    <value><![CDATA[Επανάληψη αποστολής κωδικού]]></value>
+  </data>
+  <data name="fui_verify_phone_number" xml:space="preserve">
+    <value><![CDATA[Επαλήθευση αριθμού τηλεφώνου]]></value>
+  </data>
+  <data name="fui_sms_terms_of_service" xml:space="preserve">
+    <value><![CDATA[Αν πατήσετε “{0}”, μπορεί να σταλεί ένα SMS. Ενδέχεται να ισχύουν χρεώσεις μηνυμάτων και δεδομένων.]]></value>
+  </data>
+  <data name="fui_sms_terms_of_service_and_privacy_policy_extended" xml:space="preserve">
+    <value><![CDATA[Αν πατήσετε “{0}”, δηλώνετε ότι αποδέχεστε τους {1} και την {2}. Μπορεί να σταλεί ένα SMS. Ενδέχεται να ισχύουν χρεώσεις μηνυμάτων και δεδομένων.]]></value>
+  </data>
+  <data name="fui_error_weak_password_one" xml:space="preserve">
+    <value><![CDATA[Ο κωδικός πρόσβασης δεν είναι αρκετά ισχυρός. Χρησιμοποιήστε τουλάχιστον {0} χαρακτήρα και έναν συνδυασμό γραμμάτων και αριθμών]]></value>
+  </data>
+  <data name="fui_error_weak_password_other" xml:space="preserve">
+    <value><![CDATA[Ο κωδικός πρόσβασης δεν είναι αρκετά ισχυρός. Χρησιμοποιήστε τουλάχιστον {0} χαρακτήρες και έναν συνδυασμό γραμμάτων και αριθμών]]></value>
+  </data>
+
+</root>
