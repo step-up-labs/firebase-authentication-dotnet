@@ -14,7 +14,7 @@ FirebaseUI is supported by platform-specific libraries:
       
 * FirebaseAuthentication.WPF
 * FirebaseAuthentication.UWP
-* FirebaseAuthentication.Xamarin
+* FirebaseAuthentication.Maui
     </Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
