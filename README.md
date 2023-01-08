@@ -12,7 +12,7 @@ The solution consists of 4 libraries - a base one and 3 platform specific ones:
 * FirebaseAuthentication<strong>.net</strong> targets [.NET Standard 2.0](https://github.com/dotnet/standard/blob/master/docs/versions.md)
 * FirebaseAuthentication<strong>.WPF</strong> targets [WPF on .NET 6](https://github.com/dotnet/wpf)
 * FirebaseAuthentication<strong>.UWP</strong> targets [UWP with min version 19041](https://docs.microsoft.com/en-us/windows/uwp/updates-and-versions/choose-a-uwp-version)
-* FirebaseAuthentication<strong>.Xamarin</strong> targets Xamarin.Forms (*TODO*)
+* FirebaseAuthentication<strong>.Maui</strong> targets Maui (*TODO*)
 
 ## Installation
 
@@ -25,7 +25,7 @@ dotnet add package FirebaseAuthentication.net
 # Platform specific FirebaseUI (has dependency on base package)
 dotnet add package FirebaseAuthentication.WPF
 dotnet add package FirebaseAuthentication.UWP
-dotnet add package FirebaseAuthentication.Xamarin
+dotnet add package FirebaseAuthentication.Maui
 ```
 
 Use the `--version` option to specify a [preview version](https://www.nuget.org/packages/FirebaseAuthentication.net/absoluteLatest) to install.
