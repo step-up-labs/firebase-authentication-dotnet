@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Net.Mail;
 
 namespace Firebase.Auth.UI
 {
@@ -9,9 +10,16 @@ namespace Firebase.Auth.UI
         /// </summary>
         public static bool ValidateEmail(string email)
         {
-            var regx = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-            var match = regx.Match(email);
-            return match.Success;
+            try
+            {
+                var m = new MailAddress(email);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
         }
     }
 }
