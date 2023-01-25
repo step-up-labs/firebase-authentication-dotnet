@@ -4,7 +4,8 @@
     {
         public const string DefaultEmailScope = "email";
 
-        public AppleProvider() {
+        public AppleProvider()
+        {
             this.AddScopes(DefaultEmailScope);
         }
 
