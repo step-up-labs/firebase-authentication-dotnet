@@ -4,12 +4,11 @@
     {
         public const string DefaultEmailScope = "email";
 
-        public AppleProvider()
-        {
+        public AppleProvider() {
             this.AddScopes(DefaultEmailScope);
         }
 
-        public static AuthCredential GetCredential(string accessToken) => GetCredential(FirebaseProviderType.Apple, accessToken, OAuthCredentialTokenType.AccessToken);
+        public static AuthCredential GetCredential(string Token, OAuthCredentialTokenType TokenType) => GetCredential(FirebaseProviderType.Apple, Token, TokenType);
 
         public override FirebaseProviderType ProviderType => FirebaseProviderType.Apple;
 
