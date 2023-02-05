@@ -7,6 +7,8 @@ namespace Firebase.Auth
     /// </summary>
     public enum FirebaseProviderType
     {
+        Unknown,
+
         [EnumMember(Value = "facebook.com")]
         Facebook,
 
@@ -27,6 +29,9 @@ namespace Firebase.Auth
 
         [EnumMember(Value = "password")]
         EmailAndPassword,
+
+        [EnumMember(Value = "phone")]
+        Phone,
 
         Anonymous
     } 

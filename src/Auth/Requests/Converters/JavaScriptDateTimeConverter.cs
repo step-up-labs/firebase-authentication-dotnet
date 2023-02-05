@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Firebase.Auth.Requests
+namespace Firebase.Auth.Requests.Converters
 {
     internal class JavaScriptDateTimeConverter : JsonConverter
     {

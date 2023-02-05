@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Firebase.Auth.Requests.Converters;
+using Newtonsoft.Json;
 using System;
 
 namespace Firebase.Auth.Requests
@@ -36,6 +37,7 @@ namespace Firebase.Auth.Requests
 
     public class ProviderUserInfo
     {
+        [JsonConverter(typeof(DefaultEnumConverter))]
         public FirebaseProviderType ProviderId { get; set; }
 
         public string DisplayName { get; set; }
