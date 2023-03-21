@@ -58,7 +58,7 @@ namespace Firebase.Auth.Providers
                 response.PendingToken == null ? OAuthCredentialTokenType.AccessToken : OAuthCredentialTokenType.PendingToken);
         }
 
-        internal virtual async Task<OAuthContinuation> SignInAsync()
+        public virtual async Task<OAuthContinuation> SignInAsync()
         {
             if (this.LocaleParameterName != null && !this.parameters.ContainsKey(this.LocaleParameterName))
             {

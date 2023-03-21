@@ -26,6 +26,7 @@ The library provides a drop-in auth solution that handles the flows for signing 
     <AssemblyName>Firebase.Auth.UI.WPF</AssemblyName>
     <RootNamespace>Firebase.Auth.UI</RootNamespace>
     <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
     <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
   </PropertyGroup>
 

@@ -204,12 +204,12 @@ namespace Firebase.Auth
             value?.Invoke(this, new UserEventArgs(user));
         }
 
-        private void SaveToken(User user)
+        public void SaveToken(User user)
         {
             this.config.UserManager.SaveNewUser(user);
         }
 
-        private async Task CheckAuthDomain()
+        public async Task CheckAuthDomain()
         {
             if (this.domainChecked)
             {
