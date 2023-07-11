@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Auth.UWP.Sample (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Auth.UWP.Sample (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
