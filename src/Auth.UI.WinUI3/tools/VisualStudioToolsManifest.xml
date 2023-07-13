@@ -1,5 +1,5 @@
 ﻿<FileList>
-  <File Reference="Firebase.Auth.UI.UWP.dll">
+  <File Reference="Firebase.Auth.UI.WinUI3.dll">
     <ToolboxItems VSCategory="FirebaseUI" BlendCategory="FirebaseUI">
       <Item Type="Firebase.Auth.UI.FirebaseUIControl" />
     </ToolboxItems>

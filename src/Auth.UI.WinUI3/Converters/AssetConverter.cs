@@ -7,7 +7,7 @@ namespace Firebase.Auth.UI.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return $"ms-appx:///Firebase.Auth.UI.UWP{ProviderToAssetConverter.Convert((FirebaseProviderType)value)}";
+            return $"ms-appx:///Firebase.Auth.UI.WinUI3{ProviderToAssetConverter.Convert((FirebaseProviderType)value)}";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

@@ -29,7 +29,7 @@
     </Style>
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="ms-appx:///Firebase.Auth.UI.UWP/Themes/FirebaseUIControl.xaml" />
+        <ResourceDictionary Source="ms-appx:///Firebase.Auth.UI.WinUI3/Themes/FirebaseUIControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
     
 </ResourceDictionary>
