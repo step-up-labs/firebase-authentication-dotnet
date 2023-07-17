@@ -63,7 +63,7 @@ namespace Firebase.Auth.UI.Pages
 
         private async void ProviderSignInClick(object sender, RoutedEventArgs e)
         {
-            this.ProgressBar.Visibility = Visibility.Visible;
+            //this.ProgressBar.Visibility = Visibility.Visible;
             this.ScrollViewer.IsEnabled = false;
 
             var button = sender as Button;
@@ -75,10 +75,16 @@ namespace Firebase.Auth.UI.Pages
             }
             catch (FirebaseAuthException ex)
             {
-                await new MessageDialog(FirebaseErrorLookup.LookupError(ex)).ShowAsync();
+                var dialog = new ContentDialog()
+                {
+                    Content = FirebaseErrorLookup.LookupError(ex),
+                    XamlRoot = this.XamlRoot,
+                    CloseButtonText = "Ok"
+                };
+                await dialog.ShowAsync();
             }
 
-            this.ProgressBar.Visibility = Visibility.Collapsed;
+            //this.ProgressBar.Visibility = Visibility.Collapsed;
             this.ScrollViewer.IsEnabled = true;
         }
 

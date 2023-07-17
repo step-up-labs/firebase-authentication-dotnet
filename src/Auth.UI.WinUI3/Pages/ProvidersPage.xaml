@@ -120,12 +120,12 @@
             Grid.Row="2"
             Height="24">
 
-            <ProgressBar
+            <!--<ProgressBar
                 x:Name="ProgressBar"
                 IsIndeterminate="True"
                 Visibility="Collapsed"
                 VerticalAlignment="Center"
-                />
+                />-->
         </Grid>
         
         <TextBlock 

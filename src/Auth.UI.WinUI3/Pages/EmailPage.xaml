@@ -38,11 +38,11 @@
         </Border>
 
         <Border x:Name="ProgressBorder" Height="16">
-            <ProgressBar 
+            <!--<ProgressBar 
                 x:Name="Progressbar"
                 Margin="0 12 0 0"
                 IsIndeterminate="True"
-                />
+                />-->
         </Border>
 
         <StackPanel

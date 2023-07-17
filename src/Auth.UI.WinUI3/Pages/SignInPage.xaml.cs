@@ -26,7 +26,7 @@ namespace Firebase.Auth.UI.Pages
 
             this.tcs = tcs;
             this.Styles = styles;
-            this.Progressbar.Visibility = Visibility.Collapsed;
+            //this.Progressbar.Visibility = Visibility.Collapsed;
             this.EnableButtons(true);
             this.PasswordBox.IsEnabled = true;
             this.PasswordBox.Focus(FocusState.Programmatic);
@@ -77,7 +77,7 @@ namespace Firebase.Auth.UI.Pages
         private void SignIn()
         {
             this.PasswordBox.IsEnabled = false;
-            this.Progressbar.Visibility = Visibility.Visible;
+            //this.Progressbar.Visibility = Visibility.Visible;
             this.EnableButtons(false);
             this.tcs.SetResult(EmailPasswordResult.WithPassword(this.PasswordBox.Password));
         }

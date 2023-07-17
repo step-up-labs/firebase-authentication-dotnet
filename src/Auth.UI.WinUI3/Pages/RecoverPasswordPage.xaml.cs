@@ -24,7 +24,7 @@ namespace Firebase.Auth.UI.Pages
 
             this.Styles = styles;
             this.tcs = tcs;
-            this.Progressbar.Visibility = Visibility.Collapsed;
+            //this.Progressbar.Visibility = Visibility.Collapsed;
             this.EmailTextBox.Text = email;
             this.EnableButtons(true);
             this.EmailTextBox.IsEnabled = true;
@@ -54,7 +54,7 @@ namespace Firebase.Auth.UI.Pages
         {
             this.ErrorTextBlock.Visibility = Visibility.Collapsed;
             this.EmailTextBox.IsEnabled = false;
-            this.Progressbar.Visibility = Visibility.Visible;
+            //this.Progressbar.Visibility = Visibility.Visible;
             this.EnableButtons(false);
             this.tcs.SetResult(this);
         }

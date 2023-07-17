@@ -17,4 +17,19 @@
     <ProjectReference Include="..\Auth.UI\Auth.UI.csproj" />
     <ProjectReference Include="..\Auth\Auth.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="..\Auth.UI\Assets\anonymous.png" Link="Assets\anonymous.png" />
+    <Content Include="..\Auth.UI\Assets\apple.png" Link="Assets\apple.png" />
+    <Content Include="..\Auth.UI\Assets\facebook.png" Link="Assets\facebook.png" />
+    <Content Include="..\Auth.UI\Assets\github.png" Link="Assets\github.png" />
+    <Content Include="..\Auth.UI\Assets\google.png" Link="Assets\google.png" />
+    <Content Include="..\Auth.UI\Assets\mail.png" Link="Assets\mail.png" />
+    <Content Include="..\Auth.UI\Assets\microsoft.png" Link="Assets\microsoft.png" />
+    <Content Include="..\Auth.UI\Assets\twitter.png" Link="Assets\twitter.png" />
+    <None Include="..\Auth.UI\Assets\firebase.png" Link="Assets\firebase.png" Pack="true" PackagePath="" />
+    <None Include="..\..\LICENSE.txt" Link="Assets\LICENSE.txt" Pack="true" PackagePath="" />
+    <None Include="..\..\README.md" Link="Assets\README.md" Pack="true" PackagePath="" />
+    <None Include="tools\VisualStudioToolsManifest.xml" Pack="true" PackagePath="tools" />
+  </ItemGroup>
 </Project>

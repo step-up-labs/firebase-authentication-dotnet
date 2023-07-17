@@ -110,11 +110,13 @@ namespace Firebase.Auth.UI
             FirebaseUI.Instance.Client.AuthStateChanged += ClientAuthStateChanged;
         }
 
-        private async void ClientAuthStateChanged(object sender, UserEventArgs e)
+        private void ClientAuthStateChanged(object sender, UserEventArgs e)
         {
-            await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                CoreDispatcherPriority.Normal,
-                () => this.AuthStateChanged?.Invoke(sender, e));
+            DispatcherQueue.TryEnqueue(
+                () =>
+                {
+                    this.AuthStateChanged?.Invoke(sender, e);
+            });
         }
 
         void IFirebaseUIFlow.Reset()
@@ -153,19 +155,30 @@ namespace Firebase.Auth.UI
 
         async Task IFirebaseUIFlow.ShowPasswordResetConfirmationAsync(string email)
         {
-            await new MessageDialog(string.Format(AppResources.Instance.FuiConfirmRecoveryBody, email), AppResources.Instance.FuiTitleConfirmRecoverPassword).ShowAsync();
+            var dialog = new ContentDialog()
+            {
+                Title = AppResources.Instance.FuiTitleConfirmRecoverPassword,
+                Content = string.Format(AppResources.Instance.FuiConfirmRecoveryBody, email),
+                XamlRoot = this.XamlRoot,
+                CloseButtonText = "Ok"
+            };
+            await dialog.ShowAsync();         
         }
 
         async Task<bool> IFirebaseUIFlow.ShowEmailProviderConflictAsync(string email, FirebaseProviderType providerType)
-        {
-            var ok = new UICommand("Ok");
-            var cancel = new UICommand(AppResources.Instance.FuiCancel);
-            var dialog = new MessageDialog(string.Format(AppResources.Instance.FuiWelcomeBackIdpPrompt, email, providerType), AppResources.Instance.FuiWelcomeBackIdpHeader);
-            dialog.Commands.Add(ok);
-            dialog.Commands.Add(cancel);
+        {           
+            var dialog = new ContentDialog()
+            {
+                Title = AppResources.Instance.FuiWelcomeBackIdpHeader,
+                Content = string.Format(AppResources.Instance.FuiWelcomeBackIdpPrompt, email, providerType),
+                XamlRoot = this.XamlRoot,
+                CloseButtonText = AppResources.Instance.FuiCancel,
+                PrimaryButtonText = "Ok"
+            };
+       
             var result = await dialog.ShowAsync();
 
-            return result == ok;
+            return  result == ContentDialogResult.Primary;
         }
 
         private Styles Styles => new Styles(this.TitleTextBlockStyle, this.HeaderTextBlockStyle, this.ErrorTextBlockStyle, this.BodyTextBlockStyle, this.ConfirmButtonStyle, this.CancelButtonStyle);
@@ -175,7 +188,7 @@ namespace Firebase.Auth.UI
         {
             var tcs = new TaskCompletionSource<TResult>();
 
-            if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.Media.Animation.SlideNavigationTransitionInfo", "Effect"))
+            if (ApiInformation.IsPropertyPresent("Microsoft.UI.Xaml.Media.Animation.SlideNavigationTransitionInfo", "Effect"))
             {
                 this.frame.Navigate(typeof(TPage), param(tcs), new SlideNavigationTransitionInfo { Effect = SlideNavigationTransitionEffect.FromRight });
             }
