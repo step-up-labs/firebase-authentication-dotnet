@@ -2,6 +2,7 @@ using Firebase.Auth;
 using Firebase.Auth.Providers;
 using Firebase.Auth.Repository;
 using Firebase.Auth.UI;
+using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.AppLifecycle;
@@ -48,10 +49,10 @@ namespace Auth.WinUI3.Sample
             });
         }
 
-        private async void AuthStateChanged(object sender, UserEventArgs e)
+        private void AuthStateChanged(object sender, UserEventArgs e)
         {
-            await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                CoreDispatcherPriority.Normal,
+            var dispatcherQueue = DispatcherQueue.GetForCurrentThread();
+            dispatcherQueue.TryEnqueue(
                 async () =>
                 {
                     if (e.User == null)

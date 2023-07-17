@@ -4,7 +4,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System;
-using Windows.UI.Core;
 
 namespace Auth.WinUI3.Sample
 {
@@ -17,7 +16,7 @@ namespace Auth.WinUI3.Sample
             FirebaseUI.Instance.Client.AuthStateChanged += this.AuthStateChanged;
         }
 
-        private async void AuthStateChanged(object sender, UserEventArgs e)
+        private void AuthStateChanged(object sender, UserEventArgs e)
         {
             var user = e.User;
 
@@ -26,20 +25,18 @@ namespace Auth.WinUI3.Sample
                 return;
             }
 
-            await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                CoreDispatcherPriority.Normal,
-                () =>
-                {
-                    this.UidTextBlock.Text = user.Uid ?? "";
-                    this.NameTextBlock.Text = user.Info.DisplayName ?? "";
-                    this.EmailTextBlock.Text = user.Info.Email ?? "";
-                    this.ProviderTextBlock.Text = user.Credential.ProviderType.ToString();
+            DispatcherQueue.TryEnqueue(() =>
+            {
+                this.UidTextBlock.Text = user.Uid ?? "";
+                this.NameTextBlock.Text = user.Info.DisplayName ?? "";
+                this.EmailTextBlock.Text = user.Info.Email ?? "";
+                this.ProviderTextBlock.Text = user.Credential.ProviderType.ToString();
 
-                    if (!string.IsNullOrWhiteSpace(user.Info.PhotoUrl))
-                    {
-                        this.ProfileImage.Source = new BitmapImage(new Uri(user.Info.PhotoUrl));
-                    }
-                });
+                if (!string.IsNullOrWhiteSpace(user.Info.PhotoUrl))
+                {
+                    this.ProfileImage.Source = new BitmapImage(new Uri(user.Info.PhotoUrl));
+                }
+            });
         }
 
         private void SignOutClick(object sender, RoutedEventArgs e)
