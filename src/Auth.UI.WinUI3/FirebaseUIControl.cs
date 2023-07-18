@@ -7,9 +7,6 @@ using System;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.Foundation.Metadata;
-using Windows.Security.Authentication.Web;
-using Windows.UI.Core;
-using Windows.UI.Popups;
 
 namespace Firebase.Auth.UI
 {
@@ -129,8 +126,7 @@ namespace Firebase.Auth.UI
 
         async Task<string> IFirebaseUIFlow.GetRedirectResponseUriAsync(FirebaseProviderType provider, string redirectUri)
         {
-            var result = await WebAuthenticationBroker.AuthenticateAsync(WebAuthenticationOptions.None, new Uri(redirectUri), new Uri(FirebaseUI.Instance.Config.RedirectUri));
-            return result.ResponseData;
+            return await WebAuthenticationBroker.AuthenticateAsync(this, provider, redirectUri, FirebaseUI.Instance.Config.RedirectUri);          
         }
 
         Task<string> IFirebaseUIFlow.PromptForEmailAsync(string error)
