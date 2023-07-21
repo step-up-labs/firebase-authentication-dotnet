@@ -8,7 +8,6 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.AppLifecycle;
 using System;
 using Windows.Globalization;
-using Windows.UI.Core;
 
 namespace Auth.WinUI3.Sample
 {
@@ -50,8 +49,7 @@ namespace Auth.WinUI3.Sample
         }
 
         private void AuthStateChanged(object sender, UserEventArgs e)
-        {
-            var dispatcherQueue = DispatcherQueue.GetForCurrentThread();
+        {             
             dispatcherQueue.TryEnqueue(
                 async () =>
                 {
@@ -62,7 +60,7 @@ namespace Auth.WinUI3.Sample
                     }
                     else if (e.User.IsAnonymous)
                     {
-                        (Window.Content as Frame).Navigate(typeof(MainPage));
+                        (Window.Content as Frame).Navigate(typeof(LoginPage));
                     }
                     else if (Window.Content == null || Window.Content.GetType() != typeof(MainPage))
                     {
@@ -85,6 +83,8 @@ namespace Auth.WinUI3.Sample
                 return;
             }
 
+            dispatcherQueue = DispatcherQueue.GetForCurrentThread();
+
             if (Window == null)
             {            
                 FirebaseUI.Instance.Client.AuthStateChanged += this.AuthStateChanged;
@@ -97,6 +97,8 @@ namespace Auth.WinUI3.Sample
             Window.Activate();
             WindowHandle = WinRT.Interop.WindowNative.GetWindowHandle(Window);
         }
+
+        private DispatcherQueue dispatcherQueue;
 
         public static MainWindow Window { get; private set; }
 
