@@ -1,9 +1,9 @@
 {
   "profiles": {
-    "Auth.UWP.Sample (Package)": {
+    "Auth.WinUI3.Sample (Package)": {
       "commandName": "MsixPackage"
     },
-    "Auth.UWP.Sample (Unpackaged)": {
+    "Auth.WinUI3.Sample (Unpackaged)": {
       "commandName": "Project"
     }
   }
