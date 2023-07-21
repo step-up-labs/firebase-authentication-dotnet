@@ -6,6 +6,25 @@
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
     <UseWinUI>true</UseWinUI>
     <AssemblyName>Firebase.Auth.UI.WinUI3</AssemblyName>
+	<Authors>Step Up Labs, Inc.</Authors>
+    <Description>
+FirebaseUI for WinUI3.
+
+The library provides a drop-in auth solution that handles the flows for signing in users with email addresses and passwords, Identity Provider Sign In including Google, Facebook, GitHub, Twitter, Apple, Microsoft, Yahoo and anonymous sign-in.
+    </Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageIcon>firebase.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/step-up-labs/firebase-authentication-dotnet</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <IncludeSource>True</IncludeSource>
+    <IncludeSymbols>True</IncludeSymbols>
+    <Copyright>Step Up Labs, Inc. 2023</Copyright>
+    <PackageTags>Firebase FirebaseUI Auth Authentication OAuth Apple Google Facebook Github Twitter</PackageTags>
+    <LangVersion>8.0</LangVersion>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageId>FirebaseAuthentication.WinUI3</PackageId>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="WebAuthenticationBrokerWindow.xaml" />
