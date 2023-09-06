@@ -26,6 +26,7 @@ The library provides a drop-in auth solution that handles the flows for signing 
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageId>FirebaseAuthentication.WinUI3</PackageId>
+	<EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="WebAuthenticationBrokerWindow.xaml" />
