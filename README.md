@@ -8,10 +8,11 @@ and [FirebaseUI](https://firebase.google.com/docs/auth).
 
 The libraries provide a drop-in auth solution that handles the flows for signing in users with email addresses and passwords, Identity Provider Sign In including Google, Facebook, GitHub, Twitter, Apple, Microsoft and anonymous sign-in.
 
-The solution consists of 4 libraries - a base one and 3 platform specific ones:
+The solution consists of 5 libraries - a base one and 4 platform specific ones:
 * FirebaseAuthentication<strong>.net</strong> targets [.NET Standard 2.0](https://github.com/dotnet/standard/blob/master/docs/versions.md)
 * FirebaseAuthentication<strong>.WPF</strong> targets [WPF on .NET 6](https://github.com/dotnet/wpf)
 * FirebaseAuthentication<strong>.UWP</strong> targets [UWP with min version 19041](https://docs.microsoft.com/en-us/windows/uwp/updates-and-versions/choose-a-uwp-version)
+* FirebaseAuthentication<strong>.WinUI3</strong> targets [WinUI3](https://learn.microsoft.com/en-us/windows/apps/winui/winui3/)
 * FirebaseAuthentication<strong>.Maui</strong> targets Maui (*TODO*)
 
 ## Installation
@@ -25,6 +26,7 @@ dotnet add package FirebaseAuthentication.net
 # Platform specific FirebaseUI (has dependency on base package)
 dotnet add package FirebaseAuthentication.WPF
 dotnet add package FirebaseAuthentication.UWP
+dotnet add package FirebaseAuthentication.WinUI3
 dotnet add package FirebaseAuthentication.Maui
 ```
 
@@ -48,6 +50,7 @@ There are currently 3 sample projects in the [samples folder](/samples/):
 * .NET Core Console application (uses only the base library, no UI)
 * WPF sample with UI
 * UWP sample with UI
+* WinUI3 sample with UI
 
 Feel free to clone the repo and check them out, just don't forget to add your custom API keys and other setup (typically in `Program.cs` or `App.xaml.cs`).
 
