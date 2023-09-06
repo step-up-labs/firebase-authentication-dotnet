@@ -1,0 +1,140 @@
+﻿<Page
+    x:Class="Firebase.Auth.UI.Pages.ProvidersPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:Firebase.Auth.UI.Converters"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="FirebaseAuthControl" VerticalAlignment="Center">
+
+        <Grid.Resources>
+            <converters:BackgroundConverter x:Key="BackgroundConverter" />
+            <converters:ForegroundConverter x:Key="ForegroundConverter" />
+            <converters:BorderThicknessConverter x:Key="BorderThicknessConverter" />
+            <converters:TitleConverter x:Key="TitleConverter" />
+            <converters:AssetConverter x:Key="AssetConverter" />
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid 
+            x:Name="BackgroundGrid"
+            Grid.RowSpan="4"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            />
+
+        <ContentPresenter 
+            Content="{Binding Header}"
+            />
+
+        <ScrollViewer
+            x:Name="ScrollViewer"
+            Grid.Row="1"
+            VerticalScrollBarVisibility="Hidden">
+
+            <ItemsControl x:Name="Items" HorizontalAlignment="Center" ItemsSource="{x:Bind Providers}">
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="HorizontalAlignment" Value="Stretch" />
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+                
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch" Loaded="GridButtonLoaded">
+                            <Grid.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    <Setter Property="HorizontalAlignment" Value="Stretch" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="BorderBrush" Value="Transparent" />
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="BorderThickness" Value="0" />
+                                    <Setter Property="Margin" Value="24 4 24 12" />
+                                </Style>
+
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="White" />
+                                    <Setter Property="FontSize" Value="14" />
+                                    <Setter Property="FontWeight" Value="Medium" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="Margin" Value="0 0 12 0" />
+                                </Style>
+
+                                <Style TargetType="Image">
+                                    <Setter Property="Height" Value="20" />
+                                    <Setter Property="Width" Value="20" />
+                                    <Setter Property="Margin" Value="12 5" />
+                                </Style>
+
+                                <ThemeShadow x:Name="ThemeShadow" />
+                                <SolidColorBrush 
+                                    x:Key="ButtonBackgroundPointerOver"
+                                    Color="{Binding Converter={StaticResource BackgroundConverter}}"
+                                    Opacity="0.8"
+                                    />
+                                <SolidColorBrush 
+                                    x:Key="ButtonBackgroundPressed"
+                                    Color="{Binding Converter={StaticResource BackgroundConverter}}"
+                                    Opacity="0.6"
+                                    />
+                            </Grid.Resources>
+
+                            <Button 
+                                Click="ProviderSignInClick"
+                                CornerRadius="5"
+                                Translation="0 0 18"
+                                Shadow="{StaticResource ThemeShadow}"
+                                BorderBrush="#D6D6D6"
+                                BorderThickness="{Binding Converter={StaticResource BorderThicknessConverter}}"
+                                Background="{Binding Converter={StaticResource BackgroundConverter}}">
+                                
+                                <StackPanel Orientation="Horizontal">
+                                    <Image 
+                                        Source="{Binding Converter={StaticResource AssetConverter}}" 
+                                        />
+
+                                    <TextBlock
+                                        Foreground="{Binding Converter={StaticResource ForegroundConverter}}"
+                                        Text="{Binding Converter={StaticResource TitleConverter}}"
+                                        />
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <Grid
+            Grid.Row="2"
+            Height="24">
+
+            <!--<ProgressBar
+                x:Name="ProgressBar"
+                IsIndeterminate="True"
+                Visibility="Collapsed"
+                VerticalAlignment="Center"
+                />-->
+        </Grid>
+        
+        <TextBlock 
+            x:Name="FooterTextBlock"
+            Grid.Row="3"
+            TextWrapping="Wrap"
+            TextAlignment="Center"
+            HorizontalAlignment="Stretch"
+            Style="{ThemeResource CaptionTextBlockStyle}"
+            />
+    </Grid>
+</Page>

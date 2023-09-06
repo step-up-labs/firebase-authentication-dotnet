@@ -1,0 +1,76 @@
+﻿<Page
+    x:Class="Firebase.Auth.UI.Pages.EmailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Firebase.Auth.UI.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:loc="using:Firebase.Auth.UI.Resources"
+    mc:Ignorable="d"
+    MinWidth="300"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel VerticalAlignment="Center">
+        <TextBlock
+            Style="{x:Bind Styles.TitleStyle}"
+            Text="{x:Bind loc:AppResources.Instance.FuiSignInWithEmail}"
+            />
+
+        <TextBlock 
+            Margin="0 12 0 0"
+            Style="{x:Bind Styles.HeaderStyle}"
+            Text="{x:Bind loc:AppResources.Instance.FuiEmailHint}"
+            />
+
+        <TextBox
+            x:Name="EmailTextBox"
+            KeyDown="EmailTextBoxKeyDown"
+            InputScope="EmailNameOrAddress"
+            TabIndex="0"
+            />
+
+        <Border x:Name="ErrorBorder" Height="20">
+            <TextBlock
+                x:Name="ErrorTextBlock"
+                Style="{x:Bind Styles.ErrorStyle}"
+                Text="{x:Bind loc:AppResources.Instance.FuiInvalidEmailAddress}"
+                />
+        </Border>
+
+        <Border x:Name="ProgressBorder" Height="16">
+            <!--<ProgressBar 
+                x:Name="Progressbar"
+                Margin="0 12 0 0"
+                IsIndeterminate="True"
+                />-->
+        </Border>
+
+        <StackPanel
+            x:Name="ButtonsPanel"
+            Margin="0 12 0 0"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+
+            <Button
+                x:Name="SignInButton"
+                Click="SignInClick"
+                Content="{x:Bind loc:AppResources.Instance.FuiSignInDefault}"
+                Style="{x:Bind Styles.ConfirmButtonStyle}"
+                TabIndex="1"
+                />
+
+            <Button
+                x:Name="CancelButton"
+                Click="CancelClick"
+                Margin="12 0 0 0"
+                Content="{x:Bind loc:AppResources.Instance.FuiCancel}"
+                Style="{x:Bind Styles.CancelButtonStyle}"
+                TabIndex="2"
+                />
+        </StackPanel>
+
+        <local:LinksFooter />
+
+    </StackPanel>
+
+</Page>

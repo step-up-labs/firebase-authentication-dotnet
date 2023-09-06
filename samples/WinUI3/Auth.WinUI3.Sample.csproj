@@ -1,0 +1,215 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows10.0.22000.0</TargetFramework>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Auth.WinUI3.Sample</RootNamespace>
+    <AssemblyName>Auth.WinUI3.Sample</AssemblyName>
+    <DefaultLanguage>en</DefaultLanguage>
+    <DisableEmbeddedXbf>false</DisableEmbeddedXbf>
+    <UseWinUI>true</UseWinUI>
+    <Platforms>x86;x64;arm64</Platforms>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
+    <OutputPath>bin\ARM64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
+    <OutputPath>bin\ARM64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup>
+	<EnableDefaultPriItems>false</EnableDefaultPriItems>
+</PropertyGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\firebase.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Properties\Default.rd.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Auth.UI.WinUI3\Auth.UI.WinUI3.csproj" />
+    <ProjectReference Include="..\..\src\Auth.UI\Auth.UI.csproj" />
+    <ProjectReference Include="..\..\src\Auth\Auth.csproj" />
+  </ItemGroup>  
+<ItemGroup>
+    <PRIResource Include="strings\cs\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\en\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\ar\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\bg\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\ca\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\da\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\de\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\el\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\es\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\fa\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\fi\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\fil\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\fr\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\hi\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\hr\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\hu\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\in\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\it\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\iw\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\ja\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\ko\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\lt\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\lv\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\nl\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\no\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\pl\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\pt\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\ro\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\ru\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\sk\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\sl\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\sr-cyrl\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\sv\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\th\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\tr\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\uk\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\ur\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\vi\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\zh\Resources.resw" />
+  </ItemGroup>  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.3.230602002" />
+    <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.5.1" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.4" />
+  </ItemGroup>
+</Project>
