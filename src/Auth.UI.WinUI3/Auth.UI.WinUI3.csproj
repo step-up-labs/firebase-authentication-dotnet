@@ -38,7 +38,7 @@ The library provides a drop-in auth solution that handles the flows for signing 
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Auth.UI\Auth.UI.csproj" />
+    <ProjectReference Include="..\Auth.UI\Auth.UI.csproj" PrivateAssets="All" Label="IncludeDll" />
     <ProjectReference Include="..\Auth\Auth.csproj" />
   </ItemGroup>
   
