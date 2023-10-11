@@ -33,6 +33,9 @@ namespace Firebase.Auth
         [EnumMember(Value = "phone")]
         Phone,
 
-        Anonymous
+		[EnumMember(Value = "customtoken")]
+		CustomToken,
+
+		Anonymous
     } 
 }
