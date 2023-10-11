@@ -14,5 +14,9 @@
         public const string GoogleCreateAuthUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/createAuthUri?key={0}";
         public const string GoogleProjectConfighUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/getProjectConfig?key={0}";
         public const string GoogleUpdateUserPassword = "https://identitytoolkit.googleapis.com/v1/accounts:update?key={0}";
-    }
+		public const string GoogleSignInWithCustomToken = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key={0}";
+
+
+
+	}
 }

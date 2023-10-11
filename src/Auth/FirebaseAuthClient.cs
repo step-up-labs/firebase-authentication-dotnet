@@ -159,6 +159,18 @@ namespace Firebase.Auth
             return new FetchUserProvidersResult(email, response.Registered, response.SigninMethods, response.AllProviders);
         }
 
+		public async Task<UserCredential> SignInWithCustomTokendAsync(string customToken)
+		{
+			await this.CheckAuthDomain().ConfigureAwait(false);
+
+			var provider = (CustomTokenProvider)this.config.GetAuthProvider(FirebaseProviderType.CustomToken);
+			var result = await provider.SignInUserAsync(customToken).ConfigureAwait(false);
+
+			this.SaveToken(result.User);
+
+			return result;
+		}
+
         public async Task<UserCredential> SignInWithEmailAndPasswordAsync(string email, string password)
         {
             await this.CheckAuthDomain().ConfigureAwait(false);
