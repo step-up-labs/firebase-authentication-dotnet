@@ -63,6 +63,10 @@ namespace Firebase.Auth
                     //possible errors from Email/Password Signin
                     case "INVALID_PASSWORD":
                         return AuthErrorReason.WrongPassword;
+
+                    case "INVALID_LOGIN_CREDENTIALS":
+                        return AuthErrorReason.WrongPassword;
+
                     case "EMAIL_NOT_FOUND":
                         return AuthErrorReason.UnknownEmailAddress;
                     case "USER_DISABLED":
