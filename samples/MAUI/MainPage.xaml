@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Auth.MAUI.Sample.MainPage">
+
+
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <StackLayout.Resources>
+            <Style TargetType="Image">
+                <Setter Property="Margin" Value="5" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="Margin" Value="5" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="5" />
+            </Style>
+        </StackLayout.Resources>
+
+        <Image x:Name="ProfileImage"
+               HeightRequest="100"
+               WidthRequest="100" />
+
+        <Label x:Name="UidTextBlock" />
+        <Label x:Name="NameTextBlock" />
+        <Label x:Name="EmailTextBlock" />
+        <Label x:Name="ProviderTextBlock" />
+        <Button 
+            Clicked="SignOutClick"
+            Text="Sign out"
+            Padding="18, 3"
+            />
+    </StackLayout>
+
+</ContentPage>

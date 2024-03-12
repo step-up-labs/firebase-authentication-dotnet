@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:components="clr-namespace:Firebase.Auth.UI.MAUI.Components"   
+             xmlns:res="clr-namespace:Firebase.Auth.UI.Resources;assembly=Firebase.Auth.UI" 
+             x:Class="Firebase.Auth.UI.MAUI.Components.LinksFooter" 
+             x:Name="LinksFooterView">
+    <StackLayout Margin="0,24" HorizontalOptions="End" VerticalOptions="Center" Orientation="Horizontal">
+        <components:Hyperlink Margin="12,0,0,0" Text="{Binding FuiTermsOfService, Mode=OneWay, Source={x:Static res:AppResources.Instance}}" 
+                              Url="{ Binding TermsOfServiceUrl }" BindingContext="{ x:Reference LinksFooterView }" />
+        <components:Hyperlink Margin="12,0,0,0" Text="{Binding FuiPrivacyPolicy, Mode=OneWay, Source={x:Static res:AppResources.Instance}}" 
+                              Url="{ Binding PrivacyPolicyUrl }"  BindingContext="{ x:Reference LinksFooterView }"/>
+    </StackLayout>
+</ContentView>

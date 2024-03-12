@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:views="clr-namespace:Firebase.Auth.UI.MAUI.Pages"
+             x:Class="Firebase.Auth.UI.MAUI.FirebaseUIControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="750" 
+             d:DesignWidth="450">
+    <Grid 
+        x:Name="LoginControl" 
+        VerticalOptions="Center"
+        HorizontalOptions="Center">
+
+        <Grid 
+            x:Name="ContentPage"
+            MaximumWidthRequest="400"
+            IsVisible="true"
+            BackgroundColor="Transparent">
+        </Grid>
+    </Grid>
+</ContentView>

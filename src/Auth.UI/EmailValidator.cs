@@ -9,7 +9,7 @@ namespace Firebase.Auth.UI
         /// Checks whether given string is a valid email address.
         /// </summary>
         public static bool ValidateEmail(string email)
-        {
+        { 
             try
             {
                 var m = new MailAddress(email);
@@ -17,6 +17,14 @@ namespace Firebase.Auth.UI
                 return true;
             }
             catch (FormatException)
+            {
+                return false;
+            }
+            catch (ArgumentNullException)
+            {
+                return false;
+            }
+            catch (ArgumentException)
             {
                 return false;
             }

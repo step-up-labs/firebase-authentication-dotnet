@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Auth.MAUI.Sample.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Auth.MAUI.Sample"
+    Shell.FlyoutBehavior="Disabled"
+    Title="Auth.MAUI.Sample">
+    
+    <ShellContent x:Name="ShellContent"
+        Title="Home"
+        Route="MainPage"
+        ContentTemplate="{DataTemplate local:MainPage}" />
+</Shell>

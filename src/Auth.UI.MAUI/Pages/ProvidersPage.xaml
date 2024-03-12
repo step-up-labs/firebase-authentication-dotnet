@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Firebase.Auth.UI.MAUI.Pages.ProvidersPage"
+             xmlns:vm="clr-namespace:Firebase.Auth.UI.MAUI.Pages"
+             xmlns:converters="clr-namespace:Firebase.Auth.UI.MAUI.Converters"         
+             x:DataType="vm:ProvidersPage" x:Name="ProvidersPageView">
+    <ContentView.Resources>
+        <ResourceDictionary Source="../Themes/Generic.xaml" />
+        <converters:BackgroundConverter x:Key="backgroundConverter" />
+        <converters:AssetConverter x:Key="assetConverter" />
+        <converters:ForegroundConverter x:Key="foregroundConverter" />
+        <converters:TitleConverter x:Key="titleConverter" />
+    </ContentView.Resources>
+
+    <Grid x:Name="FirebaseAuthControl" VerticalOptions="Center" HorizontalOptions="Center" MaximumWidthRequest="400">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ContentPresenter Content="{TemplateBinding Header}" BindingContext="{x:Reference ProvidersPageView }" x:Name="HeaderContent" Grid.Row="0" />
+        
+        <CollectionView HorizontalOptions="Center" SelectionMode="None" 
+                        ItemsSource="{Binding Providers}" BindingContext="{x:Reference ProvidersPageView}" Grid.Row="1">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <ContentView>
+                        <ContentView.Content>
+                            <Border Padding="0" HeightRequest="42" Margin="25, 6" HorizontalOptions="Fill" StrokeThickness="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="3,3,3,3" />
+                                </Border.StrokeShape>
+                                <Border.Resources>
+                                    <Style TargetType="Image">
+                                        <Setter Property="HeightRequest" Value="20" />
+                                        <Setter Property="WidthRequest" Value="20" />
+                                        <Setter Property="Margin" Value="18, 9" />
+                                    </Style>
+                                </Border.Resources>
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ProviderSignInClick" CommandParameter="{ Binding }" />
+                                    <PointerGestureRecognizer PointerPressed="PointerPressed" />
+                                </Border.GestureRecognizers>
+                                <Border.Shadow>
+                                    <Shadow Brush="Black" Radius="5" Opacity="0.2" Offset="6,2"  />
+                                </Border.Shadow>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="{Binding Converter={StaticResource backgroundConverter } }" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="PointerOver">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="{Binding Converter={StaticResource backgroundConverter }, ConverterParameter=0.85 }" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Pressed">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="{Binding Converter={StaticResource backgroundConverter }, ConverterParameter=0.80 }" />
+                                                <Setter Property="ScaleX" Value="0.98" />
+                                                <Setter Property="ScaleY" Value="0.98" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Center">
+                                    <Image Source="{Binding Converter={StaticResource assetConverter }}" />
+
+                                    <Label TextColor="{Binding Converter={StaticResource foregroundConverter }}"
+                                                Text="{Binding Converter={StaticResource titleConverter }}" FontSize="14"
+                                                HorizontalOptions="Fill" FontAttributes="Bold" VerticalOptions="Center" />
+                                </StackLayout>
+                            </Border>
+                        </ContentView.Content>
+                    </ContentView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <ActivityIndicator IsRunning="true" IsVisible="{ Binding IsLoading }" BindingContext="{x:Reference ProvidersPageView }" />
+
+        <Label x:Name="FooterTextBlock" Grid.Row="4" 
+               Style="{StaticResource FuiTextBlockFooterStyle}" />
+    </Grid>
+</ContentView>
+    
