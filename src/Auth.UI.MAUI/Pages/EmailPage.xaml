@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:Firebase.Auth.UI.Resources;assembly=Firebase.Auth.UI"
+             xmlns:components="clr-namespace:Firebase.Auth.UI.MAUI.Components"   
+             x:Class="Firebase.Auth.UI.MAUI.Pages.EmailPage"
+             x:Name="EmailPageView">
+    <ContentPage.Resources> 
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid VerticalOptions="Center" HorizontalOptions="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackLayout MaximumWidthRequest="400">
+            <Label Style="{StaticResource FuiTextBlockTitleStyle}"
+                   Text="{Binding FuiSignInWithEmail, Source={x:Static res:AppResources.Instance}}" />
+
+            <Label Margin="0, 12, 0, 0"
+                   Style="{StaticResource FuiTextBlockHeaderStyle}"
+                   Text="{Binding FuiEmailHint, Source={x:Static res:AppResources.Instance}}" />
+
+            <Entry x:Name="EmailTextBox" />
+
+            <Label x:Name="ErrorTextBlock" 
+                   Style="{StaticResource FuiTextBlockErrorStyle}"  
+                   Text="{Binding FuiInvalidEmailAddress, Source={x:Static res:AppResources.Instance}}" />
+
+            <ActivityIndicator IsRunning="true" IsVisible="{ Binding IsLoading }" BindingContext="{ x:Reference EmailPageView }" />
+
+            <StackLayout x:Name="ButtonsPanel"
+                         Margin="0, 12, 0,0"
+                         HorizontalOptions="End"
+                         Orientation="Horizontal">
+
+                <Button Clicked="CancelClick"
+                        Text="{Binding FuiCancel, Source={x:Static res:AppResources.Instance}}" />
+
+                <Button Clicked="SignInClick"
+                        Margin="12, 0, 0, 0"
+                        Text="{Binding FuiSignInDefault, Source={x:Static res:AppResources.Instance}}" />
+            </StackLayout>
+
+            <components:LinksFooter />
+        </StackLayout>
+    </Grid>
+</ContentPage>

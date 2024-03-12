@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:UI="clr-namespace:Firebase.Auth.UI.MAUI;assembly=Auth.UI.MAUI"
+             x:Class="Auth.MAUI.Sample.LoginPage" Shell.NavBarIsVisible="False" Shell.TabBarIsVisible="False">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" />
+    </Shell.BackButtonBehavior>
+    <ContentPage.Content>
+        <Grid>
+            <UI:FirebaseUIControl>
+               <UI:FirebaseUIControl.Header>
+                    <StackLayout>
+                        <Image HeightRequest="150" Source="firebase.png" Aspect="AspectFit"  />
+
+                        <Label HorizontalOptions="Center"
+                               VerticalOptions="CenterAndExpand"
+                               FontSize="16"
+                               Margin="12"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               Text="Don't forget to add your API Key &amp; Domain in MauiProgram.cs" />
+                    </StackLayout>
+                </UI:FirebaseUIControl.Header>
+            </UI:FirebaseUIControl>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
