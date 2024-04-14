@@ -55,7 +55,10 @@ namespace Auth.WinUI3.Sample
                 {
                     if (e.User == null)
                     {
-                        await FirebaseUI.Instance.Client.SignInAnonymouslyAsync();
+                        if (FirebaseUI.Instance.Config.IsAnonymousAllowed)
+                        {
+                            await FirebaseUI.Instance.Client.SignInAnonymouslyAsync();
+                        }
                         (Window.Content as Frame).Navigate(typeof(LoginPage));
                     }
                     else if (e.User.IsAnonymous)
