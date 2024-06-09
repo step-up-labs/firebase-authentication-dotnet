@@ -7,52 +7,53 @@ namespace Firebase.Auth.Requests
     public class VerifyAssertionRequest : IdTokenRequest
     {
         public string RequestUri { get; set; }
-        
+
         public string PostBody { get; set; }
-        
+
         public string PendingToken { get; set; }
 
         public string SessionId { get; set; }
 
         public bool ReturnIdpCredential { get; set; }
 
-        public bool ReturnSecureToken { get; set; }
+        public bool   ReturnSecureToken { get; set; }
+        public string TenantId          { get; set; }
     }
 
     public class VerifyAssertionResponse
     {
         public string FederatedId { get; set; }
-        
+
         public FirebaseProviderType ProviderId { get; set; }
-        
+
         public string Email { get; set; }
-        
+
         public bool EmailVerified { get; set; }
-        
+
         public string FirstName { get; set; }
-        
+
         public string FullName { get; set; }
-        
+
         public string LastName { get; set; }
-        
+
         public string PhotoUrl { get; set; }
-        
+
         public string LocalId { get; set; }
-        
+
         public string DisplayName { get; set; }
-        
+
         public string IdToken { get; set; }
-        
+
         public string Context { get; set; }
-        
+
         public string OauthAccessToken { get; set; }
-        
+
         public string OauthTokenSecret { get; set; }
-        
+
         public int OauthExpireIn { get; set; }
-        
+
         public string RefreshToken { get; set; }
-        
+
         public int ExpiresIn { get; set; }
 
         public string OauthIdToken { get; set; }
@@ -77,14 +78,15 @@ namespace Firebase.Auth.Requests
         public VerifyAssertion(FirebaseAuthConfig config) : base(config)
         {
         }
-        
+
         public static void ValidateAssertionResponse(VerifyAssertionResponse response, AuthCredential credential)
         {
             if (response.NeedConfirmation)
             {
                 throw new FirebaseAuthLinkConflictException(
                     response.Email,
-                    response.VerifiedProviders);
+                    response.VerifiedProviders,
+                    credential.TenantId);
             }
 
             if (response.ErrorMessage == "FEDERATED_USER_ID_ALREADY_LINKED")

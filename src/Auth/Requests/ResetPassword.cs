@@ -12,6 +12,8 @@
         public string Email { get; set; }
 
         public string RequestType { get; set; }
+
+        public string TenantId { get; set; }
     }
 
     public class ResetPasswordResponse

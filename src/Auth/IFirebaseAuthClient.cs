@@ -22,29 +22,30 @@ namespace Firebase.Auth
         /// <summary>
         /// Gets a list of sign-in methods for given email. If there are no methods, it means the user with given email doesn't exist.
         /// </summary>
-        Task<FetchUserProvidersResult> FetchSignInMethodsForEmailAsync(string email);
+        Task<FetchUserProvidersResult> FetchSignInMethodsForEmailAsync(string email, string tenantId = null);
         
         /// <summary>
         /// Creates a new user with given email, password and display name (optional) and signs this user in.
         /// </summary>
-        Task<UserCredential> CreateUserWithEmailAndPasswordAsync(string email, string password, string displayName = null);
+        Task<UserCredential> CreateUserWithEmailAndPasswordAsync(string email, string password, string displayName = null, string tenantId = null);
         
         /// <summary>
         /// Signs in as an anonymous user.
         /// </summary>
-        Task<UserCredential> SignInAnonymouslyAsync();
+        Task<UserCredential> SignInAnonymouslyAsync(string tenantId = null);
 
         /// <summary>
         /// Signs in via third party OAuth providers - e.g. Google, Facebook etc.
         /// </summary>
         /// <param name="authType"> Type of the provider, must be an oauth one. </param>
         /// <param name="redirectDelegate"> Delegate which should invoke the passed uri for oauth authentication and return the final redirect uri. </param>
-        Task<UserCredential> SignInWithRedirectAsync(FirebaseProviderType authType, SignInRedirectDelegate redirectDelegate);
+        /// <param name="tenantId"> Optional tenant id..</param>
+        Task<UserCredential> SignInWithRedirectAsync(FirebaseProviderType authType, SignInRedirectDelegate redirectDelegate, string tenantId = null);
         
         /// <summary>
         /// Signs in with email and password. If the email &amp; password combination is incorrect, <see cref="FirebaseAuthException"/> is thrown.
         /// </summary>
-        Task<UserCredential> SignInWithEmailAndPasswordAsync(string email, string password);
+        Task<UserCredential> SignInWithEmailAndPasswordAsync(string email, string password, string tenantId = null);
 
         /// <summary>
         /// Sign in with platform specific credential. For example:
@@ -57,7 +58,7 @@ namespace Firebase.Auth
         /// <summary>
         /// Sends a password reset email to given address.
         /// </summary>
-        Task ResetEmailPasswordAsync(string email);
+        Task ResetEmailPasswordAsync(string email, string tenantId = null);
 
         /// <summary>
         /// Signs current user out.

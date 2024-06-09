@@ -6,7 +6,8 @@
 
         public string Password { get; set; }
 
-        public bool ReturnSecureToken { get; set; }
+        public bool   ReturnSecureToken { get; set; }
+        public string TenantId          { get; set; }
     }
 
     public class VerifyPasswordResponse

@@ -2,7 +2,7 @@
 {
     public class GithubProvider : OAuthProvider
     {
-        public static AuthCredential GetCredential(string accessToken) => GetCredential(FirebaseProviderType.Github, accessToken, OAuthCredentialTokenType.AccessToken);
+        public static AuthCredential GetCredential(string accessToken, string tenantId = null) => GetCredential(FirebaseProviderType.Github, accessToken, tenantId, OAuthCredentialTokenType.AccessToken);
 
         public override FirebaseProviderType ProviderType => FirebaseProviderType.Github;
     }

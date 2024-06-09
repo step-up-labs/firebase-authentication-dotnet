@@ -10,7 +10,7 @@
             this.AddScopes(DefaultProfileScope, DefaultEmailScope);
         }
 
-        public static AuthCredential GetCredential(string token, OAuthCredentialTokenType tokenType = OAuthCredentialTokenType.AccessToken) => GetCredential(FirebaseProviderType.Google, token, tokenType);
+        public static AuthCredential GetCredential(string token, OAuthCredentialTokenType tokenType = OAuthCredentialTokenType.AccessToken, string tenantId = null) => GetCredential(FirebaseProviderType.Google, token, tenantId, tokenType);
 
         public override FirebaseProviderType ProviderType => FirebaseProviderType.Google;
 

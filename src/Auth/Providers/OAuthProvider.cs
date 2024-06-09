@@ -20,13 +20,14 @@ namespace Firebase.Auth.Providers
 
         protected virtual string LocaleParameterName => null;
 
-        protected static AuthCredential GetCredential(FirebaseProviderType providerType, string accessToken, OAuthCredentialTokenType tokenType)
+        protected static AuthCredential GetCredential(FirebaseProviderType providerType, string accessToken, string tenantId, OAuthCredentialTokenType tokenType)
         {
             return new OAuthCredential
             {
                 ProviderType = providerType,
                 Token = accessToken,
-                TokenType = tokenType
+                TokenType = tokenType,
+                TenantId = tenantId
             };
         }
 
@@ -50,15 +51,16 @@ namespace Firebase.Auth.Providers
             return this;
         }
 
-        internal virtual AuthCredential GetCredential(VerifyAssertionResponse response)
+        internal virtual AuthCredential GetCredential(VerifyAssertionResponse response, string tenantId)
         {
             return GetCredential(
-                this.ProviderType, 
-                response.PendingToken ?? response.OauthAccessToken, 
+                this.ProviderType,
+                response.PendingToken ?? response.OauthAccessToken,
+                tenantId,
                 response.PendingToken == null ? OAuthCredentialTokenType.AccessToken : OAuthCredentialTokenType.PendingToken);
         }
 
-        internal virtual async Task<OAuthContinuation> SignInAsync()
+        internal virtual async Task<OAuthContinuation> SignInAsync(string tenantId = null)
         {
             if (this.LocaleParameterName != null && !this.parameters.ContainsKey(this.LocaleParameterName))
             {
@@ -71,6 +73,7 @@ namespace Firebase.Auth.Providers
                 ProviderId = this.ProviderType,
                 CustomParameters = this.parameters,
                 OauthScope = this.GetParsedOauthScopes(),
+                TenantId = tenantId
             };
 
             var response = await this.createAuthUri.ExecuteAsync(request).ConfigureAwait(false);
@@ -87,10 +90,11 @@ namespace Firebase.Auth.Providers
                 PostBody = c.GetPostBodyValue(credential.ProviderType),
                 PendingToken = c.GetPendingTokenValue(),
                 ReturnIdpCredential = true,
-                ReturnSecureToken = true
+                ReturnSecureToken = true,
+                TenantId = credential.TenantId
             }).ConfigureAwait(false);
             
-            credential = this.GetCredential(response);
+            credential = this.GetCredential(response, credential.TenantId);
 
             response.Validate(credential);
 
@@ -107,14 +111,15 @@ namespace Firebase.Auth.Providers
                 PostBody = c.GetPostBodyValue(c.ProviderType),
                 PendingToken = c.GetPendingTokenValue(),
                 ReturnIdpCredential = true,
-                ReturnSecureToken = true
+                ReturnSecureToken = true,
+                TenantId = credential.TenantId
             }).ConfigureAwait(false);
 
-            credential = this.GetCredential(response);
+            credential = this.GetCredential(response, credential.TenantId);
 
             response.Validate(credential);
 
-            return new UserCredential(user, this.GetCredential(response), OperationType.Link);
+            return new UserCredential(user, credential, OperationType.Link);
         }
 
         protected string GetParsedOauthScopes()

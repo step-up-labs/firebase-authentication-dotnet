@@ -33,8 +33,9 @@ namespace Firebase.Auth.Providers
         /// </summary>
         /// <param name="redirectUri"> Final uri that user lands on after completing sign in in browser. </param>
         /// <param name="idToken"> Optional id token  of an existing Firebase user. If set, it will effectivelly perform account linking. </param>
+        /// <param name="tenantId"> Optional tenant id.</param>
         /// <returns></returns>
-        public async Task<UserCredential> ContinueSignInAsync(string redirectUri, string idToken = null)
+        public async Task<UserCredential> ContinueSignInAsync(string redirectUri, string idToken = null, string tenantId = null)
         {
             var (user, response) = await this.verifyAssertion.ExecuteAndParseAsync(
                 this.providerType, 
@@ -44,11 +45,12 @@ namespace Firebase.Auth.Providers
                     RequestUri = redirectUri,
                     SessionId = this.sessionId,
                     ReturnIdpCredential = true,
-                    ReturnSecureToken = true
+                    ReturnSecureToken = true,
+                    TenantId = tenantId
                 }).ConfigureAwait(false);
 
             var provider = this.config.GetAuthProvider(this.providerType) as OAuthProvider ?? throw new InvalidOperationException($"{this.providerType} is not a OAuthProvider");
-            var credential = provider.GetCredential(response);
+            var credential = provider.GetCredential(response, tenantId);
 
             response.Validate(credential);
 

@@ -32,6 +32,8 @@ namespace Firebase.Auth.Requests
         public string OauthScope { get; set; }
 
         public string Identifier { get; set; }
+
+        public string TenantId { get; set; }
     }
 
     /// <summary>

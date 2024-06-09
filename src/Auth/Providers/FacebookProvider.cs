@@ -9,7 +9,7 @@
             this.AddScopes(DefaultEmailScope);
         }
 
-        public static AuthCredential GetCredential(string accessToken) => GetCredential(FirebaseProviderType.Facebook, accessToken, OAuthCredentialTokenType.AccessToken);
+        public static AuthCredential GetCredential(string accessToken, string tenantId = null) => GetCredential(FirebaseProviderType.Facebook, accessToken, tenantId, OAuthCredentialTokenType.AccessToken);
 
         public override FirebaseProviderType ProviderType => FirebaseProviderType.Facebook;
 

@@ -40,14 +40,17 @@
     /// </summary>
     public class FirebaseAuthLinkConflictException : FirebaseAuthException
     {
-        public FirebaseAuthLinkConflictException(string email, IEnumerable<FirebaseProviderType> providers) 
-            : base($"An account already exists with the same email address but different sign-in credentials. Sign in using a provider associated with this email address: {email}", AuthErrorReason.AccountExistsWithDifferentCredential)
+        public FirebaseAuthLinkConflictException(string email, IEnumerable<FirebaseProviderType> providers, string tenantId = null)
+            : base($"An account already exists{(string.IsNullOrEmpty(tenantId) ? "" : $" in tenant {tenantId}")} with the same email address but different sign-in credentials. Sign in using a provider associated with this email address: {email}", AuthErrorReason.AccountExistsWithDifferentCredential)
         {
-            this.Email = email;
+            this.Email     = email;
             this.Providers = providers;
+            this.TenantId  = tenantId;
         }
 
         public string Email { get; }
+
+        public string TenantId { get; set; }
 
         public IEnumerable<FirebaseProviderType> Providers { get; }
     }

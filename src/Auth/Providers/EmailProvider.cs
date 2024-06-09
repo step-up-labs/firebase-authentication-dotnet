@@ -27,39 +27,42 @@ namespace Firebase.Auth.Providers
             this.linkAccount = new SetAccountLink(config);
         }
 
-        public static AuthCredential GetCredential(string email, string password)
+        public static AuthCredential GetCredential(string email, string password, string tenantId = null)
         {
             return new EmailCredential
             {
                 ProviderType = FirebaseProviderType.EmailAndPassword,
                 Email = email,
-                Password = password
+                Password = password,
+                TenantId = tenantId
             };
         }
 
-        public Task ResetEmailPasswordAsync(string email)
+        public Task ResetEmailPasswordAsync(string email, string tenantId = null)
         {
             var request = new ResetPasswordRequest
             {
-                Email = email
+                Email = email,
+                TenantId = tenantId
             };
 
             return this.resetPassword.ExecuteAsync(request);
         }
 
-        public Task<UserCredential> SignInUserAsync(string email, string password)
+        public Task<UserCredential> SignInUserAsync(string email, string password, string tenantId = null)
         {
-            return this.SignInWithCredentialAsync(GetCredential(email, password));
+            return this.SignInWithCredentialAsync(GetCredential(email, password, tenantId));
         }
 
-        public async Task<UserCredential> SignUpUserAsync(string email, string password, string displayName)
+        public async Task<UserCredential> SignUpUserAsync(string email, string password, string displayName, string tenantId = null)
         {
-            var authCredential = GetCredential(email, password);
+            var authCredential = GetCredential(email, password, tenantId);
             var signupResponse = await this.signupNewUser.ExecuteAsync(new SignupNewUserRequest
             {
                 Email = email,
                 Password = password,
-                ReturnSecureToken = true
+                ReturnSecureToken = true,
+                TenantId = tenantId
             }).ConfigureAwait(false);
 
             var credential = new FirebaseCredential
@@ -105,7 +108,8 @@ namespace Firebase.Auth.Providers
             {
                 Email = ec.Email,
                 Password = ec.Password,
-                ReturnSecureToken = true
+                ReturnSecureToken = true,
+                TenantId = ec.TenantId
             }).ConfigureAwait(false);
 
             var user = await this.GetUserInfoAsync(response.IdToken).ConfigureAwait(false);

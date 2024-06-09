@@ -4,13 +4,14 @@ namespace Firebase.Auth.Providers
 {
     public class TwitterProvider : OAuthProvider
     {
-        public static AuthCredential GetCredential(string token, string secret)
+        public static AuthCredential GetCredential(string token, string secret, string tenantId)
         {
             return new TwitterCredential
             {
                 ProviderType = FirebaseProviderType.Twitter,
                 Token = token,
-                Secret = secret
+                Secret = secret,
+                TenantId = tenantId
             };
         }
 
@@ -18,9 +19,9 @@ namespace Firebase.Auth.Providers
 
         protected override string LocaleParameterName => "lang";
 
-        internal override AuthCredential GetCredential(VerifyAssertionResponse response)
+        internal override AuthCredential GetCredential(VerifyAssertionResponse response, string tenantId)
         {
-            return GetCredential(response.OauthAccessToken, response.OauthTokenSecret);
+            return GetCredential(response.OauthAccessToken, response.OauthTokenSecret, tenantId);
         }
 
         internal class TwitterCredential : OAuthCredential
